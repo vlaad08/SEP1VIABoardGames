@@ -22,10 +22,6 @@ public class Player
   {
     return studentID;
   }
-  public void setStudentID(String studentID)
-  {
-    this.studentID = studentID;
-  }
   public boolean isMembership()
   {
     return membership;
