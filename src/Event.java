@@ -1,3 +1,9 @@
+
+/**
+ * A class containing Date and Time objects.
+ * @author Levi Toth
+ * @version 1.0
+ * */
 public class Event
 {
   private String title;
