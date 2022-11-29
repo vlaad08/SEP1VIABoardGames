@@ -1,3 +1,8 @@
+/**
+ * @author Agoston Babicz
+ * @version 1.0
+ * */
+
 public class Player
 {
   private String name;
