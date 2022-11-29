@@ -1,0 +1,99 @@
+/*Made by Vlad*/
+
+@import url('http://fonts.cdnfonts.com/css/berlin-sans-fb-demi');
+/*Importing a font from google*/
+
+html, body, #gameTypes, #news{
+    height: 100%; /*Setting the height to 100% so every div can be viewed a 100% of the screen size*/
+}
+
+img#logo{
+    width: 40%; 
+}
+
+ul#navbar-menu{   /*Increasing the font size and setting a font for the links*/
+    font-size: 160%;
+}
+a{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#navbar-background
+{
+    background: url("../images/homebackground.png"); /*Making the background of the div an image and making sure that is is the full size of the screen size and it doesn't repear itself*/
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#navbar-menu{
+    background-color: black;
+}
+
+#NewsTitle{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.blur-background{ /*Backdrop filter which blurs the background. The webkit is used because when I viewed the site from my phone, the background wasn't blured*/
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+
+.blur-invert-background{ /*This is only applied for the text on the carousel, on the image for pencil and paper games, because the white text wasn't visible and didn't want to */
+    backdrop-filter: blur(10px) invert(60%);    /*change the color of the text because it wouldn't have looked as good.*/
+}
+
+#chessImg{
+    width: 70%;
+}
+
+#title h1{
+    font-family: 'Berlin Sans FB Demi', sans-serif; /*Using the imported font*/
+}
+
+@media screen and (min-width: 576px){
+    .nav-item a{
+        font-size: 2.3vw; /*Change have the font-size for when the page is viewed on a big screen*/
+    }
+    
+}
+@media screen and (max-width: 575px){
+    #gameTypes, #news{
+        height: 80%;
+    }
+
+    .disappear{ /*This makes the text box from the carousel disappear so it would not cover the whole image. The text is not very important because the user*/
+        display: none; /*would find the actual information on the pages that are meant to do that*/
+    }
+    
+}
+
+#titleWelcome{ /*This is how the title is centered because if it was done with bootstrap the nav-bar would look ugly*/
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+.footer{ /*The footer css is made by Agoston*/
+    padding: 20px;
+    border-top: solid 1px rgb(227, 227, 227);
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 15px;
+}
+.footer .footerLinks{
+    display: flex;
+    gap: 20px;
+}
+.footer .footerLinks a img{
+    float: left;
+    width: 30px;
+    height: 30px;
+}

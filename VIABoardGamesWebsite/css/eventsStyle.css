@@ -1,0 +1,201 @@
+
+
+/*
+
+The eventsStyle.css file was made by Agoston.
+
+The styling of the events.html page is following the triad structure of the previous assingment's page but with more advanced CSS and HTML.
+
+*/
+
+
+html, body{
+    height: 100%;
+}
+img#logo{
+    width: 40%;
+}
+ul#navbar-menu{
+    font-size: 160%;
+}
+ /* Setting the font, which is the same for all the pages.*/
+a{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+/* Setting the separator divisons' style */
+.separator{
+    width: 80%;
+    margin: 180px auto;
+    border-bottom: solid 1px rgb(227, 227, 227);
+}
+
+/* The navbar-background division's styling (with the navbar and the welcome text)  (Top division)*/
+
+/* Navbar's styling */
+#navbar-background
+{
+    background: url("../images/events_hero.jpg");
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#navbar-menu{
+    background-color: black;
+}
+/* Styling of the welcome text */
+.upcoming{
+    padding-top: 5vw;
+    display: flex;
+    justify-content: flex-end;
+    color: rgb(227, 227, 227);
+}
+.upcoming .row{
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgba(245, 245, 245, 0.093);
+    width: 42vw;
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(30px);
+}
+.upcoming .row p{
+    text-align: justify;
+}
+.upcoming .row h1{
+    font-size: bold;
+}
+
+/* The styling of the three upcoming events (Middle division)
+
+    The idea was to make the big container a flexbox (with flex-wrap:wrap) and in this way all the 
+    three items would wrap below each other, making it responsive
+*/
+
+.next_events h1{
+    padding-top: 80px;
+    padding-bottom: 60px;
+    text-align: center;
+}
+.next_events .next_container{
+    margin: 0 auto;
+    max-width: 1300px;
+    display: flex;
+    justify-content: center;
+    gap: 110px;
+    flex-wrap: wrap;
+}
+.next_events .next_container .next_item{
+    box-sizing: border-box;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-width: 280px;
+    max-width: 320px;
+    border: solid 1px rgb(146, 146, 146);
+    background-color: #ffe9c463;
+    box-shadow: 1px 1px 5px #704523;
+    border-radius: 10px;
+}
+.next_events .next_container .next_item img{
+    width: 225px;
+    height: 225px;
+    align-self: center;
+    border-radius: 10px;
+}
+.next_events .next_container .next_item p{
+   text-align: justify;
+   padding-bottom: 20px;
+}
+.next_events .next_container .next_item h3{
+    text-align: center;
+    padding-bottom: 15px;
+    font-size: 25px;
+ }
+ 
+/* The styling of the carousel */
+ .recent h1{
+    padding-top: 60px;
+    padding-bottom: 60px;
+    text-align: center;
+ }
+ #demo{
+    padding-bottom: 40px;
+    margin: 0 auto;
+    width: 40vw;  /* The carousel's size is always 40 view-width. This will later change in the "Media Queries section */
+ }
+ #demo img{
+    border-radius: 10px;
+ }
+
+ /* The styling of the bottom division */
+ .bottom{
+    border: solid 1px rgb(146, 146, 146);
+    border-radius: 10px;
+    padding: 20px;
+    margin: 0 auto;
+    margin-top: 150px;
+    margin-bottom: 140px;
+    max-width: 1000px;
+    background-color: #ffe9c463;
+    box-shadow: 1px 1px 5px #704523;
+ }
+.bottom h3{
+    font-size: 1.4rem;
+}
+
+/* The styling for the footer */
+.footer{
+    padding: 20px;
+    border-top: solid 1px rgb(227, 227, 227);
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 15px;
+}
+.footer .footerLinks{
+    display: flex;
+    gap: 20px;
+}
+.footer .footerLinks a img{
+    float: left;
+    width: 30px;
+    height: 30px;
+}
+
+/* Media Queries */
+
+/* Here I made three of them to change mainly the widths and margins of the divisions */
+
+/* It will activate for devices with width below 577px */
+@media screen and (max-width: 576px){
+    .separator{
+        margin: 70px auto;
+    }
+}
+/* It will activate for devices with width above 576px */
+@media screen and (min-width: 577px){
+    .nav-item a{
+        font-size: 2.3vw;
+    }
+}
+/* It will be active until the device's width reaches 993px. This is mainly to set the styling for tablets and mobile phones together*/
+@media screen and (max-width: 992px){
+    .upcoming{
+        justify-content: center;
+    }
+    .upcoming .row{
+        width: 80vw;
+    }
+    #demo{
+        padding-bottom: 40px;
+        margin: 0 auto;
+        width: 80vw;
+    }
+    .bottom{
+       margin-left: 30px;
+       margin-right: 30px;
+     }
+}

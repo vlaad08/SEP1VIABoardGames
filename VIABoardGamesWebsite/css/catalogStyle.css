@@ -1,0 +1,155 @@
+/* made by everyone */
+
+/* --navbar-- */
+html,body{
+    height: 100%;
+}
+img#logo{
+    width: 40%;
+}
+ul#navbar-menu{
+    font-size: 160%;
+}
+a{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#navbar-background
+{
+    background: url("../images/image-catalog-page.jpeg");
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+#navbar-menu{
+    background-color: black;
+}
+.header_h1{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+
+#navbar-menu{
+    background-color: black;
+}
+
+
+/* --carousel-- */
+
+.carousel{
+    padding-top: 200px;
+    padding-bottom: 200px;
+    width: 60%;
+    height: 60%;
+}
+
+.blur-background{
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+/* --footer-- */
+.footer{
+    padding: 20px;
+    border-top: solid 1px rgb(227, 227, 227);
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 15px;
+}
+.footer .footerLinks{
+    display: flex;
+    gap: 20px;
+}
+.footer .footerLinks a img{
+    float: left;
+    width: 30px;
+    height: 30px;
+}
+
+
+/* --Styling for List of Games-- */
+.list-of-Games{
+    width: 80vw;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.game_info{
+    display: inline;
+    margin: 20px;
+    padding: 20px;
+    border: 2px solid black;
+    border-radius: 20px;
+}
+.img_info{
+    width: 250px;
+    float: left;
+    margin-bottom: 10px;
+}
+
+
+
+
+
+/* CSS for Hover Efect*/
+
+.textOverImage{
+    position: relative;
+    width: 250px;
+    height: 250px;
+    margin: 4px;
+    background-size: 100%;
+    background-position: center;
+    transition: 0.5s;
+    font-size: 1.00rem;
+}
+
+.textOverImage:hover{
+    background-size: 130%;
+}
+
+.textOverImage:after{
+    position: absolute;
+    top:100%;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    white-space: pre-wrap;
+    overflow: hidden;
+    background-color: rgba(0, 0, 0, 0.6);
+    color: whitesmoke;
+    opacity: 0;
+    content: attr(data-text);
+    transition: 0.5s;
+}
+
+.textOverImage:hover:after{
+    opacity: 1;
+    top:0;
+}
+
+
+
+@media screen and (max-width: 575px)
+{
+    .carousel{
+        padding-top: 25px;
+        padding-bottom: 25px;
+        width: 70%;
+        height: 70%;
+    }
+}
+@media screen and (min-width: 576px){
+    .nav-item a{
+        font-size: 2.3vw;
+    }
+    
+}

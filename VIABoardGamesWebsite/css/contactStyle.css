@@ -1,0 +1,88 @@
+ /* The contactStyle.css file was made by Emanoil..*/
+
+html, body{
+    height: 100%;
+}
+img#logo{
+    width: 40%;
+}
+ul#navbar-menu{
+    font-size: 160%;
+}
+ /* Setting the font, which is the same for all the pages.*/
+a{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Navbar's styling */
+#navbar-background
+{
+    background: url("../images/contact_image.jpg");
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.blur-background{
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+}
+
+
+/* Styling for contact */
+.header3{
+    margin-top: 100px;
+}
+
+#contact
+{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%,-50%);
+}
+
+img.contact{
+    float: left;
+    margin-right: 30px;
+    width: 200px;
+    border-radius: 50%;
+}
+.socialLinks a img{
+    width: 30px;
+}
+
+
+/* Styling for address */
+.address{
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+
+/* --footer-- */
+.footer{
+    padding: 20px;
+    border-top: solid 1px rgb(227, 227, 227);
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    row-gap: 15px;
+}
+
+.footer .footerLinks{
+    display: flex;
+    gap: 20px;
+}
+.footer .footerLinks a img{
+    float: left;
+    width: 30px;
+    height: 30px;
+}
+
+.social_media{
+    background-color: lightgray;
+}
