@@ -1,5 +1,11 @@
 import java.time.LocalDate;
 import java.time.LocalTime;
+
+/**
+ * A class made for the object which will help with the time and date interval for the borrowing, reservation and events
+ * @author Levi Toth
+ * @version 1.0
+ * */
 public class DateTime
 {
   private int year;
@@ -7,7 +13,7 @@ public class DateTime
   private int day;
   private int hour;
 
-  // constructor WITH hours for borrowing
+  // constructor WITH hours for borrowingz
   public DateTime (int year, int month, int day, int hour)
   {
     this.year = year;
