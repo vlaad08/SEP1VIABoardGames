@@ -115,11 +115,18 @@ public class Game
     return this.rating.getAverageRating();
   }
 
+  /**
+   * This method will add a rating to the game's rating list.
+   * */
   public void addRating(int rating)
   {
     this.rating.addRate(rating);
   }
 
+  /**
+   * Equals method to compare 2 Game objects.
+   * @return Whether the two Game objects are identical or not.
+   * */
   public boolean equals(Object obj)
   {
     if (obj==null||obj.getClass()!=getClass())
