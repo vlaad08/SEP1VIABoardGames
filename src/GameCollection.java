@@ -32,6 +32,7 @@ public class GameCollection
         return element;
       }
     }
+    return null;
   }
 
   // Method that return how many games has a specific Player
