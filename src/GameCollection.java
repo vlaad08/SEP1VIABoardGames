@@ -63,7 +63,7 @@ public class GameCollection
   }
 
   // Method that return list of games
-  public ArrayList<Game> getGames()
+  public ArrayList<Game> getList()
   {
     return games;
   }

@@ -8,7 +8,7 @@ public class Game
 {
   private String title;
   private int maxPlayers;
-  private boolean borrowed;
+  private boolean reserved;
   private Player owner;
   private Player currentOwner;
   private Rating rating;
@@ -58,20 +58,20 @@ public class Game
     this.maxPlayers = maxPlayers;
   }
   /**
-   * Accessor method to get whether the game is borrowed or not
-   * @return whether the game is borrowed or not
+   * Accessor method to get whether the game is reserved or not
+   * @return whether the game is reserved or not
    * */
-  public boolean isBorrowed()
+  public boolean isReserved()
   {
-    return borrowed;
+    return reserved;
   }
   /**
    * Mutator method to set the game's availability
-   * @param borrowed The new availability of the game
+   * @param reserved The new availability of the game
    * */
-  public void setBorrowed(boolean borrowed)
+  public void setReserved(boolean reserved)
   {
-    this.borrowed = borrowed;
+    this.reserved = reserved;
   }
   /**
    * Accessor method to get the owner of the game
@@ -134,6 +134,6 @@ public class Game
       return false;
     }
     Game other=(Game)obj;
-    return other.title.equals(title)&&other.maxPlayers==maxPlayers&&other.borrowed==borrowed&&other.owner.equals(owner)&&other.currentOwner.equals(currentOwner)&&other.getAverageRating()==getAverageRating();
+    return other.title.equals(title)&&other.maxPlayers==maxPlayers&&other.reserved==reserved&&other.owner.equals(owner)&&other.currentOwner.equals(currentOwner)&&other.getAverageRating()==getAverageRating();
   }
 }
