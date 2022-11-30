@@ -3,6 +3,8 @@ import java.util.ArrayList;
 public class ReservationList
 {
   private ArrayList<Reservation> reservations;
+  private String fileName;
+
 
   /**
    * @author Vlad Nita
