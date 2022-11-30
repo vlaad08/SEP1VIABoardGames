@@ -1,10 +1,17 @@
 import java.util.ArrayList;
 
+/**
+ * A class containing Game Collection object.
+ * @author Emanoil Duca
+ * @version 1.0
+ * */
 public class GameCollection
 {
   private ArrayList<Game> games;
 
-  // Constructor with no argument
+  /**
+   * A constructor with no variables as parameters
+   * */
   public GameCollection()
   {
     games = new ArrayList<>();

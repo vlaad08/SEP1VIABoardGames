@@ -1,10 +1,17 @@
 import java.util.ArrayList;
 
+/**
+ * A class containing PlayersList object.
+ * @author Emanoil Duca
+ * @version 1.0
+ * */
 public class PlayerList
 {
   private ArrayList<Player> players;
 
-  // A constructor with no argument
+  /**
+   * A constructor with no variables as parameters
+   * */
   public PlayerList()
   {
     players = new ArrayList<>();
