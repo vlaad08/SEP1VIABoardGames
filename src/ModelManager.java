@@ -8,19 +8,14 @@ public class ModelManager
   private String filePlayerList;
   private String fileReservationList;
   private String fileEventList;
-  private GameCollection gameCollection;
-  private ReservationList reservationList;
-  private EventList eventList;
-  private PlayerList playerList;
 
-  public ModelManager(GameCollection gameCollection,
-      ReservationList reservationList, EventList eventList,
-      PlayerList playerList)
+  public ModelManager(String fileGameCollection, String filePlayerList,
+      String fileReservationList, String fileEventList)
   {
-    this.gameCollection = gameCollection;
-    this.reservationList = reservationList;
-    this.eventList = eventList;
-    this.playerList = playerList;
+    this.fileGameCollection = fileGameCollection;
+    this.filePlayerList = filePlayerList;
+    this.fileReservationList = fileReservationList;
+    this.fileEventList = fileEventList;
   }
 
   private void refreshAvailabilityOfGames()
