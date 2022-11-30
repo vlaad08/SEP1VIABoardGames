@@ -33,10 +33,71 @@ public class ReservationList
     reservations.remove(reservation);
   }
 
+  public ArrayList<Reservation> getByGame(Game game)
+  {
+    ArrayList<Reservation> byGame = new ArrayList<>();
+    for(Reservation element: reservations)
+    {
+      if(element.getGame().equals(game))
+      {
+        byGame.add(element);
+      }
+    }
+    return byGame;
+  }
+
+  public ArrayList<Reservation> getByStartDate(DateTime startDate)
+  {
+    ArrayList<Reservation> byStartDate = new ArrayList<>();
+    for(Reservation element: reservations)
+    {
+      if(element.getStartDate().equals(startDate))
+      {
+        byStartDate.add(element);
+      }
+    }
+    return byStartDate;
+  }
+
+  public ArrayList<Reservation> getByEndDate(DateTime endDate)
+  {
+    ArrayList<Reservation> byEndDate = new ArrayList<>();
+    for(Reservation element: reservations)
+    {
+      if(element.getStartDate().equals(endDate))
+      {
+        byEndDate.add(element);
+      }
+    }
+    return byEndDate;
+  }
+
+  public ArrayList<Reservation> getByPlayer(Player player)
+  {
+    ArrayList<Reservation> byPlayer = new ArrayList<>();
+    for(Reservation element: reservations)
+    {
+      if(element.getPlayer().equals(player))
+      {
+        byPlayer.add(element);
+      }
+    }
+    return byPlayer;
+  }
+
   public ArrayList<Reservation> getList()
   {
     return reservations;
   }
 
 
+  public String toString()
+  {
+    String text="";
+    for(Reservation element: reservations)
+    {
+      text+=element+"\n";
+    }
+    return text;
+  }
 }
