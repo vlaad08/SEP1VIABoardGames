@@ -79,7 +79,11 @@ public class Player
   {
     if(membership==true)
     {
-      return 
+      return "Member: "+name+" ID: "+studentID;
+    }
+    else
+    {
+      return "Guest: "+name+" ID: "+studentID;
     }
   }
 }

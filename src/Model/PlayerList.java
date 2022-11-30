@@ -51,4 +51,28 @@ public class PlayerList
     return players;
   }
 
+  //This method return a list in order(first display members)
+  public String toString()
+  {
+    String text="";
+    ArrayList<Player> other = new ArrayList<>();
+    for(Player element: players)
+    {
+      if(element.isMembership())
+      {
+        other.add(element);
+      }
+      else{
+        other.add(other.size(),element);
+      }
+    }
+
+    for(Player element: other)
+    {
+      text+=element+"\n";
+    }
+
+    return text;
+  }
+
 }
