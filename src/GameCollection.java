@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class GameCollection
 {
   private ArrayList<Game> games;
+  private String fileName;
 
   /**
    * A constructor with no variables as parameters

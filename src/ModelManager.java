@@ -2,24 +2,22 @@ import utils.MyFileHandler;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.ArrayList;
 
 public class ModelManager
 {
   //Put them in the  file
-  private String fileGameCollection;
-  private String filePlayerList;
-  private String fileReservationList;
-  private String fileEventList;
+  private String gameCollectionFileName;
+  private String playerListFileName;
+  private String reservationListFileName;
+  private String eventListFileName;
 
   public ModelManager(String fileGameCollection, String filePlayerList,
       String fileReservationList, String fileEventList)
   {
-    this.fileGameCollection = fileGameCollection;
-    this.filePlayerList = filePlayerList;
-    this.fileReservationList = fileReservationList;
-    this.fileEventList = fileEventList;
+    this.gameCollectionFileName = fileGameCollection;
+    this.playerListFileName = filePlayerList;
+    this.reservationListFileName = fileReservationList;
+    this.eventListFileName = fileEventList;
   }
 
   public GameCollection getAllGames()
@@ -28,7 +26,7 @@ public class ModelManager
 
     try
     {
-      collection = (GameCollection) MyFileHandler.readFromBinaryFile(fileGameCollection);
+      collection = (GameCollection) MyFileHandler.readFromBinaryFile(gameCollectionFileName);
     }
     catch (FileNotFoundException e)
     {
