@@ -1,3 +1,7 @@
+import utils.MyFileHandler;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -18,6 +22,36 @@ public class ModelManager
     this.fileEventList = fileEventList;
   }
 
+  public GameCollection getAllGames()
+  {
+    GameCollection collection = new GameCollection();
+
+    try
+    {
+      collection = (GameCollection) MyFileHandler.readFromBinaryFile(fileGameCollection);
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("File not found");
+    }
+    catch (IOException e)
+    {
+      System.out.println("IO Error reading file");
+    }
+    catch (ClassNotFoundException e)
+    {
+      System.out.println("Class Not Found");
+    }
+
+    return collection;
+  }
+
+  
+
+
+
+  // I commented all the code bellow;
+  /*
   private void refreshAvailabilityOfGames()
   {
     ArrayList<Reservation> reservations = reservationList.getList();
@@ -136,6 +170,6 @@ public class ModelManager
     }
     return null;
   }
-
+*/
 
 }
