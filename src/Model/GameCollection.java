@@ -45,6 +45,18 @@ public class GameCollection
     return null;
   }
 
+  public Game getGame(Game game)
+  {
+    for(Game element:games)
+    {
+      if(element.equals(game))
+      {
+        return element;
+      }
+    }
+    return null;
+  }
+
   // Method that return how many games has a specific Model.Player
   public int getPersonGames(Player player)
   {
