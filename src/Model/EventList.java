@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -7,7 +8,7 @@ import java.util.ArrayList;
  * @author Levi Toth
  * @version 1.0
  * */
-public class EventList
+public class EventList implements Serializable
 {
   private ArrayList<Event> events;
   private String fileName;

@@ -1,6 +1,8 @@
 package Model;
 
-public class Reservation
+import java.io.Serializable;
+
+public class Reservation implements Serializable
 {
   private DateTime startDate;
   private DateTime endDate;

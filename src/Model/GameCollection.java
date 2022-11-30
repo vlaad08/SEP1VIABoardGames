@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -7,7 +8,7 @@ import java.util.ArrayList;
  * @author Emanoil Duca
  * @version 1.0
  * */
-public class GameCollection
+public class GameCollection implements Serializable
 {
   private ArrayList<Game> games;
   private String fileName;

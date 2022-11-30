@@ -213,7 +213,7 @@ public class ModelManager
   public void removePlayer(Player player)
   {
     PlayerList playerList = getAllPlayers();
-    playerList.removePlayer(player.getStudentID());
+    playerList.removePlayer(player);
     savePlayers(playerList);
   }
 
@@ -317,11 +317,11 @@ public class ModelManager
     PlayerList playerList = getAllPlayers();
     if (membership==true)
     {
-      playerList.addMember(studentID, name);
+      playerList.addMember(name, studentID);
     }
     else
     {
-      playerList.addMember(studentID, name);
+      playerList.addMember(name, studentID);
     }
     savePlayers(playerList);
   }

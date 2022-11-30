@@ -1,15 +1,16 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ReservationList
+public class ReservationList implements Serializable
 {
   private ArrayList<Reservation> reservations;
   private String fileName;
 
 
   /**
-   * @author Vlad Nita
+   * @author Vlad Nita and Emanoil Duca
    * @version 1.0
    *
    * */

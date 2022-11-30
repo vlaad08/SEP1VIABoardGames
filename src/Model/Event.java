@@ -1,11 +1,13 @@
 package Model;
 
+import java.io.Serializable;
+
 /**
  * A class containing Date and Time objects.
  * @author Levi Toth
  * @version 1.0
  * */
-public class Event
+public class Event implements Serializable
 {
   private String title;
   private String description;

@@ -36,15 +36,9 @@ public class PlayerList implements Serializable
   }
 
   // Method that remove a player using his studentNumber
-  public void removePlayer(String studentID)
+  public void removePlayer(Player player)
   {
-    for(Player element: players)
-    {
-      if(element.getStudentID().equals(studentID))
-      {
-        players.remove(element);
-      }
-    }
+    players.remove(player);
   }
 
   public ArrayList<Player> getList()

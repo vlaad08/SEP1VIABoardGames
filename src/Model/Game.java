@@ -1,12 +1,14 @@
 package Model;
 
+import java.io.Serializable;
+
 /**
  * A class for the Model.Game object
  * @author Agoston Babicz
  * @version 1.0
  * */
 
-public class Game
+public class Game implements Serializable
 {
   private String title;
   private int maxPlayers;
