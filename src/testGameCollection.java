@@ -9,4 +9,6 @@ public class testGameCollection
     collection.addGame("Chess",2,new Player("Ion","3145"));
 
   }
+
+
 }
