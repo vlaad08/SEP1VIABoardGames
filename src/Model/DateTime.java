@@ -214,7 +214,7 @@ public class DateTime
 
   public String toString()
   {
-    return this.year +" / " +this.month +" / " +this.day +" hour: " +this.hour;
+    return this.year +"/" +this.month +"/" +this.day +" hour:" +this.hour;
   }
 
 

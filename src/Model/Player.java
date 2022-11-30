@@ -74,4 +74,12 @@ public class Player
     Player other=(Player) obj;
     return other.name.equals(name)&&other.studentID.equals(studentID)&&other.membership==membership;
   }
+
+  public String toString()
+  {
+    if(membership==true)
+    {
+      return 
+    }
+  }
 }
