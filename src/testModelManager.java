@@ -1,4 +1,5 @@
-package Model;
+import Model.ModelManager;
+import Model.PlayerList;
 
 public class testModelManager
 {
@@ -15,7 +16,7 @@ public class testModelManager
 
     modelManager.savePlayers(playerList);
     */
-    
+
     PlayerList other = modelManager.getAllPlayers();
     System.out.println(other.toString());
   }
