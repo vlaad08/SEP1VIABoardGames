@@ -54,6 +54,17 @@ public class EventList
      return events.toString();
    }
 
+   public Event getEvent(String title)
+   {
+     for(Event element: events)
+     {
+       if(element.getTitle().equals(title))
+       {
+         return element;
+       }
+     }
+     return null;
+   }
 
 
 }

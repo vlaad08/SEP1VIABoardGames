@@ -136,4 +136,9 @@ public class Game
     Game other=(Game)obj;
     return other.title.equals(title)&&other.maxPlayers==maxPlayers&&other.reserved==reserved&&other.owner.equals(owner)&&other.currentOwner.equals(currentOwner)&&other.getAverageRating()==getAverageRating();
   }
+
+  public void isReturned()
+  {
+    setReserved(false);
+  }
 }
