@@ -2,6 +2,7 @@ import utils.MyFileHandler;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class ModelManager
 {
@@ -44,7 +45,125 @@ public class ModelManager
     return collection;
   }
 
-  
+  public ReservationList getAllReservations()
+  {
+    ReservationList reservations = new ReservationList();
+
+    try
+    {
+      reservations = (ReservationList) MyFileHandler.readFromBinaryFile(gameCollectionFileName);
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("File not found");
+    }
+    catch (IOException e)
+    {
+      System.out.println("IO Error reading file");
+    }
+    catch (ClassNotFoundException e)
+    {
+      System.out.println("Class Not Found");
+    }
+
+    return reservations;
+  }
+
+  public EventList getAllEvents()
+  {
+    EventList events = new EventList();
+
+    try
+    {
+      events = (EventList) MyFileHandler.readFromBinaryFile(gameCollectionFileName);
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("File not found");
+    }
+    catch (IOException e)
+    {
+      System.out.println("IO Error reading file");
+    }
+    catch (ClassNotFoundException e)
+    {
+      System.out.println("Class Not Found");
+    }
+
+    return events;
+  }
+
+  public PlayerList getAllPlayers()
+  {
+    PlayerList players = new PlayerList();
+
+    try
+    {
+      players = (PlayerList) MyFileHandler.readFromBinaryFile(gameCollectionFileName);
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("File not found");
+    }
+    catch (IOException e)
+    {
+      System.out.println("IO Error reading file");
+    }
+    catch (ClassNotFoundException e)
+    {
+      System.out.println("Class Not Found");
+    }
+
+    return players;
+  }
+
+  public void saveCollection(GameCollection collection)
+  {
+
+  }
+  public void saveReservations(ReservationList reservations)
+  {
+
+  }
+  public void saveEvents(EventList events)
+  {
+
+  }
+  public void savePlayers(PlayerList players)
+  {
+
+  }
+
+  public Player getPlayerByStudentID(String studentID)
+  {
+    PlayerList playerList=getAllPlayers();
+    ArrayList<Player> players = playerList.getList();
+
+    for(Player element: players)
+    {
+      if(element.getStudentID().equals(studentID))
+      {
+        return element;
+      }
+    }
+    return null;
+  }
+
+  public Player getPlayerByName(String name)
+  {
+    PlayerList playerList=getAllPlayers();
+    ArrayList<Player> players = playerList.getList();
+
+    for(Player element: players)
+    {
+      if(element.getName().equals(name))
+      {
+        return element;
+      }
+    }
+    return null;
+  }
+
 
 
 
