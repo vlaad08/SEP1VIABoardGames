@@ -1,3 +1,6 @@
+import Model.GameCollection;
+import Model.Player;
+
 public class testGameCollection
 {
   public static void main(String[] args)

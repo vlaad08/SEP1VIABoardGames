@@ -1,3 +1,5 @@
+package Model;
+
 import java.util.ArrayList;
 
 /**
@@ -8,6 +10,7 @@ import java.util.ArrayList;
 public class EventList
 {
   private ArrayList<Event> events;
+  private String fileName;
 
   /**
    * No-argument constructor

@@ -1,3 +1,5 @@
+package Model;
+
 /**
  * @author Agoston Babicz
  * @version 1.0
@@ -10,7 +12,7 @@ public class Player
   private boolean membership;
 
   /**
-   * The Constructor for the Player class
+   * The Constructor for the Model.Player class
    * */
   public Player(String name, String studentID)
   {
@@ -60,7 +62,7 @@ public class Player
   }
 
   /**
-   * Method to compare 2 Player objects
+   * Method to compare 2 Model.Player objects
    * @return Whether the Players are identical or not
    * */
   public boolean equals(Object obj)

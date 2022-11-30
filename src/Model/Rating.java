@@ -1,3 +1,5 @@
+package Model;
+
 import java.util.ArrayList;
 
 /**
@@ -11,7 +13,7 @@ public class Rating
 
 
   /**
-   * Constructor for the Rating class. It creates a new ArrayList
+   * Constructor for the Model.Rating class. It creates a new ArrayList
    * */
   public Rating()
   {
