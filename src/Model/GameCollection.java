@@ -1,7 +1,9 @@
+package Model;
+
 import java.util.ArrayList;
 
 /**
- * A class containing Game Collection object.
+ * A class containing Model.Game Collection object.
  * @author Emanoil Duca
  * @version 1.0
  * */
@@ -43,7 +45,7 @@ public class GameCollection
     return null;
   }
 
-  // Method that return how many games has a specific Player
+  // Method that return how many games has a specific Model.Player
   public int getPersonGames(Player player)
   {
     int i=0;

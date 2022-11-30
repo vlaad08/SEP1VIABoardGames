@@ -1,4 +1,4 @@
-
+package Model;
 
 public class Reservation
 {
@@ -47,6 +47,6 @@ public class Reservation
 
   public String toString()
   {
-    return "Reservation: " + player.getName() + ", " + game.getTitle() + ", " + startDate + " - " + endDate + ". Is borrowed? " + isBorrow();
+    return "Model.Reservation: " + player.getName() + ", " + game.getTitle() + ", " + startDate + " - " + endDate + ". Is borrowed? " + isBorrow();
   }
 }

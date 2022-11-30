@@ -1,3 +1,5 @@
+package Model;
+
 import utils.MyFileHandler;
 
 import java.io.FileNotFoundException;
@@ -171,18 +173,18 @@ public class ModelManager
   /*
   private void refreshAvailabilityOfGames()
   {
-    ArrayList<Reservation> reservations = reservationList.getList();
-    for (Reservation element: reservations)
+    ArrayList<Model.Reservation> reservations = reservationList.getList();
+    for (Model.Reservation element: reservations)
     {
-      if (element.getStartDate().equals(DateTime.today()))
+      if (element.getStartDate().equals(Model.DateTime.today()))
       {
         element.getGame().setReserved(true);
       }
-      else if (element.getStartDate().isBefore(DateTime.today()) && !(element.getEndDate().isBefore(DateTime.today())))
+      else if (element.getStartDate().isBefore(Model.DateTime.today()) && !(element.getEndDate().isBefore(Model.DateTime.today())))
       {
         element.getGame().setReserved(true);
       }
-      if (element.getEndDate().isBefore(DateTime.today()))
+      if (element.getEndDate().isBefore(Model.DateTime.today()))
       {
         element.getGame().setReserved(false);
         reservationList.removeReservation(element);
@@ -190,29 +192,29 @@ public class ModelManager
     }
   }
 
-  public void removePlayer(Player player)
+  public void removePlayer(Model.Player player)
   {
     playerList.removePlayer(player.getStudentID());
   }
 
-  public void addGame(Game game)
+  public void addGame(Model.Game game)
   {
     gameCollection.addGame(game.getTitle(),game.getMaxPlayers(),game.getOwner());
   }
 
-  public Game getGame(String title)
+  public Model.Game getGame(String title)
   {
     return gameCollection.getGame(title);
   }
 
-  public void removeGame(Game game)
+  public void removeGame(Model.Game game)
   {
     gameCollection.removeGame(game);
   }
 
-  public void rateAGame(Game game, int rate)
+  public void rateAGame(Model.Game game, int rate)
   {
-    ArrayList<Game> games=gameCollection.getList();
+    ArrayList<Model.Game> games=gameCollection.getList();
     for (int i = 0; i < games.size(); i++)
     {
       if (games.get(i).equals(game))
@@ -222,32 +224,32 @@ public class ModelManager
     }
   }
 
-  public ReservationList getReservationList()
+  public Model.ReservationList getReservationList()
   {
     return reservationList;
   }
 
-  public void reserve(Player player, Game game, DateTime startDate, DateTime endDate)
+  public void reserve(Model.Player player, Model.Game game, Model.DateTime startDate, Model.DateTime endDate)
   {
     reservationList.addReservation(game, player, startDate, endDate, false);
   }
 
-  public void borrow(Player player, Game game, DateTime endDate)
+  public void borrow(Model.Player player, Model.Game game, Model.DateTime endDate)
   {
-    reservationList.addReservation(game,player,DateTime.today(),endDate,true);
+    reservationList.addReservation(game,player,Model.DateTime.today(),endDate,true);
   }
 
-  public void addEvent(String title, String description, String image, DateTime startDate, DateTime endDate)
+  public void addEvent(String title, String description, String image, Model.DateTime startDate, Model.DateTime endDate)
   {
     eventList.addEvent(title, description, startDate, endDate, image);
   }
 
-  public void removeEvent(Event event)
+  public void removeEvent(Model.Event event)
   {
     eventList.removeEvent(event);
   }
 
-  public Event getEvent(String title)
+  public Model.Event getEvent(String title)
   {
     return eventList.getEvent(title);
   }
@@ -264,9 +266,9 @@ public class ModelManager
     }
   }
 
-  public Player getPlayerByStudentID(String studentID)
+  public Model.Player getPlayerByStudentID(String studentID)
   {
-    for (Player element:playerList.getList())
+    for (Model.Player element:playerList.getList())
     {
       if (element.getStudentID().equals(studentID))
       {
@@ -276,9 +278,9 @@ public class ModelManager
     return null;
   }
 
-  public Player getPlayerByName(String name)
+  public Model.Player getPlayerByName(String name)
   {
-    for (Player element:playerList.getList())
+    for (Model.Player element:playerList.getList())
     {
       if (element.getName().equals(name))
       {

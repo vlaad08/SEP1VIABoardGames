@@ -1,5 +1,7 @@
+package Model;
+
 /**
- * A class for the Game object
+ * A class for the Model.Game object
  * @author Agoston Babicz
  * @version 1.0
  * */
@@ -14,7 +16,7 @@ public class Game
   private Rating rating;
 
   /**
-   * Constructor for the Game class
+   * Constructor for the Model.Game class
    * @param title The title of the game
    * @param maxPlayers The maximum number of players that can play the game at the same time
    * @param owner The owner of the game
@@ -124,8 +126,8 @@ public class Game
   }
 
   /**
-   * Equals method to compare 2 Game objects.
-   * @return Whether the two Game objects are identical or not.
+   * Equals method to compare 2 Model.Game objects.
+   * @return Whether the two Model.Game objects are identical or not.
    * */
   public boolean equals(Object obj)
   {
