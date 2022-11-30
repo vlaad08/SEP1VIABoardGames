@@ -3,6 +3,7 @@ import java.util.ArrayList;
 
 public class ModelManager
 {
+  //Put them in a file
   private GameCollection gameCollection;
   private ReservationList reservationList;
   private EventList eventList;
