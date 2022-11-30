@@ -53,7 +53,7 @@ public class ModelManager
 
     try
     {
-      reservations = (ReservationList) MyFileHandler.readFromBinaryFile(gameCollectionFileName);
+      reservations = (ReservationList) MyFileHandler.readFromBinaryFile(reservationListFileName);
     }
     catch (FileNotFoundException e)
     {
@@ -77,7 +77,7 @@ public class ModelManager
 
     try
     {
-      events = (EventList) MyFileHandler.readFromBinaryFile(gameCollectionFileName);
+      events = (EventList) MyFileHandler.readFromBinaryFile(eventListFileName);
     }
     catch (FileNotFoundException e)
     {
@@ -101,7 +101,7 @@ public class ModelManager
 
     try
     {
-      players = (PlayerList) MyFileHandler.readFromBinaryFile(gameCollectionFileName);
+      players = (PlayerList) MyFileHandler.readFromBinaryFile(playerListFileName);
     }
     catch (FileNotFoundException e)
     {

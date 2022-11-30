@@ -1,11 +1,13 @@
 package Model;
 
+import java.io.Serializable;
+
 /**
  * @author Agoston Babicz
  * @version 1.0
  * */
 
-public class Player
+public class Player implements Serializable
 {
   private String name;
   private String studentID;
@@ -79,11 +81,11 @@ public class Player
   {
     if(membership==true)
     {
-      return "Member: "+name+" ID: "+studentID;
+      return "Member: "+getName()+" ID: "+getStudentID();
     }
     else
     {
-      return "Guest: "+name+" ID: "+studentID;
+      return "Guest: "+getName()+" ID: "+getStudentID();
     }
   }
 }

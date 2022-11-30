@@ -1,5 +1,6 @@
 package Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
@@ -7,7 +8,7 @@ import java.util.ArrayList;
  * @author Emanoil Duca
  * @version 1.0
  * */
-public class PlayerList
+public class PlayerList implements Serializable
 {
   private ArrayList<Player> players;
   private String fileName;
@@ -21,16 +22,16 @@ public class PlayerList
   }
 
   // A method that add a member in the array list
-  public void addMember(String studentID, String name)
+  public void addMember(String name, String studentID)
   {
-    players.add(new Player(studentID,name));
+    players.add(new Player(name,studentID));
     players.get(players.size()-1).setMembership(true);
   }
 
   // A method that add a guest in the array list
-  public void addGuest(String studentID, String name)
+  public void addGuest(String name, String studentID)
   {
-    players.add(new Player(studentID,name));
+    players.add(new Player(name,studentID));
     players.get(players.size()-1).setMembership(false);
   }
 
@@ -56,11 +57,12 @@ public class PlayerList
   {
     String text="";
     ArrayList<Player> other = new ArrayList<>();
+
     for(Player element: players)
     {
       if(element.isMembership())
       {
-        other.add(element);
+        other.add(0,element);
       }
       else{
         other.add(other.size(),element);
