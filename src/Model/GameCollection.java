@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * A class containing Model.Game Collection object.
+ * A class containing Game Collection object.
  * @author Emanoil Duca
  * @version 1.0
  * */
@@ -36,16 +36,14 @@ public class GameCollection implements Serializable
     games.add(game);
   }
 
-<<<<<<< Updated upstream:src/Model/GameCollection.java
-
 
   // Method that remove a game from game list
-=======
+
   /**
    * Method that remove a game from the Collection which has as parameters:
    * @param game The game object
    * */
->>>>>>> Stashed changes:src/GameCollection.java
+
   public void removeGame(Game game)
   {
     games.remove(game);
@@ -76,7 +74,7 @@ public class GameCollection implements Serializable
     return null;
   }
 
-  // Method that return how many games has a specific Model.Player
+  // Method that return how many games has a specific Player
   public int getPersonGames(Player player)
   {
     int i=0;

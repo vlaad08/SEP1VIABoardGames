@@ -49,6 +49,6 @@ public class Reservation implements Serializable
 
   public String toString()
   {
-    return "Model.Reservation: " + player.getName() + ", " + game.getTitle() + ", " + startDate + " - " + endDate + ". Is borrowed? " + isBorrow();
+    return "Reservation: " + player.getName() + ", " + game.getTitle() + ", " + startDate + " - " + endDate + ". Is borrowed? " + isBorrow();
   }
 }
