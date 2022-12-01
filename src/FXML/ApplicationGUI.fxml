@@ -16,14 +16,7 @@
           </Tab>
           <Tab text="Borrow/Reserve">
             <content>
-<<<<<<< HEAD
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                     <children>
-                        <Button layoutX="309.0" layoutY="161.0" mnemonicParsing="false" text="ass" />
-                     </children></AnchorPane>
-=======
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
->>>>>>> f28362fc567cac1c2787e629ccd6d6dc1c6f5027
             </content>
           </Tab>
             <Tab text="Event">
