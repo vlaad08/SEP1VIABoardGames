@@ -27,7 +27,16 @@
             </Tab>
             <Tab text="Player">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                  <BorderPane prefHeight="200.0" prefWidth="200.0">
+                     <top>
+                        <TabPane tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+                          <tabs>
+                            <Tab text="Add player" />
+                            <Tab text="Edit player" />
+                          </tabs>
+                        </TabPane>
+                     </top>
+                  </BorderPane>
                </content>
             </Tab>
         </tabs>
