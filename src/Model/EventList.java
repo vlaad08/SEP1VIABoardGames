@@ -11,7 +11,6 @@ import java.util.ArrayList;
 public class EventList implements Serializable
 {
   private ArrayList<Event> events;
-  private String fileName;
 
   /**
    * No-argument constructor
@@ -30,8 +29,13 @@ public class EventList implements Serializable
    * */
   public void addEvent(String title, String description, DateTime startDate, DateTime endDate, String image)
   {
-    Event temp = new Event(title,description,image,startDate,endDate);
+    Event temp = new Event(title,description,startDate,endDate,image);
     events.add(temp);
+  }
+
+  public void addEvent(Event event)
+  {
+    events.add(event);
   }
 
   /**
@@ -41,6 +45,8 @@ public class EventList implements Serializable
   {
     events.remove(event);
   }
+
+
 
   /**
    * method for getting all future events
@@ -58,9 +64,9 @@ public class EventList implements Serializable
      String text="";
      for(Event element:events)
      {
-       text+=text+"\n";
+       text+=element+"\n";
      }
-     return events.toString();
+     return text;
    }
 
    public Event getEvent(String title)

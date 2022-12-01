@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-
 <FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="482.0" prefWidth="708.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TabPane prefHeight="481.0" prefWidth="706.0" tabClosingPolicy="UNAVAILABLE">
@@ -27,7 +26,7 @@
                                        <top>
                                           <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" style="-fx-padding: 30, 0 , 0 , 0;" BorderPane.alignment="CENTER">
                                              <children>
-                                                <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="44.0" prefWidth="84.0" style="-fx-background-color: red;" text="Owner">
+                                                <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="44.0" prefWidth="84.0" text="Owner">
                                                    <font>
                                                       <Font size="20.0" />
                                                    </font>
