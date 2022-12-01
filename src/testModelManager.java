@@ -18,25 +18,18 @@ public class testModelManager
     modelManager.savePlayers(playerList);
 
     modelManager.addPlayer("Ivan","7777",true);
+    */
     PlayerList other = modelManager.getAllPlayers();
     System.out.println(other);
 
 
-    GameCollection gameCollection = new GameCollection();
-    gameCollection.addGame("Chess",2,modelManager.getPlayerByName("Ivan"));
-    gameCollection.addGame("Catan",6,modelManager.getPlayerByName("Ivan"));
-    modelManager.saveCollection(gameCollection);
-    */
+    modelManager.rateAGame(modelManager.getGame("Chess"),5);
+
+    GameCollection collection1 = modelManager.getAllGames();
+    System.out.println(collection1);
 
 
 
-
-    Game test = modelManager.getGame("Chess");
-    test.addRating(9);
-    System.out.println(test);
-
-    GameCollection copyGames = modelManager.getAllGames();
-    System.out.println(copyGames);
 
 
   }
