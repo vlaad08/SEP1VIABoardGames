@@ -284,14 +284,10 @@ public class ModelManager
     saveReservations(reservationList);
   }
 
-  public void borrow(Model.Player player, Model.Game game, Model.DateTime endDate)
+  public void borrow(Model.Player player, Model.Game game,DateTime endDate)
   {
     ReservationList reservationList = getReservationList();
-<<<<<<< HEAD
     reservationList.addBorrow(game,player,DateTime.today(),endDate);
-=======
-    reservationList.addReservation(game,player,Model.DateTime.today(),endDate,true);
->>>>>>> e1795310cae0901a3872a51fbf22436b575bbfb1
     saveReservations(reservationList);
   }
 

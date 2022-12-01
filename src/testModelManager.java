@@ -48,8 +48,7 @@ public class testModelManager
 
     ReservationList copyReservation = modelManager.getReservationList();
     System.out.println(copyReservation);
-=======
->>>>>>> e1795310cae0901a3872a51fbf22436b575bbfb1
+
 
 
   }
