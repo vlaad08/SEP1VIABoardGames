@@ -25,16 +25,8 @@ public class testModelManager
     System.out.println(collection1);
     */
 
-<<<<<<< HEAD
-
-=======
->>>>>>> c8708907d109f3b003c1cdc24b54175c318cca58
     EventList eventList = new EventList();
     eventList.addEvent("New Year Party","Everyone can join",new DateTime(2022,12,25,18),new DateTime(2022,12,26,5),"event1.jpg");
-
-<<<<<<< HEAD
-
-    modelManager.addEvent("Drinking Party","Only for Members",new DateTime(2022,11,11,18),new DateTime(2022,11,12,6),"event1.jpg");
 
     modelManager.removeEvent(modelManager.getEvent("New Year Party"));
     Event event1 = modelManager.getEvent("Drinking Party");
@@ -44,12 +36,8 @@ public class testModelManager
 
     System.out.println("Event:\n"+event1);
 
-
-
-=======
     System.out.println(eventList);
 
->>>>>>> c8708907d109f3b003c1cdc24b54175c318cca58
 
 
 

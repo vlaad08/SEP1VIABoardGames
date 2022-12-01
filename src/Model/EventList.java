@@ -30,12 +30,12 @@ public class EventList implements Serializable
    * */
   public void addEvent(String title, String description, DateTime startDate, DateTime endDate, String image)
   {
-<<<<<<< HEAD
     events.add(new Event(title, description, startDate, endDate, image));
-=======
-    Event temp = new Event(title,description,image,startDate,endDate);
-    events.add(temp);
->>>>>>> c8708907d109f3b003c1cdc24b54175c318cca58
+  }
+
+  public void addEvent(Event event)
+  {
+    events.add(event);
   }
 
   /**
@@ -62,9 +62,9 @@ public class EventList implements Serializable
      String text="";
      for(Event element:events)
      {
-       text+=text+"\n";
+       text+=element+"\n";
      }
-     return events.toString();
+     return text;
    }
 
    public Event getEvent(String title)

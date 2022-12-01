@@ -284,14 +284,14 @@ public class ModelManager
     saveReservations(reservationList);
   }
 
-  public void borrow(Model.Player player, Model.Game game, Model.DateTime endDate)
+  public void borrow(Player player, Game game, DateTime endDate)
   {
     ReservationList reservationList = getReservationList();
     reservationList.addReservation(game,player,Model.DateTime.today(),endDate,true);
     saveReservations(reservationList);
   }
 
-  public void addEvent(String title, String description, String image, Model.DateTime startDate, Model.DateTime endDate)
+  public void addEvent(String title, String description, DateTime startDate, DateTime endDate,String image)
   {
     EventList eventList = getAllEvents();
     eventList.addEvent(title, description, startDate, endDate, image);
