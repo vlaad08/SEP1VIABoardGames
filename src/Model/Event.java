@@ -74,4 +74,10 @@ public class Event implements Serializable
   {
     this.endDate = endDate.copy();
   }
+
+  public String toString()
+  {
+    return "Event: "+title+" |Description: "+description
+        +" |Date: "+startDate+" - "+endDate;
+  }
 }

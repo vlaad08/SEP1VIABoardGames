@@ -19,14 +19,16 @@ public class testModelManager
 
     modelManager.addPlayer("Ivan","7777",true);
     */
-    PlayerList other = modelManager.getAllPlayers();
-    System.out.println(other);
 
-
-    modelManager.rateAGame(modelManager.getGame("Chess"),6);
-
+    /*
     GameCollection collection1 = modelManager.getAllGames();
     System.out.println(collection1);
+    */
+
+    EventList eventList = new EventList();
+    eventList.addEvent("New Year Party","Everyone can join",new DateTime(2022,12,25,18),new DateTime(2022,12,26,5),"event1.jpg");
+
+    System.out.println(eventList);
 
 
 
