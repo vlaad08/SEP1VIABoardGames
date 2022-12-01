@@ -11,7 +11,6 @@ import java.util.ArrayList;
 public class GameCollection implements Serializable
 {
   private ArrayList<Game> games;
-  private String fileName;
 
   /**
    * A constructor with no variables as parameters
@@ -24,8 +23,10 @@ public class GameCollection implements Serializable
   // Method that add a game to the game list
   public void addGame(String title, int maxPlayers, Player owner)
   {
-    games.add(new Game(title,maxPlayers,owner));
+    games.add(new Game(title, maxPlayers, owner));
   }
+
+
 
   // Method that remove a game from game list
   public void removeGame(Game game)

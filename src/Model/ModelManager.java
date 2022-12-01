@@ -223,7 +223,7 @@ public class ModelManager
     saveCollection(gameCollection);
   }
 
-  public Model.Game getGame(String title)
+  public Game getGame(String title)
   {
     GameCollection gameCollection = getAllGames();
     return gameCollection.getGame(title);
@@ -261,11 +261,11 @@ public class ModelManager
     GameCollection gameCollection = getAllGames();
     ArrayList<Game> games = gameCollection.getList();
 
-    for (int i = 0; i < games.size(); i++)
+    for (Game element: games)
     {
-      if (games.get(i).equals(game))
+      if (element.equals(game))
       {
-        games.get(i).addRating(rate);
+        element.addRating(rate);
       }
     }
     saveCollection(gameCollection);

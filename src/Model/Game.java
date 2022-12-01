@@ -28,6 +28,8 @@ public class Game implements Serializable
     this.title = title;
     this.maxPlayers = maxPlayers;
     this.owner = owner;
+    rating = new Rating();
+    rating.addRate(0);
   }
   /**
    * Accessor method to get the title of the game
@@ -138,7 +140,8 @@ public class Game implements Serializable
       return false;
     }
     Game other=(Game)obj;
-    return other.title.equals(title)&&other.maxPlayers==maxPlayers&&other.reserved==reserved&&other.owner.equals(owner)&&other.currentOwner.equals(currentOwner)&&other.getAverageRating()==getAverageRating();
+    return other.title.equals(title) && other.maxPlayers==maxPlayers &&other.reserved==reserved
+        &&other.owner.equals(owner);
   }
 
   public void isReturned()
@@ -148,6 +151,6 @@ public class Game implements Serializable
 
   public String toString()
   {
-    return "Game: "+title+" maxPlayers: "+maxPlayers+" owner: "+owner.getName();
+    return "Game: "+title+" maxPlayers: "+maxPlayers+" owner: "+owner.getName()+" Rating: "+ rating;
   }
 }
