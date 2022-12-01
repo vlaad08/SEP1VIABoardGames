@@ -23,7 +23,7 @@ public class testModelManager
     System.out.println(other);
 
 
-    modelManager.rateAGame(modelManager.getGame("Chess"),5);
+    modelManager.rateAGame(modelManager.getGame("Chess"),6);
 
     GameCollection collection1 = modelManager.getAllGames();
     System.out.println(collection1);
