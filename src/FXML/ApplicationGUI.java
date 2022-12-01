@@ -16,7 +16,6 @@ public class ApplicationGUI extends Application
     FXMLLoader loader = new FXMLLoader();
     loader.setLocation(getClass().getResource("ApplicationGUI.fxml"));
     Scene scene= new Scene(loader.load());
-    window.setResizable(false);
     window.setScene(scene);
     window.show();
 
