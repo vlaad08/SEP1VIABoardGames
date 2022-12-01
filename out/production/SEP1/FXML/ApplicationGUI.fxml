@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<<<<<<< Updated upstream
-=======
+
+<?import javafx.geometry.Insets?>
+
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
->>>>>>> Stashed changes
+
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<<<<<<< Updated upstream
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-   <top>
-      <TabPane prefHeight="603.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-=======
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
 <?import javafx.scene.layout.GridPane?>
@@ -23,40 +24,69 @@
 <?import javafx.scene.text.Text?>
 
 
-<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="482.0" prefWidth="708.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <TabPane prefHeight="600.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
->>>>>>> Stashed changes
+      <TabPane prefHeight="481.0" prefWidth="706.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Game">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </Tab>
-          <Tab text="Borrow/Reserve">
-            <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-            </content>
-          </Tab>
-            <Tab text="Event">
                <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
-               </content>
-            </Tab>
-            <Tab text="Player">
-               <content>
-<<<<<<< Updated upstream
                   <BorderPane prefHeight="200.0" prefWidth="200.0">
                      <top>
-                        <TabPane tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+                        <TabPane prefHeight="452.0" prefWidth="706.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
                           <tabs>
-                            <Tab text="Add player" />
-                            <Tab text="Edit player" />
+                            <Tab text="Add Game">
+                                 <content>
+                                    <BorderPane prefHeight="200.0" prefWidth="200.0">
+                                       <top>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="200.0" style="-fx-padding: 30, 0 , 0 , 0;" BorderPane.alignment="CENTER">
+                                             <children>
+                                                <TextField alignment="CENTER_RIGHT" editable="false" prefHeight="44.0" prefWidth="84.0" text="Owner">
+                                                   <font>
+                                                      <Font size="20.0" />
+                                                   </font>
+                                                   <opaqueInsets>
+                                                      <Insets />
+                                                   </opaqueInsets>
+                                                </TextField>
+                                             </children>
+                                             <opaqueInsets>
+                                                <Insets />
+                                             </opaqueInsets>
+                                          </HBox>
+                                       </top>
+                                    </BorderPane>
+                                 </content>
+                            </Tab>
+                            <Tab text="Edit Game">
+                              <content>
+                                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                              </content>
+                            </Tab>
+                              <Tab text="Remove Game">
+                                 <content>
+                                    <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+                                 </content>
+                              </Tab>
                           </tabs>
                         </TabPane>
                      </top>
                   </BorderPane>
-=======
+               </content>
+          </Tab>
+          <Tab text="Reserve/Borrow">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" />
+               </content>
+          </Tab>
+            <Tab text="Event">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab text="Player">
+               <content>
+                  <BorderPane prefHeight="200.0" prefWidth="200.0" />
+
                   <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
                     <tabs>
                       <Tab text="Add Player">
@@ -199,15 +229,10 @@
                         </Tab>
                     </tabs>
                   </TabPane>
->>>>>>> Stashed changes
+
                </content>
             </Tab>
         </tabs>
       </TabPane>
-<<<<<<< Updated upstream
-   </top>
-</BorderPane>
-=======
    </children>
 </FlowPane>
->>>>>>> Stashed changes
