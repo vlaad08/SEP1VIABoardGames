@@ -280,14 +280,14 @@ public class ModelManager
   public void reserve(Player player, Game game, DateTime startDate, DateTime endDate)
   {
     ReservationList reservationList = getReservationList();
-    reservationList.addReservation(game, player, startDate, endDate, false);
+    reservationList.addReservation(game, player, startDate, endDate);
     saveReservations(reservationList);
   }
 
   public void borrow(Player player, Game game, DateTime endDate)
   {
     ReservationList reservationList = getReservationList();
-    reservationList.addReservation(game,player,DateTime.today(),endDate,true);
+    reservationList.addBorrow(game,player,DateTime.today(),endDate);
     saveReservations(reservationList);
   }
 

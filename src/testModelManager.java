@@ -25,6 +25,7 @@ public class testModelManager
     System.out.println(collection1);
     */
 
+    /*
     EventList eventList = new EventList();
     eventList.addEvent("Event1","des",new DateTime(2022,10,1),new DateTime(2022,10,2),"url");
     eventList.addEvent("Event2","des",new DateTime(2022,10,1),new DateTime(2022,10,2),"url");
@@ -35,6 +36,18 @@ public class testModelManager
 
     EventList copyEvents = modelManager.getAllEvents();
     System.out.println(copyEvents);
+    */
+
+    GameCollection gameCollection = modelManager.getAllGames();
+    System.out.println(gameCollection);
+
+
+    ReservationList reservationList = new ReservationList();
+    reservationList.addReservation(modelManager.getGame("Chess"),modelManager.getPlayerByName("Ivan"),DateTime.today(),new DateTime(2022,12,4));
+    modelManager.saveReservations(reservationList);
+
+    ReservationList copyReservation = modelManager.getReservationList();
+    System.out.println(copyReservation);
 
 
   }

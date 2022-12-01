@@ -24,14 +24,25 @@ public class ReservationList implements Serializable
     reservations = new ArrayList<>();
   }
 
-  public void addReservation(Game game, Player player, DateTime startDate, DateTime endDate, boolean borrow)
+  public void addReservation(Game game, Player player, DateTime startDate, DateTime endDate)
   {
-      Reservation temp = new Reservation(game, player, startDate, endDate, borrow);
+      Reservation temp = new Reservation(game, player, startDate, endDate, false);
       if(!reservations.contains(temp))
       {
         reservations.add(temp);
       }
   }
+
+  public void addBorrow(Game game, Player player, DateTime startDate, DateTime endDate)
+  {
+    Reservation temp = new Reservation(game, player, startDate, endDate, true);
+    if(!reservations.contains(temp))
+    {
+      reservations.add(temp);
+    }
+  }
+
+
 
   public void removeReservation(Reservation reservation)
   {
