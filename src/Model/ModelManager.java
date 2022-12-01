@@ -287,7 +287,7 @@ public class ModelManager
   public void borrow(Player player, Game game, DateTime endDate)
   {
     ReservationList reservationList = getReservationList();
-    reservationList.addReservation(game,player,Model.DateTime.today(),endDate,true);
+    reservationList.addReservation(game,player,DateTime.today(),endDate,true);
     saveReservations(reservationList);
   }
 
@@ -298,14 +298,14 @@ public class ModelManager
     saveEvents(eventList);
   }
 
-  public void removeEvent(Model.Event event)
+  public void removeEvent(Event event)
   {
     EventList eventList = getAllEvents();
     eventList.removeEvent(eventList.getEvent(event.getTitle()));
     saveEvents(eventList);
   }
 
-  public Model.Event getEvent(String title)
+  public Event getEvent(String title)
   {
     EventList eventList = getAllEvents();
     return eventList.getEvent(title);
@@ -337,11 +337,11 @@ public class ModelManager
       {
         gameCollection.getGame(element.getGame()).setReserved(true);
       }
-      else if (element.getStartDate().isBefore(Model.DateTime.today()) && !(element.getEndDate().isBefore(Model.DateTime.today())))
+      else if (element.getStartDate().isBefore(DateTime.today()) && !(element.getEndDate().isBefore(DateTime.today())))
       {
         gameCollection.getGame(element.getGame()).setReserved(true);
       }
-      else if(element.getEndDate().isBefore(Model.DateTime.today()))
+      else if(element.getEndDate().isBefore(DateTime.today()))
       {
         gameCollection.getGame(element.getGame()).setReserved(false);
         reservationList.removeReservation(element);
