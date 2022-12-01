@@ -19,7 +19,7 @@
             <content>
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Button layoutX="309.0" layoutY="161.0" mnemonicParsing="false" text="Button" />
+                        <Button layoutX="309.0" layoutY="161.0" mnemonicParsing="false" text="ass" />
                      </children></AnchorPane>
             </content>
           </Tab>
