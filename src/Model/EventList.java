@@ -55,6 +55,11 @@ public class EventList implements Serializable
    * */
   public String toString()
    {
+     String text="";
+     for(Event element:events)
+     {
+       text+=text+"\n";
+     }
      return events.toString();
    }
 
