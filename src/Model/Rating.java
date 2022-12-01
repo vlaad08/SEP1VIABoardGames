@@ -11,14 +11,16 @@ import java.util.ArrayList;
 
 public class Rating implements Serializable
 {
-  private ArrayList<Integer> rating = new ArrayList<>();
+  private ArrayList<Integer> rating;
 
 
   /**
    * Constructor for the Model.Rating class. It creates a new ArrayList
    * */
   public Rating()
-  {}
+  {
+    rating = new ArrayList<>();
+  }
 
   /**
    * Adds one rating to the ArrayList
@@ -35,14 +37,12 @@ public class Rating implements Serializable
    * */
   public double getAverageRating()
   {
-    if(rating.equals(null))
-      return 0;
     int sum=0;
     for (int i = 0; i < rating.size(); i++)
     {
       sum+=rating.get(i);
     }
-    double average=(double)sum/(rating.size()-1);
+    double average=(double)sum/(rating.size());
 
     return average;
   }
@@ -51,8 +51,10 @@ public class Rating implements Serializable
   {
     if(getAverageRating()>=0)
     {
-      DecimalFormat format = new DecimalFormat("0.00");
-      return format.format(getAverageRating());
+      DecimalFormat df = new DecimalFormat();
+      df.setMaximumFractionDigits(2);
+      return df.format(getAverageRating());
+      //return String.valueOf(getAverageRating());
     }
     else return "0";
 

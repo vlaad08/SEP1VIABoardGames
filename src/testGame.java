@@ -8,9 +8,11 @@ public class testGame
   {
     Game game1 = new Game("Chess",2,new Player("Ivan","5168"));
     game1.addRating(5);
+    game1.addRating(9);
+    game1.addRating(9);
 
     GameCollection gameCollection = new GameCollection();
-    gameCollection.addGame(game1.getTitle(),game1.getMaxPlayers(),game1.getOwner());
+    gameCollection.addGame(game1);
 
     System.out.println(gameCollection);
   }

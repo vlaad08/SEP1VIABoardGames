@@ -29,7 +29,6 @@ public class Game implements Serializable
     this.maxPlayers = maxPlayers;
     this.owner = owner;
     rating = new Rating();
-    rating.addRate(0);
   }
   /**
    * Accessor method to get the title of the game
@@ -151,6 +150,6 @@ public class Game implements Serializable
 
   public String toString()
   {
-    return "Game: "+title+" maxPlayers: "+maxPlayers+" owner: "+owner.getName()+" Rating: "+ rating;
+    return "Game: "+title+" maxPlayers: "+maxPlayers+" owner: "+owner.getName()+" Rating: "+ rating.toString();
   }
 }

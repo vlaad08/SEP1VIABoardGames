@@ -219,7 +219,7 @@ public class ModelManager
   public void addGame(Game game)
   {
     GameCollection gameCollection = getAllGames();
-    gameCollection.addGame(game.getTitle(),game.getMaxPlayers(),game.getOwner());
+    gameCollection.addGame(game);
     saveCollection(gameCollection);
   }
 

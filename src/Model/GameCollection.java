@@ -26,6 +26,11 @@ public class GameCollection implements Serializable
     games.add(new Game(title, maxPlayers, owner));
   }
 
+  public void addGame(Game game)
+  {
+    games.add(game);
+  }
+
 
 
   // Method that remove a game from game list
