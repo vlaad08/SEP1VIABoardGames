@@ -13,14 +13,19 @@ public class GameCollection implements Serializable
   private ArrayList<Game> games;
 
   /**
-   * A constructor with no variables as parameters
+   * A constructor for GameCollection that create an empty ArrayList
    * */
   public GameCollection()
   {
     games = new ArrayList<>();
   }
 
-  // Method that add a game to the game list
+  /**
+   * Method that add a game to the Collection which has as parameters variables for the Game:
+   * @param title The title of the Game
+   * @param maxPlayers Maximum number of players
+   * @param owner Thw owner of the game
+   * */
   public void addGame(String title, int maxPlayers, Player owner)
   {
     games.add(new Game(title, maxPlayers, owner));
@@ -31,9 +36,16 @@ public class GameCollection implements Serializable
     games.add(game);
   }
 
+<<<<<<< Updated upstream:src/Model/GameCollection.java
 
 
   // Method that remove a game from game list
+=======
+  /**
+   * Method that remove a game from the Collection which has as parameters:
+   * @param game The game object
+   * */
+>>>>>>> Stashed changes:src/GameCollection.java
   public void removeGame(Game game)
   {
     games.remove(game);
