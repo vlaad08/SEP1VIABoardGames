@@ -301,7 +301,7 @@ public class ModelManager
   public void removeEvent(Event event)
   {
     EventList eventList = getAllEvents();
-    eventList.removeEvent(event);
+    eventList.removeEvent(eventList.getEvent(event.getTitle()));
     saveEvents(eventList);
   }
 

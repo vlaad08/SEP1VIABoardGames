@@ -26,19 +26,24 @@ public class testModelManager
     */
 
 
-
     EventList eventList = new EventList();
     eventList.addEvent("New Year Party","Everyone can join",new DateTime(2022,12,25,18),new DateTime(2022,12,26,5),"event1.jpg");
     eventList.addEvent("Weekly Event","For everyone",new DateTime(2022,11,3,18),new DateTime(2022,11,3,23),"event1.jpg");
     modelManager.saveEvents(eventList);
 
-    //modelManager.addEvent("Drinking Party","Only for Members",new DateTime(2022,11,11,18),new DateTime(2022,11,12,6),"event1.jpg");
 
-    //modelManager.removeEvent(modelManager.getEvent("New Year Party"));
+    modelManager.addEvent("Drinking Party","Only for Members",new DateTime(2022,11,11,18),new DateTime(2022,11,12,6),"event1.jpg");
 
-    System.out.println("Now: ");
-    EventList copyEvents1 = modelManager.getAllEvents();
-    System.out.println(copyEvents1);
+    modelManager.removeEvent(modelManager.getEvent("New Year Party"));
+    Event event1 = modelManager.getEvent("Drinking Party");
+
+    EventList eventList2 = modelManager.getAllEvents();
+    System.out.println(eventList2);
+
+    System.out.println("Event:\n"+event1);
+
+
+
 
 
 

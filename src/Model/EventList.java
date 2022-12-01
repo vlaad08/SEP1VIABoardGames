@@ -17,7 +17,7 @@ public class EventList implements Serializable
    * */
   public EventList()
   {
-    events =  new ArrayList<Event>();
+    events =  new ArrayList<>();
   }
 
   /**
@@ -29,8 +29,7 @@ public class EventList implements Serializable
    * */
   public void addEvent(String title, String description, DateTime startDate, DateTime endDate, String image)
   {
-    Event temp = new Event(title,description,startDate,endDate,image);
-    events.add(temp);
+    events.add(new Event(title, description, startDate, endDate, image));
   }
 
   public void addEvent(Event event)
@@ -39,7 +38,7 @@ public class EventList implements Serializable
   }
 
   /**
-   * @param event the event we wan to remove
+   * @param event the event we want to remove
    * */
   public void removeEvent(Event event)
   {
@@ -51,7 +50,7 @@ public class EventList implements Serializable
   /**
    * method for getting all future events
    * */
-  public ArrayList<Event> getAllFutureEvents()
+  public ArrayList<Event> getAllEvents()
   {
     return events;
   }
