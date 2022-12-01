@@ -284,28 +284,32 @@ public class ModelManager
     saveReservations(reservationList);
   }
 
-  public void borrow(Player player, Game game, DateTime endDate)
+  public void borrow(Model.Player player, Model.Game game, Model.DateTime endDate)
   {
     ReservationList reservationList = getReservationList();
+<<<<<<< HEAD
     reservationList.addBorrow(game,player,DateTime.today(),endDate);
+=======
+    reservationList.addReservation(game,player,Model.DateTime.today(),endDate,true);
+>>>>>>> e1795310cae0901a3872a51fbf22436b575bbfb1
     saveReservations(reservationList);
   }
 
-  public void addEvent(String title, String description, DateTime startDate, DateTime endDate,String image)
+  public void addEvent(String title, String description, String image, Model.DateTime startDate, Model.DateTime endDate)
   {
     EventList eventList = getAllEvents();
     eventList.addEvent(title, description, startDate, endDate, image);
     saveEvents(eventList);
   }
 
-  public void removeEvent(Event event)
+  public void removeEvent(Model.Event event)
   {
     EventList eventList = getAllEvents();
-    eventList.removeEvent(eventList.getEvent(event.getTitle()));
+    eventList.removeEvent(event);
     saveEvents(eventList);
   }
 
-  public Event getEvent(String title)
+  public Model.Event getEvent(String title)
   {
     EventList eventList = getAllEvents();
     return eventList.getEvent(title);
@@ -337,11 +341,11 @@ public class ModelManager
       {
         gameCollection.getGame(element.getGame()).setReserved(true);
       }
-      else if (element.getStartDate().isBefore(DateTime.today()) && !(element.getEndDate().isBefore(DateTime.today())))
+      else if (element.getStartDate().isBefore(Model.DateTime.today()) && !(element.getEndDate().isBefore(Model.DateTime.today())))
       {
         gameCollection.getGame(element.getGame()).setReserved(true);
       }
-      else if(element.getEndDate().isBefore(DateTime.today()))
+      else if(element.getEndDate().isBefore(Model.DateTime.today()))
       {
         gameCollection.getGame(element.getGame()).setReserved(false);
         reservationList.removeReservation(element);

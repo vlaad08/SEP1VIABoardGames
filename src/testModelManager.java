@@ -27,13 +27,13 @@ public class testModelManager
 
     /*
     EventList eventList = new EventList();
-    eventList.addEvent("Event1","des",new DateTime(2022,10,1),new DateTime(2022,10,2),"url");
-    eventList.addEvent("Event2","des",new DateTime(2022,10,1),new DateTime(2022,10,2),"url");
-    modelManager.saveEvents(eventList);
+    eventList.addEvent("New Year Party","Everyone can join",new DateTime(2022,12,25,18),new DateTime(2022,12,26,5),"event1.jpg");
 
-    modelManager.addEvent("Event3","des",new DateTime(2022,10,15),new DateTime(2022,10,17),"url");
-    modelManager.removeEvent(modelManager.getEvent("Event1"));
+    System.out.println(eventList);
 
+
+
+<<<<<<< HEAD
     EventList copyEvents = modelManager.getAllEvents();
     System.out.println(copyEvents);
     */
@@ -48,6 +48,8 @@ public class testModelManager
 
     ReservationList copyReservation = modelManager.getReservationList();
     System.out.println(copyReservation);
+=======
+>>>>>>> e1795310cae0901a3872a51fbf22436b575bbfb1
 
 
   }
