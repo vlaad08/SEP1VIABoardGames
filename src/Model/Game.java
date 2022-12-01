@@ -145,4 +145,9 @@ public class Game implements Serializable
   {
     setReserved(false);
   }
+
+  public String toString()
+  {
+    return "Game: "+title+" maxPlayers: "+maxPlayers+" owner: "+owner.getName();
+  }
 }

@@ -83,4 +83,14 @@ public class GameCollection implements Serializable
   {
     return games;
   }
+
+  public String toString()
+  {
+    String text="";
+    for(Game element: games)
+    {
+      text+=element+"\n";
+    }
+    return text;
+  }
 }

@@ -17,10 +17,10 @@ public class ModelManager
   public ModelManager(String fileGameCollection, String filePlayerList,
       String fileReservationList, String fileEventList)
   {
-    this.gameCollectionFileName = fileGameCollection;
-    this.playerListFileName = filePlayerList;
-    this.reservationListFileName = fileReservationList;
-    this.eventListFileName = fileEventList;
+      this.gameCollectionFileName = fileGameCollection;
+      this.playerListFileName = filePlayerList;
+      this.reservationListFileName = fileReservationList;
+      this.eventListFileName = fileEventList;
   }
 
   public GameCollection getAllGames()
@@ -43,7 +43,6 @@ public class ModelManager
     {
       System.out.println("Class Not Found");
     }
-
     return collection;
   }
 
@@ -202,7 +201,7 @@ public class ModelManager
 
     for(Player element: players)
     {
-      if(element.getName().equals(name))
+      if(element.getName().equalsIgnoreCase(name))
       {
         return element;
       }

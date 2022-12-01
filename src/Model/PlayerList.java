@@ -35,6 +35,18 @@ public class PlayerList implements Serializable
     players.get(players.size()-1).setMembership(false);
   }
 
+  public Player getPlayerByID(String studentID)
+  {
+    for(Player element: players)
+    {
+      if(element.getStudentID().equals(studentID))
+      {
+        return element;
+      }
+    }
+    return null;
+  }
+
   // Method that remove a player using his studentNumber
   public void removePlayer(Player player)
   {
