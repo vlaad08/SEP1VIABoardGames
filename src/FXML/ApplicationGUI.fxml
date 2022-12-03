@@ -108,11 +108,6 @@
                                        <children>
                                           <FlowPane prefHeight="121.0" prefWidth="564.0">
                                              <children>
-                                                <ImageView fitHeight="153.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@Game%20+%20Reserve/Rectangle%2012.png" />
-                                                   </image>
-                                                </ImageView>
                                                 <FlowPane alignment="CENTER" prefHeight="122.0" prefWidth="414.0">
                                                    <children>
                                                       <Text fill="#34b247" strokeType="OUTSIDE" strokeWidth="0.0" text="The Game is created!">
