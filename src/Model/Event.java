@@ -16,7 +16,7 @@ public class Event implements Serializable
   private DateTime endDate;
 
 
-  public Event(String title, String description, String image, DateTime startDate, DateTime endDate)
+  public Event(String title, String description, DateTime startDate, DateTime endDate, String image)
   {
     this.title = title;
     this.description = description;
