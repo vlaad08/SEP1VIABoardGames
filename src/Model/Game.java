@@ -29,6 +29,7 @@ public class Game implements Serializable
     this.maxPlayers = maxPlayers;
     this.owner = owner;
     rating = new Rating();
+    reserved = false;
   }
   /**
    * Accessor method to get the title of the game

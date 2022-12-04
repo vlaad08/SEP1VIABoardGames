@@ -1,6 +1,8 @@
 import Model.*;
 import utils.MyFileHandler;
 
+import java.util.ArrayList;
+
 public class testModelManager
 {
   public static void main(String[] args)
@@ -20,42 +22,27 @@ public class testModelManager
     modelManager.addPlayer("Ivan","7777",true);
     */
 
-    /*
-    GameCollection collection1 = modelManager.getAllGames();
-    System.out.println(collection1);
-    */
+    PlayerList playerList = modelManager.getAllPlayers();
+    System.out.println(playerList);
 
-    /*
-    EventList eventList = new EventList();
-    eventList.addEvent("New Year Party","Everyone can join",new DateTime(2022,12,25,18),new DateTime(2022,12,26,5),"event1.jpg");
-
-    System.out.println(eventList);
+    GameCollection gameCollection = modelManager.getAllGames();
+    System.out.println(gameCollection);
 
 
-    EventList copyEvents = modelManager.getAllEvents();
-    System.out.println(copyEvents);
-    */
-
-
-
-
-    EventList otherEvent = modelManager.getAllEvents();
-    otherEvent.addEvent("Event1","des",new DateTime(2022,12,15),new DateTime(2022,12,16),"url");
-    modelManager.saveEvents(otherEvent);
-
-    EventList copyEvents = modelManager.getAllEvents();
-    System.out.println(copyEvents);
-
-
-
-
-    /*
     ReservationList reservationList = new ReservationList();
     reservationList.addReservation(modelManager.getGame("Chess"),modelManager.getPlayerByName("Ivan"),DateTime.today(),new DateTime(2022,12,4));
+    reservationList.addReservation(modelManager.getGame("Chess"),modelManager.getPlayerByName("Ivan"),new DateTime(2022,12,3),new DateTime(2022,12,5));
     modelManager.saveReservations(reservationList);
 
-    ReservationList copyReservation = modelManager.getReservationList();
-    System.out.println(copyReservation);*/
+    modelManager.reserve(modelManager.getPlayerByName("Vlad"),modelManager.getGame("Catan"),DateTime.today(),new DateTime(2022,12,5));
+    modelManager.borrow(modelManager.getPlayerByStudentID("5179"),modelManager.getGame("Chess"),new DateTime(2022,12,7,12));
+
+    ReservationList copyReservation = modelManager.getAllReservations();
+    System.out.println(copyReservation);
+
+    ArrayList<Game> availableGame = modelManager.displayAvailableGames();
+    System.out.println(availableGame);
+
 
 
 

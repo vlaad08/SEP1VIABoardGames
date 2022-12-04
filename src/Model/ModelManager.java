@@ -48,6 +48,7 @@ public class ModelManager
 
   public ReservationList getAllReservations()
   {
+    refreshReservation();
     ReservationList reservations = new ReservationList();
 
     try
@@ -66,7 +67,28 @@ public class ModelManager
     {
       System.out.println("Class Not Found");
     }
+    return reservations;
+  }
 
+  private ReservationList getReservations()
+  {
+    ReservationList reservations = new ReservationList();
+    try
+    {
+      reservations = (ReservationList) MyFileHandler.readFromBinaryFile(reservationListFileName);
+    }
+    catch (FileNotFoundException e)
+    {
+      System.out.println("File not found");
+    }
+    catch (IOException e)
+    {
+      System.out.println("IO Error reading file");
+    }
+    catch (ClassNotFoundException e)
+    {
+      System.out.println("Class Not Found");
+    }
     return reservations;
   }
 
@@ -236,24 +258,24 @@ public class ModelManager
     saveCollection(gameCollection);
   }
 
-  public Game[] displayAvailableGames()
+  public ArrayList<Game> displayAvailableGames()
   {
-    refreshAvailabilityOfGames();
+    refreshReservation();
     GameCollection gameCollection = getAllGames();
-
     ArrayList<Game> games = gameCollection.getList();
-    ArrayList<Game> availableGames = new ArrayList<>();
 
+    ArrayList<Game> reservedGames = getAllReservations().getBorrowedGames();
     for(Game element: games)
     {
-      if(element.isReserved()==false)
+      for(Game borrowedGame: reservedGames)
       {
-        availableGames.add(element);
+        if(element.equals(borrowedGame))
+        {
+          games.remove(element);
+        }
       }
     }
-
-    Game[] other = availableGames.toArray(new Game[0]);
-    return other;
+    return games;
   }
 
   public void rateAGame(Game game, int rate)
@@ -271,22 +293,18 @@ public class ModelManager
     saveCollection(gameCollection);
   }
 
-  public ReservationList getReservationList()
-  {
-    ReservationList reservationList = getAllReservations();
-    return reservationList;
-  }
+
 
   public void reserve(Player player, Game game, DateTime startDate, DateTime endDate)
   {
-    ReservationList reservationList = getReservationList();
+    ReservationList reservationList = getAllReservations();
     reservationList.addReservation(game, player, startDate, endDate);
     saveReservations(reservationList);
   }
 
-  public void borrow(Model.Player player, Model.Game game,DateTime endDate)
+  public void borrow(Player player, Game game,DateTime endDate)
   {
-    ReservationList reservationList = getReservationList();
+    ReservationList reservationList = getAllReservations();
     reservationList.addBorrow(game,player,DateTime.today(),endDate);
     saveReservations(reservationList);
   }
@@ -325,32 +343,28 @@ public class ModelManager
     savePlayers(playerList);
   }
 
-  private void refreshAvailabilityOfGames()
-  {
-    ReservationList reservationList = getReservationList();
-    GameCollection gameCollection = getAllGames();
-    ArrayList<Reservation> reservations = reservationList.getList();
 
+
+  private void refreshReservation()
+  {
+    ReservationList  reservationList = getReservations();
+    ArrayList<Reservation> reservations = reservationList.getList();
     for (Reservation element: reservations)
     {
       if (element.getStartDate().equals(DateTime.today()))
       {
-        gameCollection.getGame(element.getGame()).setReserved(true);
+        element.setBorrow(true);
       }
-      else if (element.getStartDate().isBefore(Model.DateTime.today()) && !(element.getEndDate().isBefore(Model.DateTime.today())))
+      else if (element.getStartDate().isBefore(DateTime.today()) &&  DateTime.today().isBefore(element.getEndDate()))
       {
-        gameCollection.getGame(element.getGame()).setReserved(true);
+        element.setBorrow(true);
       }
-      else if(element.getEndDate().isBefore(Model.DateTime.today()))
+      else if(element.getEndDate().isBefore(DateTime.today()))
       {
-        gameCollection.getGame(element.getGame()).setReserved(false);
-        reservationList.removeReservation(element);
+        element.setBorrow(false);
       }
     }
     saveReservations(reservationList);
-    saveCollection(gameCollection);
   }
-
-
 
 }

@@ -34,6 +34,11 @@ public class Reservation implements Serializable
     return startDate;
   }
 
+  public void setBorrow(boolean borrow)
+  {
+    this.borrow = borrow;
+  }
+
   public boolean isBorrow()
   {
     if(borrow)
@@ -49,6 +54,6 @@ public class Reservation implements Serializable
 
   public String toString()
   {
-    return "Model.Reservation: " + player.getName() + ", " + game.getTitle() + ", " + startDate + " - " + endDate + ". Is borrowed? " + isBorrow();
+    return "Reservation: player: " + player.getName() + ", game: " + game.getTitle() + ", " + startDate + " - " + endDate + ". Is borrowed? " + isBorrow();
   }
 }

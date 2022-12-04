@@ -6,8 +6,6 @@ import java.util.ArrayList;
 public class ReservationList implements Serializable
 {
   private ArrayList<Reservation> reservations;
-  private String fileName;
-
 
   /**
    * @author Vlad Nita and Emanoil Duca
@@ -116,4 +114,21 @@ public class ReservationList implements Serializable
     }
     return text;
   }
+
+  public ArrayList<Game> getBorrowedGames()
+  {
+    ArrayList<Game> other = new ArrayList<>();
+    for(Reservation element: reservations)
+    {
+      if(element.isBorrow())
+      {
+        other.add(element.getGame());
+      }
+    }
+    return other;
+  }
+
+
 }
+
+
