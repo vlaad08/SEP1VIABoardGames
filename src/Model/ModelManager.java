@@ -265,13 +265,13 @@ public class ModelManager
     ArrayList<Game> games = gameCollection.getList();
 
     ArrayList<Game> reservedGames = getAllReservations().getBorrowedGames();
-    for(Game element: games)
+    for(int i=0;i< games.size();i++)
     {
       for(Game borrowedGame: reservedGames)
       {
-        if(element.equals(borrowedGame))
+        if(games.get(i).equals(borrowedGame))
         {
-          games.remove(element);
+          games.remove(games.get(i));
         }
       }
     }
@@ -355,7 +355,7 @@ public class ModelManager
       {
         element.setBorrow(true);
       }
-      else if (element.getStartDate().isBefore(DateTime.today()) &&  DateTime.today().isBefore(element.getEndDate()))
+      else if (element.getStartDate().isBefore(DateTime.today()) && DateTime.today().isBefore(element.getEndDate()))
       {
         element.setBorrow(true);
       }

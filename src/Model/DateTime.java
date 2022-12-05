@@ -203,7 +203,10 @@ public class DateTime implements Serializable
 
   public boolean isBefore(DateTime date2)
   {
-    if( this.year > date2.getYear() || this.year == date2.getYear() && this.month > date2.getMonth() || this.year == date2.getYear() && this.month == date2.getMonth() && this.day > date2.getDay())
+    if((this.year < date2.getYear() || this.year == date2.getYear())
+        && (this.month < date2.getMonth() || this.month == date2.getMonth())
+        && (this.day < date2.getDay() ||  this.day == date2.getDay())
+        && (this.hour <= date2.getHour()))
     {
       return true;
     }

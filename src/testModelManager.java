@@ -25,25 +25,27 @@ public class testModelManager
     PlayerList playerList = modelManager.getAllPlayers();
     System.out.println(playerList);
 
-    GameCollection gameCollection = modelManager.getAllGames();
-    System.out.println(gameCollection);
+    GameCollection gameCollection = new GameCollection();
+    gameCollection.addGame("Chess",2,modelManager.getPlayerByName("Ivan"));
+    gameCollection.addGame("Catan",6,modelManager.getPlayerByName("Ivan"));
+    gameCollection.addGame("Partners",4,modelManager.getPlayerByName("Emanuel"));
+    gameCollection.addGame("UNO",10,modelManager.getPlayerByName("Vlad"));
+    modelManager.saveCollection(gameCollection);
+
+    GameCollection copyCollection = modelManager.getAllGames();
+    System.out.println(copyCollection);
 
 
     ReservationList reservationList = new ReservationList();
     reservationList.addReservation(modelManager.getGame("Chess"),modelManager.getPlayerByName("Ivan"),DateTime.today(),new DateTime(2022,12,4));
-    reservationList.addReservation(modelManager.getGame("Chess"),modelManager.getPlayerByName("Ivan"),new DateTime(2022,12,3),new DateTime(2022,12,5));
+    reservationList.addReservation(modelManager.getGame("UNO"),modelManager.getPlayerByName("Ivan"),new DateTime(2022,12,3),new DateTime(2022,12,5,16));
     modelManager.saveReservations(reservationList);
-
-    modelManager.reserve(modelManager.getPlayerByName("Vlad"),modelManager.getGame("Catan"),DateTime.today(),new DateTime(2022,12,5));
-    modelManager.borrow(modelManager.getPlayerByStudentID("5179"),modelManager.getGame("Chess"),new DateTime(2022,12,7,12));
 
     ReservationList copyReservation = modelManager.getAllReservations();
     System.out.println(copyReservation);
 
-    ArrayList<Game> availableGame = modelManager.displayAvailableGames();
-    System.out.println(availableGame);
-
-
+    ArrayList<Game> game = modelManager.displayAvailableGames();
+    System.out.println(game);
 
 
   }
