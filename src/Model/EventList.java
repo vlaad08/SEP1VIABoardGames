@@ -75,6 +75,11 @@ public class EventList implements Serializable
      return null;
    }
 
+   public Event getEvent(int index)
+   {
+     return events.get(index);
+   }
+
 
 }
 
