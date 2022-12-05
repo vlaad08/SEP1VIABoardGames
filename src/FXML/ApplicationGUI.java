@@ -9,7 +9,6 @@ import java.io.IOException;
 
 public class ApplicationGUI extends Application
 {
-
   public void start(Stage window) throws IOException
   {
     window.setTitle("Test");
@@ -18,6 +17,5 @@ public class ApplicationGUI extends Application
     Scene scene= new Scene(loader.load());
     window.setScene(scene);
     window.show();
-
   }
 }

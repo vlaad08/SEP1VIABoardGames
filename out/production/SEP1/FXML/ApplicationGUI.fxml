@@ -9,8 +9,6 @@
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.FlowPane?>
@@ -22,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-image: url(&quot;VIABoardGamesWebsite/images/VIALogo.png&quot;);" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
+<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-image: url(&quot;VIABoardGamesWebsite/images/VIALogo.png&quot;);" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.GameController">
    <children>
       <TabPane prefHeight="600.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
@@ -36,22 +34,22 @@
                                  <children>
                                     <FlowPane alignment="BOTTOM_LEFT" prefHeight="98.0" prefWidth="901.0">
                                        <children>
-                                          <TextField alignment="CENTER" prefHeight="33.0" prefWidth="75.0" text="Owner: ">
+                                          <TextField alignment="CENTER" prefHeight="16.0" prefWidth="93.0" text="Owner: ">
                                              <FlowPane.margin>
                                                 <Insets bottom="20.0" left="80.0" />
                                              </FlowPane.margin>
                                              <font>
-                                                <Font size="17.0" />
+                                                <Font size="22.0" />
                                              </font>
                                           </TextField>
-                                          <ComboBox prefHeight="32.0" prefWidth="150.0">
+                                          <ComboBox fx:id="addOwners" onAction="#handler" prefHeight="32.0" prefWidth="150.0">
                                              <FlowPane.margin>
                                                 <Insets bottom="20.0" left="30.0" />
                                              </FlowPane.margin>
                                           </ComboBox>
                                        </children>
                                     </FlowPane>
-                                    <FlowPane blendMode="SRC_ATOP" cache="true" columnHalignment="RIGHT" prefHeight="66.0" prefWidth="901.0">
+                                    <FlowPane blendMode="SRC_ATOP" cache="true" columnHalignment="RIGHT" prefHeight="54.0" prefWidth="901.0">
                                        <children>
                                           <Line endX="100.0" startX="847.2929077148438" startY="6.263852119445801E-4">
                                              <FlowPane.margin>
@@ -63,7 +61,7 @@
                                                 <Insets left="80.0" />
                                              </FlowPane.margin>
                                              <font>
-                                                <Font size="22.0" />
+                                                <Font size="36.0" />
                                              </font>
                                           </Text>
                                        </children>
@@ -71,12 +69,12 @@
                                           <Insets top="10.0" />
                                        </opaqueInsets>
                                     </FlowPane>
-                                    <FlowPane alignment="CENTER" prefHeight="122.0" prefWidth="901.0">
+                                    <FlowPane alignment="CENTER" prefHeight="146.0" prefWidth="901.0">
                                        <children>
                                           <GridPane alignment="CENTER" prefHeight="134.0" prefWidth="743.0">
                                              <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="368.0" minWidth="10.0" prefWidth="192.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="655.0" minWidth="10.0" prefWidth="240.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="368.0" minWidth="10.0" prefWidth="225.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="655.0" minWidth="10.0" prefWidth="207.0" />
                                                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="655.0" minWidth="10.0" prefWidth="311.0" />
                                              </columnConstraints>
                                              <rowConstraints>
@@ -84,42 +82,25 @@
                                                 <RowConstraints maxHeight="67.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Title:" wrappingWidth="39.25390625">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Title:" wrappingWidth="91.25390625">
                                                    <font>
-                                                      <Font size="17.0" />
+                                                      <Font size="22.0" />
                                                    </font>
                                                 </Text>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Max number of Players:" GridPane.rowIndex="1">
                                                    <font>
-                                                      <Font size="17.0" />
+                                                      <Font size="22.0" />
                                                    </font>
                                                 </Text>
-                                                <TextField prefHeight="26.0" prefWidth="171.0" GridPane.columnIndex="1" />
-                                                <TextField prefHeight="26.0" prefWidth="171.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="64.0" text="Save" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                <TextField fx:id="addTitle" onAction="#handler" prefHeight="26.0" prefWidth="171.0" GridPane.columnIndex="1" />
+                                                <TextField fx:id="addMaxNumOfPlayers" prefHeight="26.0" prefWidth="171.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Button fx:id="addSave" mnemonicParsing="false" onAction="#handler" prefHeight="43.0" prefWidth="76.0" text="Save" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                                    <font>
-                                                      <Font size="17.0" />
+                                                      <Font size="22.0" />
                                                    </font>
                                                 </Button>
                                              </children>
                                           </GridPane>
-                                       </children>
-                                    </FlowPane>
-                                    <FlowPane alignment="BOTTOM_CENTER" prefHeight="173.0" prefWidth="900.0">
-                                       <children>
-                                          <FlowPane prefHeight="121.0" prefWidth="564.0">
-                                             <children>
-                                                <FlowPane alignment="CENTER" prefHeight="122.0" prefWidth="414.0">
-                                                   <children>
-                                                      <Text fill="#34b247" strokeType="OUTSIDE" strokeWidth="0.0" text="The Game is created!">
-                                                         <font>
-                                                            <Font size="23.0" />
-                                                         </font>
-                                                      </Text>
-                                                   </children>
-                                                </FlowPane>
-                                             </children>
-                                          </FlowPane>
                                        </children>
                                     </FlowPane>
                                  </children>
@@ -132,52 +113,36 @@
                                  <children>
                                     <FlowPane alignment="BOTTOM_LEFT" prefHeight="98.0" prefWidth="901.0">
                                        <children>
-                                          <TextField alignment="CENTER" prefHeight="33.0" prefWidth="75.0" text="Gane:">
+                                          <TextField alignment="CENTER" prefHeight="43.0" prefWidth="93.0" text="Game:">
                                              <FlowPane.margin>
                                                 <Insets bottom="10.0" left="80.0" />
                                              </FlowPane.margin>
                                              <font>
-                                                <Font size="17.0" />
+                                                <Font size="22.0" />
                                              </font>
                                           </TextField>
-                                          <ComboBox prefHeight="32.0" prefWidth="150.0" promptText="Choose a game">
+                                          <ComboBox fx:id="editGames" prefHeight="32.0" prefWidth="150.0" promptText="Choose a game">
                                              <FlowPane.margin>
                                                 <Insets bottom="10.0" left="30.0" />
                                              </FlowPane.margin>
                                           </ComboBox>
-                                          <Button mnemonicParsing="false" prefHeight="18.0" prefWidth="64.0" text="Save">
-                                             <font>
-                                                <Font size="17.0" />
-                                             </font>
-                                             <FlowPane.margin>
-                                                <Insets bottom="10.0" left="50.0" />
-                                             </FlowPane.margin>
-                                          </Button>
                                        </children>
                                     </FlowPane>
                                     <FlowPane prefHeight="60.0" prefWidth="901.0">
                                        <children>
-                                          <TextField alignment="CENTER" prefHeight="33.0" prefWidth="75.0" text="Owner: ">
+                                          <TextField alignment="CENTER" prefHeight="43.0" prefWidth="93.0" text="Owner: ">
                                              <FlowPane.margin>
                                                 <Insets left="80.0" top="10.0" />
                                              </FlowPane.margin>
                                              <font>
-                                                <Font size="17.0" />
+                                                <Font size="22.0" />
                                              </font>
                                           </TextField>
-                                          <ComboBox prefHeight="33.0" prefWidth="150.0" promptText="Choose the owner">
+                                          <ComboBox fx:id="editOwners" prefHeight="33.0" prefWidth="150.0" promptText="Choose the owner">
                                              <FlowPane.margin>
                                                 <Insets left="30.0" top="10.0" />
                                              </FlowPane.margin>
                                           </ComboBox>
-                                          <Button mnemonicParsing="false" prefHeight="18.0" prefWidth="64.0" text="Save">
-                                             <font>
-                                                <Font size="17.0" />
-                                             </font>
-                                             <FlowPane.margin>
-                                                <Insets left="50.0" top="10.0" />
-                                             </FlowPane.margin>
-                                          </Button>
                                           <Line endX="100.0" startX="847.2929077148438" startY="-0.0013470053672790527">
                                              <FlowPane.margin>
                                                 <Insets left="80.0" top="30.0" />
@@ -189,7 +154,7 @@
                                        <children>
                                           <Text stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" text="Edit Game" wrappingWidth="820.00634765625">
                                              <font>
-                                                <Font size="22.0" />
+                                                <Font size="36.0" />
                                              </font>
                                              <FlowPane.margin>
                                                 <Insets left="80.0" />
@@ -201,8 +166,8 @@
                                        <children>
                                           <GridPane alignment="CENTER" prefHeight="134.0" prefWidth="743.0">
                                              <columnConstraints>
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="368.0" minWidth="10.0" prefWidth="192.0" />
-                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="655.0" minWidth="10.0" prefWidth="240.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="368.0" minWidth="10.0" prefWidth="225.0" />
+                                                <ColumnConstraints hgrow="SOMETIMES" maxWidth="655.0" minWidth="10.0" prefWidth="197.0" />
                                                 <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" maxWidth="655.0" minWidth="10.0" prefWidth="311.0" />
                                              </columnConstraints>
                                              <rowConstraints>
@@ -210,21 +175,21 @@
                                                 <RowConstraints maxHeight="67.0" minHeight="10.0" prefHeight="64.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Title:" wrappingWidth="39.25390625">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Title:" wrappingWidth="48.25390625">
                                                    <font>
-                                                      <Font size="17.0" />
+                                                      <Font size="22.0" />
                                                    </font>
                                                 </Text>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Max number of Players:" GridPane.rowIndex="1">
                                                    <font>
-                                                      <Font size="17.0" />
+                                                      <Font size="22.0" />
                                                    </font>
                                                 </Text>
-                                                <TextField prefHeight="26.0" prefWidth="171.0" GridPane.columnIndex="1" />
-                                                <TextField prefHeight="26.0" prefWidth="171.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="64.0" text="Save" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                <TextField fx:id="editTitle" prefHeight="26.0" prefWidth="171.0" GridPane.columnIndex="1" />
+                                                <TextField fx:id="editMaxNumOfPlayers" prefHeight="26.0" prefWidth="171.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Button fx:id="editSave" mnemonicParsing="false" onAction="#handler" prefHeight="36.0" prefWidth="76.0" text="Save" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                                    <font>
-                                                      <Font size="17.0" />
+                                                      <Font size="22.0" />
                                                    </font>
                                                 </Button>
                                              </children>
@@ -233,24 +198,7 @@
                                     </FlowPane>
                                     <FlowPane alignment="BOTTOM_CENTER" prefHeight="137.0" prefWidth="900.0">
                                        <children>
-                                          <FlowPane prefHeight="121.0" prefWidth="564.0">
-                                             <children>
-                                                <ImageView fitHeight="153.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@Game%20+%20Reserve/Rectangle%2012.png" />
-                                                   </image>
-                                                </ImageView>
-                                                <FlowPane alignment="CENTER" prefHeight="122.0" prefWidth="414.0">
-                                                   <children>
-                                                      <Text fill="#34b247" strokeType="OUTSIDE" strokeWidth="0.0" text="The Game was edited!">
-                                                         <font>
-                                                            <Font size="23.0" />
-                                                         </font>
-                                                      </Text>
-                                                   </children>
-                                                </FlowPane>
-                                             </children>
-                                          </FlowPane>
+                                          <FlowPane prefHeight="121.0" prefWidth="564.0" />
                                        </children>
                                     </FlowPane>
                                  </children>
@@ -259,89 +207,67 @@
                         </Tab>
                         <Tab text="Remove Game">
                            <content>
-                              <FlowPane prefHeight="200.0" prefWidth="901.0">
+                              <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="901.0">
                                  <children>
-                                    <FlowPane alignment="BOTTOM_CENTER" prefHeight="135.0" prefWidth="901.0">
+                                    <FlowPane alignment="BOTTOM_CENTER" prefHeight="61.0" prefWidth="901.0">
                                        <children>
-                                          <TextField alignment="CENTER" prefHeight="33.0" prefWidth="75.0" text="Gane:">
+                                          <TextField alignment="CENTER" prefHeight="33.0" prefWidth="93.0" text="Game:">
                                              <FlowPane.margin>
                                                 <Insets bottom="10.0" />
                                              </FlowPane.margin>
                                              <font>
-                                                <Font size="17.0" />
+                                                <Font size="22.0" />
                                              </font>
                                           </TextField>
-                                          <ComboBox prefHeight="32.0" prefWidth="150.0" promptText="Choose a game">
+                                          <ComboBox fx:id="removeGames" prefHeight="32.0" prefWidth="150.0" promptText="Choose a game">
                                              <FlowPane.margin>
                                                 <Insets bottom="10.0" left="30.0" />
                                              </FlowPane.margin>
                                           </ComboBox>
-                                          <Button mnemonicParsing="false" prefHeight="18.0" prefWidth="64.0" text="Save">
-                                             <font>
-                                                <Font size="17.0" />
-                                             </font>
-                                             <FlowPane.margin>
-                                                <Insets bottom="10.0" left="50.0" />
-                                             </FlowPane.margin>
-                                          </Button>
                                        </children>
                                     </FlowPane>
-                                    <FlowPane alignment="BOTTOM_CENTER" prefHeight="70.0" prefWidth="901.0">
+                                    <FlowPane alignment="BOTTOM_CENTER" prefHeight="31.0" prefWidth="901.0">
                                        <children>
-                                          <TextField alignment="CENTER" prefHeight="33.0" prefWidth="75.0" text="Owner: ">
+                                          <TextField alignment="CENTER" prefHeight="33.0" prefWidth="93.0" text="Owner: ">
                                              <FlowPane.margin>
                                                 <Insets top="10.0" />
                                              </FlowPane.margin>
                                              <font>
-                                                <Font size="17.0" />
+                                                <Font size="22.0" />
                                              </font>
                                           </TextField>
-                                          <ComboBox prefHeight="33.0" prefWidth="150.0" promptText="Choose the owner">
+                                          <ComboBox fx:id="removeOwners" prefHeight="33.0" prefWidth="150.0" promptText="Choose the owner">
                                              <FlowPane.margin>
                                                 <Insets left="30.0" top="10.0" />
                                              </FlowPane.margin>
                                           </ComboBox>
-                                          <Button mnemonicParsing="false" prefHeight="18.0" prefWidth="64.0" text="Save">
-                                             <font>
-                                                <Font size="17.0" />
-                                             </font>
-                                             <FlowPane.margin>
-                                                <Insets left="50.0" top="10.0" />
-                                             </FlowPane.margin>
-                                          </Button>
                                        </children>
                                     </FlowPane>
                                     <FlowPane alignment="BOTTOM_RIGHT" prefHeight="83.0" prefWidth="748.0">
                                        <children>
-                                          <Button mnemonicParsing="false" prefHeight="36.0" prefWidth="100.0" text="Remove">
+                                          <Button fx:id="removeSave" mnemonicParsing="false" onAction="#handler" prefHeight="43.0" prefWidth="106.0" text="Remove">
                                              <font>
-                                                <Font size="18.0" />
+                                                <Font size="22.0" />
                                              </font>
                                           </Button>
                                        </children>
                                     </FlowPane>
-                                    <FlowPane alignment="BOTTOM_CENTER" prefHeight="189.0" prefWidth="900.0">
-                                       <children>
-                                          <FlowPane prefHeight="121.0" prefWidth="564.0">
-                                             <children>
-                                                <ImageView fitHeight="153.0" fitWidth="150.0" pickOnBounds="true" preserveRatio="true">
-                                                   <image>
-                                                      <Image url="@Game%20+%20Reserve/Rectangle%2012.png" />
-                                                   </image>
-                                                </ImageView>
-                                                <FlowPane alignment="CENTER" prefHeight="122.0" prefWidth="414.0">
-                                                   <children>
-                                                      <Text fill="#34b247" strokeType="OUTSIDE" strokeWidth="0.0" text="The Game was removed!">
-                                                         <font>
-                                                            <Font size="23.0" />
-                                                         </font>
-                                                      </Text>
-                                                   </children>
-                                                </FlowPane>
-                                             </children>
-                                          </FlowPane>
-                                       </children>
-                                    </FlowPane>
+                                 </children>
+                              </FlowPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Game List">
+                           <content>
+                              <FlowPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <TextArea prefHeight="519.0" prefWidth="878.0">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <FlowPane.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </FlowPane.margin>
+                                    </TextArea>
                                  </children>
                               </FlowPane>
                            </content>
@@ -806,6 +732,22 @@
                               </FlowPane>
                            </content>
                         </Tab>
+                        <Tab text="Event List">
+                           <content>
+                              <FlowPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <TextArea prefHeight="519.0" prefWidth="878.0">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <FlowPane.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </FlowPane.margin>
+                                    </TextArea>
+                                 </children>
+                              </FlowPane>
+                           </content>
+                        </Tab>
                      </tabs>
                   </TabPane>
                </content>
@@ -955,6 +897,22 @@
                               </BorderPane>
                            </content>
                       </Tab>
+                        <Tab text="Player List">
+                           <content>
+                              <FlowPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <TextArea prefHeight="519.0" prefWidth="878.0">
+                                       <opaqueInsets>
+                                          <Insets />
+                                       </opaqueInsets>
+                                       <FlowPane.margin>
+                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+                                       </FlowPane.margin>
+                                    </TextArea>
+                                 </children>
+                              </FlowPane>
+                           </content>
+                        </Tab>
                     </tabs>
                   </TabPane>
                </content>

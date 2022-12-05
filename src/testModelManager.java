@@ -30,7 +30,6 @@ public class testModelManager
     gameCollection.addGame("Catan",6,modelManager.getPlayerByName("Ivan"));
     gameCollection.addGame("Partners",4,modelManager.getPlayerByName("Emanuel"));
     gameCollection.addGame("UNO",10,modelManager.getPlayerByName("Vlad"));
-    modelManager.saveCollection(gameCollection);
 
     GameCollection copyCollection = modelManager.getAllGames();
     System.out.println(copyCollection);
