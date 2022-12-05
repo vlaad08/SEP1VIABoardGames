@@ -21,7 +21,7 @@ public class testModelManager
 
     modelManager.addPlayer("Ivan","7777",true);
     */
-
+/*
     PlayerList playerList = modelManager.getAllPlayers();
     System.out.println(playerList);
 
@@ -45,7 +45,8 @@ public class testModelManager
 
     ArrayList<Game> game = modelManager.displayAvailableGames();
     System.out.println(game);
-
-
+*/
+    EventList eventList = modelManager.getAllEvents();
+    System.out.println(eventList);
   }
 }
