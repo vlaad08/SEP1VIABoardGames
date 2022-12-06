@@ -1,4 +1,4 @@
-package Model;
+package FXML;
 
 import Model.*;
 import javafx.collections.FXCollections;
@@ -29,7 +29,6 @@ public class GameController
   @FXML private TextField editMaxNumOfPlayers;
   @FXML private Button editSave;
   //Game - Remove Game
-  @FXML private ComboBox<Player> removeOwners;
   @FXML private ComboBox<Game> removeGames;
   @FXML private Button removeSave;
   public void handler (ActionEvent e)
@@ -46,7 +45,7 @@ public class GameController
     {
       Game oldGame=editGames.getSelectionModel().getSelectedItem();
       manager.removeGame(oldGame);
-      Game editedGame=new Game(editTitle.getText(),Integer.parseInt(editMaxNumOfPlayers.getText()),oldGame.getOwner());
+      Game editedGame=new Game(editTitle.getText(),Integer.parseInt(editMaxNumOfPlayers.getText()),editOwners.getSelectionModel().getSelectedItem());
       manager.addGame(editedGame);
       System.out.println(editedGame);
       initialize();
@@ -55,6 +54,7 @@ public class GameController
     {
       Game gameToRemove=removeGames.getSelectionModel().getSelectedItem();
       manager.removeGame(gameToRemove);
+      initialize();
     }
   }
 
@@ -67,7 +67,6 @@ public class GameController
     playerData.addAll(players);
     addOwners.setItems(playerData);
     editOwners.setItems(playerData);
-    removeOwners.setItems(playerData);
 
     gameData.clear();
     gameData.addAll(collection);
