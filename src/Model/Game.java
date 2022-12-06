@@ -140,8 +140,7 @@ public class Game implements Serializable
       return false;
     }
     Game other=(Game)obj;
-    return other.title.equals(title) && other.maxPlayers==maxPlayers &&other.reserved==reserved
-        &&other.owner.equals(owner);
+    return other.title.equals(title) && other.maxPlayers==maxPlayers &&other.reserved==reserved;
   }
 
   public void isReturned()
@@ -151,6 +150,6 @@ public class Game implements Serializable
 
   public String toString()
   {
-    return "Game: "+title+" maxPlayers: "+maxPlayers+" owner: "+owner.getName()+" Rating: "+ rating.toString();
+    return "Game: "+title+" maxPlayers: "+maxPlayers+" owner: "+ owner + " Rating: "+ rating.toString();
   }
 }

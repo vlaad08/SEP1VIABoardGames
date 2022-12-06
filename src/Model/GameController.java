@@ -1,4 +1,4 @@
-package FXML;
+package Model;
 
 import Model.*;
 import javafx.collections.FXCollections;

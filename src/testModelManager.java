@@ -20,8 +20,7 @@ public class testModelManager
     modelManager.savePlayers(playerList);
 
     modelManager.addPlayer("Ivan","7777",true);
-    */
-/*
+
     PlayerList playerList = modelManager.getAllPlayers();
     System.out.println(playerList);
 
