@@ -309,21 +309,21 @@ public class ModelManager
     saveReservations(reservationList);
   }
 
-  public void addEvent(String title, String description, String image, Model.DateTime startDate, Model.DateTime endDate)
+  public void addEvent(String title, String description, String image, DateTime startDate, DateTime endDate)
   {
     EventList eventList = getAllEvents();
     eventList.addEvent(title, description, startDate, endDate, image);
     saveEvents(eventList);
   }
 
-  public void removeEvent(Model.Event event)
+  public void removeEvent(Event event)
   {
     EventList eventList = getAllEvents();
     eventList.removeEvent(event);
     saveEvents(eventList);
   }
 
-  public Model.Event getEvent(String title)
+  public Event getEvent(String title)
   {
     EventList eventList = getAllEvents();
     return eventList.getEvent(title);
@@ -338,7 +338,22 @@ public class ModelManager
     }
     else
     {
-      playerList.addMember(name, studentID);
+      playerList.addGuest(name, studentID);
+    }
+    savePlayers(playerList);
+  }
+
+  public void editPlayer(String name, String studentID, boolean membership)
+  {
+    PlayerList playerList = getAllPlayers();
+    ArrayList<Player> players = playerList.getList();
+    for(Player element: players)
+    {
+      if(element.getStudentID().equals(studentID))
+      {
+        element.setName(name);
+        element.setMembership(membership);
+      }
     }
     savePlayers(playerList);
   }

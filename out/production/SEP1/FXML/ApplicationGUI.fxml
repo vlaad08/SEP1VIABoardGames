@@ -2,9 +2,9 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-image: url(&quot;VIABoardGamesWebsite/images/VIALogo.png&quot;);" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.GameController">
+<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-image: url(&quot;VIABoardGamesWebsite/images/VIALogo.png&quot;);" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.ApplicationController">
    <children>
       <TabPane prefHeight="600.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
@@ -34,7 +34,7 @@
                                  <children>
                                     <FlowPane alignment="BOTTOM_LEFT" prefHeight="98.0" prefWidth="901.0">
                                        <children>
-                                          <TextField alignment="CENTER" prefHeight="16.0" prefWidth="93.0" text="Owner: ">
+                                          <TextField alignment="CENTER" editable="false" prefHeight="16.0" prefWidth="93.0" style="-fx-background-color: none;" text="Owner: ">
                                              <FlowPane.margin>
                                                 <Insets bottom="20.0" left="80.0" />
                                              </FlowPane.margin>
@@ -42,14 +42,14 @@
                                                 <Font size="22.0" />
                                              </font>
                                           </TextField>
-                                          <ComboBox fx:id="addOwners_Game" onAction="#handler" prefHeight="32.0" prefWidth="150.0">
+                                          <ComboBox fx:id="addOwners_Game" prefHeight="32.0" prefWidth="150.0">
                                              <FlowPane.margin>
                                                 <Insets bottom="20.0" left="30.0" />
                                              </FlowPane.margin>
                                           </ComboBox>
                                        </children>
                                     </FlowPane>
-                                    <FlowPane blendMode="SRC_ATOP" cache="true" columnHalignment="RIGHT" prefHeight="54.0" prefWidth="901.0">
+                                    <FlowPane blendMode="SRC_ATOP" cache="true" columnHalignment="RIGHT" prefHeight="66.0" prefWidth="901.0">
                                        <children>
                                           <Line endX="100.0" startX="847.2929077148438" startY="6.263852119445801E-4">
                                              <FlowPane.margin>
@@ -69,7 +69,7 @@
                                           <Insets top="10.0" />
                                        </opaqueInsets>
                                     </FlowPane>
-                                    <FlowPane alignment="CENTER" prefHeight="146.0" prefWidth="901.0">
+                                    <FlowPane alignment="CENTER" prefHeight="122.0" prefWidth="901.0">
                                        <children>
                                           <GridPane alignment="CENTER" prefHeight="134.0" prefWidth="743.0">
                                              <columnConstraints>
@@ -92,15 +92,20 @@
                                                       <Font size="22.0" />
                                                    </font>
                                                 </Text>
-                                                <TextField fx:id="addTitle_Game" onAction="#handler" prefHeight="26.0" prefWidth="171.0" GridPane.columnIndex="1" />
+                                                <TextField fx:id="addTitle_Game" prefHeight="26.0" prefWidth="171.0" GridPane.columnIndex="1" />
                                                 <TextField fx:id="addMaxNumOfPlayers_Game" prefHeight="26.0" prefWidth="171.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Button fx:id="addSave_Game" mnemonicParsing="false" onAction="#handler" prefHeight="43.0" prefWidth="76.0" text="Save" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                <Button fx:id="addSave_Game" mnemonicParsing="false" onAction="#handlerGame" prefHeight="43.0" prefWidth="76.0" text="Save" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                                    <font>
                                                       <Font size="22.0" />
                                                    </font>
                                                 </Button>
                                              </children>
                                           </GridPane>
+                                       </children>
+                                    </FlowPane>
+                                    <FlowPane alignment="BOTTOM_CENTER" prefHeight="173.0" prefWidth="900.0">
+                                       <children>
+                                          <FlowPane prefHeight="121.0" prefWidth="564.0" />
                                        </children>
                                     </FlowPane>
                                  </children>
@@ -113,7 +118,7 @@
                                  <children>
                                     <FlowPane alignment="BOTTOM_LEFT" prefHeight="98.0" prefWidth="901.0">
                                        <children>
-                                          <TextField alignment="CENTER" prefHeight="43.0" prefWidth="93.0" text="Game:">
+                                          <TextField alignment="CENTER" editable="false" prefHeight="43.0" prefWidth="93.0" style="-fx-background-color: none;" text="Game:">
                                              <FlowPane.margin>
                                                 <Insets bottom="10.0" left="80.0" />
                                              </FlowPane.margin>
@@ -130,7 +135,7 @@
                                     </FlowPane>
                                     <FlowPane prefHeight="60.0" prefWidth="901.0">
                                        <children>
-                                          <TextField alignment="CENTER" prefHeight="43.0" prefWidth="93.0" text="Owner: ">
+                                          <TextField alignment="CENTER" editable="false" prefHeight="43.0" prefWidth="93.0" style="-fx-background-color: none;" text="Owner: ">
                                              <FlowPane.margin>
                                                 <Insets left="80.0" top="10.0" />
                                              </FlowPane.margin>
@@ -187,7 +192,7 @@
                                                 </Text>
                                                 <TextField fx:id="editTitle_Game" prefHeight="26.0" prefWidth="171.0" GridPane.columnIndex="1" />
                                                 <TextField fx:id="editMaxNumOfPlayers_Game" prefHeight="26.0" prefWidth="171.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Button fx:id="editSave_Game" mnemonicParsing="false" onAction="#handler" prefHeight="36.0" prefWidth="76.0" text="Save" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                <Button fx:id="editSave_Game" mnemonicParsing="false" onAction="#handlerGame" prefHeight="36.0" prefWidth="76.0" text="Save" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                                    <font>
                                                       <Font size="22.0" />
                                                    </font>
@@ -211,7 +216,7 @@
                                  <children>
                                     <FlowPane alignment="BOTTOM_CENTER" prefHeight="61.0" prefWidth="901.0">
                                        <children>
-                                          <TextField alignment="CENTER" prefHeight="33.0" prefWidth="93.0" text="Game:">
+                                          <TextField alignment="CENTER" editable="false" prefHeight="33.0" prefWidth="93.0" style="-fx-background-color: none;" text="Game:">
                                              <FlowPane.margin>
                                                 <Insets bottom="10.0" />
                                              </FlowPane.margin>
@@ -226,9 +231,10 @@
                                           </ComboBox>
                                        </children>
                                     </FlowPane>
+                                    <FlowPane alignment="BOTTOM_CENTER" prefHeight="31.0" prefWidth="901.0" />
                                     <FlowPane alignment="BOTTOM_RIGHT" prefHeight="83.0" prefWidth="748.0">
                                        <children>
-                                          <Button fx:id="removeSave_Game" mnemonicParsing="false" onAction="#handler" prefHeight="43.0" prefWidth="106.0" text="Remove">
+                                          <Button fx:id="removeSave_Game" mnemonicParsing="false" onAction="#handlerGame" prefHeight="46.0" prefWidth="149.0" text="Remove">
                                              <font>
                                                 <Font size="22.0" />
                                              </font>
@@ -239,20 +245,17 @@
                               </FlowPane>
                            </content>
                         </Tab>
-                        <Tab fx:id="gameList_Game" onSelectionChanged="#displayRefreshedGameList" text="Game List">
+                        <Tab onSelectionChanged="#displayRefreshedGameList" text="Game List">
                            <content>
                               <FlowPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <TextArea fx:id="displayGames_Game" prefHeight="519.0" prefWidth="878.0">
+                                    <TextArea fx:id="displayGames_Game" editable="false" prefHeight="519.0" prefWidth="878.0">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
                                        <FlowPane.margin>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </FlowPane.margin>
-                                       <font>
-                                          <Font size="22.0" />
-                                       </font>
                                     </TextArea>
                                  </children>
                               </FlowPane>
@@ -282,19 +285,11 @@
                                                       <Insets left="35.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <TextField prefHeight="38.0" prefWidth="153.0">
+                                                <TextField fx:id="studentIdBorr_BorrowReserve" prefHeight="38.0" prefWidth="153.0">
                                                    <HBox.margin>
                                                       <Insets left="15.0" />
                                                    </HBox.margin>
                                                 </TextField>
-                                                <Button mnemonicParsing="false" text="ok">
-                                                   <font>
-                                                      <Font size="17.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="15.0" />
-                                                   </HBox.margin>
-                                                </Button>
                                              </children>
                                           </HBox>
                                           <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="899.0">
@@ -307,11 +302,11 @@
                                                       <Insets left="35.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <ChoiceBox prefHeight="37.0" prefWidth="215.0">
+                                                <ComboBox fx:id="gameBorr_BorrowReserve" prefHeight="35.0" prefWidth="200.0">
                                                    <HBox.margin>
-                                                      <Insets left="15.0" />
+                                                      <Insets left="80.0" />
                                                    </HBox.margin>
-                                                </ChoiceBox>
+                                                </ComboBox>
                                              </children>
                                           </HBox>
                                           <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="110.0" prefHeight="158.0" prefWidth="899.0">
@@ -324,20 +319,28 @@
                                                       <Insets left="35.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <DatePicker prefHeight="37.0" prefWidth="219.0" />
-                                                <Button mnemonicParsing="false" text="ok">
+                                                <DatePicker fx:id="reserveToBorr_BorrowReserve" prefHeight="37.0" prefWidth="219.0" />
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hour:" wrappingWidth="75.13671875">
                                                    <font>
-                                                      <Font size="17.0" />
+                                                      <Font size="30.0" />
                                                    </font>
                                                    <HBox.margin>
-                                                      <Insets left="15.0" />
+                                                      <Insets left="30.0" />
                                                    </HBox.margin>
-                                                </Button>
+                                                </Text>
+                                                <TextField fx:id="hourBorr_BorrowReserve" prefHeight="40.0" prefWidth="219.0">
+                                                   <padding>
+                                                      <Insets left="30.0" />
+                                                   </padding>
+                                                   <HBox.margin>
+                                                      <Insets left="30.0" />
+                                                   </HBox.margin>
+                                                </TextField>
                                              </children>
                                           </HBox>
                                           <HBox prefHeight="71.0" prefWidth="899.0">
                                              <children>
-                                                <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="65.0" prefWidth="143.0" text="Borrow">
+                                                <Button fx:id="borrow_BorrowReserve" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handlerBorrowReserve" prefHeight="65.0" prefWidth="143.0" text="Borrow">
                                                    <font>
                                                       <Font size="30.0" />
                                                    </font>
@@ -353,7 +356,7 @@
                               </FlowPane>
                            </content>
                         </Tab>
-                        <Tab text="Resserve">
+                        <Tab text="Reserve">
                            <content>
                               <FlowPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
@@ -369,19 +372,11 @@
                                                       <Insets left="35.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <TextField prefHeight="38.0" prefWidth="153.0">
+                                                <TextField fx:id="studentIdRes_BorrowReserve" prefHeight="38.0" prefWidth="153.0">
                                                    <HBox.margin>
                                                       <Insets left="15.0" />
                                                    </HBox.margin>
                                                 </TextField>
-                                                <Button mnemonicParsing="false" text="ok">
-                                                   <font>
-                                                      <Font size="17.0" />
-                                                   </font>
-                                                   <HBox.margin>
-                                                      <Insets left="15.0" />
-                                                   </HBox.margin>
-                                                </Button>
                                              </children>
                                           </HBox>
                                           <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="899.0">
@@ -394,14 +389,14 @@
                                                       <Insets left="35.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <ChoiceBox prefHeight="37.0" prefWidth="215.0">
+                                                <ComboBox fx:id="gameRes_BorrowReserve" prefHeight="34.0" prefWidth="208.0">
                                                    <HBox.margin>
-                                                      <Insets left="15.0" />
+                                                      <Insets left="80.0" />
                                                    </HBox.margin>
-                                                </ChoiceBox>
+                                                </ComboBox>
                                              </children>
                                           </HBox>
-                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="110.0" prefHeight="158.0" prefWidth="899.0">
+                                          <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="110.0" prefHeight="76.0" prefWidth="899.0">
                                              <children>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reserve from:" wrappingWidth="180.498046875">
                                                    <font>
@@ -411,7 +406,7 @@
                                                       <Insets left="35.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <DatePicker prefHeight="37.0" prefWidth="219.0">
+                                                <DatePicker fx:id="fromRes_BorrowReserve" prefHeight="37.0" prefWidth="219.0">
                                                    <HBox.margin>
                                                       <Insets left="20.0" />
                                                    </HBox.margin>
@@ -424,20 +419,26 @@
                                                       <Insets left="50.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <DatePicker prefHeight="37.0" prefWidth="219.0" />
-                                                <Button mnemonicParsing="false" text="ok">
-                                                   <font>
-                                                      <Font size="17.0" />
-                                                   </font>
+                                                <DatePicker fx:id="toRes_BorrowReserve" prefHeight="37.0" prefWidth="219.0" />
+                                             </children>
+                                          </HBox>
+                                          <HBox prefHeight="41.0" prefWidth="899.0">
+                                             <children>
+                                                <TextField fx:id="startHour_BorrowReserve" prefHeight="38.0" prefWidth="193.0" promptText="Start Hour">
                                                    <HBox.margin>
-                                                      <Insets left="15.0" />
+                                                      <Insets left="236.0" />
                                                    </HBox.margin>
-                                                </Button>
+                                                </TextField>
+                                                <TextField fx:id="endHour_BorrowReserve" prefHeight="38.0" prefWidth="193.0" promptText="End Hour">
+                                                   <HBox.margin>
+                                                      <Insets left="111.0" />
+                                                   </HBox.margin>
+                                                </TextField>
                                              </children>
                                           </HBox>
                                           <HBox prefHeight="71.0" prefWidth="899.0">
                                              <children>
-                                                <Button contentDisplay="CENTER" mnemonicParsing="false" prefHeight="65.0" prefWidth="143.0" text="Reserve">
+                                                <Button fx:id="reserve_BorrowReserve" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handlerBorrowReserve" prefHeight="65.0" prefWidth="143.0" text="Reserve">
                                                    <font>
                                                       <Font size="30.0" />
                                                    </font>
@@ -453,11 +454,11 @@
                               </FlowPane>
                            </content>
                         </Tab>
-                        <Tab text="Reservation List">
+                        <Tab onSelectionChanged="#displayRefreshedReservationList" text="Reservation List">
                            <content>
                               <FlowPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <TextArea prefHeight="519.0" prefWidth="878.0">
+                                    <TextArea fx:id="reservationList_BorrowReserve" editable="false" prefHeight="519.0" prefWidth="878.0">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
@@ -722,7 +723,7 @@
                            <content>
                               <FlowPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <TextArea prefHeight="519.0" prefWidth="878.0">
+                                    <TextArea editable="false" prefHeight="519.0" prefWidth="878.0">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
@@ -769,8 +770,8 @@
                                                 <Font size="36.0" />
                                              </font>
                                           </Text>
-                                          <TextField prefHeight="44.0" prefWidth="487.0" GridPane.columnIndex="2" />
-                                          <TextField prefHeight="44.0" prefWidth="487.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                          <TextField fx:id="playerName" prefHeight="44.0" prefWidth="487.0" GridPane.columnIndex="2" />
+                                          <TextField fx:id="playerID" prefHeight="44.0" prefWidth="487.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
                                        </children>
                                     </GridPane>
                                  </center>
@@ -791,12 +792,12 @@
                                               <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                             </rowConstraints>
                                              <children>
-                                                <Button mnemonicParsing="false" prefHeight="124.0" prefWidth="353.0" text="Add as GUEST" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                <Button fx:id="addGuest_Player" mnemonicParsing="false" onAction="#addPlayer" prefHeight="124.0" prefWidth="353.0" text="Add as GUEST" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                    <font>
                                                       <Font size="30.0" />
                                                    </font>
                                                 </Button>
-                                                <Button mnemonicParsing="false" prefHeight="124.0" prefWidth="353.0" text="Add as Member" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                <Button fx:id="addMember_Player" mnemonicParsing="false" onAction="#addPlayer" prefHeight="124.0" prefWidth="353.0" text="Add as Member" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                                    <font>
                                                       <Font size="30.0" />
                                                    </font>
@@ -836,8 +837,8 @@
                                                 <Font size="36.0" />
                                              </font>
                                           </Text>
-                                          <TextField prefHeight="44.0" prefWidth="487.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                          <ComboBox prefHeight="40.0" prefWidth="487.0" GridPane.columnIndex="2" />
+                                          <TextField fx:id="name2" prefHeight="44.0" prefWidth="487.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                          <ComboBox fx:id="playerBox" onAction="#handleActionsPlayer" prefHeight="40.0" prefWidth="487.0" visibleRowCount="7" GridPane.columnIndex="2" />
                                        </children>
                                     </GridPane>
                                  </center>
@@ -860,17 +861,17 @@
                                                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                                              </rowConstraints>
                                              <children>
-                                                <Button mnemonicParsing="false" prefHeight="104.0" prefWidth="272.0" text="Revoke/Assign" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                <Button fx:id="revokeButton" mnemonicParsing="false" onAction="#handleActionsPlayer" prefHeight="104.0" prefWidth="272.0" text="Revoke/Assign" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                                    <font>
                                                       <Font size="30.0" />
                                                    </font>
                                                 </Button>
-                                                <Button mnemonicParsing="false" prefHeight="124.0" prefWidth="353.0" text="Remove player" GridPane.columnIndex="5" GridPane.rowIndex="1">
+                                                <Button fx:id="removePlayerButton" mnemonicParsing="false" onAction="#handleActionsPlayer" prefHeight="124.0" prefWidth="353.0" text="Remove player" GridPane.columnIndex="5" GridPane.rowIndex="1">
                                                    <font>
                                                       <Font size="30.0" />
                                                    </font>
                                                 </Button>
-                                                <Button mnemonicParsing="false" prefHeight="104.0" prefWidth="272.0" text="Save changes" GridPane.columnIndex="3" GridPane.rowIndex="1">
+                                                <Button fx:id="saveChangesButton" mnemonicParsing="false" onAction="#handleActionsPlayer" prefHeight="104.0" prefWidth="272.0" text="Save changes" GridPane.columnIndex="3" GridPane.rowIndex="1">
                                                    <font>
                                                       <Font size="30.0" />
                                                    </font>
@@ -887,14 +888,7 @@
                            <content>
                               <FlowPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <TextArea prefHeight="519.0" prefWidth="878.0">
-                                       <opaqueInsets>
-                                          <Insets />
-                                       </opaqueInsets>
-                                       <FlowPane.margin>
-                                          <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-                                       </FlowPane.margin>
-                                    </TextArea>
+                                    <Label fx:id="labelForPlayers" alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="542.0" prefWidth="901.0" text="PlayerList" />
                                  </children>
                               </FlowPane>
                            </content>

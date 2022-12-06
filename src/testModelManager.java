@@ -10,7 +10,7 @@ public class testModelManager
     ModelManager modelManager = new ModelManager("gameCollection.bin","playerList.bin",
         "reservationList.bin","eventList.bin");
 
-    /*
+
     PlayerList playerList = new PlayerList();
     playerList.addMember("Emanuel","5179");
     playerList.addGuest("Vlad","4869");
@@ -21,8 +21,8 @@ public class testModelManager
 
     modelManager.addPlayer("Ivan","7777",true);
 
-    PlayerList playerList = modelManager.getAllPlayers();
-    System.out.println(playerList);
+    PlayerList asd = modelManager.getAllPlayers();
+    System.out.println(asd);
 
     GameCollection gameCollection = new GameCollection();
     gameCollection.addGame("Chess",2,modelManager.getPlayerByName("Ivan"));
@@ -44,7 +44,6 @@ public class testModelManager
 
     ArrayList<Game> game = modelManager.displayAvailableGames();
     System.out.println(game);
-*/
     EventList eventList = modelManager.getAllEvents();
     System.out.println(eventList);
   }
