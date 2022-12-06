@@ -150,6 +150,6 @@ public class Game implements Serializable
 
   public String toString()
   {
-    return "Game: "+title+" maxPlayers: "+maxPlayers+" owner: "+ owner + " Rating: "+ rating.toString();
+    return "Title: "+title+",  Maximum Number of Players: "+maxPlayers+",  Owner: "+ owner + ",  Rating: "+ rating.toString();
   }
 }

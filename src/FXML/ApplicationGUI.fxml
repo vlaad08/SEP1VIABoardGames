@@ -42,7 +42,7 @@
                                                 <Font size="22.0" />
                                              </font>
                                           </TextField>
-                                          <ComboBox fx:id="addOwners" onAction="#handler" prefHeight="32.0" prefWidth="150.0">
+                                          <ComboBox fx:id="addOwners_Game" onAction="#handler" prefHeight="32.0" prefWidth="150.0">
                                              <FlowPane.margin>
                                                 <Insets bottom="20.0" left="30.0" />
                                              </FlowPane.margin>
@@ -92,9 +92,9 @@
                                                       <Font size="22.0" />
                                                    </font>
                                                 </Text>
-                                                <TextField fx:id="addTitle" onAction="#handler" prefHeight="26.0" prefWidth="171.0" GridPane.columnIndex="1" />
-                                                <TextField fx:id="addMaxNumOfPlayers" prefHeight="26.0" prefWidth="171.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Button fx:id="addSave" mnemonicParsing="false" onAction="#handler" prefHeight="43.0" prefWidth="76.0" text="Save" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                <TextField fx:id="addTitle_Game" onAction="#handler" prefHeight="26.0" prefWidth="171.0" GridPane.columnIndex="1" />
+                                                <TextField fx:id="addMaxNumOfPlayers_Game" prefHeight="26.0" prefWidth="171.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Button fx:id="addSave_Game" mnemonicParsing="false" onAction="#handler" prefHeight="43.0" prefWidth="76.0" text="Save" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                                    <font>
                                                       <Font size="22.0" />
                                                    </font>
@@ -121,7 +121,7 @@
                                                 <Font size="22.0" />
                                              </font>
                                           </TextField>
-                                          <ComboBox fx:id="editGames" prefHeight="32.0" prefWidth="150.0" promptText="Choose a game">
+                                          <ComboBox fx:id="editGames_Game" prefHeight="32.0" prefWidth="150.0" promptText="Choose a game">
                                              <FlowPane.margin>
                                                 <Insets bottom="10.0" left="30.0" />
                                              </FlowPane.margin>
@@ -138,7 +138,7 @@
                                                 <Font size="22.0" />
                                              </font>
                                           </TextField>
-                                          <ComboBox fx:id="editOwners" prefHeight="33.0" prefWidth="150.0" promptText="Choose the owner">
+                                          <ComboBox fx:id="editOwners_Game" prefHeight="33.0" prefWidth="150.0" promptText="Choose the owner">
                                              <FlowPane.margin>
                                                 <Insets left="30.0" top="10.0" />
                                              </FlowPane.margin>
@@ -185,9 +185,9 @@
                                                       <Font size="22.0" />
                                                    </font>
                                                 </Text>
-                                                <TextField fx:id="editTitle" prefHeight="26.0" prefWidth="171.0" GridPane.columnIndex="1" />
-                                                <TextField fx:id="editMaxNumOfPlayers" prefHeight="26.0" prefWidth="171.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                                                <Button fx:id="editSave" mnemonicParsing="false" onAction="#handler" prefHeight="36.0" prefWidth="76.0" text="Save" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                                <TextField fx:id="editTitle_Game" prefHeight="26.0" prefWidth="171.0" GridPane.columnIndex="1" />
+                                                <TextField fx:id="editMaxNumOfPlayers_Game" prefHeight="26.0" prefWidth="171.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                                <Button fx:id="editSave_Game" mnemonicParsing="false" onAction="#handler" prefHeight="36.0" prefWidth="76.0" text="Save" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                                    <font>
                                                       <Font size="22.0" />
                                                    </font>
@@ -219,7 +219,7 @@
                                                 <Font size="22.0" />
                                              </font>
                                           </TextField>
-                                          <ComboBox fx:id="removeGames" prefHeight="32.0" prefWidth="150.0" promptText="Choose a game">
+                                          <ComboBox fx:id="removeGames_Game" prefHeight="32.0" prefWidth="150.0" promptText="Choose a game">
                                              <FlowPane.margin>
                                                 <Insets bottom="10.0" left="30.0" />
                                              </FlowPane.margin>
@@ -228,7 +228,7 @@
                                     </FlowPane>
                                     <FlowPane alignment="BOTTOM_RIGHT" prefHeight="83.0" prefWidth="748.0">
                                        <children>
-                                          <Button fx:id="removeSave" mnemonicParsing="false" onAction="#handler" prefHeight="43.0" prefWidth="106.0" text="Remove">
+                                          <Button fx:id="removeSave_Game" mnemonicParsing="false" onAction="#handler" prefHeight="43.0" prefWidth="106.0" text="Remove">
                                              <font>
                                                 <Font size="22.0" />
                                              </font>
@@ -239,17 +239,20 @@
                               </FlowPane>
                            </content>
                         </Tab>
-                        <Tab text="Game List">
+                        <Tab fx:id="gameList_Game" onSelectionChanged="#displayRefreshedGameList" text="Game List">
                            <content>
                               <FlowPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <TextArea prefHeight="519.0" prefWidth="878.0">
+                                    <TextArea fx:id="displayGames_Game" prefHeight="519.0" prefWidth="878.0">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
                                        <FlowPane.margin>
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </FlowPane.margin>
+                                       <font>
+                                          <Font size="22.0" />
+                                       </font>
                                     </TextArea>
                                  </children>
                               </FlowPane>

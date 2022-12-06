@@ -81,11 +81,11 @@ public class Player implements Serializable
   {
     if(membership==true)
     {
-      return "Member: "+getName()+" ID: "+getStudentID();
+      return "Member: "+getName()+", ID: "+getStudentID();
     }
     else
     {
-      return "Guest: "+getName()+" ID: "+getStudentID();
+      return "Guest: "+getName()+", ID: "+getStudentID();
     }
   }
 }
