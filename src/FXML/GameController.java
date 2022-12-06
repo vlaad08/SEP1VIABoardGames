@@ -7,6 +7,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
+import javax.swing.*;
 import java.util.ArrayList;
 
 public class GameController
@@ -31,7 +32,7 @@ public class GameController
   @FXML private Button removeSave_Game;
   //Game - Game List
   @FXML private TextArea displayGames_Game;
-  @FXML private Tab gameList_Game;
+
 
   public void handler (ActionEvent e)
   {
@@ -87,7 +88,7 @@ public class GameController
     }
     displayGames_Game.setText(text);
   }
-//PLS DON'T DELETE
+//Push
 
 
 
