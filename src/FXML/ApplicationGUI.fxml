@@ -589,7 +589,7 @@
                                                 </DatePicker>
                                              </children>
                                           </HBox>
-                                          <Button fx:id="saveButton" mnemonicParsing="false" onAction="#saveEvent" prefHeight="65.0" prefWidth="143.0" text="Save">
+                                          <Button fx:id="saveButton" mnemonicParsing="false" prefHeight="65.0" prefWidth="143.0" text="Save">
                                              <font>
                                                 <Font size="30.0" />
                                              </font>
