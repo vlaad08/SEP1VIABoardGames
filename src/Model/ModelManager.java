@@ -37,7 +37,7 @@ public class ModelManager
     }
     catch (IOException e)
     {
-      System.out.println("IO Error reading file");
+      System.out.println("IO Error reading game file");
     }
     catch (ClassNotFoundException e)
     {
@@ -61,7 +61,7 @@ public class ModelManager
     }
     catch (IOException e)
     {
-      System.out.println("IO Error reading file");
+      System.out.println("IO Error reading reservation file");
     }
     catch (ClassNotFoundException e)
     {
@@ -83,7 +83,7 @@ public class ModelManager
     }
     catch (IOException e)
     {
-      System.out.println("IO Error reading file");
+      System.out.println("IO Error reading reservation file");
     }
     catch (ClassNotFoundException e)
     {
@@ -106,7 +106,7 @@ public class ModelManager
     }
     catch (IOException e)
     {
-      System.out.println("IO Error reading file");
+      System.out.println("IO Error reading event file");
     }
     catch (ClassNotFoundException e)
     {
@@ -130,7 +130,7 @@ public class ModelManager
     }
     catch (IOException e)
     {
-      System.out.println("IO Error reading file");
+      System.out.println("IO Error reading player file");
     }
     catch (ClassNotFoundException e)
     {

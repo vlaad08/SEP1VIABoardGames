@@ -24,7 +24,7 @@
    <children>
       <TabPane prefHeight="600.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
-            <Tab text="Game">
+            <Tab onSelectionChanged="#displayRefreshedGameList" text="Game">
                <content>
                   <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
                      <tabs>
@@ -235,60 +235,6 @@
                                     <FlowPane alignment="BOTTOM_RIGHT" prefHeight="83.0" prefWidth="748.0">
                                        <children>
                                           <Button fx:id="removeSave_Game" mnemonicParsing="false" onAction="#handlerGame" prefHeight="46.0" prefWidth="149.0" text="Remove">
-                                             <font>
-                                                <Font size="22.0" />
-                                             </font>
-                                          </Button>
-                                       </children>
-                                    </FlowPane>
-                                 </children>
-                              </FlowPane>
-                           </content>
-                        </Tab>
-                        <Tab text="Rating">
-                           <content>
-                              <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="901.0">
-                                 <children>
-                                    <FlowPane alignment="BOTTOM_CENTER" prefHeight="61.0" prefWidth="901.0">
-                                       <children>
-                                          <VBox alignment="CENTER" prefHeight="200.0" prefWidth="645.0">
-                                             <children>
-                                                <HBox alignment="CENTER" prefHeight="284.0" prefWidth="100.0">
-                                                   <children>
-                                                      <TextField fx:id="chooseGameToRateText_Game" alignment="CENTER" editable="false" prefHeight="69.0" prefWidth="157.0" style="-fx-background-color: none;" text="Game:">
-                                                         <font>
-                                                            <Font size="22.0" />
-                                                         </font>
-                                                      </TextField>
-                                                      <ComboBox fx:id="chooseGameToRate_Game" prefHeight="50.0" prefWidth="314.0" promptText="Choose a game">
-                                                         <HBox.margin>
-                                                            <Insets />
-                                                         </HBox.margin>
-                                                      </ComboBox>
-                                                   </children>
-                                                </HBox>
-                                                <HBox alignment="CENTER" prefHeight="284.0" prefWidth="100.0">
-                                                   <children>
-                                                      <TextField fx:id="giveRatingText_Game" alignment="CENTER" editable="false" prefHeight="69.0" prefWidth="157.0" style="-fx-background-color: none;" text="Rating:">
-                                                         <font>
-                                                            <Font size="22.0" />
-                                                         </font>
-                                                      </TextField>
-                                                      <ComboBox fx:id="giveRating_Game" prefHeight="50.0" prefWidth="314.0" promptText="Rate 1-5 :D">
-                                                         <HBox.margin>
-                                                            <Insets />
-                                                         </HBox.margin>
-                                                      </ComboBox>
-                                                   </children>
-                                                </HBox>
-                                             </children>
-                                          </VBox>
-                                       </children>
-                                    </FlowPane>
-                                    <FlowPane alignment="BOTTOM_CENTER" prefHeight="31.0" prefWidth="901.0" />
-                                    <FlowPane alignment="BOTTOM_RIGHT" prefHeight="83.0" prefWidth="748.0">
-                                       <children>
-                                          <Button fx:id="saveRating_Game" mnemonicParsing="false" onAction="#handlerGame" prefHeight="46.0" prefWidth="149.0" text="Save">
                                              <font>
                                                 <Font size="22.0" />
                                              </font>
@@ -511,43 +457,6 @@
                               </FlowPane>
                            </content>
                         </Tab>
-<<<<<<< Updated upstream
-=======
-                        <Tab text="Remove Reservation">
-                           <content>
-                              <FlowPane alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="200.0">
-                                 <children>
-                                    <FlowPane alignment="CENTER" prefHeight="176.0" prefWidth="899.0">
-                                       <children>
-                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reservation / Borrow">
-                                             <font>
-                                                <Font size="29.0" />
-                                             </font>
-                                          </Text>
-                                          <ComboBox fx:id="reservationsRemove_BorrowReserve" prefHeight="30.0" prefWidth="150.0" promptText="Choose Reservation / Borrow">
-                                             <FlowPane.margin>
-                                                <Insets left="25.0" />
-                                             </FlowPane.margin>
-                                          </ComboBox>
-                                       </children>
-                                    </FlowPane>
-                                    <FlowPane alignment="TOP_RIGHT" prefHeight="44.0" prefWidth="812.0">
-                                       <children>
-                                          <Button fx:id="removeButton_BorrowReserve" mnemonicParsing="false" onAction="#handlerBorrowReserve" prefHeight="46.0" prefWidth="149.0" text="Remove">
-                                             <font>
-                                                <Font size="22.0" />
-                                             </font>
-                                             <FlowPane.margin>
-                                                <Insets />
-                                             </FlowPane.margin>
-                                          </Button>
-                                       </children>
-                                    </FlowPane>
-                                 </children>
-                              </FlowPane>
-                           </content>
-                        </Tab>
->>>>>>> Stashed changes
                         <Tab onSelectionChanged="#displayRefreshedReservationList" text="Reservation List">
                            <content>
                               <FlowPane prefHeight="200.0" prefWidth="200.0">
@@ -585,7 +494,7 @@
                                                       <Font size="30.0" />
                                                    </font>
                                                 </Text>
-                                                <TextField prefHeight="31.0" prefWidth="333.0">
+                                                <TextField fx:id="titleInput_Event" prefHeight="31.0" prefWidth="333.0">
                                                    <HBox.margin>
                                                       <Insets left="118.0" />
                                                    </HBox.margin>
@@ -602,7 +511,7 @@
                                                       <Font size="30.0" />
                                                    </font>
                                                 </Text>
-                                                <TextArea prefHeight="107.0" prefWidth="506.0">
+                                                <TextArea fx:id="descriptionInput_Event" prefHeight="107.0" prefWidth="506.0">
                                                    <HBox.margin>
                                                       <Insets left="30.0" />
                                                    </HBox.margin>
@@ -622,7 +531,7 @@
                                                       <Insets />
                                                    </HBox.margin>
                                                 </Text>
-                                                <TextField prefHeight="31.0" prefWidth="333.0">
+                                                <TextField fx:id="imageURLInput_Event" prefHeight="31.0" prefWidth="333.0">
                                                    <HBox.margin>
                                                       <Insets left="95.0" />
                                                    </HBox.margin>
@@ -654,7 +563,7 @@
                                                       <Insets left="35.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <DatePicker prefHeight="37.0" prefWidth="219.0">
+                                                <DatePicker fx:id="startDateInput_Event" prefHeight="37.0" prefWidth="219.0">
                                                    <HBox.margin>
                                                       <Insets left="20.0" />
                                                    </HBox.margin>
@@ -667,7 +576,7 @@
                                                       <Insets left="160.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <DatePicker prefHeight="37.0" prefWidth="219.0">
+                                                <DatePicker fx:id="endDateInput_Event" prefHeight="37.0" prefWidth="219.0">
                                                    <HBox.margin>
                                                       <Insets left="20.0" />
                                                    </HBox.margin>
@@ -676,7 +585,7 @@
                                           </HBox>
                                           <HBox alignment="BOTTOM_RIGHT" prefHeight="9.0" prefWidth="899.0">
                                              <children>
-                                                <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="143.0" text="Save">
+                                                <Button fx:id="saveButton_Event" mnemonicParsing="false" onAction="#handleEvent" prefHeight="65.0" prefWidth="143.0" text="Save">
                                                    <font>
                                                       <Font size="30.0" />
                                                    </font>
@@ -705,7 +614,7 @@
                                                       <Font size="30.0" />
                                                    </font>
                                                 </Text>
-                                                <ComboBox prefHeight="32.0" prefWidth="299.0">
+                                                <ComboBox fx:id="eventComboBox" onAction="#handleEvent" prefHeight="32.0" prefWidth="299.0">
                                                    <HBox.margin>
                                                       <Insets left="115.0" top="8.0" />
                                                    </HBox.margin>
@@ -722,7 +631,7 @@
                                                       <Font size="30.0" />
                                                    </font>
                                                 </Text>
-                                                <TextField prefHeight="29.0" prefWidth="302.0">
+                                                <TextField fx:id="titleInputEdit_Event" prefHeight="29.0" prefWidth="302.0">
                                                    <HBox.margin>
                                                       <Insets left="125.0" top="8.0" />
                                                    </HBox.margin>
@@ -739,7 +648,7 @@
                                                       <Font size="30.0" />
                                                    </font>
                                                 </Text>
-                                                <TextArea prefHeight="90.0" prefWidth="500.0">
+                                                <TextArea fx:id="descriptionInputEdit_Event" prefHeight="90.0" prefWidth="500.0">
                                                    <HBox.margin>
                                                       <Insets bottom="8.0" left="42.0" top="10.0" />
                                                    </HBox.margin>
@@ -756,7 +665,7 @@
                                                       <Font size="30.0" />
                                                    </font>
                                                 </Text>
-                                                <TextField prefHeight="29.0" prefWidth="307.0">
+                                                <TextField fx:id="imageURLEDIT_Event" prefHeight="29.0" prefWidth="307.0">
                                                    <HBox.margin>
                                                       <Insets left="109.0" top="8.0" />
                                                    </HBox.margin>
@@ -784,7 +693,7 @@
                                                       <Insets left="35.0" top="25.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <DatePicker prefHeight="37.0" prefWidth="219.0">
+                                                <DatePicker fx:id="startDateEdit_Event" prefHeight="37.0" prefWidth="219.0">
                                                    <HBox.margin>
                                                       <Insets left="20.0" top="30.0" />
                                                    </HBox.margin>
@@ -797,7 +706,7 @@
                                                       <Insets left="160.0" top="25.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <DatePicker prefHeight="37.0" prefWidth="219.0">
+                                                <DatePicker fx:id="endDateEdit_Event" prefHeight="37.0" prefWidth="219.0">
                                                    <HBox.margin>
                                                       <Insets left="20.0" top="30.0" />
                                                    </HBox.margin>
@@ -809,7 +718,15 @@
                                           </HBox>
                                           <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
                                              <children>
-                                                <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="143.0" text="Save">
+                                                <Button fx:id="removeButton_Event" mnemonicParsing="false" onAction="#handleEvent" prefHeight="65.0" prefWidth="189.0" text="Remove">
+                                                   <font>
+                                                      <Font size="30.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets right="30.0" />
+                                                   </HBox.margin>
+                                                </Button>
+                                                <Button fx:id="saveEditButton_Event" mnemonicParsing="false" onAction="#handleEvent" prefHeight="65.0" prefWidth="178.0" text="Save">
                                                    <font>
                                                       <Font size="30.0" />
                                                    </font>
@@ -829,7 +746,7 @@
                            <content>
                               <FlowPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <TextArea editable="false" prefHeight="519.0" prefWidth="878.0">
+                                    <TextArea fx:id="eventsDisplayed" editable="false" prefHeight="519.0" prefWidth="878.0">
                                        <opaqueInsets>
                                           <Insets />
                                        </opaqueInsets>
