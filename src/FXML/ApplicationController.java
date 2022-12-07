@@ -185,10 +185,12 @@ public class ApplicationController
   {
     if (e.getSource()== addSave_Game)
     {
-      Game newGame=new Game(addTitle_Game.getText(),Integer.parseInt(
+      Game newGame = new Game(addTitle_Game.getText(),Integer.parseInt(
           addMaxNumOfPlayers_Game.getText()),
           addOwners_Game.getSelectionModel().getSelectedItem());
       modelManager.addGame(newGame);
+      addTitle_Game.setText("");
+      addMaxNumOfPlayers_Game.setText("");
       initialize();
       JOptionPane.showMessageDialog(null,"The game was added to the collection","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
     }
