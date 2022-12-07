@@ -23,6 +23,7 @@ public class ApplicationController
   private  ObservableList<Event> eventData= FXCollections.observableArrayList();
   private  ObservableList<Game> dataBorr_BorrowReserve = FXCollections.observableArrayList();
   private  ObservableList<Game> dataRes_BorrowReserve = FXCollections.observableArrayList();
+  private  ObservableList<Integer> dataRatings_Game = FXCollections.observableArrayList();
 
 
 
@@ -43,6 +44,12 @@ public class ApplicationController
   @FXML private Button removeSave_Game;
   //Game - Game List
   @FXML private TextArea displayGames_Game;
+
+  @FXML private TextField chooseGameToRateText_Game;
+  @FXML private TextField giveRatingText_Game;
+  @FXML private ComboBox<Game> chooseGameToRate_Game;
+  @FXML private ComboBox<Integer> giveRating_Game;
+  @FXML private Button saveRating_Game;
 
 
   @FXML private TextField studentIdBorr_BorrowReserve;
@@ -181,6 +188,7 @@ public class ApplicationController
 
 
 
+
   public void handlerGame (ActionEvent e)
   {
     if (e.getSource()== addSave_Game)
@@ -210,6 +218,14 @@ public class ApplicationController
       initialize();
       JOptionPane.showMessageDialog(null,"The game was successfully removed","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
     }
+    if(e.getSource() == saveRating_Game)
+    {
+      Game game = chooseGameToRate_Game.getValue();
+      int rating = giveRating_Game.getValue();
+      modelManager.rateAGame(game,rating);
+
+      JOptionPane.showMessageDialog(null,"You rated " +game.getTitle() +" a solid: " +rating,"Confirmation",JOptionPane.INFORMATION_MESSAGE);
+    }
   }
 
 
@@ -234,6 +250,7 @@ public class ApplicationController
     gameData.addAll(collection);
     editGames_Game.setItems(gameData);
     removeGames_Game.setItems(gameData);
+    chooseGameToRate_Game.setItems(gameData);
 
     ArrayList<Game> collection1 = modelManager.getAllGames().getList();
     for (int i = 0; i < collection1.size(); i++)
@@ -252,7 +269,16 @@ public class ApplicationController
     name2.setEditable(true);
     updatePlayersArea();
     resetPlayer();
+<<<<<<< Updated upstream
     reloadEventListAndDisplay();
+=======
+
+    Integer[] ratings = {1,2,3,4,5};
+    dataRatings_Game.clear();
+    dataRatings_Game.addAll(ratings);
+    giveRating_Game.setItems(dataRatings_Game);
+
+>>>>>>> Stashed changes
   }
   public void displayRefreshedGameList()
   {

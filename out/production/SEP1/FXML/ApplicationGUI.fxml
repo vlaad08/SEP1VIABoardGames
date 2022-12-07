@@ -245,6 +245,60 @@
                               </FlowPane>
                            </content>
                         </Tab>
+                        <Tab text="Rating">
+                           <content>
+                              <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="901.0">
+                                 <children>
+                                    <FlowPane alignment="BOTTOM_CENTER" prefHeight="61.0" prefWidth="901.0">
+                                       <children>
+                                          <VBox alignment="CENTER" prefHeight="200.0" prefWidth="645.0">
+                                             <children>
+                                                <HBox alignment="CENTER" prefHeight="284.0" prefWidth="100.0">
+                                                   <children>
+                                                      <TextField fx:id="chooseGameToRateText_Game" alignment="CENTER" editable="false" prefHeight="69.0" prefWidth="157.0" style="-fx-background-color: none;" text="Game:">
+                                                         <font>
+                                                            <Font size="22.0" />
+                                                         </font>
+                                                      </TextField>
+                                                      <ComboBox fx:id="chooseGameToRate_Game" prefHeight="50.0" prefWidth="314.0" promptText="Choose a game">
+                                                         <HBox.margin>
+                                                            <Insets />
+                                                         </HBox.margin>
+                                                      </ComboBox>
+                                                   </children>
+                                                </HBox>
+                                                <HBox alignment="CENTER" prefHeight="284.0" prefWidth="100.0">
+                                                   <children>
+                                                      <TextField fx:id="giveRatingText_Game" alignment="CENTER" editable="false" prefHeight="69.0" prefWidth="157.0" style="-fx-background-color: none;" text="Rating:">
+                                                         <font>
+                                                            <Font size="22.0" />
+                                                         </font>
+                                                      </TextField>
+                                                      <ComboBox fx:id="giveRating_Game" prefHeight="50.0" prefWidth="314.0" promptText="Rate 1-5 :D">
+                                                         <HBox.margin>
+                                                            <Insets />
+                                                         </HBox.margin>
+                                                      </ComboBox>
+                                                   </children>
+                                                </HBox>
+                                             </children>
+                                          </VBox>
+                                       </children>
+                                    </FlowPane>
+                                    <FlowPane alignment="BOTTOM_CENTER" prefHeight="31.0" prefWidth="901.0" />
+                                    <FlowPane alignment="BOTTOM_RIGHT" prefHeight="83.0" prefWidth="748.0">
+                                       <children>
+                                          <Button fx:id="saveRating_Game" mnemonicParsing="false" onAction="#handlerGame" prefHeight="46.0" prefWidth="149.0" text="Save">
+                                             <font>
+                                                <Font size="22.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                    </FlowPane>
+                                 </children>
+                              </FlowPane>
+                           </content>
+                        </Tab>
                         <Tab onSelectionChanged="#displayRefreshedGameList" text="Game List">
                            <content>
                               <FlowPane prefHeight="200.0" prefWidth="200.0">
@@ -585,7 +639,11 @@
                                           </HBox>
                                           <HBox alignment="BOTTOM_RIGHT" prefHeight="9.0" prefWidth="899.0">
                                              <children>
+<<<<<<< Updated upstream
                                                 <Button fx:id="saveButton_Event" mnemonicParsing="false" onAction="#handleEvent" prefHeight="65.0" prefWidth="143.0" text="Save">
+=======
+                                                <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="143.0" text="Save">
+>>>>>>> Stashed changes
                                                    <font>
                                                       <Font size="30.0" />
                                                    </font>
@@ -718,6 +776,7 @@
                                           </HBox>
                                           <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
                                              <children>
+<<<<<<< Updated upstream
                                                 <Button fx:id="removeButton_Event" mnemonicParsing="false" onAction="#handleEvent" prefHeight="65.0" prefWidth="189.0" text="Remove">
                                                    <font>
                                                       <Font size="30.0" />
@@ -727,6 +786,9 @@
                                                    </HBox.margin>
                                                 </Button>
                                                 <Button fx:id="saveEditButton_Event" mnemonicParsing="false" onAction="#handleEvent" prefHeight="65.0" prefWidth="178.0" text="Save">
+=======
+                                                <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="143.0" text="Save">
+>>>>>>> Stashed changes
                                                    <font>
                                                       <Font size="30.0" />
                                                    </font>
