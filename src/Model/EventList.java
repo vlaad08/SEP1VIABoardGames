@@ -18,7 +18,7 @@ public class EventList implements Serializable
    * */
   public EventList()
   {
-    events =  new ArrayList<Event>();
+    events = new ArrayList<>();
   }
 
   /**

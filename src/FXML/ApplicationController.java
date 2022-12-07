@@ -18,7 +18,6 @@ public class ApplicationController
 
   private  ObservableList<Player> playerData= FXCollections.observableArrayList();
   private  ObservableList<Game> gameData= FXCollections.observableArrayList();
-  private  ObservableList<Event> eventData= FXCollections.observableArrayList();
   private  ObservableList<Game> dataBorr_BorrowReserve = FXCollections.observableArrayList();
   private  ObservableList<Game> dataRes_BorrowReserve = FXCollections.observableArrayList();
 
@@ -111,7 +110,9 @@ public class ApplicationController
         imageURLInput_Event.setText("");
         startDateInput_Event.setValue(null);
         endDateInput_Event.setValue(null);
-        initialize();
+
+
+        refreshComboEvent();
         reloadEventListAndDisplay();
 
 
@@ -121,8 +122,10 @@ public class ApplicationController
 
         try
         {
-          Event oldEvent = eventComboBox.getSelectionModel().getSelectedItem();
-          modelManager.removeEvent(oldEvent);
+          EventList eventList = modelManager.getAllEvents();
+          Event temp = eventList.getEvent(eventComboBox.getSelectionModel().getSelectedItem().getTitle());
+          eventList.removeEvent(temp);
+          modelManager.saveEvents(eventList);
 
           String title = titleInputEdit_Event.getText();
           String description = descriptionInputEdit_Event.getText();
@@ -137,7 +140,7 @@ public class ApplicationController
 
 
           reloadEventListAndDisplay();
-          initialize();
+          refreshComboEvent();
 
           titleInputEdit_Event.clear();
           descriptionInputEdit_Event.clear();
@@ -156,11 +159,13 @@ public class ApplicationController
     {
       try
       {
-        Event oldEvent = eventComboBox.getSelectionModel().getSelectedItem();
-        modelManager.removeEvent(oldEvent);
+        EventList eventList = modelManager.getAllEvents();
+        Event temp = eventList.getEvent(eventComboBox.getSelectionModel().getSelectedItem().getTitle());
+        eventList.removeEvent(temp);
+        modelManager.saveEvents(eventList);
 
         reloadEventListAndDisplay();
-        initialize();
+        refreshComboEvent();
 
         JOptionPane.showMessageDialog(null,"The event was successfully removed","Confirmation message",
             JOptionPane.INFORMATION_MESSAGE);
@@ -171,6 +176,7 @@ public class ApplicationController
         startDateEdit_Event.setValue(null);
         endDateEdit_Event.setValue(null);
         eventComboBox.getSelectionModel().clearSelection();
+
       }
       catch (NullPointerException exception)
       {
@@ -197,8 +203,31 @@ public class ApplicationController
 
   public void reloadEventListAndDisplay()
   {
-    EventList eventList = modelManager.getAllEvents();
-    eventsDisplayed.setText(eventList.toString());
+    String text="";
+    ArrayList<Event> events = modelManager.getAllEvents().getList();
+    for (int i = 0; i < events.size(); i++)
+    {
+      text += events.get(i).toString()+"\n";
+    }
+    eventsDisplayed.setText(text);
+  }
+
+  public void refreshComboEvent()
+  {
+    try
+    {
+      ArrayList<Event> events = modelManager.getAllEvents().getList();
+      eventComboBox.getItems().clear();
+
+      for(Event element: events)
+      {
+        eventComboBox.getItems().add(element);
+      }
+    }
+    catch (NullPointerException exception)
+    {
+      exception.fillInStackTrace();
+    }
   }
 
 
@@ -211,7 +240,10 @@ public class ApplicationController
           addMaxNumOfPlayers_Game.getText()),
           addOwners_Game.getSelectionModel().getSelectedItem());
       modelManager.addGame(newGame);
+
       initialize();
+      displayRefreshedGameList();
+
       JOptionPane.showMessageDialog(null,"The game was added to the collection","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
     }
     if (e.getSource()== editSave_Game)
@@ -222,14 +254,21 @@ public class ApplicationController
           editMaxNumOfPlayers_Game.getText()),
           editOwners_Game.getSelectionModel().getSelectedItem());
       modelManager.addGame(editedGame);
+
       initialize();
+      displayRefreshedGameList();
+
       JOptionPane.showMessageDialog(null,"The game was successfully edited","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
     }
     if (e.getSource()== removeSave_Game)
     {
       Game gameToRemove= removeGames_Game.getSelectionModel().getSelectedItem();
       modelManager.removeGame(gameToRemove);
+
+
       initialize();
+      displayRefreshedGameList();
+
       JOptionPane.showMessageDialog(null,"The game was successfully removed","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
     }
   }
@@ -241,11 +280,7 @@ public class ApplicationController
   {
     ArrayList<Player> players = modelManager.getAllPlayers().getList();
     ArrayList<Game> collection = modelManager.getAllGames().getList();
-    ArrayList<Event> events = modelManager.getAllEvents().getList();
 
-    eventData.clear();
-    eventData.addAll(events);
-    eventComboBox.setItems(eventData);
 
     playerData.clear();
     playerData.addAll(players);
@@ -275,6 +310,7 @@ public class ApplicationController
     updatePlayersArea();
     resetPlayer();
     reloadEventListAndDisplay();
+    refreshComboEvent();
   }
   public void displayRefreshedGameList()
   {
@@ -286,6 +322,8 @@ public class ApplicationController
     }
     displayGames_Game.setText(text);
   }
+
+
 
   public void handlerBorrowReserve(ActionEvent e)
   {
