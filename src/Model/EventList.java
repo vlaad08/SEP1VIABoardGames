@@ -35,7 +35,7 @@ public class EventList implements Serializable
   }
 
   /**
-   * @param event the event we wan to remove
+   * @param event the event we want to remove
    * */
   public void removeEvent(Event event)
   {
@@ -80,7 +80,10 @@ public class EventList implements Serializable
      return events.get(index);
    }
 
-
+   public ArrayList<Event> getList()
+   {
+     return events;
+   }
 }
 
 
