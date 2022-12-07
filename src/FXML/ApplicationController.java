@@ -8,9 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import javax.swing.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class ApplicationController
 {
@@ -54,6 +52,7 @@ public class ApplicationController
 
   @FXML private TextField studentIdRes_BorrowReserve;
   @FXML private ComboBox<Game> gameRes_BorrowReserve;
+  @FXML private ComboBox<Reservation> reservationBox_BorrowReserve;
   @FXML private DatePicker fromRes_BorrowReserve;
   @FXML private DatePicker toRes_BorrowReserve;
   @FXML private Button reserve_BorrowReserve;
@@ -90,13 +89,23 @@ public class ApplicationController
   @FXML private DatePicker endDateEdit_Event;
   @FXML private Button saveEditButton_Event;
   @FXML private Button removeButton_Event;
+  @FXML private Button removeRes_BorrowReserve;
 
 
   public void initialize()
   {
+    updateGameBox();
+    updateGameArea();
+
     updatePlayersArea();
     resetPlayer();
 
+    updateEventBox();
+    updateEventArea();
+
+    updateReservationArea();
+    updateReservationBox();
+    /*
     ArrayList<Player> players = modelManager.getAllPlayers().getList();
     ArrayList<Game> collection = modelManager.getAllGames().getList();
     ArrayList<Event> events = modelManager.getAllEvents().getList();
@@ -128,6 +137,30 @@ public class ApplicationController
     }
     gameRes_BorrowReserve.setItems(dataBorr_BorrowReserve);
     reloadEventListAndDisplay();
+     */
+  }
+
+  public void updateGameBox()
+  {
+    editGames_Game.getItems().clear();
+    removeGames_Game.getItems().clear();
+    gameBorr_BorrowReserve.getItems().clear();
+    gameRes_BorrowReserve.getItems().clear();
+
+    GameCollection gameCollection = modelManager.getAllGames();
+    ArrayList<Game> games = gameCollection.getList();
+    for(Game element: games)
+    {
+      editGames_Game.getItems().add(element);
+      removeGames_Game.getItems().add(element);
+      gameBorr_BorrowReserve.getItems().add(element);
+      gameRes_BorrowReserve.getItems().add(element);
+    }
+  }
+  public void updateGameArea()
+  {
+    GameCollection gameCollection = modelManager.getAllGames();
+    displayGames_Game.setText(gameCollection.toString());
   }
 
   public void handlerGame (ActionEvent e)
@@ -145,7 +178,8 @@ public class ApplicationController
       addMaxNumOfPlayers_Game.setText("");
 
 
-      initialize();
+      updateGameBox();
+      updateGameArea();
       JOptionPane.showMessageDialog(null,"The game was added to the collection","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
     }
     if (e.getSource() == editSave_Game)
@@ -158,7 +192,10 @@ public class ApplicationController
       editTitle_Game.setText("");
       editMaxNumOfPlayers_Game.setText("");
 
-      initialize();
+      updateGameBox();
+      updateGameArea();
+      updateReservationArea();
+      updateReservationBox();
       JOptionPane.showMessageDialog(null,"The game was successfully edited","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
     }
     if (e.getSource()== removeSave_Game)
@@ -174,6 +211,18 @@ public class ApplicationController
       Game game = editGames_Game.getSelectionModel().getSelectedItem();
       editTitle_Game.setText(game.getTitle());
       editMaxNumOfPlayers_Game.setText(String.valueOf(game.getMaxPlayers()));
+    }
+  }
+
+  private void updateEventBox()
+  {
+    eventComboBox.getItems().clear();
+
+    EventList eventList = modelManager.getAllEvents();
+    ArrayList<Event> events = eventList.getList();
+    for (Event element: events)
+    {
+      eventComboBox.getItems().add(element);
     }
   }
   public void handleEvent(ActionEvent e)
@@ -196,13 +245,14 @@ public class ApplicationController
         imageURLInput_Event.setText("");
         startDateInput_Event.setValue(null);
         endDateInput_Event.setValue(null);
-        initialize();
-        reloadEventListAndDisplay();
+
+        updateEventBox();
+        updateEventArea();
     }
     else if(e.getSource() == saveEditButton_Event)
     {
         Event oldEvent = eventComboBox.getSelectionModel().getSelectedItem();
-        //modelManager.removeEvent(oldEvent);
+        modelManager.removeEvent(oldEvent);
 
         String title = titleInputEdit_Event.getText();
         String description = descriptionInputEdit_Event.getText();
@@ -216,8 +266,8 @@ public class ApplicationController
         JOptionPane.showMessageDialog(null,"The event was successfully edited","Confirmation message",
             JOptionPane.INFORMATION_MESSAGE);
 
-        initialize();
-        reloadEventListAndDisplay();
+        updateEventBox();
+        updateEventArea();
 
         titleInputEdit_Event.setText("");
         descriptionInputEdit_Event.setText("");
@@ -229,14 +279,18 @@ public class ApplicationController
     {
         Event oldEvent = eventComboBox.getSelectionModel().getSelectedItem();
         modelManager.removeEvent(oldEvent);
-        reloadEventListAndDisplay();
-
-
-        initialize();
 
         JOptionPane.showMessageDialog(null,"The event was successfully removed","Confirmation message",
             JOptionPane.INFORMATION_MESSAGE);
 
+      updateEventBox();
+      updateEventArea();
+
+      titleInputEdit_Event.setText("");
+      descriptionInputEdit_Event.setText("");
+      imageURLEDIT_Event.setText("");
+      startDateEdit_Event.setValue(null);
+      endDateEdit_Event.setValue(null);
     }
     else if(e.getSource() == eventComboBox)
     {
@@ -248,26 +302,37 @@ public class ApplicationController
     }
   }
 
-  public void reloadEventListAndDisplay()
+  public void updateEventArea()
   {
     EventList eventList = modelManager.getAllEvents();
-    String text = eventList.toString();
-    eventsDisplayed.setText(text);
+    eventsDisplayed.setText(eventList.toString());
   }
-
-  public void displayRefreshedGameList()
+  public void updateReservationBox()
   {
-    GameCollection gameCollection = modelManager.getAllGames();
-    displayGames_Game.setText(gameCollection.toString());
-  }
+    int currentIndex = reservationBox_BorrowReserve.getSelectionModel().getSelectedIndex();
+    reservationBox_BorrowReserve.getItems().clear();
 
+    ReservationList reservationList = modelManager.getAllReservations();
+    ArrayList<Reservation> reservations = reservationList.getList();
+    for(Reservation element: reservations)
+    {
+      reservationBox_BorrowReserve.getItems().add(element);
+    }
+    if (currentIndex == -1 && reservationBox_BorrowReserve.getItems().size() > 0)
+    {
+      playerBox.getSelectionModel().select(0);
+    }
+    else
+    {
+      playerBox.getSelectionModel().select(currentIndex);
+    }
+  }
   public void handlerBorrowReserve(ActionEvent e)
   {
-
     if(e.getSource() == borrow_BorrowReserve)
     {
       Player player = modelManager.getPlayerByStudentID(studentIdBorr_BorrowReserve.getText());
-      Game gameSelect = gameBorr_BorrowReserve.getValue();
+      Game gameSelect = gameBorr_BorrowReserve.getSelectionModel().getSelectedItem();
 
       int endDay = reserveToBorr_BorrowReserve.getValue().getDayOfMonth();
       int endMonth = reserveToBorr_BorrowReserve.getValue().getMonthValue();
@@ -276,20 +341,26 @@ public class ApplicationController
       DateTime end = new DateTime(endYear,endMonth,endDay,endHour);
 
       modelManager.borrow(player,gameSelect,end);
+      JOptionPane.showMessageDialog(null,"The borrow was created.","Confirmation message",
+          JOptionPane.INFORMATION_MESSAGE);
 
+      studentIdBorr_BorrowReserve.setText("");
+      reserveToBorr_BorrowReserve.setValue(null);
+      hourBorr_BorrowReserve.setText("");
+
+      updateReservationArea();
+      updateReservationBox();
     }
-
-    if(e.getSource() == reserve_BorrowReserve)
+    else if(e.getSource() == reserve_BorrowReserve)
     {
       Player player = modelManager.getPlayerByStudentID(studentIdRes_BorrowReserve.getText());
-      Game gameSelect = gameRes_BorrowReserve.getValue();
+      Game gameSelect = gameRes_BorrowReserve.getSelectionModel().getSelectedItem();
 
       int startDay = fromRes_BorrowReserve.getValue().getDayOfMonth();
       int startMonth = fromRes_BorrowReserve.getValue().getMonthValue();
       int startYear = fromRes_BorrowReserve.getValue().getYear();
       int startHour = Integer.parseInt(startHour_BorrowReserve.getText());
       DateTime start = new DateTime(startDay,startMonth,startYear,startHour);
-
 
       int endDay = toRes_BorrowReserve.getValue().getDayOfMonth();
       int endMonth = toRes_BorrowReserve.getValue().getMonthValue();
@@ -298,24 +369,43 @@ public class ApplicationController
       DateTime end = new DateTime(endDay,endMonth,endYear,endHour);
 
       modelManager.reserve(player,gameSelect,start,end);
+      JOptionPane.showMessageDialog(null,"The reservation was created.","Confirmation message",
+          JOptionPane.INFORMATION_MESSAGE);
 
+      studentIdRes_BorrowReserve.setText("");
+      fromRes_BorrowReserve.setValue(null);
+      startHour_BorrowReserve.setText("");
+      toRes_BorrowReserve.setValue(null);
+      endHour_BorrowReserve.setText("");
+
+      updateReservationArea();
+      updateReservationBox();
     }
-
-
-  }
-
-  public void displayRefreshedReservationList()
-  {
-    String text="";
-    ArrayList<Reservation> reservations = modelManager.getAllReservations().getList();
-    for (int i = 0; i < reservations.size(); i++)
+    else if(e.getSource() == removeRes_BorrowReserve)
     {
-      text+=reservations.get(i).toString()+"\n";
+      Reservation reservation = reservationBox_BorrowReserve.getSelectionModel().getSelectedItem();
+      System.out.println(reservation);
+
+      int choice = JOptionPane.showConfirmDialog(null,"Are you sure?");
+      if(reservation != null && choice == 0)
+      {
+        int i = reservationBox_BorrowReserve.getSelectionModel().getSelectedIndex();
+        System.out.println(i);
+        modelManager.removeReservationByIndex(i);
+        //modelManager.removeReservation(reservation);
+      }
+      updateReservationBox();
+      updateReservationBox();
+      updateReservationArea();
     }
-    reservationList_BorrowReserve.setText(text);
+
   }
 
-
+  public void updateReservationArea()
+  {
+    ReservationList reservationList = modelManager.getAllReservations();
+    reservationList_BorrowReserve.setText(reservationList.toString());
+  }
 
   public void addPlayer(ActionEvent e)
   {
@@ -362,12 +452,14 @@ public class ApplicationController
   {
     int currentIndex = playerBox.getSelectionModel().getSelectedIndex();
     playerBox.getItems().clear();
+    addOwners_Game.getItems().clear();
 
     PlayerList players = modelManager.getAllPlayers();
     ArrayList<Player> playerArrayList = players.getList();
     for (Player element: playerArrayList)
     {
       playerBox.getItems().add(element);
+      addOwners_Game.getItems().add(element);
     }
 
     if (currentIndex == -1 && playerBox.getItems().size() > 0)
@@ -379,6 +471,8 @@ public class ApplicationController
       playerBox.getSelectionModel().select(currentIndex);
     }
   }
+
+
 
   public void handleActionsPlayer(ActionEvent e)
   {

@@ -24,7 +24,7 @@
    <children>
       <TabPane prefHeight="600.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
-            <Tab onSelectionChanged="#displayRefreshedGameList" text="Game">
+            <Tab onSelectionChanged="#updateGameArea" text="Game">
                <content>
                   <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE">
                      <tabs>
@@ -232,7 +232,7 @@
                               </FlowPane>
                            </content>
                         </Tab>
-                        <Tab onSelectionChanged="#displayRefreshedGameList" text="Game List">
+                        <Tab onSelectionChanged="#updateGameArea" text="Game List">
                            <content>
                               <FlowPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
@@ -444,7 +444,7 @@
                               </FlowPane>
                            </content>
                         </Tab>
-                        <Tab onSelectionChanged="#displayRefreshedReservationList" text="Reservation List">
+                        <Tab onSelectionChanged="#updateReservationArea" text="Reservation List">
                            <content>
                               <FlowPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
@@ -456,6 +456,44 @@
                                           <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                                        </FlowPane.margin>
                                     </TextArea>
+                                 </children>
+                              </FlowPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Remove Reservation">
+                           <content>
+                              <FlowPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <VBox prefHeight="541.0" prefWidth="899.0">
+                                       <children>
+                                          <HBox alignment="CENTER_LEFT" prefHeight="151.0" prefWidth="899.0">
+                                             <children>
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reservation" wrappingWidth="130.10153198242188">
+                                                   <font>
+                                                      <Font size="24.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="35.0" />
+                                                   </HBox.margin>
+                                                </Text>
+                                                <ComboBox fx:id="reservationBox_BorrowReserve" prefHeight="35.0" prefWidth="491.0" promptText="Choose a reservation">
+                                                   <HBox.margin>
+                                                      <Insets left="20.0" />
+                                                   </HBox.margin>
+                                                </ComboBox>
+                                                <Button fx:id="removeRes_BorrowReserve" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handlerBorrowReserve" prefHeight="41.0" prefWidth="126.0" text="Remove" textFill="#bb2e2e">
+                                                   <font>
+                                                      <Font size="18.0" />
+                                                   </font>
+                                                   <HBox.margin>
+                                                      <Insets left="80.0" right="35.0" />
+                                                   </HBox.margin>
+                                                </Button>
+                                             </children>
+                                          </HBox>
+                                          <HBox alignment="BOTTOM_RIGHT" prefHeight="71.0" prefWidth="899.0" />
+                                       </children>
+                                    </VBox>
                                  </children>
                               </FlowPane>
                            </content>

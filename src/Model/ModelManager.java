@@ -312,7 +312,23 @@ public class ModelManager
   public void removeReservation(Reservation reservation)
   {
     ReservationList reservationList = getAllReservations();
-    reservationList.removeReservation(getReservation(reservation.getGame().getTitle(),reservation.getPlayer().getStudentID()));
+    ArrayList<Reservation> reservations = reservationList.getList();
+    for(Reservation element: reservations)
+    {
+      if(element.getGame().getTitle().equals(reservation.getGame().getTitle())
+         && element.getPlayer().equals(reservation.getPlayer()) && element.getStartDate().equals(reservation.getStartDate()))
+      {
+        reservations.remove(element);
+      }
+    }
+    saveReservations(reservationList);
+  }
+
+  public void removeReservationByIndex(int index)
+  {
+    ReservationList reservationList = getReservations();
+    ArrayList<Reservation> reservations = reservationList.getList();
+    reservations.remove(index);
     saveReservations(reservationList);
   }
 

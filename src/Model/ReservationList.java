@@ -45,9 +45,7 @@ public class ReservationList implements Serializable
     for(Reservation element: reservations)
     {
       if(element.getGame().equals(reservation.getGame() )
-          && element.getPlayer().equals(reservation.getPlayer())
-          && element.getStartDate().equals(reservation.getStartDate())
-          && element.getEndDate().equals(reservation.getEndDate()))
+          && element.getPlayer().equals(reservation.getPlayer()))
       {
         reservations.remove(element);
       }
