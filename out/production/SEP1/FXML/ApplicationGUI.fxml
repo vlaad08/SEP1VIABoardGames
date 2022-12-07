@@ -640,7 +640,11 @@
                                           <HBox alignment="BOTTOM_RIGHT" prefHeight="9.0" prefWidth="899.0">
                                              <children>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                                                 <Button fx:id="saveButton_Event" mnemonicParsing="false" onAction="#handleEvent" prefHeight="65.0" prefWidth="143.0" text="Save">
+=======
+                                                <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="143.0" text="Save">
+>>>>>>> Stashed changes
 =======
                                                 <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="143.0" text="Save">
 >>>>>>> Stashed changes
@@ -777,6 +781,7 @@
                                           <HBox alignment="TOP_RIGHT" prefHeight="100.0" prefWidth="200.0">
                                              <children>
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                                                 <Button fx:id="removeButton_Event" mnemonicParsing="false" onAction="#handleEvent" prefHeight="65.0" prefWidth="189.0" text="Remove">
                                                    <font>
                                                       <Font size="30.0" />
@@ -786,6 +791,9 @@
                                                    </HBox.margin>
                                                 </Button>
                                                 <Button fx:id="saveEditButton_Event" mnemonicParsing="false" onAction="#handleEvent" prefHeight="65.0" prefWidth="178.0" text="Save">
+=======
+                                                <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="143.0" text="Save">
+>>>>>>> Stashed changes
 =======
                                                 <Button mnemonicParsing="false" prefHeight="65.0" prefWidth="143.0" text="Save">
 >>>>>>> Stashed changes

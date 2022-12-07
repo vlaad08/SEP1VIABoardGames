@@ -24,7 +24,10 @@ public class ApplicationController
   private  ObservableList<Game> dataBorr_BorrowReserve = FXCollections.observableArrayList();
   private  ObservableList<Game> dataRes_BorrowReserve = FXCollections.observableArrayList();
   private  ObservableList<Integer> dataRatings_Game = FXCollections.observableArrayList();
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
 
 
 
@@ -189,6 +192,7 @@ public class ApplicationController
 
 
 
+
   public void handlerGame (ActionEvent e)
   {
     if (e.getSource()== addSave_Game)
@@ -270,14 +274,20 @@ public class ApplicationController
     updatePlayersArea();
     resetPlayer();
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
     reloadEventListAndDisplay();
 =======
+=======
+>>>>>>> Stashed changes
 
     Integer[] ratings = {1,2,3,4,5};
     dataRatings_Game.clear();
     dataRatings_Game.addAll(ratings);
     giveRating_Game.setItems(dataRatings_Game);
 
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
   }
   public void displayRefreshedGameList()
