@@ -44,7 +44,16 @@ public class ReservationList implements Serializable
 
   public void removeReservation(Reservation reservation)
   {
-    reservations.remove(reservation);
+    for(Reservation element: reservations)
+    {
+      if(element.getGame().equals(reservation.getGame() )
+          && element.getPlayer().equals(reservation.getPlayer())
+          && element.getStartDate().equals(reservation.getStartDate())
+          && element.getEndDate().equals(reservation.getEndDate()))
+      {
+        reservations.remove(element);
+      }
+    }
   }
 
   public ArrayList<Reservation> getByGame(Game game)
