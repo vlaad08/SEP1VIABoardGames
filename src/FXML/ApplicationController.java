@@ -24,11 +24,6 @@ public class ApplicationController
   private  ObservableList<Game> dataBorr_BorrowReserve = FXCollections.observableArrayList();
   private  ObservableList<Game> dataRes_BorrowReserve = FXCollections.observableArrayList();
   private  ObservableList<Integer> dataRatings_Game = FXCollections.observableArrayList();
-<<<<<<< Updated upstream
-
-=======
->>>>>>> Stashed changes
-
 
 
   // Game - Add Game
@@ -273,22 +268,16 @@ public class ApplicationController
     name2.setEditable(true);
     updatePlayersArea();
     resetPlayer();
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
     reloadEventListAndDisplay();
-=======
-=======
->>>>>>> Stashed changes
+
 
     Integer[] ratings = {1,2,3,4,5};
     dataRatings_Game.clear();
     dataRatings_Game.addAll(ratings);
     giveRating_Game.setItems(dataRatings_Game);
 
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
   }
   public void displayRefreshedGameList()
   {
@@ -306,42 +295,52 @@ public class ApplicationController
 
     if(e.getSource() == borrow_BorrowReserve)
     {
-      Player player = modelManager.getPlayerByStudentID(studentIdBorr_BorrowReserve.getText());
-      Game gameSelect = gameBorr_BorrowReserve.getValue();
+      if(studentIdBorr_BorrowReserve.getText() != null && gameBorr_BorrowReserve.getValue() != null && reserveToBorr_BorrowReserve.getValue() != null && hourBorr_BorrowReserve.getText() != null)
+      {
+        Player player = modelManager.getPlayerByStudentID(
+            studentIdBorr_BorrowReserve.getText());
+        Game gameSelect = gameBorr_BorrowReserve.getValue();
 
-      int endDay = reserveToBorr_BorrowReserve.getValue().getDayOfMonth();
-      int endMonth = reserveToBorr_BorrowReserve.getValue().getMonthValue();
-      int endYear = reserveToBorr_BorrowReserve.getValue().getYear();
-      int endHour = Integer.parseInt(hourBorr_BorrowReserve.getText());
-      DateTime end = new DateTime(endYear,endMonth,endDay,endHour);
+        int endDay = reserveToBorr_BorrowReserve.getValue().getDayOfMonth();
+        int endMonth = reserveToBorr_BorrowReserve.getValue().getMonthValue();
+        int endYear = reserveToBorr_BorrowReserve.getValue().getYear();
+        int endHour = Integer.parseInt(hourBorr_BorrowReserve.getText());
+        DateTime end = new DateTime(endYear, endMonth, endDay, endHour);
 
-      modelManager.borrow(player,gameSelect,end);
-
+        modelManager.borrow(player, gameSelect, end);
+      }
+      else {
+        JOptionPane.showMessageDialog(null,"Please fill out all fields!:)", "Missing information", JOptionPane.ERROR_MESSAGE);
+      }
     }
 
     if(e.getSource() == reserve_BorrowReserve)
     {
-      Player player = modelManager.getPlayerByStudentID(studentIdRes_BorrowReserve.getText());
-      Game gameSelect = gameRes_BorrowReserve.getValue();
+      if(studentIdRes_BorrowReserve != null && gameRes_BorrowReserve != null && fromRes_BorrowReserve != null && toRes_BorrowReserve != null &&
+          startHour_BorrowReserve != null && endHour_BorrowReserve != null)
+      {
+        Player player = modelManager.getPlayerByStudentID(
+            studentIdRes_BorrowReserve.getText());
+        Game gameSelect = gameRes_BorrowReserve.getValue();
 
-      int startDay = fromRes_BorrowReserve.getValue().getDayOfMonth();
-      int startMonth = fromRes_BorrowReserve.getValue().getMonthValue();
-      int startYear = fromRes_BorrowReserve.getValue().getYear();
-      int startHour = Integer.parseInt(startHour_BorrowReserve.getText());
-      DateTime start = new DateTime(startDay,startMonth,startYear,startHour);
+        int startDay = fromRes_BorrowReserve.getValue().getDayOfMonth();
+        int startMonth = fromRes_BorrowReserve.getValue().getMonthValue();
+        int startYear = fromRes_BorrowReserve.getValue().getYear();
+        int startHour = Integer.parseInt(startHour_BorrowReserve.getText());
+        DateTime start = new DateTime(startDay, startMonth, startYear, startHour);
 
+        int endDay = toRes_BorrowReserve.getValue().getDayOfMonth();
+        int endMonth = toRes_BorrowReserve.getValue().getMonthValue();
+        int endYear = toRes_BorrowReserve.getValue().getYear();
+        int endHour = Integer.parseInt(endHour_BorrowReserve.getText());
+        DateTime end = new DateTime(endDay, endMonth, endYear, endHour);
 
-      int endDay = toRes_BorrowReserve.getValue().getDayOfMonth();
-      int endMonth = toRes_BorrowReserve.getValue().getMonthValue();
-      int endYear = toRes_BorrowReserve.getValue().getYear();
-      int endHour = Integer.parseInt(endHour_BorrowReserve.getText());
-      DateTime end = new DateTime(endDay,endMonth,endYear,endHour);
-
-      modelManager.reserve(player,gameSelect,start,end);
-
+        modelManager.reserve(player, gameSelect, start, end);
+      }
+      else {
+        JOptionPane.showMessageDialog(null,"PLease fill out all fields!:)", "Missing information", JOptionPane.ERROR_MESSAGE);
+      }
     }
-
-
   }
 
   public void displayRefreshedReservationList()
