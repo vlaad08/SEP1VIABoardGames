@@ -52,8 +52,6 @@ public class Reservation implements Serializable
     return player;
   }
 
-<<<<<<< Updated upstream
-=======
   public boolean equals(Object obj)
   {
     try{
@@ -71,7 +69,6 @@ public class Reservation implements Serializable
     return false;
   }
 
->>>>>>> Stashed changes
   public String toString()
   {
     return "Reservation: player: " + player + ", game: " + game + ", " + startDate + " - " + endDate + ". Is borrowed? " + isBorrow();

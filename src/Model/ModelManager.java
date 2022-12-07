@@ -320,13 +320,19 @@ public class ModelManager
   {
     ReservationList reservationList = getReservations();
     ArrayList<Reservation> reservations = reservationList.getList();
-    for(Reservation element: reservations)
+    try
     {
-      if(element.getGame().equals(getGame(gameTitle)) &&
-          element.getPlayer().equals(getPlayerByStudentID(studentID)))
+      for(Reservation element: reservations)
       {
-        return element;
+        if(element.getGame().equals(getGame(gameTitle)) &&
+            element.getPlayer().equals(getPlayerByStudentID(studentID)))
+        {
+          return element;
+        }
       }
+    } catch (NullPointerException e)
+    {
+      e.fillInStackTrace();
     }
     return null;
   }

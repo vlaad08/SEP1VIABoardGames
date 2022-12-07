@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-image: url(&quot;VIABoardGamesWebsite/images/VIALogo.png&quot;);" xml="http://javafx.com/javafx/19" xml:fx="http://javafx.com/fxml/1" fx:controller="FXML.ApplicationController">
+<FlowPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" style="-fx-background-image: url(&quot;VIABoardGamesWebsite/images/VIALogo.png&quot;);" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FXML.ApplicationController">
    <children>
       <TabPane prefHeight="600.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
          <tabs>
@@ -216,12 +216,12 @@
                                  <children>
                                     <FlowPane alignment="BOTTOM_CENTER" prefHeight="61.0" prefWidth="901.0">
                                        <children>
-                                          <TextField alignment="CENTER" editable="false" prefHeight="33.0" prefWidth="93.0" style="-fx-background-color: none;" text="Game:">
+                                          <TextField alignment="CENTER" editable="false" prefHeight="57.0" prefWidth="122.0" style="-fx-background-color: none;" text="Game:">
                                              <FlowPane.margin>
                                                 <Insets bottom="10.0" />
                                              </FlowPane.margin>
                                              <font>
-                                                <Font size="22.0" />
+                                                <Font size="30.0" />
                                              </font>
                                           </TextField>
                                           <ComboBox fx:id="removeGames_Game" prefHeight="32.0" prefWidth="150.0" promptText="Choose a game">
@@ -453,6 +453,37 @@
                                           </HBox>
                                        </children>
                                     </VBox>
+                                 </children>
+                              </FlowPane>
+                           </content>
+                        </Tab>
+                        <Tab text="Remove Reservation / Borrow">
+                           <content>
+                              <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <FlowPane alignment="CENTER" prefHeight="148.0" prefWidth="900.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reservation / Borrow:">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                          </Text>
+                                          <ComboBox fx:id="reservationsToRemove_BorrowReserve" prefHeight="26.0" prefWidth="168.0" promptText="Choose Reservation / Borrow">
+                                             <FlowPane.margin>
+                                                <Insets left="15.0" />
+                                             </FlowPane.margin>
+                                          </ComboBox>
+                                       </children>
+                                    </FlowPane>
+                                    <FlowPane alignment="CENTER_RIGHT" prefHeight="45.0" prefWidth="740.0">
+                                       <children>
+                                          <Button fx:id="removeReservation_BorrowReserve" contentDisplay="CENTER" mnemonicParsing="false" onAction="#handlerBorrowReserve" prefHeight="65.0" prefWidth="150.0" text="Remove">
+                                             <font>
+                                                <Font size="30.0" />
+                                             </font>
+                                          </Button>
+                                       </children>
+                                    </FlowPane>
                                  </children>
                               </FlowPane>
                            </content>

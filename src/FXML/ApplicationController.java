@@ -20,6 +20,7 @@ public class ApplicationController
   private  ObservableList<Game> gameData= FXCollections.observableArrayList();
   private  ObservableList<Game> dataBorr_BorrowReserve = FXCollections.observableArrayList();
   private  ObservableList<Game> dataRes_BorrowReserve = FXCollections.observableArrayList();
+  private  ObservableList<Reservation> reservationData = FXCollections.observableArrayList();
 
 
 
@@ -57,6 +58,9 @@ public class ApplicationController
   @FXML private Button reserve_BorrowReserve;
   @FXML private TextField startHour_BorrowReserve;
   @FXML private TextField endHour_BorrowReserve;
+
+  @FXML private Button removeReservation_BorrowReserve;
+  @FXML private ComboBox<Reservation> reservationsToRemove_BorrowReserve;
 
   @FXML private TextArea reservationList_BorrowReserve;
 
@@ -280,7 +284,11 @@ public class ApplicationController
   {
     ArrayList<Player> players = modelManager.getAllPlayers().getList();
     ArrayList<Game> collection = modelManager.getAllGames().getList();
+    ArrayList<Reservation> reservations = modelManager.getAllReservations().getList();
 
+    reservationData.clear();
+    reservationData.addAll(reservations);
+    reservationsToRemove_BorrowReserve.setItems(reservationData);
 
     playerData.clear();
     playerData.addAll(players);
@@ -330,42 +338,76 @@ public class ApplicationController
 
     if(e.getSource() == borrow_BorrowReserve)
     {
-      Player player = modelManager.getPlayerByStudentID(studentIdBorr_BorrowReserve.getText());
-      Game gameSelect = gameBorr_BorrowReserve.getValue();
+      if(studentIdBorr_BorrowReserve.getText() != null && gameBorr_BorrowReserve.getValue() != null && reserveToBorr_BorrowReserve.getValue() != null && hourBorr_BorrowReserve.getText() != null)
+      {
+        Player player = modelManager.getPlayerByStudentID(
+            studentIdBorr_BorrowReserve.getText());
+        Game gameSelect = gameBorr_BorrowReserve.getValue();
 
-      int endDay = reserveToBorr_BorrowReserve.getValue().getDayOfMonth();
-      int endMonth = reserveToBorr_BorrowReserve.getValue().getMonthValue();
-      int endYear = reserveToBorr_BorrowReserve.getValue().getYear();
-      int endHour = Integer.parseInt(hourBorr_BorrowReserve.getText());
-      DateTime end = new DateTime(endYear,endMonth,endDay,endHour);
+        int endDay = reserveToBorr_BorrowReserve.getValue().getDayOfMonth();
+        int endMonth = reserveToBorr_BorrowReserve.getValue().getMonthValue();
+        int endYear = reserveToBorr_BorrowReserve.getValue().getYear();
+        int endHour = Integer.parseInt(hourBorr_BorrowReserve.getText());
+        DateTime end = new DateTime(endYear, endMonth, endDay, endHour);
 
-      modelManager.borrow(player,gameSelect,end);
+        modelManager.borrow(player, gameSelect, end);
 
+        JOptionPane.showMessageDialog(null,
+            gameSelect + "game has been borrowed to: " + player + "till: "
+                + endHour + "hour", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
+      }
+      else {
+        JOptionPane.showMessageDialog(null,"Please fill out all fields!:)", "Missing information", JOptionPane.ERROR_MESSAGE);
+      }
     }
 
     if(e.getSource() == reserve_BorrowReserve)
     {
-      Player player = modelManager.getPlayerByStudentID(studentIdRes_BorrowReserve.getText());
-      Game gameSelect = gameRes_BorrowReserve.getValue();
+      if(studentIdRes_BorrowReserve.getText() != null && gameRes_BorrowReserve.getValue() != null && fromRes_BorrowReserve.getValue() != null && toRes_BorrowReserve.getValue() != null &&
+          startHour_BorrowReserve.getText() != null && endHour_BorrowReserve.getText() != null)
+      {
+        Player player = modelManager.getPlayerByStudentID(
+            studentIdRes_BorrowReserve.getText());
+        Game gameSelect = gameRes_BorrowReserve.getValue();
 
-      int startDay = fromRes_BorrowReserve.getValue().getDayOfMonth();
-      int startMonth = fromRes_BorrowReserve.getValue().getMonthValue();
-      int startYear = fromRes_BorrowReserve.getValue().getYear();
-      int startHour = Integer.parseInt(startHour_BorrowReserve.getText());
-      DateTime start = new DateTime(startDay,startMonth,startYear,startHour);
+        int startDay = fromRes_BorrowReserve.getValue().getDayOfMonth();
+        int startMonth = fromRes_BorrowReserve.getValue().getMonthValue();
+        int startYear = fromRes_BorrowReserve.getValue().getYear();
+        int startHour = Integer.parseInt(startHour_BorrowReserve.getText());
+        DateTime start = new DateTime(startDay, startMonth, startYear, startHour);
 
+        int endDay = toRes_BorrowReserve.getValue().getDayOfMonth();
+        int endMonth = toRes_BorrowReserve.getValue().getMonthValue();
+        int endYear = toRes_BorrowReserve.getValue().getYear();
+        int endHour = Integer.parseInt(endHour_BorrowReserve.getText());
+        DateTime end = new DateTime(endDay, endMonth, endYear, endHour);
 
-      int endDay = toRes_BorrowReserve.getValue().getDayOfMonth();
-      int endMonth = toRes_BorrowReserve.getValue().getMonthValue();
-      int endYear = toRes_BorrowReserve.getValue().getYear();
-      int endHour = Integer.parseInt(endHour_BorrowReserve.getText());
-      DateTime end = new DateTime(endDay,endMonth,endYear,endHour);
+        modelManager.reserve(player, gameSelect, start, end);
 
-      modelManager.reserve(player,gameSelect,start,end);
+        JOptionPane.showMessageDialog(null,gameSelect + "game has been borrowed to: " + player + "from: "
+                + start + "till: " + end ,"Confirmation"
+            , JOptionPane.INFORMATION_MESSAGE);
+      }
+      else {
+        JOptionPane.showMessageDialog(null,"Please fill out all fields!:)", "Missing information", JOptionPane.ERROR_MESSAGE);
+      }
 
     }
 
+    if (e.getSource() == removeReservation_BorrowReserve)
+    {
+      try{
+        Reservation reservationToRemove=modelManager.getReservation(reservationsToRemove_BorrowReserve.getValue().getGame().getTitle(),reservationsToRemove_BorrowReserve.getValue().getPlayer().getStudentID());
+        modelManager.removeReservation(reservationToRemove);
+        System.out.println(reservationToRemove);
+        initialize();
+        displayRefreshedReservationList();
+      }catch (RuntimeException f)
+      {
+        f.fillInStackTrace();
+      }
 
+    }
   }
 
   public void displayRefreshedReservationList()
