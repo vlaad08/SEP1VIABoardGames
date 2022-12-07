@@ -309,6 +309,28 @@ public class ModelManager
     saveReservations(reservationList);
   }
 
+  public void removeReservation(Reservation reservation)
+  {
+    ReservationList reservationList = getAllReservations();
+    reservationList.removeReservation(getReservation(reservation.getGame().getTitle(),reservation.getPlayer().getStudentID()));
+    saveReservations(reservationList);
+  }
+
+  public Reservation getReservation(String gameTitle, String studentID)
+  {
+    ReservationList reservationList = getReservations();
+    ArrayList<Reservation> reservations = reservationList.getList();
+    for(Reservation element: reservations)
+    {
+      if(element.getGame().equals(getGame(gameTitle)) &&
+          element.getPlayer().equals(getPlayerByStudentID(studentID)))
+      {
+        return element;
+      }
+    }
+    return null;
+  }
+
   public void addEvent(String title, String description, String image, DateTime startDate, DateTime endDate)
   {
     EventList eventList = getAllEvents();
