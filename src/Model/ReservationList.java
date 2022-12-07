@@ -40,8 +40,6 @@ public class ReservationList implements Serializable
     }
   }
 
-
-
   public void removeReservation(Reservation reservation)
   {
     for(Reservation element: reservations)
