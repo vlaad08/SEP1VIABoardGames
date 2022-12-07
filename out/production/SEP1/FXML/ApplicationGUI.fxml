@@ -511,6 +511,43 @@
                               </FlowPane>
                            </content>
                         </Tab>
+<<<<<<< Updated upstream
+=======
+                        <Tab text="Remove Reservation">
+                           <content>
+                              <FlowPane alignment="CENTER_LEFT" prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <FlowPane alignment="CENTER" prefHeight="176.0" prefWidth="899.0">
+                                       <children>
+                                          <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reservation / Borrow">
+                                             <font>
+                                                <Font size="29.0" />
+                                             </font>
+                                          </Text>
+                                          <ComboBox fx:id="reservationsRemove_BorrowReserve" prefHeight="30.0" prefWidth="150.0" promptText="Choose Reservation / Borrow">
+                                             <FlowPane.margin>
+                                                <Insets left="25.0" />
+                                             </FlowPane.margin>
+                                          </ComboBox>
+                                       </children>
+                                    </FlowPane>
+                                    <FlowPane alignment="TOP_RIGHT" prefHeight="44.0" prefWidth="812.0">
+                                       <children>
+                                          <Button fx:id="removeButton_BorrowReserve" mnemonicParsing="false" onAction="#handlerBorrowReserve" prefHeight="46.0" prefWidth="149.0" text="Remove">
+                                             <font>
+                                                <Font size="22.0" />
+                                             </font>
+                                             <FlowPane.margin>
+                                                <Insets />
+                                             </FlowPane.margin>
+                                          </Button>
+                                       </children>
+                                    </FlowPane>
+                                 </children>
+                              </FlowPane>
+                           </content>
+                        </Tab>
+>>>>>>> Stashed changes
                         <Tab onSelectionChanged="#displayRefreshedReservationList" text="Reservation List">
                            <content>
                               <FlowPane prefHeight="200.0" prefWidth="200.0">

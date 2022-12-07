@@ -217,6 +217,7 @@ public class ApplicationController
       initialize();
       JOptionPane.showMessageDialog(null,"The game was successfully removed","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
     }
+<<<<<<< Updated upstream
     if(e.getSource() == saveRating_Game)
     {
       Game game = chooseGameToRate_Game.getValue();
@@ -225,6 +226,8 @@ public class ApplicationController
 
       JOptionPane.showMessageDialog(null,"You rated " +game.getTitle() +" a solid: " +rating,"Confirmation",JOptionPane.INFORMATION_MESSAGE);
     }
+=======
+>>>>>>> Stashed changes
   }
 
 
@@ -301,6 +304,7 @@ public class ApplicationController
             studentIdBorr_BorrowReserve.getText());
         Game gameSelect = gameBorr_BorrowReserve.getValue();
 
+<<<<<<< Updated upstream
         int endDay = reserveToBorr_BorrowReserve.getValue().getDayOfMonth();
         int endMonth = reserveToBorr_BorrowReserve.getValue().getMonthValue();
         int endYear = reserveToBorr_BorrowReserve.getValue().getYear();
@@ -312,10 +316,14 @@ public class ApplicationController
       else {
         JOptionPane.showMessageDialog(null,"Please fill out all fields!:)", "Missing information", JOptionPane.ERROR_MESSAGE);
       }
+=======
+      modelManager.borrow(player,gameSelect,end);
+>>>>>>> Stashed changes
     }
 
     if(e.getSource() == reserve_BorrowReserve)
     {
+<<<<<<< Updated upstream
       if(studentIdRes_BorrowReserve != null && gameRes_BorrowReserve != null && fromRes_BorrowReserve != null && toRes_BorrowReserve != null &&
           startHour_BorrowReserve != null && endHour_BorrowReserve != null)
       {
@@ -340,6 +348,44 @@ public class ApplicationController
       else {
         JOptionPane.showMessageDialog(null,"PLease fill out all fields!:)", "Missing information", JOptionPane.ERROR_MESSAGE);
       }
+=======
+      Player player = modelManager.getPlayerByStudentID(studentIdRes_BorrowReserve.getText());
+      Game gameSelect = gameRes_BorrowReserve.getValue();
+
+      int startDay = fromRes_BorrowReserve.getValue().getDayOfMonth();
+      int startMonth = fromRes_BorrowReserve.getValue().getMonthValue();
+      int startYear = fromRes_BorrowReserve.getValue().getYear();
+      int startHour = Integer.parseInt(startHour_BorrowReserve.getText());
+      DateTime start = new DateTime(startDay,startMonth,startYear,startHour);
+
+
+      int endDay = toRes_BorrowReserve.getValue().getDayOfMonth();
+      int endMonth = toRes_BorrowReserve.getValue().getMonthValue();
+      int endYear = toRes_BorrowReserve.getValue().getYear();
+      int endHour = Integer.parseInt(endHour_BorrowReserve.getText());
+      DateTime end = new DateTime(endDay,endMonth,endYear,endHour);
+
+      modelManager.reserve(player,gameSelect,start,end);
+    }
+    if (e.getSource()==removeButton_BorrowReserve)
+    {
+      try
+      {
+        Reservation reservationToRemove=reservationsRemove_BorrowReserve.getValue();
+        modelManager.removeReservation(reservationToRemove);
+        System.out.println(reservationToRemove);
+        initialize();
+//        JOptionPane.showMessageDialog(null,"The reservation was successfully removed","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
+
+      }
+      catch (NullPointerException f)
+      {
+        f.fillInStackTrace();
+      }
+
+
+      initialize();
+>>>>>>> Stashed changes
     }
   }
 

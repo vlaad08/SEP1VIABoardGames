@@ -44,6 +44,7 @@ public class ReservationList implements Serializable
 
   public void removeReservation(Reservation reservation)
   {
+<<<<<<< Updated upstream
     for(Reservation element: reservations)
     {
       if(element.getGame().equals(reservation.getGame() )
@@ -54,6 +55,14 @@ public class ReservationList implements Serializable
         reservations.remove(element);
       }
     }
+=======
+    reservations.removeIf(
+        element -> element.getGame().equals(reservation.getGame())
+            && element.getPlayer().equals(reservation.getPlayer())
+            && element.getStartDate().equals(reservation.getStartDate())
+            && element.getEndDate().equals(reservation.getEndDate())
+            && element.isBorrow() == reservation.isBorrow());
+>>>>>>> Stashed changes
   }
 
   public ArrayList<Reservation> getByGame(Game game)
