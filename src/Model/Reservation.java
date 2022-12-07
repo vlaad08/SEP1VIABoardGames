@@ -52,26 +52,6 @@ public class Reservation implements Serializable
     return player;
   }
 
-<<<<<<< Updated upstream
-=======
-  public boolean equals(Object obj)
-  {
-    try{
-      if (getClass() != obj.getClass())
-      {
-        return false;
-      }
-      Reservation other=(Reservation) obj;
-      return other.startDate.equals(startDate)&&other.endDate.equals(endDate)&&other.borrow==borrow&&other.game.equals(game)&&other.player.equals(player);
-    }
-    catch (NullPointerException e)
-    {
-      e.fillInStackTrace();
-    }
-    return false;
-  }
-
->>>>>>> Stashed changes
   public String toString()
   {
     return "Reservation: player: " + player + ", game: " + game + ", " + startDate + " - " + endDate + ". Is borrowed? " + isBorrow();

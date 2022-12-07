@@ -20,7 +20,8 @@ public class ApplicationController
   private  ObservableList<Game> gameData= FXCollections.observableArrayList();
   private  ObservableList<Game> dataBorr_BorrowReserve = FXCollections.observableArrayList();
   private  ObservableList<Game> dataRes_BorrowReserve = FXCollections.observableArrayList();
-  private  ObservableList<Integer> dataRatings_Game = FXCollections.observableArrayList();
+
+
 
   // Game - Add Game
   @FXML private ComboBox<Player> addOwners_Game;
@@ -38,12 +39,6 @@ public class ApplicationController
   @FXML private Button removeSave_Game;
   //Game - Game List
   @FXML private TextArea displayGames_Game;
-
-  @FXML private TextField chooseGameToRateText_Game;
-  @FXML private TextField giveRatingText_Game;
-  @FXML private ComboBox<Game> chooseGameToRate_Game;
-  @FXML private ComboBox<Integer> giveRating_Game;
-  @FXML private Button saveRating_Game;
 
 
   @FXML private TextField studentIdBorr_BorrowReserve;
@@ -77,8 +72,6 @@ public class ApplicationController
   @FXML private Button addGuest_Player;
 
 
-
-
   public void handlerGame (ActionEvent e)
   {
     if (e.getSource()== addSave_Game)
@@ -108,16 +101,6 @@ public class ApplicationController
       initialize();
       JOptionPane.showMessageDialog(null,"The game was successfully removed","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
     }
-
-    if(e.getSource() == saveRating_Game)
-    {
-      Game game = chooseGameToRate_Game.getValue();
-      int rating = giveRating_Game.getValue();
-      modelManager.rateAGame(game,rating);
-
-      JOptionPane.showMessageDialog(null,"You rated " +game.getTitle() +" a solid: " +rating,"Confirmation",JOptionPane.INFORMATION_MESSAGE);
-    }
-
   }
 
   public void initialize()
@@ -134,7 +117,6 @@ public class ApplicationController
     gameData.addAll(collection);
     editGames_Game.setItems(gameData);
     removeGames_Game.setItems(gameData);
-    chooseGameToRate_Game.setItems(gameData);
 
     ArrayList<Game> collection1 = modelManager.getAllGames().getList();
     for (int i = 0; i < collection1.size(); i++)
@@ -153,17 +135,6 @@ public class ApplicationController
     name2.setEditable(true);
     updatePlayersArea();
     resetPlayer();
-
-
-    reloadEventListAndDisplay();
-
-
-    Integer[] ratings = {1,2,3,4,5};
-    dataRatings_Game.clear();
-    dataRatings_Game.addAll(ratings);
-    giveRating_Game.setItems(dataRatings_Game);
-
-
   }
   public void displayRefreshedGameList()
   {
@@ -181,24 +152,14 @@ public class ApplicationController
 
     if(e.getSource() == borrow_BorrowReserve)
     {
-      if(studentIdBorr_BorrowReserve.getText() != null && gameBorr_BorrowReserve.getValue() != null && reserveToBorr_BorrowReserve.getValue() != null && hourBorr_BorrowReserve.getText() != null)
-      {
-        Player player = modelManager.getPlayerByStudentID(
-            studentIdBorr_BorrowReserve.getText());
-        Game gameSelect = gameBorr_BorrowReserve.getValue();
+      Player player = modelManager.getPlayerByStudentID(studentIdBorr_BorrowReserve.getText());
+      Game gameSelect = gameBorr_BorrowReserve.getValue();
 
-
-        int endDay = reserveToBorr_BorrowReserve.getValue().getDayOfMonth();
-        int endMonth = reserveToBorr_BorrowReserve.getValue().getMonthValue();
-        int endYear = reserveToBorr_BorrowReserve.getValue().getYear();
-        int endHour = Integer.parseInt(hourBorr_BorrowReserve.getText());
-        DateTime end = new DateTime(endYear, endMonth, endDay, endHour);
-
-        modelManager.borrow(player, gameSelect, end);
-      }
-      else {
-        JOptionPane.showMessageDialog(null,"Please fill out all fields!:)", "Missing information", JOptionPane.ERROR_MESSAGE);
-      }
+      int endDay = reserveToBorr_BorrowReserve.getValue().getDayOfMonth();
+      int endMonth = reserveToBorr_BorrowReserve.getValue().getMonthValue();
+      int endYear = reserveToBorr_BorrowReserve.getValue().getYear();
+      int endHour = Integer.parseInt(hourBorr_BorrowReserve.getText());
+      DateTime end = new DateTime(endYear,endMonth,endDay,endHour);
 
       modelManager.borrow(player,gameSelect,end);
 
@@ -206,32 +167,6 @@ public class ApplicationController
 
     if(e.getSource() == reserve_BorrowReserve)
     {
-
-      if(studentIdRes_BorrowReserve != null && gameRes_BorrowReserve != null && fromRes_BorrowReserve != null && toRes_BorrowReserve != null &&
-          startHour_BorrowReserve != null && endHour_BorrowReserve != null)
-      {
-        Player player = modelManager.getPlayerByStudentID(
-            studentIdRes_BorrowReserve.getText());
-        Game gameSelect = gameRes_BorrowReserve.getValue();
-
-        int startDay = fromRes_BorrowReserve.getValue().getDayOfMonth();
-        int startMonth = fromRes_BorrowReserve.getValue().getMonthValue();
-        int startYear = fromRes_BorrowReserve.getValue().getYear();
-        int startHour = Integer.parseInt(startHour_BorrowReserve.getText());
-        DateTime start = new DateTime(startDay, startMonth, startYear, startHour);
-
-        int endDay = toRes_BorrowReserve.getValue().getDayOfMonth();
-        int endMonth = toRes_BorrowReserve.getValue().getMonthValue();
-        int endYear = toRes_BorrowReserve.getValue().getYear();
-        int endHour = Integer.parseInt(endHour_BorrowReserve.getText());
-        DateTime end = new DateTime(endDay, endMonth, endYear, endHour);
-
-        modelManager.reserve(player, gameSelect, start, end);
-      }
-      else {
-        JOptionPane.showMessageDialog(null,"PLease fill out all fields!:)", "Missing information", JOptionPane.ERROR_MESSAGE);
-      }
-
       Player player = modelManager.getPlayerByStudentID(studentIdRes_BorrowReserve.getText());
       Game gameSelect = gameRes_BorrowReserve.getValue();
 
@@ -249,27 +184,10 @@ public class ApplicationController
       DateTime end = new DateTime(endDay,endMonth,endYear,endHour);
 
       modelManager.reserve(player,gameSelect,start,end);
-    }
-    if (e.getSource()==removeButton_BorrowReserve)
-    {
-      try
-      {
-        Reservation reservationToRemove=reservationsRemove_BorrowReserve.getValue();
-        modelManager.removeReservation(reservationToRemove);
-        System.out.println(reservationToRemove);
-        initialize();
-//        JOptionPane.showMessageDialog(null,"The reservation was successfully removed","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
-
-      }
-      catch (NullPointerException f)
-      {
-        f.fillInStackTrace();
-      }
-
-
-      initialize();
 
     }
+
+
   }
 
   public void displayRefreshedReservationList()
