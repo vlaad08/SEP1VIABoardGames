@@ -8,9 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import javax.swing.*;
-import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 
 public class ApplicationController
 {
@@ -20,10 +18,8 @@ public class ApplicationController
 
   private  ObservableList<Player> playerData= FXCollections.observableArrayList();
   private  ObservableList<Game> gameData= FXCollections.observableArrayList();
-  private  ObservableList<Event> eventData= FXCollections.observableArrayList();
   private  ObservableList<Game> dataBorr_BorrowReserve = FXCollections.observableArrayList();
   private  ObservableList<Game> dataRes_BorrowReserve = FXCollections.observableArrayList();
-
 
 
 
@@ -75,111 +71,6 @@ public class ApplicationController
   @FXML private Button addMember_Player;
   @FXML private Button addGuest_Player;
 
-  @FXML private TextField titleInput_Event;
-  @FXML private TextArea descriptionInput_Event;
-  @FXML private TextField imageURLInput_Event;
-  @FXML private DatePicker startDateInput_Event;
-  @FXML private DatePicker endDateInput_Event;
-  @FXML private Button saveButton_Event;
-  @FXML private TextArea eventsDisplayed;
-  @FXML private ComboBox<Event> eventComboBox;
-
-  @FXML private TextField titleInputEdit_Event;
-  @FXML private TextArea descriptionInputEdit_Event;
-  @FXML private TextField imageURLEDIT_Event;
-  @FXML private DatePicker startDateEdit_Event;
-  @FXML private DatePicker endDateEdit_Event;
-  @FXML private Button saveEditButton_Event;
-  @FXML private Button removeButton_Event;
-
-  public void handleEvent(ActionEvent e)
-  {
-    if(e.getSource() == saveButton_Event)
-    {
-      try
-      {
-        String title = titleInput_Event.getText();
-        String description = descriptionInput_Event.getText();
-        String imageURL = imageURLInput_Event.getText();
-        int startYear = startDateInput_Event.getValue().getYear(), startMonth = startDateInput_Event.getValue().getMonthValue(), startDay = startDateInput_Event.getValue().getDayOfMonth();
-        int endYear = endDateInput_Event.getValue().getYear(), endMonth = endDateInput_Event.getValue().getMonthValue(), endDay = endDateInput_Event.getValue().getDayOfMonth();
-        modelManager.addEvent(title, description, imageURL, new DateTime(startYear, startMonth, startDay), new DateTime(endYear, endMonth, endDay));
-        JOptionPane.showMessageDialog(null,"The event was created","Confirmation message",
-            JOptionPane.INFORMATION_MESSAGE);
-        titleInput_Event.setText("");
-        descriptionInput_Event.setText("");
-        imageURLInput_Event.setText("");
-        startDateInput_Event.setValue(null);
-        endDateInput_Event.setValue(null);
-        initialize();
-        reloadEventListAndDisplay();
-      }
-      catch (NullPointerException error)
-      {
-        error.fillInStackTrace();
-      }
-
-    }
-    if(e.getSource() == saveEditButton_Event)
-    {
-      try
-      {
-        Event oldEvent = eventComboBox.getSelectionModel().getSelectedItem();
-        modelManager.removeEvent(oldEvent);
-
-        String title = titleInputEdit_Event.getText();
-        String description = descriptionInputEdit_Event.getText();
-        String imageURL = imageURLEDIT_Event.getText();
-        int startYear = startDateEdit_Event.getValue().getYear(), startMonth = startDateEdit_Event.getValue().getMonthValue(), startDay = startDateEdit_Event.getValue().getDayOfMonth();
-        int endYear = endDateEdit_Event.getValue().getYear(), endMonth = endDateEdit_Event.getValue().getMonthValue(), endDay = endDateEdit_Event.getValue().getDayOfMonth();
-
-        modelManager.addEvent(title, description, imageURL, new DateTime(startYear, startMonth, startDay), new DateTime(endYear, endMonth, endDay));
-
-        JOptionPane.showMessageDialog(null,"The event was successfully edited","Confirmation message",
-            JOptionPane.INFORMATION_MESSAGE);
-        initialize();
-        reloadEventListAndDisplay();
-
-        titleInputEdit_Event.setText("");
-        descriptionInputEdit_Event.setText("");
-        imageURLEDIT_Event.setText("");
-        startDateEdit_Event.setValue(null);
-        endDateEdit_Event.setValue(null);
-      }
-      catch (NullPointerException error)
-      {
-        error.fillInStackTrace();
-      }
-    }
-    if(e.getSource() == removeButton_Event)
-    {
-      try{
-
-        Event oldEvent = eventComboBox.getSelectionModel().getSelectedItem();
-        modelManager.removeEvent(oldEvent);
-        reloadEventListAndDisplay();
-        initialize();
-
-        JOptionPane.showMessageDialog(null,"The event was successfully removed","Confirmation message",
-            JOptionPane.INFORMATION_MESSAGE);
-
-      }
-      catch (RuntimeException h)
-      {
-        h.fillInStackTrace();
-      }
-
-    }
-  }
-
-  public void reloadEventListAndDisplay()
-  {
-    EventList eventList = modelManager.getAllEvents();
-    String text = eventList.toString();
-    eventsDisplayed.setText(text);
-  }
-
-
 
   public void handlerGame (ActionEvent e)
   {
@@ -212,18 +103,10 @@ public class ApplicationController
     }
   }
 
-
-
-
   public void initialize()
   {
     ArrayList<Player> players = modelManager.getAllPlayers().getList();
     ArrayList<Game> collection = modelManager.getAllGames().getList();
-    ArrayList<Event> events = modelManager.getAllEvents().getList();
-
-    eventData.clear();
-    eventData.addAll(events);
-    eventComboBox.setItems(eventData);
 
     playerData.clear();
     playerData.addAll(players);
@@ -252,7 +135,6 @@ public class ApplicationController
     name2.setEditable(true);
     updatePlayersArea();
     resetPlayer();
-    reloadEventListAndDisplay();
   }
   public void displayRefreshedGameList()
   {
