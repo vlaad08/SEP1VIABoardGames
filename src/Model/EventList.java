@@ -81,6 +81,11 @@ public class EventList implements Serializable
    }
 
 
+   public ArrayList<Event> getList()
+   {
+     return events;
+   }
+
 }
 
 
