@@ -21,6 +21,7 @@ public class ApplicationController
   private  ObservableList<Game> dataBorr_BorrowReserve = FXCollections.observableArrayList();
   private  ObservableList<Game> dataRes_BorrowReserve = FXCollections.observableArrayList();
   private  ObservableList<Reservation> reservationData = FXCollections.observableArrayList();
+  private  ObservableList<Integer> ratingData = FXCollections.observableArrayList();
 
 
 
@@ -42,6 +43,9 @@ public class ApplicationController
   //Game - Game List
   @FXML private TextArea displayGames_Game;
 
+  @FXML private ComboBox<Game> ratingTabGameComboBox;
+  @FXML private ComboBox<Integer> ratingTabRatingComboBox;
+  @FXML private Button ratingTabSaveComboBox;
 
   @FXML private TextField studentIdBorr_BorrowReserve;
   @FXML private ComboBox<Game> gameBorr_BorrowReserve;
@@ -275,6 +279,15 @@ public class ApplicationController
 
       JOptionPane.showMessageDialog(null,"The game was successfully removed","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
     }
+
+    if(e.getSource() == ratingTabSaveComboBox)
+    {
+      Game game = ratingTabGameComboBox.getValue();
+      int rating = ratingTabRatingComboBox.getValue();
+      game.addRating(rating);
+      System.out.println(game);
+    }
+
   }
 
 
@@ -299,6 +312,7 @@ public class ApplicationController
     gameData.addAll(collection);
     editGames_Game.setItems(gameData);
     removeGames_Game.setItems(gameData);
+    ratingTabGameComboBox.setItems(gameData);
 
     ArrayList<Game> collection1 = modelManager.getAllGames().getList();
     for (int i = 0; i < collection1.size(); i++)
@@ -319,6 +333,10 @@ public class ApplicationController
     resetPlayer();
     reloadEventListAndDisplay();
     refreshComboEvent();
+
+    Integer[] ratings = {1,2,3,4,5};
+    ratingData.addAll(ratings);
+    ratingTabRatingComboBox.setItems(ratingData);
   }
   public void displayRefreshedGameList()
   {

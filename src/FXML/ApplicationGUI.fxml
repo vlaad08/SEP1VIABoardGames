@@ -259,7 +259,7 @@
                                                 <Insets bottom="15.0" />
                                              </FlowPane.margin>
                                           </Text>
-                                          <ComboBox prefWidth="150.0" promptText="Choose a game">
+                                          <ComboBox fx:id="ratingTabGameComboBox" prefWidth="150.0" promptText="Choose a game">
                                              <FlowPane.margin>
                                                 <Insets bottom="15.0" left="20.0" />
                                              </FlowPane.margin>
@@ -276,7 +276,7 @@
                                                 <Insets top="15.0" />
                                              </FlowPane.margin>
                                           </Text>
-                                          <ComboBox prefHeight="26.0" prefWidth="150.0" promptText="Choose rating">
+                                          <ComboBox fx:id="ratingTabRatingComboBox" prefHeight="26.0" prefWidth="150.0" promptText="Choose rating">
                                              <FlowPane.margin>
                                                 <Insets left="16.0" top="15.0" />
                                              </FlowPane.margin>
@@ -285,7 +285,7 @@
                                     </FlowPane>
                                     <FlowPane alignment="TOP_CENTER" prefHeight="200.0" prefWidth="901.0">
                                        <children>
-                                          <Button fx:id="addSave_Game1" mnemonicParsing="false" onAction="#handlerGame" prefHeight="43.0" prefWidth="76.0" text="Save">
+                                          <Button fx:id="ratingTabSaveComboBox" mnemonicParsing="false" onAction="#handlerGame" prefHeight="43.0" prefWidth="76.0" text="Save">
                                              <font>
                                                 <Font size="22.0" />
                                              </font>
