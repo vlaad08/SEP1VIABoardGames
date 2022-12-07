@@ -80,4 +80,17 @@ public class Event implements Serializable
     return "Event: "+title+" |Description: "+description
         +" |Date: "+startDate+" - "+endDate;
   }
+
+  public boolean equals(Object obj)
+  {
+    if(obj==null || getClass() != obj.getClass())
+    {
+      return false;
+    }
+
+    Event other = (Event) obj;
+    return title.equals(other.title)&&description.equals(other.description)
+        &&image.equals(other.image) && startDate.equals(other.startDate)
+        && endDate.equals(other.endDate);
+  }
 }

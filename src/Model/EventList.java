@@ -18,7 +18,7 @@ public class EventList implements Serializable
    * */
   public EventList()
   {
-    events =  new ArrayList<Event>();
+    events = new ArrayList<>();
   }
 
   /**
@@ -39,7 +39,15 @@ public class EventList implements Serializable
    * */
   public void removeEvent(Event event)
   {
-    events.remove(event);
+    for(Event element: events)
+    {
+      if(element.getTitle().equals(event.getTitle())
+          && element.getStartDate().equals(event.getStartDate())
+          &&  element.getEndDate().equals(event.getEndDate()))
+      {
+        events.remove(element);
+      }
+    }
   }
 
   /**

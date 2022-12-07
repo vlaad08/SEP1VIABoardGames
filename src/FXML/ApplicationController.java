@@ -33,7 +33,6 @@ public class ApplicationController
   @FXML private TextField addMaxNumOfPlayers_Game;
   @FXML private Button addSave_Game;
   // Game - Edit Game
-  @FXML private ComboBox<Player> editOwners_Game;
   @FXML private ComboBox<Game> editGames_Game;
   @FXML private TextField editTitle_Game;
   @FXML private TextField editMaxNumOfPlayers_Game;
@@ -92,133 +91,12 @@ public class ApplicationController
   @FXML private Button saveEditButton_Event;
   @FXML private Button removeButton_Event;
 
-  public void handleEvent(ActionEvent e)
-  {
-    if(e.getSource() == saveButton_Event)
-    {
-      try
-      {
-        String title = titleInput_Event.getText();
-        String description = descriptionInput_Event.getText();
-        String imageURL = imageURLInput_Event.getText();
-        int startYear = startDateInput_Event.getValue().getYear(), startMonth = startDateInput_Event.getValue().getMonthValue(), startDay = startDateInput_Event.getValue().getDayOfMonth();
-        int endYear = endDateInput_Event.getValue().getYear(), endMonth = endDateInput_Event.getValue().getMonthValue(), endDay = endDateInput_Event.getValue().getDayOfMonth();
-        modelManager.addEvent(title, description, imageURL, new DateTime(startYear, startMonth, startDay), new DateTime(endYear, endMonth, endDay));
-        JOptionPane.showMessageDialog(null,"The event was created","Confirmation message",
-            JOptionPane.INFORMATION_MESSAGE);
-        titleInput_Event.setText("");
-        descriptionInput_Event.setText("");
-        imageURLInput_Event.setText("");
-        startDateInput_Event.setValue(null);
-        endDateInput_Event.setValue(null);
-        initialize();
-        reloadEventListAndDisplay();
-      }
-      catch (NullPointerException error)
-      {
-        error.fillInStackTrace();
-      }
-
-    }
-    if(e.getSource() == saveEditButton_Event)
-    {
-      try
-      {
-        Event oldEvent = eventComboBox.getSelectionModel().getSelectedItem();
-        modelManager.removeEvent(oldEvent);
-
-        String title = titleInputEdit_Event.getText();
-        String description = descriptionInputEdit_Event.getText();
-        String imageURL = imageURLEDIT_Event.getText();
-        int startYear = startDateEdit_Event.getValue().getYear(), startMonth = startDateEdit_Event.getValue().getMonthValue(), startDay = startDateEdit_Event.getValue().getDayOfMonth();
-        int endYear = endDateEdit_Event.getValue().getYear(), endMonth = endDateEdit_Event.getValue().getMonthValue(), endDay = endDateEdit_Event.getValue().getDayOfMonth();
-
-        modelManager.addEvent(title, description, imageURL, new DateTime(startYear, startMonth, startDay), new DateTime(endYear, endMonth, endDay));
-
-        JOptionPane.showMessageDialog(null,"The event was successfully edited","Confirmation message",
-            JOptionPane.INFORMATION_MESSAGE);
-        initialize();
-        reloadEventListAndDisplay();
-
-        titleInputEdit_Event.setText("");
-        descriptionInputEdit_Event.setText("");
-        imageURLEDIT_Event.setText("");
-        startDateEdit_Event.setValue(null);
-        endDateEdit_Event.setValue(null);
-      }
-      catch (NullPointerException error)
-      {
-        error.fillInStackTrace();
-      }
-    }
-    if(e.getSource() == removeButton_Event)
-    {
-      try{
-
-        Event oldEvent = eventComboBox.getSelectionModel().getSelectedItem();
-        modelManager.removeEvent(oldEvent);
-        reloadEventListAndDisplay();
-        initialize();
-
-        JOptionPane.showMessageDialog(null,"The event was successfully removed","Confirmation message",
-            JOptionPane.INFORMATION_MESSAGE);
-
-      }
-      catch (RuntimeException h)
-      {
-        h.fillInStackTrace();
-      }
-
-    }
-  }
-
-  public void reloadEventListAndDisplay()
-  {
-    EventList eventList = modelManager.getAllEvents();
-    String text = eventList.toString();
-    eventsDisplayed.setText(text);
-  }
-
-
-
-  public void handlerGame (ActionEvent e)
-  {
-    if (e.getSource()== addSave_Game)
-    {
-      Game newGame = new Game(addTitle_Game.getText(),Integer.parseInt(
-          addMaxNumOfPlayers_Game.getText()),
-          addOwners_Game.getSelectionModel().getSelectedItem());
-      modelManager.addGame(newGame);
-      addTitle_Game.setText("");
-      addMaxNumOfPlayers_Game.setText("");
-      initialize();
-      JOptionPane.showMessageDialog(null,"The game was added to the collection","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
-    }
-    if (e.getSource()== editSave_Game)
-    {
-      Game oldGame= editGames_Game.getSelectionModel().getSelectedItem();
-      modelManager.removeGame(oldGame);
-      Game editedGame=new Game(editTitle_Game.getText(),Integer.parseInt(
-          editMaxNumOfPlayers_Game.getText()),
-          editOwners_Game.getSelectionModel().getSelectedItem());
-      modelManager.addGame(editedGame);
-      initialize();
-      JOptionPane.showMessageDialog(null,"The game was successfully edited","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
-    }
-    if (e.getSource()== removeSave_Game)
-    {
-      Game gameToRemove= removeGames_Game.getSelectionModel().getSelectedItem();
-      modelManager.removeGame(gameToRemove);
-      initialize();
-      JOptionPane.showMessageDialog(null,"The game was successfully removed","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
-    }
-  }
-
-
-
 
   public void initialize()
   {
+    updatePlayersArea();
+    resetPlayer();
+
     ArrayList<Player> players = modelManager.getAllPlayers().getList();
     ArrayList<Game> collection = modelManager.getAllGames().getList();
     ArrayList<Event> events = modelManager.getAllEvents().getList();
@@ -230,7 +108,6 @@ public class ApplicationController
     playerData.clear();
     playerData.addAll(players);
     addOwners_Game.setItems(playerData);
-    editOwners_Game.setItems(playerData);
 
     gameData.clear();
     gameData.addAll(collection);
@@ -250,21 +127,138 @@ public class ApplicationController
       dataRes_BorrowReserve.addAll(collection2.get(i));
     }
     gameRes_BorrowReserve.setItems(dataBorr_BorrowReserve);
-
-    name2.setEditable(true);
-    updatePlayersArea();
-    resetPlayer();
     reloadEventListAndDisplay();
   }
+
+  public void handlerGame (ActionEvent e)
+  {
+    if (e.getSource() == addSave_Game)
+    {
+      String title = addTitle_Game.getText();
+      String MaxNumberOfPlayers = addMaxNumOfPlayers_Game.getText();
+
+      Game newGame = new Game(title,Integer.parseInt(MaxNumberOfPlayers),
+          addOwners_Game.getSelectionModel().getSelectedItem());
+
+      modelManager.addGame(newGame);
+      addTitle_Game.setText("");
+      addMaxNumOfPlayers_Game.setText("");
+
+
+      initialize();
+      JOptionPane.showMessageDialog(null,"The game was added to the collection","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
+    }
+    if (e.getSource() == editSave_Game)
+    {
+      Game selectedGame = editGames_Game.getSelectionModel().getSelectedItem();
+
+      modelManager.editGame(selectedGame.getTitle(),editTitle_Game.getText(),
+          selectedGame.getMaxPlayers(),Integer.parseInt(editMaxNumOfPlayers_Game.getText())
+          ,selectedGame.getOwner());
+      editTitle_Game.setText("");
+      editMaxNumOfPlayers_Game.setText("");
+
+      initialize();
+      JOptionPane.showMessageDialog(null,"The game was successfully edited","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
+    }
+    if (e.getSource()== removeSave_Game)
+    {
+      Game gameToRemove= removeGames_Game.getSelectionModel().getSelectedItem();
+      modelManager.removeGame(gameToRemove);
+
+      initialize();
+      JOptionPane.showMessageDialog(null,"The game was successfully removed","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
+    }
+    if(e.getSource() == editGames_Game)
+    {
+      Game game = editGames_Game.getSelectionModel().getSelectedItem();
+      editTitle_Game.setText(game.getTitle());
+      editMaxNumOfPlayers_Game.setText(String.valueOf(game.getMaxPlayers()));
+    }
+  }
+  public void handleEvent(ActionEvent e)
+  {
+    if(e.getSource() == saveButton_Event)
+    {
+        String title = titleInput_Event.getText();
+        String description = descriptionInput_Event.getText();
+        String imageURL = imageURLInput_Event.getText();
+
+        int startYear = startDateInput_Event.getValue().getYear(), startMonth = startDateInput_Event.getValue().getMonthValue(), startDay = startDateInput_Event.getValue().getDayOfMonth();
+        int endYear = endDateInput_Event.getValue().getYear(), endMonth = endDateInput_Event.getValue().getMonthValue(), endDay = endDateInput_Event.getValue().getDayOfMonth();
+        modelManager.addEvent(title, description, imageURL, new DateTime(startYear, startMonth, startDay), new DateTime(endYear, endMonth, endDay));
+
+        JOptionPane.showMessageDialog(null,"The event was created","Confirmation message",
+            JOptionPane.INFORMATION_MESSAGE);
+
+        titleInput_Event.setText("");
+        descriptionInput_Event.setText("");
+        imageURLInput_Event.setText("");
+        startDateInput_Event.setValue(null);
+        endDateInput_Event.setValue(null);
+        initialize();
+        reloadEventListAndDisplay();
+    }
+    else if(e.getSource() == saveEditButton_Event)
+    {
+        Event oldEvent = eventComboBox.getSelectionModel().getSelectedItem();
+        //modelManager.removeEvent(oldEvent);
+
+        String title = titleInputEdit_Event.getText();
+        String description = descriptionInputEdit_Event.getText();
+        String imageURL = imageURLEDIT_Event.getText();
+
+        int startYear = startDateEdit_Event.getValue().getYear(), startMonth = startDateEdit_Event.getValue().getMonthValue(), startDay = startDateEdit_Event.getValue().getDayOfMonth();
+        int endYear = endDateEdit_Event.getValue().getYear(), endMonth = endDateEdit_Event.getValue().getMonthValue(), endDay = endDateEdit_Event.getValue().getDayOfMonth();
+
+        modelManager.addEvent(title, description, imageURL, new DateTime(startYear, startMonth, startDay), new DateTime(endYear, endMonth, endDay));
+
+        JOptionPane.showMessageDialog(null,"The event was successfully edited","Confirmation message",
+            JOptionPane.INFORMATION_MESSAGE);
+
+        initialize();
+        reloadEventListAndDisplay();
+
+        titleInputEdit_Event.setText("");
+        descriptionInputEdit_Event.setText("");
+        imageURLEDIT_Event.setText("");
+        startDateEdit_Event.setValue(null);
+        endDateEdit_Event.setValue(null);
+    }
+    else if(e.getSource() == removeButton_Event)
+    {
+        Event oldEvent = eventComboBox.getSelectionModel().getSelectedItem();
+        modelManager.removeEvent(oldEvent);
+        reloadEventListAndDisplay();
+
+
+        initialize();
+
+        JOptionPane.showMessageDialog(null,"The event was successfully removed","Confirmation message",
+            JOptionPane.INFORMATION_MESSAGE);
+
+    }
+    else if(e.getSource() == eventComboBox)
+    {
+      Event other = eventComboBox.getSelectionModel().getSelectedItem();
+
+      titleInputEdit_Event.setText(other.getTitle());
+      descriptionInputEdit_Event.setText(other.getDescription());
+      imageURLEDIT_Event.setText(other.getImage());
+    }
+  }
+
+  public void reloadEventListAndDisplay()
+  {
+    EventList eventList = modelManager.getAllEvents();
+    String text = eventList.toString();
+    eventsDisplayed.setText(text);
+  }
+
   public void displayRefreshedGameList()
   {
-    String text="";
-    ArrayList<Game> collection=modelManager.getAllGames().getList();
-    for (int i = 0; i < collection.size(); i++)
-    {
-      text += collection.get(i).toString()+"\n";
-    }
-    displayGames_Game.setText(text);
+    GameCollection gameCollection = modelManager.getAllGames();
+    displayGames_Game.setText(gameCollection.toString());
   }
 
   public void handlerBorrowReserve(ActionEvent e)
