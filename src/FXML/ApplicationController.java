@@ -431,9 +431,9 @@ public class ApplicationController
             studentIdRes_BorrowReserve.getValue().getStudentID());
         Game gameSelect = gameRes_BorrowReserve.getValue();
 
-        if (reserveToBorr_BorrowReserve.getValue().getDayOfMonth()<DateTime.today().getDay())
+        if (toRes_BorrowReserve.getValue().getDayOfMonth()<DateTime.today().getDay())
         {
-          reserveToBorr_BorrowReserve.setEditable(true);
+          toRes_BorrowReserve.setEditable(true);
         }
 
         int startDay = fromRes_BorrowReserve.getValue().getDayOfMonth();
@@ -450,9 +450,9 @@ public class ApplicationController
 
         modelManager.reserve(player, gameSelect, start, end);
 
-        JOptionPane.showMessageDialog(null,gameSelect + "game has been borrowed to: " + player + "from: "
-                + start + "till: " + end ,"Confirmation"
-            , JOptionPane.INFORMATION_MESSAGE);
+//        JOptionPane.showMessageDialog(null,gameSelect + "game has been borrowed to: " + player + "from: "
+//                + start + "till: " + end ,"Confirmation"
+//            , JOptionPane.INFORMATION_MESSAGE);
       }
       else {
         JOptionPane.showMessageDialog(null,"Please fill out all fields!:)", "Missing information", JOptionPane.ERROR_MESSAGE);
