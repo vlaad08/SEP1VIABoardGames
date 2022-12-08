@@ -336,7 +336,7 @@
                                                       <Insets left="35.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <ComboBox fx:id="studentIdBorr_BorrowReserve" prefWidth="150.0" promptText="Choose a Player" />
+                                                <ComboBox fx:id="studentIdBorr_BorrowReserve" prefHeight="35.0" prefWidth="208.0" promptText="Choose a Player" />
                                              </children>
                                           </HBox>
                                           <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="899.0">
@@ -412,7 +412,7 @@
                                                       <Insets left="35.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <ComboBox fx:id="studentIdRes_BorrowReserve" prefWidth="150.0" promptText="Choose a Player" />
+                                                <ComboBox fx:id="studentIdRes_BorrowReserve" prefHeight="34.0" prefWidth="208.0" promptText="Choose a Player" />
                                              </children>
                                           </HBox>
                                           <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="899.0">
@@ -465,12 +465,12 @@
                                              <children>
                                                 <ComboBox fx:id="startHour_BorrowReserve" prefWidth="150.0" promptText="0 - 23">
                                                    <HBox.margin>
-                                                      <Insets left="229.0" right="30.0" />
+                                                      <Insets left="231.0" right="30.0" />
                                                    </HBox.margin>
                                                 </ComboBox>
                                                 <ComboBox fx:id="endHour_BorrowReserve" prefWidth="150.0" promptText="0 - 23">
                                                    <HBox.margin>
-                                                      <Insets left="139.0" />
+                                                      <Insets left="135.0" />
                                                    </HBox.margin>
                                                 </ComboBox>
                                              </children>
