@@ -450,9 +450,9 @@ public class ApplicationController
 
         modelManager.reserve(player, gameSelect, start, end);
 
-//        JOptionPane.showMessageDialog(null,gameSelect + "game has been borrowed to: " + player + "from: "
-//                + start + "till: " + end ,"Confirmation"
-//            , JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null,gameSelect + "game has been borrowed to: " + player + "from: "
+                + start + "till: " + end ,"Confirmation"
+            , JOptionPane.INFORMATION_MESSAGE);
       }
       else {
         JOptionPane.showMessageDialog(null,"Please fill out all fields!:)", "Missing information", JOptionPane.ERROR_MESSAGE);
