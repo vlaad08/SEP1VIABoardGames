@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import javax.swing.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class ApplicationController
@@ -22,6 +23,7 @@ public class ApplicationController
   private  ObservableList<Game> dataRes_BorrowReserve = FXCollections.observableArrayList();
   private  ObservableList<Reservation> reservationData = FXCollections.observableArrayList();
   private  ObservableList<Integer> ratingData = FXCollections.observableArrayList();
+  private  ObservableList<Integer> hourData = FXCollections.observableArrayList();
 
 
 
@@ -43,25 +45,25 @@ public class ApplicationController
   //Game - Game List
   @FXML private TextArea displayGames_Game;
 
-  @FXML private ComboBox<Game> ratingTabGameComboBox;
-  @FXML private ComboBox<Integer> ratingTabRatingComboBox;
-  @FXML private Button ratingTabSaveComboBox;
+  @FXML private ComboBox<Game> ratingTabGameComboBox_Game;
+  @FXML private ComboBox<Integer> ratingTabRatingComboBox_Game;
+  @FXML private Button ratingTabSaveButton_Game;
 
-  @FXML private TextField studentIdBorr_BorrowReserve;
+  @FXML private ComboBox<Player> studentIdBorr_BorrowReserve;
   @FXML private ComboBox<Game> gameBorr_BorrowReserve;
   @FXML private DatePicker reserveToBorr_BorrowReserve;
   @FXML private Button borrow_BorrowReserve;
-  @FXML private TextField hourBorr_BorrowReserve;
+  @FXML private ComboBox<Integer> hourBorr_BorrowReserve;
 
 
 
-  @FXML private TextField studentIdRes_BorrowReserve;
+  @FXML private ComboBox<Player> studentIdRes_BorrowReserve;
   @FXML private ComboBox<Game> gameRes_BorrowReserve;
   @FXML private DatePicker fromRes_BorrowReserve;
   @FXML private DatePicker toRes_BorrowReserve;
   @FXML private Button reserve_BorrowReserve;
-  @FXML private TextField startHour_BorrowReserve;
-  @FXML private TextField endHour_BorrowReserve;
+  @FXML private ComboBox<Integer> startHour_BorrowReserve;
+  @FXML private ComboBox<Integer> endHour_BorrowReserve;
 
   @FXML private Button removeReservation_BorrowReserve;
   @FXML private ComboBox<Reservation> reservationsToRemove_BorrowReserve;
@@ -101,7 +103,8 @@ public class ApplicationController
   {
     if(e.getSource() == saveButton_Event)
     {
-
+      try
+      {
         String title = titleInput_Event.getText();
         String description = descriptionInput_Event.getText();
         String imageURL = imageURLInput_Event.getText();
@@ -122,6 +125,12 @@ public class ApplicationController
 
         refreshComboEvent();
         reloadEventListAndDisplay();
+      }catch (RuntimeException f)
+      {
+        f.fillInStackTrace();
+        JOptionPane.showMessageDialog(null,"Fill out all the fields", "Missing information",JOptionPane.ERROR_MESSAGE);
+      }
+
 
 
     }
@@ -244,16 +253,25 @@ public class ApplicationController
   {
     if (e.getSource()== addSave_Game)
     {
-      Game newGame=new Game(addTitle_Game.getText(),Integer.parseInt(
-          addMaxNumOfPlayers_Game.getText()),
-          addOwners_Game.getSelectionModel().getSelectedItem());
-      modelManager.addGame(newGame);
+      try
+      {
+        Game newGame=new Game(addTitle_Game.getText(),Integer.parseInt(
+            addMaxNumOfPlayers_Game.getText()),
+            addOwners_Game.getSelectionModel().getSelectedItem());
+        modelManager.addGame(newGame);
 
-      initialize();
-      displayRefreshedGameList();
+        initialize();
+        displayRefreshedGameList();
 
-      JOptionPane.showMessageDialog(null,"The game was added to the collection","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
-    }
+        JOptionPane.showMessageDialog(null,"The game was added to the collection","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
+
+      }
+      catch (RuntimeException f)
+      {
+        f.fillInStackTrace();
+        JOptionPane.showMessageDialog(null,"Fill out all the fields", "Missing information",JOptionPane.ERROR_MESSAGE);
+      }
+      }
     if (e.getSource()== editSave_Game)
     {
       Game oldGame= editGames_Game.getSelectionModel().getSelectedItem();
@@ -266,7 +284,7 @@ public class ApplicationController
       initialize();
       displayRefreshedGameList();
 
-      JOptionPane.showMessageDialog(null,"The game was successfully edited","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
+//      JOptionPane.showMessageDialog(null,"The game was successfully edited","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
     }
     if (e.getSource()== removeSave_Game)
     {
@@ -280,17 +298,23 @@ public class ApplicationController
       JOptionPane.showMessageDialog(null,"The game was successfully removed","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
     }
 
-    if(e.getSource() == ratingTabSaveComboBox)
+    if(e.getSource() == ratingTabSaveButton_Game)
     {
-      Game game = ratingTabGameComboBox.getValue();
-      int rating = ratingTabRatingComboBox.getValue();
-      game.addRating(rating);
+      Game game = ratingTabGameComboBox_Game.getValue();
+      int rating = ratingTabRatingComboBox_Game.getValue();
+      modelManager.rateAGame(game,rating);
+      initialize();
       System.out.println(game);
     }
 
+    if (e.getSource()==editGames_Game)
+    {
+      Game game=editGames_Game.getSelectionModel().getSelectedItem();
+      editTitle_Game.setText(game.getTitle());
+      editMaxNumOfPlayers_Game.setText(Integer.toString(game.getMaxPlayers()));
+    }
+
   }
-
-
 
 
   public void initialize()
@@ -307,12 +331,14 @@ public class ApplicationController
     playerData.addAll(players);
     addOwners_Game.setItems(playerData);
     editOwners_Game.setItems(playerData);
+    studentIdBorr_BorrowReserve.setItems(playerData);
+    studentIdRes_BorrowReserve.setItems(playerData);
 
     gameData.clear();
     gameData.addAll(collection);
     editGames_Game.setItems(gameData);
     removeGames_Game.setItems(gameData);
-    ratingTabGameComboBox.setItems(gameData);
+    ratingTabGameComboBox_Game.setItems(gameData);
 
     ArrayList<Game> collection1 = modelManager.getAllGames().getList();
     for (int i = 0; i < collection1.size(); i++)
@@ -320,6 +346,7 @@ public class ApplicationController
       dataBorr_BorrowReserve.addAll(collection1.get(i));
     }
     gameBorr_BorrowReserve.setItems(dataBorr_BorrowReserve);
+
 
     ArrayList<Game> collection2 = modelManager.getAllGames().getList();
     for (int i = 0; i < collection2.size(); i++)
@@ -334,9 +361,17 @@ public class ApplicationController
     reloadEventListAndDisplay();
     refreshComboEvent();
 
+    ratingData.clear();
     Integer[] ratings = {1,2,3,4,5};
     ratingData.addAll(ratings);
-    ratingTabRatingComboBox.setItems(ratingData);
+    ratingTabRatingComboBox_Game.setItems(ratingData);
+
+    hourData.clear();
+    Integer[] hours={0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23};
+    hourData.addAll(hours);
+    startHour_BorrowReserve.setItems(hourData);
+    endHour_BorrowReserve.setItems(hourData);
+    hourBorr_BorrowReserve.setItems(hourData);
   }
   public void displayRefreshedGameList()
   {
@@ -356,23 +391,31 @@ public class ApplicationController
 
     if(e.getSource() == borrow_BorrowReserve)
     {
-      if(studentIdBorr_BorrowReserve.getText() != null && gameBorr_BorrowReserve.getValue() != null && reserveToBorr_BorrowReserve.getValue() != null && hourBorr_BorrowReserve.getText() != null)
+      if(studentIdBorr_BorrowReserve.getValue().getStudentID() != null && gameBorr_BorrowReserve.getValue() != null && reserveToBorr_BorrowReserve.getValue() != null && hourBorr_BorrowReserve.getValue() != null)
       {
         Player player = modelManager.getPlayerByStudentID(
-            studentIdBorr_BorrowReserve.getText());
+            studentIdBorr_BorrowReserve.getValue().getStudentID());
         Game gameSelect = gameBorr_BorrowReserve.getValue();
 
         int endDay = reserveToBorr_BorrowReserve.getValue().getDayOfMonth();
         int endMonth = reserveToBorr_BorrowReserve.getValue().getMonthValue();
         int endYear = reserveToBorr_BorrowReserve.getValue().getYear();
-        int endHour = Integer.parseInt(hourBorr_BorrowReserve.getText());
+        int endHour = hourBorr_BorrowReserve.getValue();
         DateTime end = new DateTime(endYear, endMonth, endDay, endHour);
 
-        modelManager.borrow(player, gameSelect, end);
+        if (!end.isBefore(DateTime.today()))
+        {
+          modelManager.borrow(player, gameSelect, end);
 
-        JOptionPane.showMessageDialog(null,
-            gameSelect + "game has been borrowed to: " + player + "till: "
-                + endHour + "hour", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
+          JOptionPane.showMessageDialog(null,
+              gameSelect + "game has been borrowed to: " + player + "till: "
+                  + endHour + "hour", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
+        }else
+        {
+//          JOptionPane.showMessageDialog(null,"The date is in the past!","Error message",JOptionPane.ERROR_MESSAGE);
+          System.out.println("Szar a date");
+          initialize();
+        }
       }
       else {
         JOptionPane.showMessageDialog(null,"Please fill out all fields!:)", "Missing information", JOptionPane.ERROR_MESSAGE);
@@ -381,23 +424,28 @@ public class ApplicationController
 
     if(e.getSource() == reserve_BorrowReserve)
     {
-      if(studentIdRes_BorrowReserve.getText() != null && gameRes_BorrowReserve.getValue() != null && fromRes_BorrowReserve.getValue() != null && toRes_BorrowReserve.getValue() != null &&
-          startHour_BorrowReserve.getText() != null && endHour_BorrowReserve.getText() != null)
+      if(studentIdRes_BorrowReserve.getValue().getStudentID() != null && gameRes_BorrowReserve.getValue() != null && fromRes_BorrowReserve.getValue() != null && toRes_BorrowReserve.getValue() != null &&
+          startHour_BorrowReserve.getValue()!= null && endHour_BorrowReserve.getValue() != null)
       {
         Player player = modelManager.getPlayerByStudentID(
-            studentIdRes_BorrowReserve.getText());
+            studentIdRes_BorrowReserve.getValue().getStudentID());
         Game gameSelect = gameRes_BorrowReserve.getValue();
+
+        if (reserveToBorr_BorrowReserve.getValue().getDayOfMonth()<DateTime.today().getDay())
+        {
+          reserveToBorr_BorrowReserve.setEditable(true);
+        }
 
         int startDay = fromRes_BorrowReserve.getValue().getDayOfMonth();
         int startMonth = fromRes_BorrowReserve.getValue().getMonthValue();
         int startYear = fromRes_BorrowReserve.getValue().getYear();
-        int startHour = Integer.parseInt(startHour_BorrowReserve.getText());
+        int startHour = startHour_BorrowReserve.getValue();
         DateTime start = new DateTime(startDay, startMonth, startYear, startHour);
 
         int endDay = toRes_BorrowReserve.getValue().getDayOfMonth();
         int endMonth = toRes_BorrowReserve.getValue().getMonthValue();
         int endYear = toRes_BorrowReserve.getValue().getYear();
-        int endHour = Integer.parseInt(endHour_BorrowReserve.getText());
+        int endHour = endHour_BorrowReserve.getValue();
         DateTime end = new DateTime(endDay, endMonth, endYear, endHour);
 
         modelManager.reserve(player, gameSelect, start, end);
@@ -434,7 +482,14 @@ public class ApplicationController
     ArrayList<Reservation> reservations = modelManager.getAllReservations().getList();
     for (int i = 0; i < reservations.size(); i++)
     {
-      text+=reservations.get(i).toString()+"\n";
+      if (reservations.get(i).getEndDate().isBefore(DateTime.today()))
+      {
+        reservations.remove(reservations.get(i));
+      }else
+      {
+        text+=reservations.get(i).toString()+"\n";
+      }
+
     }
     reservationList_BorrowReserve.setText(text);
   }

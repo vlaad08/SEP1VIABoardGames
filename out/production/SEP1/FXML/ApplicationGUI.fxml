@@ -126,7 +126,7 @@
                                                 <Font size="22.0" />
                                              </font>
                                           </TextField>
-                                          <ComboBox fx:id="editGames_Game" prefHeight="32.0" prefWidth="150.0" promptText="Choose a game">
+                                          <ComboBox fx:id="editGames_Game" onAction="#handlerGame" prefHeight="32.0" prefWidth="150.0" promptText="Choose a game">
                                              <FlowPane.margin>
                                                 <Insets bottom="10.0" left="30.0" />
                                              </FlowPane.margin>
@@ -259,7 +259,7 @@
                                                 <Insets bottom="15.0" />
                                              </FlowPane.margin>
                                           </Text>
-                                          <ComboBox fx:id="ratingTabGameComboBox" prefWidth="150.0" promptText="Choose a game">
+                                          <ComboBox fx:id="ratingTabGameComboBox_Game" prefWidth="150.0" promptText="Choose a game">
                                              <FlowPane.margin>
                                                 <Insets bottom="15.0" left="20.0" />
                                              </FlowPane.margin>
@@ -276,7 +276,7 @@
                                                 <Insets top="15.0" />
                                              </FlowPane.margin>
                                           </Text>
-                                          <ComboBox fx:id="ratingTabRatingComboBox" prefHeight="26.0" prefWidth="150.0" promptText="Choose rating">
+                                          <ComboBox fx:id="ratingTabRatingComboBox_Game" prefHeight="26.0" prefWidth="150.0" promptText="Choose rating">
                                              <FlowPane.margin>
                                                 <Insets left="16.0" top="15.0" />
                                              </FlowPane.margin>
@@ -285,7 +285,7 @@
                                     </FlowPane>
                                     <FlowPane alignment="TOP_CENTER" prefHeight="200.0" prefWidth="901.0">
                                        <children>
-                                          <Button fx:id="ratingTabSaveComboBox" mnemonicParsing="false" onAction="#handlerGame" prefHeight="43.0" prefWidth="76.0" text="Save">
+                                          <Button fx:id="ratingTabSaveButton_Game" mnemonicParsing="false" onAction="#handlerGame" prefHeight="43.0" prefWidth="76.0" text="Save">
                                              <font>
                                                 <Font size="22.0" />
                                              </font>
@@ -328,7 +328,7 @@
                                        <children>
                                           <HBox alignment="CENTER_LEFT" prefHeight="68.0" prefWidth="899.0">
                                              <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID:" wrappingWidth="144.16015625">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player:" wrappingWidth="165.0">
                                                    <font>
                                                       <Font size="30.0" />
                                                    </font>
@@ -336,16 +336,12 @@
                                                       <Insets left="35.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <TextField fx:id="studentIdBorr_BorrowReserve" prefHeight="38.0" prefWidth="153.0">
-                                                   <HBox.margin>
-                                                      <Insets left="15.0" />
-                                                   </HBox.margin>
-                                                </TextField>
+                                                <ComboBox fx:id="studentIdBorr_BorrowReserve" prefHeight="35.0" prefWidth="208.0" promptText="Choose a Player" />
                                              </children>
                                           </HBox>
                                           <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="899.0">
                                              <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Game:">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Game:" wrappingWidth="165.0">
                                                    <font>
                                                       <Font size="30.0" />
                                                    </font>
@@ -353,9 +349,9 @@
                                                       <Insets left="35.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <ComboBox fx:id="gameBorr_BorrowReserve" prefHeight="35.0" prefWidth="208.0" promptText="Choose a game">
+                                                <ComboBox fx:id="gameBorr_BorrowReserve" prefHeight="35.0" prefWidth="208.0" promptText="Choose a Game">
                                                    <HBox.margin>
-                                                      <Insets left="80.0" />
+                                                      <Insets />
                                                    </HBox.margin>
                                                 </ComboBox>
                                              </children>
@@ -371,7 +367,7 @@
                                                    </HBox.margin>
                                                 </Text>
                                                 <DatePicker fx:id="reserveToBorr_BorrowReserve" prefHeight="37.0" prefWidth="219.0" />
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hour:" wrappingWidth="75.13671875">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Hour:" wrappingWidth="93.13671875">
                                                    <font>
                                                       <Font size="30.0" />
                                                    </font>
@@ -379,14 +375,7 @@
                                                       <Insets left="30.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <TextField fx:id="hourBorr_BorrowReserve" prefHeight="40.0" prefWidth="219.0">
-                                                   <padding>
-                                                      <Insets left="30.0" />
-                                                   </padding>
-                                                   <HBox.margin>
-                                                      <Insets left="30.0" />
-                                                   </HBox.margin>
-                                                </TextField>
+                                                <ComboBox fx:id="hourBorr_BorrowReserve" prefHeight="26.0" prefWidth="158.0" promptText="0 - 23" />
                                              </children>
                                           </HBox>
                                           <HBox alignment="BOTTOM_RIGHT" prefHeight="71.0" prefWidth="899.0">
@@ -415,7 +404,7 @@
                                        <children>
                                           <HBox alignment="CENTER_LEFT" prefHeight="68.0" prefWidth="899.0">
                                              <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID:" wrappingWidth="180.0">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player:" wrappingWidth="195.0">
                                                    <font>
                                                       <Font size="30.0" />
                                                    </font>
@@ -423,16 +412,12 @@
                                                       <Insets left="35.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <TextField fx:id="studentIdRes_BorrowReserve" prefHeight="38.0" prefWidth="153.0">
-                                                   <HBox.margin>
-                                                      <Insets left="15.0" />
-                                                   </HBox.margin>
-                                                </TextField>
+                                                <ComboBox fx:id="studentIdRes_BorrowReserve" prefHeight="34.0" prefWidth="208.0" promptText="Choose a Player" />
                                              </children>
                                           </HBox>
                                           <HBox alignment="CENTER_LEFT" prefHeight="62.0" prefWidth="899.0">
                                              <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Game:" wrappingWidth="180.0">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Game:" wrappingWidth="195.0">
                                                    <font>
                                                       <Font size="30.0" />
                                                    </font>
@@ -440,16 +425,16 @@
                                                       <Insets left="35.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <ComboBox fx:id="gameRes_BorrowReserve" prefHeight="34.0" prefWidth="208.0" promptText="Choose a game">
+                                                <ComboBox fx:id="gameRes_BorrowReserve" prefHeight="34.0" prefWidth="208.0" promptText="Choose a Game">
                                                    <HBox.margin>
-                                                      <Insets left="15.0" />
+                                                      <Insets />
                                                    </HBox.margin>
                                                 </ComboBox>
                                              </children>
                                           </HBox>
                                           <HBox alignment="CENTER_LEFT" layoutX="10.0" layoutY="110.0" prefHeight="76.0" prefWidth="899.0">
                                              <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reserve from:" wrappingWidth="177.498046875">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Reserve from:" wrappingWidth="195.0">
                                                    <font>
                                                       <Font size="30.0" />
                                                    </font>
@@ -459,7 +444,7 @@
                                                 </Text>
                                                 <DatePicker fx:id="fromRes_BorrowReserve" prefHeight="37.0" prefWidth="219.0">
                                                    <HBox.margin>
-                                                      <Insets left="15.0" />
+                                                      <Insets />
                                                    </HBox.margin>
                                                 </DatePicker>
                                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="to:">
@@ -476,18 +461,18 @@
                                                    </HBox.margin></DatePicker>
                                              </children>
                                           </HBox>
-                                          <HBox prefHeight="41.0" prefWidth="899.0">
+                                          <HBox alignment="CENTER_LEFT" prefHeight="41.0" prefWidth="899.0">
                                              <children>
-                                                <TextField fx:id="startHour_BorrowReserve" prefHeight="38.0" prefWidth="193.0" promptText="Start Hour">
+                                                <ComboBox fx:id="startHour_BorrowReserve" prefWidth="150.0" promptText="0 - 23">
                                                    <HBox.margin>
-                                                      <Insets left="228.0" />
+                                                      <Insets left="229.0" right="30.0" />
                                                    </HBox.margin>
-                                                </TextField>
-                                                <TextField fx:id="endHour_BorrowReserve" prefHeight="38.0" prefWidth="193.0" promptText="End Hour">
+                                                </ComboBox>
+                                                <ComboBox fx:id="endHour_BorrowReserve" prefWidth="150.0" promptText="0 - 23">
                                                    <HBox.margin>
-                                                      <Insets left="123.0" />
+                                                      <Insets left="139.0" />
                                                    </HBox.margin>
-                                                </TextField>
+                                                </ComboBox>
                                              </children>
                                           </HBox>
                                           <HBox alignment="BOTTOM_RIGHT" prefHeight="111.0" prefWidth="899.0">
@@ -508,7 +493,7 @@
                               </FlowPane>
                            </content>
                         </Tab>
-                        <Tab text="Remove Reservation / Borrow">
+                        <Tab text="Remove a Reservation / Borrow">
                            <content>
                               <FlowPane alignment="CENTER" prefHeight="200.0" prefWidth="200.0">
                                  <children>
