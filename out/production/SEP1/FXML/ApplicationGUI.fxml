@@ -328,7 +328,7 @@
                                        <children>
                                           <HBox alignment="CENTER_LEFT" prefHeight="68.0" prefWidth="899.0">
                                              <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID:" wrappingWidth="165.0">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player:" wrappingWidth="165.0">
                                                    <font>
                                                       <Font size="30.0" />
                                                    </font>
@@ -404,7 +404,7 @@
                                        <children>
                                           <HBox alignment="CENTER_LEFT" prefHeight="68.0" prefWidth="899.0">
                                              <children>
-                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Student ID:" wrappingWidth="195.0">
+                                                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player:" wrappingWidth="195.0">
                                                    <font>
                                                       <Font size="30.0" />
                                                    </font>
