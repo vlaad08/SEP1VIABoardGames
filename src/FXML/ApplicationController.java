@@ -472,8 +472,6 @@ public class ApplicationController
     }
   }
 
-
-
   public void handleActionsPlayer(ActionEvent e)
   {
     if (e.getSource() == saveChangesButton)
