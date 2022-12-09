@@ -91,7 +91,6 @@ public class ApplicationController
   @FXML private Button removeButton_Event;
   @FXML private Button removeRes_BorrowReserve;
 
-
   public void initialize()
   {
     updateGameBox();
@@ -105,39 +104,6 @@ public class ApplicationController
 
     updateReservationArea();
     updateReservationBox();
-    /*
-    ArrayList<Player> players = modelManager.getAllPlayers().getList();
-    ArrayList<Game> collection = modelManager.getAllGames().getList();
-    ArrayList<Event> events = modelManager.getAllEvents().getList();
-
-    eventData.clear();
-    eventData.addAll(events);
-    eventComboBox.setItems(eventData);
-
-    playerData.clear();
-    playerData.addAll(players);
-    addOwners_Game.setItems(playerData);
-
-    gameData.clear();
-    gameData.addAll(collection);
-    editGames_Game.setItems(gameData);
-    removeGames_Game.setItems(gameData);
-
-    ArrayList<Game> collection1 = modelManager.getAllGames().getList();
-    for (int i = 0; i < collection1.size(); i++)
-    {
-      dataBorr_BorrowReserve.addAll(collection1.get(i));
-    }
-    gameBorr_BorrowReserve.setItems(dataBorr_BorrowReserve);
-
-    ArrayList<Game> collection2 = modelManager.getAllGames().getList();
-    for (int i = 0; i < collection2.size(); i++)
-    {
-      dataRes_BorrowReserve.addAll(collection2.get(i));
-    }
-    gameRes_BorrowReserve.setItems(dataBorr_BorrowReserve);
-    reloadEventListAndDisplay();
-     */
   }
 
   public void updateGameBox()
@@ -174,21 +140,25 @@ public class ApplicationController
           addOwners_Game.getSelectionModel().getSelectedItem());
 
       modelManager.addGame(newGame);
-      addTitle_Game.setText("");
-      addMaxNumOfPlayers_Game.setText("");
-
+      JOptionPane.showMessageDialog(null,"The game was added to the collection","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
+      addTitle_Game.clear();
+      addMaxNumOfPlayers_Game.clear();
 
       updateGameBox();
       updateGameArea();
-      JOptionPane.showMessageDialog(null,"The game was added to the collection","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
     }
     if (e.getSource() == editSave_Game)
     {
       Game selectedGame = editGames_Game.getSelectionModel().getSelectedItem();
 
-      modelManager.editGame(selectedGame.getTitle(),editTitle_Game.getText(),
-          selectedGame.getMaxPlayers(),Integer.parseInt(editMaxNumOfPlayers_Game.getText())
-          ,selectedGame.getOwner());
+      if(selectedGame != null)
+      {
+        modelManager.editGame(selectedGame.getTitle(),editTitle_Game.getText(),
+            selectedGame.getMaxPlayers(),Integer.parseInt(editMaxNumOfPlayers_Game.getText())
+            ,selectedGame.getOwner());
+        JOptionPane.showMessageDialog(null,"The game was successfully edited","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
+      }
+
       editTitle_Game.setText("");
       editMaxNumOfPlayers_Game.setText("");
 
@@ -196,26 +166,34 @@ public class ApplicationController
       updateGameArea();
       updateReservationArea();
       updateReservationBox();
-      JOptionPane.showMessageDialog(null,"The game was successfully edited","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
     }
     if (e.getSource()== removeSave_Game)
     {
       Game gameToRemove= removeGames_Game.getSelectionModel().getSelectedItem();
-      modelManager.removeGame(gameToRemove);
 
-      initialize();
-      JOptionPane.showMessageDialog(null,"The game was successfully removed","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
+      if(gameToRemove!=null)
+      {
+        modelManager.removeGame(gameToRemove);
+        JOptionPane.showMessageDialog(null,"The game was successfully removed","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
+      }
+      updateGameArea();
+      updateGameBox();
+
     }
     if(e.getSource() == editGames_Game)
     {
       Game game = editGames_Game.getSelectionModel().getSelectedItem();
-      editTitle_Game.setText(game.getTitle());
-      editMaxNumOfPlayers_Game.setText(String.valueOf(game.getMaxPlayers()));
+      if(game!=null)
+      {
+        editTitle_Game.setText(game.getTitle());
+        editMaxNumOfPlayers_Game.setText(String.valueOf(game.getMaxPlayers()));
+      }
     }
   }
 
   private void updateEventBox()
   {
+    int currentIndex = eventComboBox.getSelectionModel().getSelectedIndex();
     eventComboBox.getItems().clear();
 
     EventList eventList = modelManager.getAllEvents();
@@ -223,6 +201,15 @@ public class ApplicationController
     for (Event element: events)
     {
       eventComboBox.getItems().add(element);
+    }
+
+    if (currentIndex == -1 && eventComboBox.getItems().size() > 0)
+    {
+      eventComboBox.getSelectionModel().select(0);
+    }
+    else
+    {
+      eventComboBox.getSelectionModel().select(currentIndex);
     }
   }
   public void handleEvent(ActionEvent e)
@@ -277,35 +264,43 @@ public class ApplicationController
     }
     else if(e.getSource() == removeButton_Event)
     {
-      try
+      Event oldEvent = eventComboBox.getSelectionModel().getSelectedItem();
+
+
+      int choice = JOptionPane.showConfirmDialog(null,"Are you sure?");
+      if (oldEvent!=null && choice==0)
       {
-        Event oldEvent = eventComboBox.getSelectionModel().getSelectedItem();
         modelManager.removeEvent(oldEvent);
-      }
-      catch (NullPointerException err)
-      {
-        err.fillInStackTrace();
+
+        titleInput_Event.clear();
+        titleInputEdit_Event.clear();
+        descriptionInputEdit_Event.clear();
+        imageURLEDIT_Event.clear();
+        startDateEdit_Event.setValue(null);
+        endDateEdit_Event.setValue(null);
+
+        updatePlayersBox();
+        updatePlayersArea();
       }
 
-        JOptionPane.showMessageDialog(null,"The event was successfully removed","Confirmation message",
+      JOptionPane.showMessageDialog(null,"The event was successfully removed","Confirmation message",
             JOptionPane.INFORMATION_MESSAGE);
 
       updateEventBox();
       updateEventArea();
 
-      titleInputEdit_Event.setText("");
-      descriptionInputEdit_Event.setText("");
-      imageURLEDIT_Event.setText("");
-      startDateEdit_Event.setValue(null);
-      endDateEdit_Event.setValue(null);
+
     }
     else if(e.getSource() == eventComboBox)
     {
       Event other = eventComboBox.getSelectionModel().getSelectedItem();
 
-      titleInputEdit_Event.setText(other.getTitle());
-      descriptionInputEdit_Event.setText(other.getDescription());
-      imageURLEDIT_Event.setText(other.getImage());
+      if(other != null)
+      {
+        titleInputEdit_Event.setText(other.getTitle());
+        descriptionInputEdit_Event.setText(other.getDescription());
+        imageURLEDIT_Event.setText(other.getImage());
+      }
     }
   }
 
@@ -391,17 +386,15 @@ public class ApplicationController
     else if(e.getSource() == removeRes_BorrowReserve)
     {
       Reservation reservation = reservationBox_BorrowReserve.getSelectionModel().getSelectedItem();
-      System.out.println(reservation);
 
       int choice = JOptionPane.showConfirmDialog(null,"Are you sure?");
       if(reservation != null && choice == 0)
       {
         int i = reservationBox_BorrowReserve.getSelectionModel().getSelectedIndex();
-        System.out.println(i);
         modelManager.removeReservationByIndex(i);
         //modelManager.removeReservation(reservation);
       }
-      updateReservationBox();
+
       updateReservationBox();
       updateReservationArea();
     }

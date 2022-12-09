@@ -476,7 +476,7 @@
                                                       <Insets left="35.0" />
                                                    </HBox.margin>
                                                 </Text>
-                                                <ComboBox fx:id="reservationBox_BorrowReserve" prefHeight="35.0" prefWidth="491.0" promptText="Choose a reservation">
+                                                <ComboBox fx:id="reservationBox_BorrowReserve" onAction="#handlerBorrowReserve" prefHeight="35.0" prefWidth="491.0" promptText="Choose a reservation">
                                                    <HBox.margin>
                                                       <Insets left="20.0" />
                                                    </HBox.margin>
