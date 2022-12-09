@@ -277,8 +277,15 @@ public class ApplicationController
     }
     else if(e.getSource() == removeButton_Event)
     {
+      try
+      {
         Event oldEvent = eventComboBox.getSelectionModel().getSelectedItem();
         modelManager.removeEvent(oldEvent);
+      }
+      catch (NullPointerException err)
+      {
+        err.fillInStackTrace();
+      }
 
         JOptionPane.showMessageDialog(null,"The event was successfully removed","Confirmation message",
             JOptionPane.INFORMATION_MESSAGE);
