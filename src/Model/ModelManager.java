@@ -432,7 +432,7 @@ public class ModelManager
     txt += "</games>\n<reservations>\n";
     for(Reservation a: reservations)
     {
-      txt += "<reservation>\n<game>" + a.getGame().getTitle() + "</game> \n <borrower> <name>" + a.getPlayer().getName() + "</name><studentID>" + a.getPlayer().getStudentID() +
+      txt += "<reservation>\n<gameReservation>" + a.getGame().getTitle() + "</gameReservation> \n <borrower> <name>" + a.getPlayer().getName() + "</name><studentID>" + a.getPlayer().getStudentID() +
       "</studentID></borrower>\n<dates><startDate>" + a.getStartDate() + "</startDate><endDate>" + a.getEndDate() + "</endDate></dates>\n</reservation>\n";
     }
     txt += "</reservations>\n<events>\n";
