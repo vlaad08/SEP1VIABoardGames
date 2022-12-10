@@ -17,6 +17,10 @@
 <name>Levente</name>
 <studentID>5189</studentID>
 </player>
+<player>
+<name>Ivan</name>
+<studentID>7777</studentID>
+</player>
 </players>
 <games>
 <game>
@@ -77,6 +81,12 @@
 <description>tur	</description>
 <imageURL>sad</imageURL>
 <dates><startDate>2022/12/3 hour:10</startDate><endDate>2022/12/8 hour:10</endDate></dates>
+</event>
+<event>
+<title>Turnm</title>
+<description>chess</description>
+<imageURL>asd</imageURL>
+<dates><startDate>2022/12/8 hour:10</startDate><endDate>2022/12/10 hour:10</endDate></dates>
 </event>
 </events>
 </VIABoardGames>

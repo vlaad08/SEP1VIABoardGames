@@ -441,6 +441,6 @@ public class ModelManager
       txt += "<event>\n<title>" + a.getTitle() + "</title>\n<description>" + a.getDescription() + "</description>\n<imageURL>" + a.getImage() + "</imageURL>\n<dates><startDate>" + a.getStartDate() + "</startDate><endDate>" + a.getEndDate() + "</endDate></dates>\n</event>\n";
     }
     txt += "</events>\n</VIABoardGames>";
-    MyFileHandler.writeToTextFile("VIABoardGames.xml", txt);
+    MyFileHandler.writeToTextFile("VIABoardGamesWebsite/xml/VIABoardGames.xml", txt);
   }
 }
