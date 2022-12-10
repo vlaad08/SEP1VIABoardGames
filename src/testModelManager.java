@@ -54,7 +54,7 @@ public class testModelManager
     System.out.println(copyReservation);
 */
 
-    modelManager.returnXMLFile();
+    modelManager.XMLFile();
 
 
   }

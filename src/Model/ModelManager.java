@@ -410,7 +410,7 @@ public class ModelManager
     saveReservations(reservationList);
   }
 
-  public void returnXMLFile() throws FileNotFoundException
+  public void XMLFile() throws FileNotFoundException
   {
     ArrayList<Game> games = getAllGames().getList();
     ArrayList<Player> players = getAllPlayers().getList();
