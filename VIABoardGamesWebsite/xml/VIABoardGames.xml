@@ -28,61 +28,40 @@
 </players>
 <games>
 <game>
-<title>Nu te supara frate</title>
-<owner>Vlad</owner>
-<maxNumberOfPlayers>4</maxNumberOfPlayers>
-<rating>5.0</rating>
-</game>
-<game>
-<title>Chess</title>
-<owner>Emanuel</owner>
-<maxNumberOfPlayers>2</maxNumberOfPlayers>
-<rating>NaN</rating>
-</game>
-<game>
 <title>Catan</title>
-<owner>Agoston</owner>
+<owner>Ivan</owner>
 <maxNumberOfPlayers>6</maxNumberOfPlayers>
 <rating>NaN</rating>
 </game>
 <game>
-<title>asd</title>
+<title>Partners</title>
 <owner>Emanuel</owner>
-<maxNumberOfPlayers>10</maxNumberOfPlayers>
-<rating>4.0</rating>
+<maxNumberOfPlayers>4</maxNumberOfPlayers>
+<rating>NaN</rating>
 </game>
 <game>
-<title>Gheghe</title>
+<title>UNO</title>
+<owner>Vlad</owner>
+<maxNumberOfPlayers>10</maxNumberOfPlayers>
+<rating>NaN</rating>
+</game>
+<game>
+<title>New Chess</title>
 <owner>Ivan</owner>
-<maxNumberOfPlayers>3</maxNumberOfPlayers>
-<rating>4.0</rating>
+<maxNumberOfPlayers>4</maxNumberOfPlayers>
+<rating>NaN</rating>
 </game>
 </games>
 <reservations>
 <reservation>
-<gameReservation>Chess</gameReservation> 
- <borrower> <name>Vlad</name><studentID>4869</studentID></borrower>
-<dates><startDate>12/12/2022 hour:4</startDate><endDate>12/12/2022 hour:5</endDate></dates>
-</reservation>
-<reservation>
-<gameReservation>Chess</gameReservation> 
- <borrower> <name>Emanuel</name><studentID>5179</studentID></borrower>
-<dates><startDate>12/12/2022 hour:4</startDate><endDate>12/12/2022 hour:7</endDate></dates>
-</reservation>
-<reservation>
-<gameReservation>Chess</gameReservation> 
- <borrower> <name>Emanuel</name><studentID>5179</studentID></borrower>
-<dates><startDate>2022/12/9 hour:20</startDate><endDate>2022/12/26 hour:6</endDate></dates>
-</reservation>
-<reservation>
-<gameReservation>Chess</gameReservation> 
- <borrower> <name>Emanuel</name><studentID>5179</studentID></borrower>
-<dates><startDate>2022/12/9 hour:20</startDate><endDate>2022/12/11 hour:1</endDate></dates>
-</reservation>
-<reservation>
 <gameReservation>UNO</gameReservation> 
- <borrower> <name>Emanuel</name><studentID>5179</studentID></borrower>
-<dates><startDate>12/12/2022 hour:4</startDate><endDate>14/12/2022 hour:6</endDate></dates>
+ <borrower> <name>Ivan</name><studentID>7777</studentID></borrower>
+<dates><startDate>2022/12/3 hour:10</startDate><endDate>2022/12/5 hour:16</endDate></dates>
+</reservation>
+<reservation>
+<gameReservation>New Chess</gameReservation> 
+ <borrower> <name>Agoston</name><studentID>3579</studentID></borrower>
+<dates><startDate>2022/12/10 hour:19</startDate><endDate>2022/12/11 hour:6</endDate></dates>
 </reservation>
 </reservations>
 <events>

@@ -258,6 +258,43 @@ public class ModelManager
     saveCollection(gameCollection);
   }
 
+  public void editGame(String oldTitle, String newTitle,
+      int oldPlayers, int newPlayers, Player owner)
+  {
+    Game oldGame = getGame(oldTitle);
+    Game newGame = oldGame.copy();
+    newGame.setTitle(newTitle);
+    newGame.setMaxPlayers(newPlayers);
+
+    addGame(newGame);
+
+    ReservationList reservationList = getReservations();
+    ArrayList<Reservation> reservations = reservationList.getList();
+
+    ArrayList<Reservation> oldByGame = reservationList.getByGame(oldGame);
+
+    ArrayList<Reservation> newByGame = new ArrayList<>();
+    for(Reservation element: oldByGame)
+    {
+      newByGame.add(new Reservation(newGame, element.getPlayer(),element.getStartDate(),element.getEndDate(),element.isBorrow()));
+    }
+
+    //Removing past reservation with the oldGame
+    for(Reservation element: oldByGame)
+    {
+      reservations.remove(element);
+    }
+
+    //Adding new reservation with newGame
+    for(Reservation element: newByGame)
+    {
+      reservations.add(element);
+    }
+
+    removeGame(oldGame);
+    saveReservations(reservationList);
+  }
+
   public ArrayList<Game> displayAvailableGames()
   {
     refreshReservation();

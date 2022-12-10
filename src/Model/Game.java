@@ -31,6 +31,20 @@ public class Game implements Serializable
     rating = new Rating();
     reserved = false;
   }
+
+  private Game(String title, int maxPlayers, Player owner, Rating rating)
+  {
+    this.title = title;
+    this.maxPlayers = maxPlayers;
+    this.owner = owner;
+    this.rating = rating;
+  }
+
+  public Game copy()
+  {
+    Game other = new Game(title,maxPlayers,owner,this.rating);
+    return other;
+  }
   /**
    * Accessor method to get the title of the game
    * @return The title of the game

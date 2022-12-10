@@ -277,6 +277,20 @@ public class ApplicationController
       }
     if (e.getSource()== editSave_Game)
     {
+      Game selectedGame = editGames_Game.getSelectionModel().getSelectedItem();
+
+      if(selectedGame!=null)
+      {
+        modelManager.editGame(selectedGame.getTitle(),editTitle_Game.getText(),
+            selectedGame.getMaxPlayers(),Integer.parseInt(editMaxNumOfPlayers_Game.getText())
+            ,selectedGame.getOwner());
+        editTitle_Game.setText("");
+        editMaxNumOfPlayers_Game.setText("");
+      }
+      JOptionPane.showMessageDialog(null,"The game was successfully edited","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
+      initialize();
+
+      /*
       Game oldGame= editGames_Game.getSelectionModel().getSelectedItem();
       modelManager.removeGame(oldGame);
       Game editedGame=new Game(editTitle_Game.getText(),Integer.parseInt(
@@ -286,6 +300,8 @@ public class ApplicationController
 
       initialize();
       displayRefreshedGameList();
+
+       */
 
 //      JOptionPane.showMessageDialog(null,"The game was successfully edited","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
     }
