@@ -56,7 +56,7 @@ public class Rating implements Serializable
       return df.format(getAverageRating());
       //return String.valueOf(getAverageRating());
     }
-    else return "0";
+    else return "";
 
   }
 }
