@@ -538,7 +538,15 @@ public class ApplicationController
 
     }
 
-    modelManager.XMLFile();
+    try
+    {
+      modelManager.XMLFile();
+    }
+
+    catch(NullPointerException f)
+    {
+      f.fillInStackTrace();
+    }
   }
 
   public void displayRefreshedReservationList()
@@ -667,13 +675,24 @@ public class ApplicationController
     {
       Player temp = playerBox.getSelectionModel().getSelectedItem();
       int choice = JOptionPane.showConfirmDialog(null,"Are you sure?");
+      ReservationList reservations = modelManager.getAllReservations();
+      ArrayList<Reservation> copy;
       if (temp!=null && choice==0)
       {
+        copy=reservations.getByPlayer(temp);
+
+        reservations.getList().removeAll(copy);
+        modelManager.saveReservations(reservations);
+
         modelManager.removePlayer(temp);
         name2.clear();
         updatePlayersBox();
         updatePlayersArea();
+        initialize();
+        displayRefreshedReservationList();
+
       }
+
     }
 
     modelManager.XMLFile();

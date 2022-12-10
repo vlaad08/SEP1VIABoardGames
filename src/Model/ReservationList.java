@@ -44,12 +44,17 @@ public class ReservationList implements Serializable
 
   public void removeReservation(Reservation reservation)
   {
-    reservations.removeIf(
-        element -> element.getGame().equals(reservation.getGame())
-            && element.getPlayer().equals(reservation.getPlayer())
-            && element.getStartDate().equals(reservation.getStartDate())
-            && element.getEndDate().equals(reservation.getEndDate())
-            && element.isBorrow() == reservation.isBorrow());
+    try
+    {
+      reservations.removeIf(
+          element -> element.getGame().equals(reservation.getGame()) && element.getPlayer().equals(reservation.getPlayer())
+              && element.getStartDate().equals(reservation.getStartDate()) && element.getEndDate().equals(reservation.getEndDate())
+              && element.isBorrow() == reservation.isBorrow());
+    }
+    catch (NullPointerException f)
+    {
+      f.fillInStackTrace();
+    }
   }
 
   public ArrayList<Reservation> getByGame(Game game)

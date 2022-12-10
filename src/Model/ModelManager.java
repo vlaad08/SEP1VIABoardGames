@@ -412,7 +412,7 @@ public class ModelManager
 
   public void XMLFile() throws FileNotFoundException
   {
-    ArrayList<Game> games = getAllGames().getList();
+    try{ArrayList<Game> games = getAllGames().getList();
     ArrayList<Player> players = getAllPlayers().getList();
     ArrayList<Reservation> reservations = getAllReservations().getList();
     ArrayList<Event> events = getAllEvents().getList();
@@ -441,6 +441,11 @@ public class ModelManager
       txt += "<event>\n<title>" + a.getTitle() + "</title>\n<description>" + a.getDescription() + "</description>\n<imageURL>" + a.getImage() + "</imageURL>\n<dates><startDate>" + a.getStartDate() + "</startDate><endDate>" + a.getEndDate() + "</endDate></dates>\n</event>\n";
     }
     txt += "</events>\n</VIABoardGames>";
-    MyFileHandler.writeToTextFile("VIABoardGamesWebsite/xml/VIABoardGames.xml", txt);
+    MyFileHandler.writeToTextFile("VIABoardGamesWebsite/xml/VIABoardGames.xml", txt);}
+
+    catch(NullPointerException e)
+    {
+      e.fillInStackTrace();
+    }
   }
 }
