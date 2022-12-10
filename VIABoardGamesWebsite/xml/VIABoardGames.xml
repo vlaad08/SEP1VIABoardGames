@@ -21,6 +21,10 @@
 <name>Ivan</name>
 <studentID>7777</studentID>
 </player>
+<player>
+<name>Ioana</name>
+<studentID>4125125</studentID>
+</player>
 </players>
 <games>
 <game>
@@ -35,30 +39,48 @@
 <maxNumberOfPlayers>2</maxNumberOfPlayers>
 <rating>NaN</rating>
 </game>
+<game>
+<title>Catan</title>
+<owner>Agoston</owner>
+<maxNumberOfPlayers>6</maxNumberOfPlayers>
+<rating>NaN</rating>
+</game>
+<game>
+<title>asd</title>
+<owner>Emanuel</owner>
+<maxNumberOfPlayers>10</maxNumberOfPlayers>
+<rating>4.0</rating>
+</game>
+<game>
+<title>Gheghe</title>
+<owner>Ivan</owner>
+<maxNumberOfPlayers>3</maxNumberOfPlayers>
+<rating>4.0</rating>
+</game>
 </games>
 <reservations>
 <reservation>
-<game>Chess</game> 
+<gameReservation>Chess</gameReservation> 
  <borrower> <name>Vlad</name><studentID>4869</studentID></borrower>
 <dates><startDate>12/12/2022 hour:4</startDate><endDate>12/12/2022 hour:5</endDate></dates>
 </reservation>
 <reservation>
-<game>Chess</game> 
+<gameReservation>Chess</gameReservation> 
  <borrower> <name>Emanuel</name><studentID>5179</studentID></borrower>
 <dates><startDate>12/12/2022 hour:4</startDate><endDate>12/12/2022 hour:7</endDate></dates>
 </reservation>
 <reservation>
-<game>Chess</game> 
+<gameReservation>Chess</gameReservation> 
  <borrower> <name>Emanuel</name><studentID>5179</studentID></borrower>
 <dates><startDate>2022/12/9 hour:20</startDate><endDate>2022/12/26 hour:6</endDate></dates>
 </reservation>
 <reservation>
-<game>Chess</game> 
+<gameReservation>Chess</gameReservation> 
  <borrower> <name>Emanuel</name><studentID>5179</studentID></borrower>
 <dates><startDate>2022/12/9 hour:20</startDate><endDate>2022/12/11 hour:1</endDate></dates>
 </reservation>
 <reservation>
-<game>UNO</game> 
+<gameReservation>UNO</gameReservation> 
  <borrower> <name>Emanuel</name><studentID>5179</studentID></borrower>
 <dates><startDate>12/12/2022 hour:4</startDate><endDate>14/12/2022 hour:6</endDate></dates>
 </reservation>

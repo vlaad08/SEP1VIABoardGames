@@ -9,7 +9,7 @@ $.get("xml/VIABoardGames.xml", function(xml, status){
         var maxNr = $(this).find("maxNumberOfPlayers").text();
         var rating = $(this).find("rating").text();
         
-        txt += "<div class='game_info'><img src='./images/catana_game.jpg'><p>Game: "+ title + "</p><p>Owner: "+ owner + "</p><p>Players:" + maxNr + "</p><p>Rating:"+
+        txt += "<div class='game_info'><img src='./images/catana_game.jpg'><p>Game: "+ title + "</p><p>Owner: "+ owner + "</p><p>Players: " + maxNr + "</p><p>Rating: "+
         + rating +"</p></div>";
     })
 
