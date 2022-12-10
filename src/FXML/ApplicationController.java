@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 
 import javax.swing.JOptionPane;
+import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -99,7 +100,7 @@ public class ApplicationController
   @FXML private Button saveEditButton_Event;
   @FXML private Button removeButton_Event;
 
-  public void handleEvent(ActionEvent e)
+  public void handleEvent(ActionEvent e) throws FileNotFoundException
   {
     if(e.getSource() == saveButton_Event)
     {
@@ -216,6 +217,8 @@ public class ApplicationController
         exception.fillInStackTrace();
       }
     }
+
+    modelManager.XMLFile();
   }
 
   public void reloadEventListAndDisplay()
@@ -249,7 +252,7 @@ public class ApplicationController
 
 
 
-  public void handlerGame (ActionEvent e)
+  public void handlerGame (ActionEvent e) throws FileNotFoundException
   {
     if (e.getSource()== addSave_Game)
     {
@@ -314,6 +317,8 @@ public class ApplicationController
       editMaxNumOfPlayers_Game.setText(Integer.toString(game.getMaxPlayers()));
     }
 
+
+    modelManager.XMLFile();
   }
 
 
@@ -388,7 +393,7 @@ public class ApplicationController
 
 
 
-  public void handlerBorrowReserve(ActionEvent e)
+  public void handlerBorrowReserve(ActionEvent e) throws FileNotFoundException
   {
 
     if(e.getSource() == borrow_BorrowReserve)
@@ -532,6 +537,8 @@ public class ApplicationController
       }
 
     }
+
+    modelManager.XMLFile();
   }
 
   public void displayRefreshedReservationList()
@@ -554,7 +561,7 @@ public class ApplicationController
 
 
 
-  public void addPlayer(ActionEvent e)
+  public void addPlayer(ActionEvent e) throws FileNotFoundException
   {
     String name = playerName.getText();
     String iD = playerID.getText();
@@ -574,6 +581,8 @@ public class ApplicationController
     }
     playerName.setText("");
     playerID.setText("");
+
+    modelManager.XMLFile();
   }
   private void updatePlayersArea()
   {
@@ -617,7 +626,7 @@ public class ApplicationController
     }
   }
 
-  public void handleActionsPlayer(ActionEvent e)
+  public void handleActionsPlayer(ActionEvent e) throws FileNotFoundException
   {
     if (e.getSource() == saveChangesButton)
     {
@@ -666,6 +675,8 @@ public class ApplicationController
         updatePlayersArea();
       }
     }
+
+    modelManager.XMLFile();
   }
 
 }
