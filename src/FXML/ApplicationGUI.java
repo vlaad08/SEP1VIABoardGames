@@ -19,4 +19,5 @@ public class ApplicationGUI extends Application
     window.setScene(scene);
     window.show();
   }
+
 }

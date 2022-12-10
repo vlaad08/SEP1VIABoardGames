@@ -25,25 +25,25 @@
 <games>
 <game>
 <title>Chess</title>
-<owner>Member: Ivan, ID: 7777</owner>
+<owner>Ivan</owner>
 <maxNumberOfPlayers>2</maxNumberOfPlayers>
 <rating>3.3333333333333335</rating>
 </game>
 <game>
 <title>Catan</title>
-<owner>Member: Ivan, ID: 7777</owner>
+<owner>Ivan</owner>
 <maxNumberOfPlayers>6</maxNumberOfPlayers>
 <rating>NaN</rating>
 </game>
 <game>
 <title>Partners</title>
-<owner>Member: Emanuel, ID: 5179</owner>
+<owner>Emanuel</owner>
 <maxNumberOfPlayers>4</maxNumberOfPlayers>
 <rating>NaN</rating>
 </game>
 <game>
 <title>UNO</title>
-<owner>Guest: Vlad, ID: 4869</owner>
+<owner>Vlad</owner>
 <maxNumberOfPlayers>10</maxNumberOfPlayers>
 <rating>NaN</rating>
 </game>
