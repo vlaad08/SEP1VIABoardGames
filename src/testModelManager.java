@@ -1,16 +1,17 @@
 import Model.*;
 import utils.MyFileHandler;
 
+import java.io.FileNotFoundException;
 import java.util.ArrayList;
 
 public class testModelManager
 {
-  public static void main(String[] args)
+  public static void main(String[] args) throws FileNotFoundException
   {
     ModelManager modelManager = new ModelManager("gameCollection.bin","playerList.bin",
         "reservationList.bin","eventList.bin");
 
-
+/*
     PlayerList playerList = new PlayerList();
     playerList.addMember("Emanuel","5179");
     playerList.addGuest("Vlad","4869");
@@ -51,10 +52,9 @@ public class testModelManager
 
     ReservationList copyReservation = modelManager.getAllReservations();
     System.out.println(copyReservation);
+*/
 
-
-
-
+    modelManager.returnXMLFile();
 
 
   }

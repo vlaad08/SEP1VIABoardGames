@@ -410,4 +410,37 @@ public class ModelManager
     saveReservations(reservationList);
   }
 
+  public void returnXMLFile() throws FileNotFoundException
+  {
+    ArrayList<Game> games = getAllGames().getList();
+    ArrayList<Player> players = getAllPlayers().getList();
+    ArrayList<Reservation> reservations = getAllReservations().getList();
+    ArrayList<Event> events = getAllEvents().getList();
+
+
+    String txt = "<?xml version=\"1.0\" encoding=\"UTF-8\"?> \n <VIABoardGames> \n <players> \n";
+    for(Player a: players)
+    {
+      txt += "<player>\n<name>" + a.getName() + "</name>\n<studentID>" + a.getStudentID() +  "</studentID>\n</player>\n";
+    }
+    txt += "</players>\n<games>\n";
+    for(Game a: games)
+    {
+      txt += "<game>\n<title>" + a.getTitle() + "</title>\n<owner>" + a.getOwner() + "</owner>\n<maxNumberOfPlayers>" + a.getMaxPlayers() + "</maxNumberOfPlayers>\n<rating>" +
+          a.getAverageRating() +  "</rating>\n</game>\n";
+    }
+    txt += "</games>\n<reservations>\n";
+    for(Reservation a: reservations)
+    {
+      txt += "<reservation>\n<game>" + a.getGame().getTitle() + "</game> \n <borrower> <name>" + a.getPlayer().getName() + "</name><studentID>" + a.getPlayer().getStudentID() +
+      "</studentID></borrower>\n<dates><startDate>" + a.getStartDate() + "</startDate><endDate>" + a.getEndDate() + "</endDate></dates>\n</reservation>\n";
+    }
+    txt += "</reservations>\n<events>\n";
+    for(Event a: events)
+    {
+      txt += "<event>\n<title>" + a.getTitle() + "</title>\n<description>" + a.getDescription() + "</description>\n<imageURL>" + a.getImage() + "</imageURL>\n<dates><startDate>" + a.getStartDate() + "</startDate><endDate>" + a.getEndDate() + "</endDate></dates>\n</event>\n";
+    }
+    txt += "</events>\n</VIABoardGames>";
+    MyFileHandler.writeToTextFile("VIABoardGames.xml", txt);
+  }
 }
