@@ -19,9 +19,8 @@ public class ApplicationController
 
 
   private  ObservableList<Player> playerData= FXCollections.observableArrayList();
+  private  ObservableList<Player> memberData= FXCollections.observableArrayList();
   private  ObservableList<Game> gameData= FXCollections.observableArrayList();
-  private  ObservableList<Game> dataBorr_BorrowReserve = FXCollections.observableArrayList();
-  private  ObservableList<Game> dataRes_BorrowReserve = FXCollections.observableArrayList();
   private  ObservableList<Reservation> reservationData = FXCollections.observableArrayList();
   private  ObservableList<Integer> ratingData = FXCollections.observableArrayList();
   private  ObservableList<Integer> hourData = FXCollections.observableArrayList();
@@ -343,6 +342,12 @@ public class ApplicationController
     ArrayList<Player> players = modelManager.getAllPlayers().getList();
     ArrayList<Game> collection = modelManager.getAllGames().getList();
     ArrayList<Reservation> reservations = modelManager.getAllReservations().getList();
+    ArrayList<Player> members=modelManager.getAllPlayers().getList();
+    members.removeIf(element -> !element.isMembership());
+
+    memberData.clear();
+    memberData.addAll(members);
+    studentIdRes_BorrowReserve.setItems(memberData);
 
     reservationData.clear();
     reservationData.addAll(reservations);
@@ -353,7 +358,6 @@ public class ApplicationController
     addOwners_Game.setItems(playerData);
     editOwners_Game.setItems(playerData);
     studentIdBorr_BorrowReserve.setItems(playerData);
-    studentIdRes_BorrowReserve.setItems(playerData);
 
     gameData.clear();
     gameData.addAll(collection);
