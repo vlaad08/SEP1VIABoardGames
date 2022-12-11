@@ -17,12 +17,24 @@ public class Game implements Serializable
   private Player currentOwner;
   private Rating rating;
 
+  private String image;
+
   /**
    * Constructor for the Model.Game class
    * @param title The title of the game
    * @param maxPlayers The maximum number of players that can play the game at the same time
    * @param owner The owner of the game
    * */
+  public Game(String title, int maxPlayers, Player owner, String image)
+  {
+    this.title = title;
+    this.maxPlayers = maxPlayers;
+    this.owner = owner;
+    this.image = image;
+    rating = new Rating();
+    reserved = false;
+  }
+
   public Game(String title, int maxPlayers, Player owner)
   {
     this.title = title;
@@ -31,6 +43,17 @@ public class Game implements Serializable
     rating = new Rating();
     reserved = false;
   }
+
+  public String getImage()
+  {
+    return image;
+  }
+
+  public void setImage(String image)
+  {
+    this.image = image;
+  }
+
   /**
    * Accessor method to get the title of the game
    * @return The title of the game

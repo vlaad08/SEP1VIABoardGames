@@ -33,6 +33,7 @@ public class ApplicationController
   @FXML private ComboBox<Player> addOwners_Game;
   @FXML private TextField addTitle_Game;
   @FXML private TextField addMaxNumOfPlayers_Game;
+  @FXML private TextField addImage_Game;
   @FXML private Button addSave_Game;
   // Game - Edit Game
   @FXML private ComboBox<Player> editOwners_Game;
@@ -260,7 +261,7 @@ public class ApplicationController
       {
         Game newGame=new Game(addTitle_Game.getText(),Integer.parseInt(
             addMaxNumOfPlayers_Game.getText()),
-            addOwners_Game.getSelectionModel().getSelectedItem());
+            addOwners_Game.getSelectionModel().getSelectedItem(), addImage_Game.getText());
         modelManager.addGame(newGame);
 
         initialize();

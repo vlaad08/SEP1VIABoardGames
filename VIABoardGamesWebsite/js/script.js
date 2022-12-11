@@ -8,8 +8,9 @@ $.get("xml/VIABoardGames.xml", function(xml, status){
         var owner = $(this).find("owner").text();
         var maxNr = $(this).find("maxNumberOfPlayers").text();
         var rating = $(this).find("rating").text();
-        
-        txt += "<div class='game_info'><img src='./images/catana_game.jpg'><p>Game: "+ title + "</p><p>Owner: "+ owner + "</p><p>Players: " + maxNr + "</p><p>Rating: "+
+        var image = $(this).find("image").text();
+
+        txt += "<div class='game_info'><img src='./images/"+ image +"'><p>Game: "+ title + "</p><p>Owner: "+ owner + "</p><p>Players: " + maxNr + "</p><p>Rating: "+
         + rating +"</p></div>";
     })
 
