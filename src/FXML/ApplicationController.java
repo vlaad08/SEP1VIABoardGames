@@ -630,7 +630,8 @@ public class ApplicationController
 
   private void updatePlayersBox()
   {
-    int currentIndex = playerBox.getSelectionModel().getSelectedIndex();
+    try{
+      int currentIndex = playerBox.getSelectionModel().getSelectedIndex();
     playerBox.getItems().clear();
 
     PlayerList players = modelManager.getAllPlayers();
@@ -647,6 +648,11 @@ public class ApplicationController
     else
     {
       playerBox.getSelectionModel().select(currentIndex);
+    }
+    }
+    catch(IndexOutOfBoundsException p)
+    {
+      p.fillInStackTrace();
     }
   }
 

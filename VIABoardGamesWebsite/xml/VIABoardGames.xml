@@ -18,15 +18,17 @@
 <studentID>5189</studentID>
 </player>
 <player>
-<name>Ivan</name>
-<studentID>7777</studentID>
-</player>
-<player>
 <name>Ioana</name>
 <studentID>4125125</studentID>
 </player>
 </players>
 <games>
+<game>
+<title>Chess</title>
+<owner>Ivan</owner>
+<maxNumberOfPlayers>2</maxNumberOfPlayers>
+<rating>NaN</rating>
+</game>
 <game>
 <title>Catan</title>
 <owner>Ivan</owner>
@@ -45,24 +47,8 @@
 <maxNumberOfPlayers>10</maxNumberOfPlayers>
 <rating>NaN</rating>
 </game>
-<game>
-<title>New Chess</title>
-<owner>Ivan</owner>
-<maxNumberOfPlayers>4</maxNumberOfPlayers>
-<rating>NaN</rating>
-</game>
 </games>
 <reservations>
-<reservation>
-<gameReservation>UNO</gameReservation> 
- <borrower> <name>Ivan</name><studentID>7777</studentID></borrower>
-<dates><startDate>2022/12/3 hour:10</startDate><endDate>2022/12/5 hour:16</endDate></dates>
-</reservation>
-<reservation>
-<gameReservation>New Chess</gameReservation> 
- <borrower> <name>Agoston</name><studentID>3579</studentID></borrower>
-<dates><startDate>2022/12/10 hour:19</startDate><endDate>2022/12/11 hour:6</endDate></dates>
-</reservation>
 </reservations>
 <events>
 <event>
