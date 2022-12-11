@@ -18,6 +18,10 @@
 <studentID>5189</studentID>
 </player>
 <player>
+<name>Ivan</name>
+<studentID>7777</studentID>
+</player>
+<player>
 <name>Ioana</name>
 <studentID>4125125</studentID>
 </player>
@@ -49,6 +53,16 @@
 </game>
 </games>
 <reservations>
+<reservation>
+<gameReservation>Partners</gameReservation> 
+ <borrower> <name>Emanuel</name><studentID>5179</studentID></borrower>
+<dates><startDate>2022/12/11 hour:1</startDate><endDate>2023/1/1 hour:1</endDate></dates>
+</reservation>
+<reservation>
+<gameReservation>Catan</gameReservation> 
+ <borrower> <name>Emanuel</name><studentID>5179</studentID></borrower>
+<dates><startDate>2022/12/12 hour:3</startDate><endDate>2022/12/22 hour:3</endDate></dates>
+</reservation>
 </reservations>
 <events>
 <event>

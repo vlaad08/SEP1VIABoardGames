@@ -363,21 +363,6 @@ public class ApplicationController
     gameBorr_BorrowReserve.setItems(gameData);
     gameRes_BorrowReserve.setItems(gameData);
 
-//    ArrayList<Game> collection1 = modelManager.getAllGames().getList();
-//    for (int i = 0; i < collection1.size(); i++)
-//    {
-//      dataBorr_BorrowReserve.addAll(collection1.get(i));
-//    }
-//    gameBorr_BorrowReserve.setItems(dataBorr_BorrowReserve);
-//
-//
-//    ArrayList<Game> collection2 = modelManager.getAllGames().getList();
-//    for (int i = 0; i < collection2.size(); i++)
-//    {
-//      dataRes_BorrowReserve.addAll(collection2.get(i));
-//    }
-//    gameRes_BorrowReserve.setItems(dataBorr_BorrowReserve);
-
     name2.setEditable(true);
     updatePlayersArea();
     resetPlayer();
@@ -425,15 +410,77 @@ public class ApplicationController
         int endYear = reserveToBorr_BorrowReserve.getValue().getYear();
         int endHour = hourBorr_BorrowReserve.getValue();
         DateTime end = new DateTime(endYear, endMonth, endDay, endHour);
+        DateTime start=DateTime.today();
 
         if (!end.isBefore(DateTime.today()))
         {
-          modelManager.borrow(player, gameSelect, end);
+          boolean isTrue=true;
+          ArrayList<Reservation> reservations=modelManager.getAllReservations().getList();
+          //          System.out.println(reservations);
+          for (Reservation element:reservations)
+          {
+            if (element.getGame().equals(gameBorr_BorrowReserve.getValue()))
+            {
+              if (end.isBefore(element.getEndDate())&&element.getStartDate().isBefore(end))
+              {
+                //                JOptionPane.showMessageDialog(null,"Cannot reserve in this time period\n"
+                //                    +"The game is reserved from: "+element.getStartDate()+"\n"
+                //                    + "To: "+element.getEndDate(),"Error message",JOptionPane.ERROR_MESSAGE);
+                System.out.println("Cannot reserve in this time period\n"
+                    +"The game is reserved from: "+element.getStartDate()+"\n"
+                    + "To: "+element.getEndDate());
+                isTrue=false;
+                break;
+                //                initialize();
+              }
+              if (!start.isBefore(element.getStartDate())&&start.isBefore(element.getEndDate()))
+              {
+                //                JOptionPane.showMessageDialog(null,"Cannot reserve in this time period\n"
+                //                    +"The game is reserved from: "+element.getStartDate()+"\n"
+                //                    + "To: "+element.getEndDate(),"Error message",JOptionPane.ERROR_MESSAGE);
+                System.out.println("Cannot reserve in this time period\n"
+                    +"The game is reserved from: "+element.getStartDate()+"\n"
+                    + "To: "+element.getEndDate());
+                isTrue=false;
+                break;
+                //                initialize();
+              }
+              if (!start.isBefore(element.getStartDate())&&start.isBefore(element.getEndDate())&&end.isBefore(element.getEndDate())&&!end.isBefore(element.getStartDate()))
+              {
+                //                JOptionPane.showMessageDialog(null,"Cannot reserve in this time period\n"
+                //                    +"The game is reserved from: "+element.getStartDate()+"\n"
+                //                    + "To: "+element.getEndDate(),"Error message",JOptionPane.ERROR_MESSAGE);
+                System.out.println("Cannot reserve in this time period\n"
+                    +"The game is reserved from: "+element.getStartDate()+"\n"
+                    + "To: "+element.getEndDate());
+                isTrue=false;
+                break;
+                //                initialize();
+              }
+              if (start.isBefore(element.getStartDate())&&!end.isBefore(element.getEndDate()))
+              {
+                //                JOptionPane.showMessageDialog(null,"Cannot reserve in this time period\n"
+                //                    +"The game is reserved from: "+element.getStartDate()+"\n"
+                //                    + "To: "+element.getEndDate(),"Error message",JOptionPane.ERROR_MESSAGE);
+                System.out.println("Cannot reserve in this time period\n"
+                    +"The game is reserved from: "+element.getStartDate()+"\n"
+                    + "To: "+element.getEndDate());
+                isTrue=false;
+                break;
+                //                initialize();
+              }
+            }
+          }
+          if (isTrue)
+          {
+            modelManager.borrow(player, gameSelect, end);
 
-          JOptionPane.showMessageDialog(null,
-              gameSelect + "game has been borrowed to: " + player + "till: "
-                  + endHour + "hour", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,
+                gameSelect + "game has been borrowed to: " + player + "till: "
+                    + endHour + "hour", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
             initialize();
+          }
+
         }else
         {
 //          JOptionPane.showMessageDialog(null,"The date is in the past!","Error message",JOptionPane.ERROR_MESSAGE);
@@ -461,15 +508,15 @@ public class ApplicationController
         int startMonth = fromRes_BorrowReserve.getValue().getMonthValue();
         int startYear = fromRes_BorrowReserve.getValue().getYear();
         int startHour = startHour_BorrowReserve.getValue();
-        DateTime start = new DateTime(startDay, startMonth, startYear, startHour);
+        DateTime start = new DateTime(startYear, startMonth, startDay, startHour);
 
         int endDay = toRes_BorrowReserve.getValue().getDayOfMonth();
         int endMonth = toRes_BorrowReserve.getValue().getMonthValue();
         int endYear = toRes_BorrowReserve.getValue().getYear();
         int endHour = endHour_BorrowReserve.getValue();
-        DateTime end = new DateTime(endDay, endMonth, endYear, endHour);
+        DateTime end = new DateTime(endYear, endMonth, endDay, endHour);
 
-        if (start.isBefore(end)&&!start.isBefore(DateTime.today()))
+        if (start.isBefore(end))
         {
           boolean isTrue=true;
           ArrayList<Reservation> reservations=modelManager.getAllReservations().getList();
@@ -478,7 +525,7 @@ public class ApplicationController
           {
             if (element.getGame().equals(gameRes_BorrowReserve.getValue()))
             {
-              if (start.isBefore(element.getStartDate())&&(end.isBefore(element.getEndDate())&&element.getStartDate().isBefore(end)))
+              if (end.isBefore(element.getEndDate())&&element.getStartDate().isBefore(end))
               {
 //                JOptionPane.showMessageDialog(null,"Cannot reserve in this time period\n"
 //                    +"The game is reserved from: "+element.getStartDate()+"\n"
@@ -502,7 +549,7 @@ public class ApplicationController
                 break;
 //                initialize();
               }
-              if (!start.isBefore(element.getStartDate())&&end.isBefore(element.getEndDate()))
+              if (!start.isBefore(element.getStartDate())&&start.isBefore(element.getEndDate())&&end.isBefore(element.getEndDate())&&!end.isBefore(element.getStartDate()))
               {
 //                JOptionPane.showMessageDialog(null,"Cannot reserve in this time period\n"
                     //                    +"The game is reserved from: "+element.getStartDate()+"\n"
@@ -510,9 +557,21 @@ public class ApplicationController
                     System.out.println("Cannot reserve in this time period\n"
                         +"The game is reserved from: "+element.getStartDate()+"\n"
                         + "To: "+element.getEndDate());
-//                    initialize();
-                    isTrue=false;
-                    break;
+                isTrue=false;
+                break;
+                //                initialize();
+              }
+              if (start.isBefore(element.getStartDate())&&!end.isBefore(element.getEndDate()))
+              {
+                //                JOptionPane.showMessageDialog(null,"Cannot reserve in this time period\n"
+                //                    +"The game is reserved from: "+element.getStartDate()+"\n"
+                //                    + "To: "+element.getEndDate(),"Error message",JOptionPane.ERROR_MESSAGE);
+                System.out.println("Cannot reserve in this time period\n"
+                    +"The game is reserved from: "+element.getStartDate()+"\n"
+                    + "To: "+element.getEndDate());
+                isTrue=false;
+                break;
+                //                initialize();
               }
             }
           }
@@ -529,6 +588,22 @@ public class ApplicationController
         {
 //          JOptionPane.showMessageDialog(null,"The date is in the past!","Error message",JOptionPane.ERROR_MESSAGE);
           System.out.println("past");
+          System.out.println(start.getYear());
+          System.out.println(start.getMonthName());
+          System.out.println(start.getDay());
+          System.out.println(start.getHour());
+          System.out.println("fasz");
+          System.out.println(end.getYear());
+          System.out.println(end.getMonthName());
+          System.out.println(end.getDay());
+          System.out.println(end.getHour());
+          System.out.println("Today");
+          System.out.println(DateTime.today().getYear());
+          System.out.println(DateTime.today().getMonthName());
+          System.out.println(DateTime.today().getDay());
+          System.out.println(DateTime.today().getHour());
+          System.out.println(start.isBefore(DateTime.today()));
+          System.out.println(start.isBefore(end));
 //          initialize();
         }
       }
