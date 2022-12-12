@@ -228,7 +228,7 @@ public class ApplicationController
     ArrayList<Event> events = modelManager.getAllEvents().getList();
     for (int i = 0; i < events.size(); i++)
     {
-      text += events.get(i).toString()+"\n";
+      text += events.get(i).toString()+"\n\n";
     }
     eventsDisplayed.setText(text);
   }
