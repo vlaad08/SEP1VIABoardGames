@@ -73,10 +73,15 @@ a{
     three items would wrap below each other, making it responsive
 */
 
-.next_events h1{
+
+#upcoming{
     padding-top: 80px;
     padding-bottom: 60px;
     text-align: center;
+}
+
+.next_events{
+    display: flex;
 }
 .next_events .next_container{
     margin: 0 auto;
