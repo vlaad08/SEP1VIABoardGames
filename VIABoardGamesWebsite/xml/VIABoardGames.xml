@@ -28,64 +28,29 @@
 </players>
 <games>
 <game>
-<title>Chess</title>
-<owner>Vlad</owner>
+<title>Clue</title>
+<owner>Ivan</owner>
 <maxNumberOfPlayers>2</maxNumberOfPlayers>
 <rating>NaN</rating>
-<image>chess.png</image>
-</game>
-<game>
-<title>Uno</title>
-<owner>Ioana</owner>
-<maxNumberOfPlayers>10</maxNumberOfPlayers>
-<rating>NaN</rating>
-<image>game_uno.jpg</image>
-</game>
-<game>
-<title>Monopoly</title>
-<owner>Agoston</owner>
-<maxNumberOfPlayers>4</maxNumberOfPlayers>
-<rating>NaN</rating>
-<image>game_monopoly.jpg</image>
-</game>
-<game>
-<title>clue </title>
-<owner>Levente</owner>
-<maxNumberOfPlayers>4</maxNumberOfPlayers>
-<rating>NaN</rating>
 <image>game_clue.jpg</image>
-</game>
-<game>
-<title>Risk</title>
-<owner>Ivan</owner>
-<maxNumberOfPlayers>4</maxNumberOfPlayers>
-<rating>NaN</rating>
-<image>game_risk.jpg</image>
-</game>
-<game>
-<title>Catan</title>
-<owner>Vlad</owner>
-<maxNumberOfPlayers>3</maxNumberOfPlayers>
-<rating>NaN</rating>
-<image>null</image>
 </game>
 </games>
 <reservations>
 </reservations>
 <events>
 <event>
-<title>Big upcoming chess tournament</title>
-<description>We are really excited to present to you our upcoming chess tournement. No matter the skill lever
-we will find you an oponent. Get ready to use your brains and win prizes.</description>
-<imageURL>chess-img-png.jpg</imageURL>
-<dates><startDate>2022/12/12 hour:10</startDate><endDate>2022/12/12 hour:10</endDate></dates>
-</event>
-<event>
 <title>Uno tournament</title>
 <description>Plus 2? Plus 3? UNO! Get ready to prove who is the best player of Uno out of everybody! 
 Be sure not to make any mistakes or you might REVERSE!</description>
 <imageURL>game_uno.jpg</imageURL>
 <dates><startDate>2022/12/13 hour:10</startDate><endDate>2022/12/13 hour:10</endDate></dates>
+</event>
+<event>
+<title>Big upcoming chess tournament</title>
+<description>We are really excited to present to you our upcoming chess tournement. No matter the skill lever
+we will find you an oponent. Get ready to use your brains and</description>
+<imageURL>chess-img-png.jpg</imageURL>
+<dates><startDate>2022/12/12 hour:10</startDate><endDate>2022/12/12 hour:10</endDate></dates>
 </event>
 </events>
 </VIABoardGames>

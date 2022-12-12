@@ -279,10 +279,17 @@ public class ApplicationController
     if (e.getSource()== editSave_Game)
     {
       Game oldGame= editGames_Game.getSelectionModel().getSelectedItem();
+      String image = oldGame.getImage();
+      Player owner = oldGame.getOwner();
       modelManager.removeGame(oldGame);
+
+      if(editOwners_Game.getSelectionModel().getSelectedItem() != null)
+      {
+        owner = editOwners_Game.getSelectionModel().getSelectedItem();
+      }
       Game editedGame=new Game(editTitle_Game.getText(),Integer.parseInt(
           editMaxNumOfPlayers_Game.getText()),
-          editOwners_Game.getSelectionModel().getSelectedItem());
+          owner, image);
       modelManager.addGame(editedGame);
 
       initialize();
@@ -308,14 +315,20 @@ public class ApplicationController
       int rating = ratingTabRatingComboBox_Game.getValue();
       modelManager.rateAGame(game,rating);
       initialize();
-      System.out.println(game);
     }
 
     if (e.getSource()==editGames_Game)
     {
-      Game game=editGames_Game.getSelectionModel().getSelectedItem();
-      editTitle_Game.setText(game.getTitle());
-      editMaxNumOfPlayers_Game.setText(Integer.toString(game.getMaxPlayers()));
+      try
+      {
+        Game game=editGames_Game.getSelectionModel().getSelectedItem();
+        editTitle_Game.setText(game.getTitle());
+        editMaxNumOfPlayers_Game.setText(Integer.toString(game.getMaxPlayers()));
+      }
+      catch (NullPointerException exception)
+      {
+        exception.fillInStackTrace();
+      }
     }
 
 
