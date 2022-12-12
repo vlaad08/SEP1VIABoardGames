@@ -35,13 +35,6 @@
 <image>chess.png</image>
 </game>
 <game>
-<title>Catan</title>
-<owner>Emanuel</owner>
-<maxNumberOfPlayers>6</maxNumberOfPlayers>
-<rating>NaN</rating>
-<image>game_catan.jpg</image>
-</game>
-<game>
 <title>Uno</title>
 <owner>Ioana</owner>
 <maxNumberOfPlayers>10</maxNumberOfPlayers>
@@ -68,6 +61,13 @@
 <maxNumberOfPlayers>4</maxNumberOfPlayers>
 <rating>NaN</rating>
 <image>game_risk.jpg</image>
+</game>
+<game>
+<title>Catan</title>
+<owner>Vlad</owner>
+<maxNumberOfPlayers>3</maxNumberOfPlayers>
+<rating>NaN</rating>
+<image>null</image>
 </game>
 </games>
 <reservations>
