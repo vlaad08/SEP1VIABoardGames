@@ -28,12 +28,6 @@
 </players>
 <games>
 <game>
-<title>Chess</title>
-<owner>Ivan</owner>
-<maxNumberOfPlayers>2</maxNumberOfPlayers>
-<rating>NaN</rating>
-</game>
-<game>
 <title>Catan</title>
 <owner>Ivan</owner>
 <maxNumberOfPlayers>6</maxNumberOfPlayers>
@@ -54,14 +48,14 @@
 </games>
 <reservations>
 <reservation>
-<gameReservation>Partners</gameReservation> 
- <borrower> <name>Emanuel</name><studentID>5179</studentID></borrower>
-<dates><startDate>2022/12/11 hour:1</startDate><endDate>2023/1/1 hour:1</endDate></dates>
+<gameReservation>Chess</gameReservation> 
+ <borrower> <name>Ivan</name><studentID>7777</studentID></borrower>
+<dates><startDate>2022/12/11 hour:20</startDate><endDate>2022/12/8 hour:10</endDate></dates>
 </reservation>
 <reservation>
-<gameReservation>Catan</gameReservation> 
- <borrower> <name>Emanuel</name><studentID>5179</studentID></borrower>
-<dates><startDate>2022/12/12 hour:3</startDate><endDate>2022/12/22 hour:3</endDate></dates>
+<gameReservation>UNO</gameReservation> 
+ <borrower> <name>Ivan</name><studentID>7777</studentID></borrower>
+<dates><startDate>2022/12/3 hour:10</startDate><endDate>2022/12/5 hour:16</endDate></dates>
 </reservation>
 </reservations>
 <events>
@@ -76,6 +70,12 @@
 <description>chess</description>
 <imageURL>asd</imageURL>
 <dates><startDate>2022/12/8 hour:10</startDate><endDate>2022/12/10 hour:10</endDate></dates>
+</event>
+<event>
+<title>asdfasdfa</title>
+<description>asfgasfdgasdfgasdfasfdgasfgasg</description>
+<imageURL>sdf</imageURL>
+<dates><startDate>2022/12/12 hour:10</startDate><endDate>2022/12/15 hour:10</endDate></dates>
 </event>
 </events>
 </VIABoardGames>

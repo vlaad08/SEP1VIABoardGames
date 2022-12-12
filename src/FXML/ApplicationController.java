@@ -111,9 +111,20 @@ public class ApplicationController
         int startYear = startDateInput_Event.getValue().getYear(), startMonth = startDateInput_Event.getValue().getMonthValue(), startDay = startDateInput_Event.getValue().getDayOfMonth();
         int endYear = endDateInput_Event.getValue().getYear(), endMonth = endDateInput_Event.getValue().getMonthValue(), endDay = endDateInput_Event.getValue().getDayOfMonth();
 
-        modelManager.addEvent(title, description, imageURL, new DateTime(startYear, startMonth, startDay), new DateTime(endYear, endMonth, endDay));
-        JOptionPane.showMessageDialog(null,"The event was created","Confirmation message",
-            JOptionPane.INFORMATION_MESSAGE);
+        DateTime start=new DateTime(startYear,startMonth,startDay);
+        DateTime end=new DateTime(endYear,endMonth,endDay);
+        if(start.isBefore(end)&&!start.isBefore(DateTime.today()))
+        {
+          modelManager.addEvent(title, description, imageURL, start, end);
+//          JOptionPane.showMessageDialog(null,"The event was created","Confirmation message",
+//              JOptionPane.INFORMATION_MESSAGE);
+          System.out.println("done");
+        }else
+        {
+//          JOptionPane.showMessageDialog(null,"The date is in the past!","Error message",JOptionPane.ERROR_MESSAGE);
+          System.out.println("past");
+        }
+
 
 
         titleInput_Event.setText("");
