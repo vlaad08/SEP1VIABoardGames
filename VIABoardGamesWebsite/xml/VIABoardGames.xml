@@ -69,6 +69,13 @@
 <rating>NaN</rating>
 <image>game_risk.jpg</image>
 </game>
+<game>
+<title>Sharing</title>
+<owner>Agoston</owner>
+<maxNumberOfPlayers>4</maxNumberOfPlayers>
+<rating>5.0</rating>
+<image>game_sharing.jpg</image>
+</game>
 </games>
 <reservations>
 </reservations>
