@@ -55,6 +55,13 @@
 <rating>NaN</rating>
 <image>game_monopoly.jpg</image>
 </game>
+<game>
+<title>clue </title>
+<owner>Levente</owner>
+<maxNumberOfPlayers>4</maxNumberOfPlayers>
+<rating>NaN</rating>
+<image>game_clue.jpg</image>
+</game>
 </games>
 <reservations>
 </reservations>
