@@ -2,35 +2,31 @@
  <VIABoardGames> 
  <players> 
 <player>
-<name>Emanuel</name>
-<studentID>5157</studentID>
+<name>Vlad</name>
+<studentID>331165</studentID>
 </player>
 <player>
-<name>Vlad Ion</name>
-<studentID>1111</studentID>
+<name>Ivan</name>
+<studentID>777777</studentID>
 </player>
 </players>
 <games>
 <game>
 <title>Chess</title>
-<owner>Vlad Ion</owner>
+<owner>Vlad</owner>
 <maxNumberOfPlayers>2</maxNumberOfPlayers>
-<rating>5.0</rating>
-<image>chess</image>
+<rating>NaN</rating>
+<image>game_chess.jpg</image>
 </game>
 </games>
 <reservations>
-<reservation>
-<gameReservation>Chess</gameReservation> 
- <borrower> <name>Emanuel</name><studentID>5157</studentID></borrower>
-<dates><startDate>2022/12/16 hour:2</startDate><endDate>2022/12/18 hour:5</endDate></dates>
-</reservation>
-<reservation>
-<gameReservation>Chess</gameReservation> 
- <borrower> <name>Emanuel</name><studentID>5157</studentID></borrower>
-<dates><startDate>2022/12/29 hour:4</startDate><endDate>2022/12/31 hour:5</endDate></dates>
-</reservation>
 </reservations>
 <events>
+<event>
+<title>Chess tournament</title>
+<description>31254151</description>
+<imageURL>chess.png</imageURL>
+<dates><startDate>2022/12/15 hour:10</startDate><endDate>2022/12/16 hour:10</endDate></dates>
+</event>
 </events>
 </VIABoardGames>
