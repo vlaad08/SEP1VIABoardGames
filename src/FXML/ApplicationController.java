@@ -151,8 +151,21 @@ public class ApplicationController
           String imageURL = imageURLEDIT_Event.getText();
           int startYear = startDateEdit_Event.getValue().getYear(), startMonth = startDateEdit_Event.getValue().getMonthValue(), startDay = startDateEdit_Event.getValue().getDayOfMonth();
           int endYear = endDateEdit_Event.getValue().getYear(), endMonth = endDateEdit_Event.getValue().getMonthValue(), endDay = endDateEdit_Event.getValue().getDayOfMonth();
+          DateTime start = new DateTime(startYear, startMonth, startDay);
+          DateTime end = new DateTime(endYear, endMonth, endDay);
 
-          modelManager.addEvent(title, description, imageURL, new DateTime(startYear, startMonth, startDay), new DateTime(endYear, endMonth, endDay));
+
+          if(start.isBefore(end)&&!start.isBefore(DateTime.today()))
+          {
+            modelManager.addEvent(title, description, imageURL, start, end);
+            //          JOptionPane.showMessageDialog(null,"The event was created","Confirmation message",
+            //              JOptionPane.INFORMATION_MESSAGE);
+            System.out.println("done");
+          }else
+          {
+            //          JOptionPane.showMessageDialog(null,"The date is in the past!","Error message",JOptionPane.ERROR_MESSAGE);
+            System.out.println("past");
+          }
 
           JOptionPane.showMessageDialog(null,"The event was successfully edited","Confirmation message",
               JOptionPane.INFORMATION_MESSAGE);
