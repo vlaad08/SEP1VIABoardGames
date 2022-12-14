@@ -12,11 +12,8 @@ public class Game implements Serializable
 {
   private String title;
   private int maxPlayers;
-  private boolean reserved;
   private Player owner;
-  private Player currentOwner;
   private Rating rating;
-
   private String image;
 
   /**
@@ -32,16 +29,15 @@ public class Game implements Serializable
     this.owner = owner;
     this.image = image;
     rating = new Rating();
-    reserved = false;
   }
 
-  public Game(String title, int maxPlayers, Player owner)
+  private Game(String title, int maxPlayers, Player owner, String image, Rating rating)
   {
     this.title = title;
     this.maxPlayers = maxPlayers;
     this.owner = owner;
-    rating = new Rating();
-    reserved = false;
+    this.image = image;
+    this.rating = rating;
   }
 
   public String getImage()
@@ -86,22 +82,7 @@ public class Game implements Serializable
   {
     this.maxPlayers = maxPlayers;
   }
-  /**
-   * Accessor method to get whether the game is reserved or not
-   * @return whether the game is reserved or not
-   * */
-  public boolean isReserved()
-  {
-    return reserved;
-  }
-  /**
-   * Mutator method to set the game's availability
-   * @param reserved The new availability of the game
-   * */
-  public void setReserved(boolean reserved)
-  {
-    this.reserved = reserved;
-  }
+
   /**
    * Accessor method to get the owner of the game
    * @return The owner of the game
@@ -110,29 +91,10 @@ public class Game implements Serializable
   {
     return owner;
   }
-  /**
-   * Mutator method to change the owner of the game
-   * @param owner The new owner of the game
-   * */
+
   public void setOwner(Player owner)
   {
     this.owner = owner;
-  }
-  /**
-   * Accessor method to get the current owner of the game
-   * @return The current owner of the game
-   * */
-  public Player getCurrentOwner()
-  {
-    return currentOwner;
-  }
-  /**
-   * Mutator method to change the owner of the game
-   * @param currentOwner The new owner after borrowing the game
-   * */
-  public void setCurrentOwner(Player currentOwner)
-  {
-    this.currentOwner = currentOwner;
   }
 
   /**
@@ -163,16 +125,12 @@ public class Game implements Serializable
       return false;
     }
     Game other=(Game)obj;
-    return other.title.equals(title) && other.maxPlayers==maxPlayers &&other.reserved==reserved;
+    return other.title.equals(title) && other.maxPlayers==maxPlayers;
   }
 
   public Game copy()
   {
-    return new Game(title, maxPlayers, owner, image);
-  }
-  public void isReturned()
-  {
-    setReserved(false);
+    return new Game(title, maxPlayers, owner, image, rating);
   }
 
   public String toString()

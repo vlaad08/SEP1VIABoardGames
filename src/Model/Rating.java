@@ -13,7 +13,6 @@ public class Rating implements Serializable
 {
   private ArrayList<Integer> rating;
 
-
   /**
    * Constructor for the Model.Rating class. It creates a new ArrayList
    * */
@@ -54,9 +53,7 @@ public class Rating implements Serializable
       DecimalFormat df = new DecimalFormat();
       df.setMaximumFractionDigits(2);
       return df.format(getAverageRating());
-      //return String.valueOf(getAverageRating());
     }
     else return "";
-
   }
 }

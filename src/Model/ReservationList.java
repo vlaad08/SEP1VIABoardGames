@@ -10,18 +10,15 @@ public class ReservationList implements Serializable
   /**
    * @author Vlad Nita and Emanoil Duca
    * @version 1.0
-   *
    * */
 
   /**
    * No argument constructor, which initialize the ArrayList of reservation
    */
-
   public ReservationList()
   {
     reservations = new ArrayList<>();
   }
-
   public void addReservation(Game game, Player player, DateTime startDate, DateTime endDate)
   {
       Reservation temp = new Reservation(game, player, startDate, endDate, false);
@@ -39,8 +36,6 @@ public class ReservationList implements Serializable
       reservations.add(temp);
     }
   }
-
-
 
   public void removeReservation(Reservation reservation)
   {
@@ -70,32 +65,6 @@ public class ReservationList implements Serializable
     return byGame;
   }
 
-  public ArrayList<Reservation> getByStartDate(DateTime startDate)
-  {
-    ArrayList<Reservation> byStartDate = new ArrayList<>();
-    for(Reservation element: reservations)
-    {
-      if(element.getStartDate().equals(startDate))
-      {
-        byStartDate.add(element);
-      }
-    }
-    return byStartDate;
-  }
-
-  public ArrayList<Reservation> getByEndDate(DateTime endDate)
-  {
-    ArrayList<Reservation> byEndDate = new ArrayList<>();
-    for(Reservation element: reservations)
-    {
-      if(element.getStartDate().equals(endDate))
-      {
-        byEndDate.add(element);
-      }
-    }
-    return byEndDate;
-  }
-
   public ArrayList<Reservation> getByPlayer(Player player)
   {
     ArrayList<Reservation> byPlayer = new ArrayList<>();
@@ -113,7 +82,6 @@ public class ReservationList implements Serializable
   {
     return reservations;
   }
-
 
   public String toString()
   {
@@ -138,7 +106,4 @@ public class ReservationList implements Serializable
     return other;
   }
 
-
 }
-
-

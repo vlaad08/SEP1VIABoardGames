@@ -11,7 +11,6 @@ import java.util.ArrayList;
 public class EventList implements Serializable
 {
   private ArrayList<Event> events;
-  private String fileName;
 
   /**
    * No-argument constructor
@@ -43,14 +42,6 @@ public class EventList implements Serializable
   }
 
   /**
-   * method for getting all future events
-   * */
-  public ArrayList<Event> getAllFutureEvents()
-  {
-    return events;
-  }
-
-  /**
    * toString of Class
    * */
   public String toString()
@@ -74,12 +65,6 @@ public class EventList implements Serializable
      }
      return null;
    }
-
-   public Event getEvent(int index)
-   {
-     return events.get(index);
-   }
-
 
    public ArrayList<Event> getList()
    {

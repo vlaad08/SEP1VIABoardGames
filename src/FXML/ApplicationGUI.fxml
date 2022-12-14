@@ -142,7 +142,7 @@
                                     </FlowPane>
                                     <FlowPane prefHeight="60.0" prefWidth="901.0">
                                        <children>
-                                          <TextField alignment="CENTER" editable="false" prefHeight="43.0" prefWidth="93.0" style="-fx-background-color: none;" text="Owner: ">
+                                          <TextField alignment="CENTER" editable="false" prefHeight="46.0" prefWidth="146.0" style="-fx-background-color: none;" text="New Owner: ">
                                              <FlowPane.margin>
                                                 <Insets left="80.0" top="10.0" />
                                              </FlowPane.margin>
@@ -1083,7 +1083,10 @@
                            <content>
                               <FlowPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <Label fx:id="labelForPlayers" alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="542.0" prefWidth="901.0" text="PlayerList" />
+                                    <Label fx:id="labelForPlayers" alignment="TOP_LEFT" contentDisplay="CENTER" prefHeight="542.0" prefWidth="901.0" text="PlayerList">
+                                       <padding>
+                                          <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+                                       </padding></Label>
                                  </children>
                               </FlowPane>
                            </content>

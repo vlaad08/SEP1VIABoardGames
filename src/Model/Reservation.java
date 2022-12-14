@@ -41,10 +41,7 @@ public class Reservation implements Serializable
 
   public boolean isBorrow()
   {
-    if(borrow)
-      return true;
-    else
-      return false;
+    return borrow;
   }
 
   public Player getPlayer()

@@ -11,8 +11,6 @@ import java.util.ArrayList;
 public class PlayerList implements Serializable
 {
   private ArrayList<Player> players;
-  private String fileName;
-
   /**
    * A constructor with no variables as parameters
    * */
@@ -33,18 +31,6 @@ public class PlayerList implements Serializable
   {
     players.add(new Player(name,studentID));
     players.get(players.size()-1).setMembership(false);
-  }
-
-  public Player getPlayerByID(String studentID)
-  {
-    for(Player element: players)
-    {
-      if(element.getStudentID().equals(studentID))
-      {
-        return element;
-      }
-    }
-    return null;
   }
 
   // Method that remove a player using his studentNumber
@@ -82,5 +68,4 @@ public class PlayerList implements Serializable
 
     return text;
   }
-
 }

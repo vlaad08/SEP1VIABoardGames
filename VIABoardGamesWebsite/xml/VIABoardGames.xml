@@ -3,54 +3,34 @@
  <players> 
 <player>
 <name>Emanuel</name>
-<studentID>5179</studentID>
+<studentID>5157</studentID>
 </player>
 <player>
-<name>Vlad</name>
-<studentID>4869</studentID>
-</player>
-<player>
-<name>Agoston</name>
-<studentID>3579</studentID>
-</player>
-<player>
-<name>Levente</name>
-<studentID>5189</studentID>
-</player>
-<player>
-<name>Ivan</name>
-<studentID>7777</studentID>
-</player>
-<player>
-<name>Ioana</name>
-<studentID>4125125</studentID>
+<name>Vlad Ion</name>
+<studentID>1111</studentID>
 </player>
 </players>
 <games>
 <game>
 <title>Chess</title>
-<owner>Agoston</owner>
+<owner>Vlad Ion</owner>
 <maxNumberOfPlayers>2</maxNumberOfPlayers>
 <rating>5.0</rating>
-<image>game_chess.jpg</image>
+<image>chess</image>
 </game>
 </games>
 <reservations>
+<reservation>
+<gameReservation>Chess</gameReservation> 
+ <borrower> <name>Emanuel</name><studentID>5157</studentID></borrower>
+<dates><startDate>2022/12/16 hour:2</startDate><endDate>2022/12/18 hour:5</endDate></dates>
+</reservation>
+<reservation>
+<gameReservation>Chess</gameReservation> 
+ <borrower> <name>Emanuel</name><studentID>5157</studentID></borrower>
+<dates><startDate>2022/12/29 hour:4</startDate><endDate>2022/12/31 hour:5</endDate></dates>
+</reservation>
 </reservations>
 <events>
-<event>
-<title>Uno tournament</title>
-<description>Plus 2? Plus 3? UNO! Get ready to prove who is the best player of Uno out of everybody! 
-Be sure not to make any mistakes or you might REVERSE!</description>
-<imageURL>game_uno.jpg</imageURL>
-<dates><startDate>2022/12/13 hour:10</startDate><endDate>2022/12/13 hour:10</endDate></dates>
-</event>
-<event>
-<title>Big upcoming chess tournament</title>
-<description>We are really excited to present to you our upcoming chess tournement. No matter the skill lever
-we will find you an oponent. Get ready to use your brains and</description>
-<imageURL>chess-img-png.jpg</imageURL>
-<dates><startDate>2022/12/12 hour:10</startDate><endDate>2022/12/12 hour:10</endDate></dates>
-</event>
 </events>
 </VIABoardGames>

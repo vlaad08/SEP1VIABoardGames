@@ -216,21 +216,6 @@ public class ModelManager
     return null;
   }
 
-  public Player getPlayerByName(String name)
-  {
-    PlayerList playerList=getAllPlayers();
-    ArrayList<Player> players = playerList.getList();
-
-    for(Player element: players)
-    {
-      if(element.getName().equalsIgnoreCase(name))
-      {
-        return element;
-      }
-    }
-    return null;
-  }
-
   public void removePlayer(Player player)
   {
     PlayerList playerList = getAllPlayers();
@@ -258,13 +243,13 @@ public class ModelManager
     saveCollection(gameCollection);
   }
 
-  public void editGame(String oldTitle, String newTitle,
-      int oldPlayers, int newPlayers, Player owner)
+  public void editGame(String oldTitle, String newTitle, int newPlayers, Player owner)
   {
     Game oldGame = getGame(oldTitle);
     Game newGame = oldGame.copy();
     newGame.setTitle(newTitle);
     newGame.setMaxPlayers(newPlayers);
+    newGame.setOwner(owner);
 
     addGame(newGame);
 
@@ -295,26 +280,6 @@ public class ModelManager
     saveReservations(reservationList);
   }
 
-  public ArrayList<Game> displayAvailableGames()
-  {
-    refreshReservation();
-    GameCollection gameCollection = getAllGames();
-    ArrayList<Game> games = gameCollection.getList();
-
-    ArrayList<Game> reservedGames = getAllReservations().getBorrowedGames();
-    for(int i=0;i< games.size();i++)
-    {
-      for(Game borrowedGame: reservedGames)
-      {
-        if(games.get(i).equals(borrowedGame))
-        {
-          games.remove(games.get(i));
-        }
-      }
-    }
-    return games;
-  }
-
   public void rateAGame(Game game, int rate)
   {
     GameCollection gameCollection = getAllGames();
@@ -329,8 +294,6 @@ public class ModelManager
     }
     saveCollection(gameCollection);
   }
-
-
 
   public void reserve(Player player, Game game, DateTime startDate, DateTime endDate)
   {

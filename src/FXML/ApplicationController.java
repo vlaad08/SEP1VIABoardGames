@@ -308,45 +308,28 @@ public class ApplicationController
     if (e.getSource()== editSave_Game)
     {
       Game selectedGame = editGames_Game.getSelectionModel().getSelectedItem();
+      Player selectedPlayer = editOwners_Game.getSelectionModel().getSelectedItem();
 
-      if(selectedGame!=null)
+      if(selectedGame != null && selectedPlayer != null)
       {
-        modelManager.editGame(selectedGame.getTitle(),editTitle_Game.getText(),
-            selectedGame.getMaxPlayers(),Integer.parseInt(editMaxNumOfPlayers_Game.getText())
-            ,selectedGame.getOwner());
+        modelManager.editGame(selectedGame.getTitle(),editTitle_Game.getText()
+            ,Integer.parseInt(editMaxNumOfPlayers_Game.getText())
+            ,editOwners_Game.getSelectionModel().getSelectedItem());
         editTitle_Game.setText("");
         editMaxNumOfPlayers_Game.setText("");
+
+        JOptionPane.showMessageDialog(null,"The game was successfully edited","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
+        initialize();
       }
-      JOptionPane.showMessageDialog(null,"The game was successfully edited","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
-      initialize();
-
-      /*
-      Game oldGame= editGames_Game.getSelectionModel().getSelectedItem();
-      String image = oldGame.getImage();
-      Player owner = oldGame.getOwner();
-      modelManager.removeGame(oldGame);
-
-      if(editOwners_Game.getSelectionModel().getSelectedItem() != null)
-      {
-        owner = editOwners_Game.getSelectionModel().getSelectedItem();
+      else {
+        JOptionPane.showMessageDialog(null, "Please fill out all the fields", "Missing information", JOptionPane.ERROR_MESSAGE);
       }
-      Game editedGame=new Game(editTitle_Game.getText(),Integer.parseInt(
-          editMaxNumOfPlayers_Game.getText()),
-          owner, image);
-      modelManager.addGame(editedGame);
 
-      initialize();
-      displayRefreshedGameList();
-
-       */
-
-//      JOptionPane.showMessageDialog(null,"The game was successfully edited","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
     }
     if (e.getSource()== removeSave_Game)
     {
       Game gameToRemove= removeGames_Game.getSelectionModel().getSelectedItem();
       modelManager.removeGame(gameToRemove);
-
 
       initialize();
       displayRefreshedGameList();
@@ -375,7 +358,6 @@ public class ApplicationController
         exception.fillInStackTrace();
       }
     }
-
 
     modelManager.XMLFile();
   }
@@ -647,17 +629,14 @@ public class ApplicationController
             //          JOptionPane.showMessageDialog(null,"The date is in the past!","Error message",JOptionPane.ERROR_MESSAGE);
             System.out.println("past");
             System.out.println(start.getYear());
-            System.out.println(start.getMonthName());
             System.out.println(start.getDay());
             System.out.println(start.getHour());
             System.out.println("fasz");
             System.out.println(end.getYear());
-            System.out.println(end.getMonthName());
             System.out.println(end.getDay());
             System.out.println(end.getHour());
             System.out.println("Today");
             System.out.println(DateTime.today().getYear());
-            System.out.println(DateTime.today().getMonthName());
             System.out.println(DateTime.today().getDay());
             System.out.println(DateTime.today().getHour());
             System.out.println(start.isBefore(DateTime.today()));
@@ -732,14 +711,13 @@ public class ApplicationController
     {
       modelManager.addPlayer(name, iD, true);
       JOptionPane.showMessageDialog(null,"Member was created.");
-      updatePlayersArea();
-      updatePlayersBox();
+
+      initialize();
     } else if(e.getSource()==addGuest_Player)
     {
       modelManager.addPlayer(name, iD, false);
       JOptionPane.showMessageDialog(null,"Guest was created.");
-      updatePlayersArea();
-      updatePlayersBox();
+      initialize();
     }
     playerName.setText("");
     playerID.setText("");
