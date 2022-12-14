@@ -464,7 +464,7 @@ public class ModelManager
     for(Game a: games)
     {
       txt += "<game>\n<title>" + a.getTitle() + "</title>\n<owner>" + a.getOwner().getName() + "</owner>\n<maxNumberOfPlayers>" + a.getMaxPlayers() + "</maxNumberOfPlayers>\n<rating>" +
-          a.getAverageRating() +  "</rating>\n</game>\n";
+          a.getAverageRating() +  "</rating>\n<image>"+ a.getImage() +"</image>\n</game>\n";
     }
     txt += "</games>\n<reservations>\n";
     for(Reservation a: reservations)

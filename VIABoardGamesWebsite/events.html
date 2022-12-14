@@ -5,10 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Events</title>
-    <link rel="stylesheet" href="./css/eventsStyle.css" type="text/css"> <!-- One link for the eventsStyle.css file, which contains the styling of the  page -->
+    <!-- One link for the eventsStyle.css file, which contains the styling of the  page -->
     <!-- One link fo the bootstrap and one <script> for the javascript files, which allow us to make the carousel below -->
     <link rel="stylesheet" href="./css/bootstrap.min.css" type="text/css">
+    <link rel="stylesheet" href="./css/eventsStyle.css" type="text/css"> 
     <script src="./js/bootstrap.bundle.min.js"></script>
+    <script src="./js/jquery-3.6.0.min.js"></script>
 </head>
 <body>
   <!--Made by Agoston along with the eventsStyle.css file-->
@@ -39,7 +41,7 @@
               <a class="nav-link text-white" href="./index.html">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link text-white" href="./types.html">Model.Game Types</a>
+              <a class="nav-link text-white" href="./types.html">Game Types</a>
             </li>
             <li class="nav-item">
               <a class="nav-link text-white" href="./events.html">Events</a>
@@ -54,40 +56,12 @@
         </div>
       </div>
     </nav>
-
-<!-- This is the introduction text -->
-      <div class="container upcoming">
-        <div class="row">
-          <h1>The most epic Chess Tournament at VIA</h1>
-          <p>Are you familiar with the rules of chess? Yes? Than you are invited for the biggest Chest Tournament ever organised at VIA this Saturday. You don' t have to bring anything, just your cheerfulness and your knowledge in chess. The Tournament will last until the final match is decided.</p>
-          <p>By the way, we have prepared with free snacks and two free beers for each contestant for the long Tournament...</p>
-        </div>
-      </div>
   </div>
-
   
 <!-- Here are three divisions, which describe the next few events -->
-    <div class="next_events">
-      <h1>Upcoming events in the next few months</h1>
-      <div class="next_container">
-        <div class="next_item">
-          <h3>Board Model.Game Sharing</h3>
-          <p>On the 21st of October you will have the chance to share your favourite board games with all the students at VIA and have a great time during our first Board Model.Game Lending Model.Event on the new campus.
-            Details can be seen later on our Facebook page...</p>
-          <img src="./images/game_sharing.jpg">
-        </div>
-        <div class="next_item">
-          <h3>Board Model.Game Convention</h3>
-          <p>The Board Model.Game Group is organising a group of board game enthusiasts to visit the Spiel '22 Board Model.Game Convention (The biggest one in Europe) on the 7th of October. If you would like to sign up for the program, send us a PM today...</p>
-          <img src="./images/convention.jpg">
-        </div>
-        <div class="next_item">
-          <h3>Board Model.Game Sharing</h3>
-          <p>On the 21st of October you will have the chance to share your favourite board games with all the students at VIA and have a great time during our first Board Model.Game Lending Model.Event on the new campus.
-          Details can be seen later on our Facebook page...</p>
-          <img src="./images/game_sharing.jpg">
-        </div>
-      </div>
+    <h1 id="upcoming">Upcoming events in the next few months</h1>
+    <div class="next_events" id="eventsDisplayed">
+    
     </div>
 
     <!-- There are two separator divisions, which draw a separator line on the screen and give us space so the content becomes not so jammed-->
@@ -95,7 +69,7 @@
 
    <!-- This carousel below works as a gallery to showcase the recent events' big moments -->
     <div class="recent">
-      <h1>Our recent events</h1>
+      <h1>Photos from our recent events</h1>
       <!-- Carousel -->
       <div id="demo" class="carousel slide btn-dark" data-bs-ride="carousel">
 
@@ -170,5 +144,7 @@
         <p>Contact information</p>
       </a>
     </div>     
+
+    <script src="./js/events.js"></script>
 </body>
 </html>

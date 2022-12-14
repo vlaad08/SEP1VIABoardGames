@@ -28,54 +28,50 @@
 </players>
 <games>
 <game>
-<title>Catan</title>
+<title>Clue</title>
 <owner>Ivan</owner>
-<maxNumberOfPlayers>6</maxNumberOfPlayers>
+<maxNumberOfPlayers>2</maxNumberOfPlayers>
 <rating>NaN</rating>
+<image>game_clue.jpg</image>
 </game>
 <game>
-<title>Partners</title>
-<owner>Emanuel</owner>
+<title>Chess</title>
+<owner>Ivan</owner>
+<maxNumberOfPlayers>2</maxNumberOfPlayers>
+<rating>5.0</rating>
+<image>game_chess.jpg</image>
+</game>
+<game>
+<title>uno</title>
+<owner>Agoston</owner>
+<maxNumberOfPlayers>10</maxNumberOfPlayers>
+<rating>2.0</rating>
+<image>game_uno.jpg</image>
+</game>
+<game>
+<title>monopoly</title>
+<owner>Ioana</owner>
 <maxNumberOfPlayers>4</maxNumberOfPlayers>
 <rating>NaN</rating>
-</game>
-<game>
-<title>UNO</title>
-<owner>Vlad</owner>
-<maxNumberOfPlayers>10</maxNumberOfPlayers>
-<rating>NaN</rating>
+<image>game_monopoly.jpg</image>
 </game>
 </games>
 <reservations>
-<reservation>
-<gameReservation>Chess</gameReservation> 
- <borrower> <name>Ivan</name><studentID>7777</studentID></borrower>
-<dates><startDate>2022/12/11 hour:20</startDate><endDate>2022/12/8 hour:10</endDate></dates>
-</reservation>
-<reservation>
-<gameReservation>UNO</gameReservation> 
- <borrower> <name>Ivan</name><studentID>7777</studentID></borrower>
-<dates><startDate>2022/12/3 hour:10</startDate><endDate>2022/12/5 hour:16</endDate></dates>
-</reservation>
 </reservations>
 <events>
 <event>
-<title>Tur</title>
-<description>tur	</description>
-<imageURL>sad</imageURL>
-<dates><startDate>2022/12/3 hour:10</startDate><endDate>2022/12/8 hour:10</endDate></dates>
+<title>Uno tournament</title>
+<description>Plus 2? Plus 3? UNO! Get ready to prove who is the best player of Uno out of everybody! 
+Be sure not to make any mistakes or you might REVERSE!</description>
+<imageURL>game_uno.jpg</imageURL>
+<dates><startDate>2022/12/13 hour:10</startDate><endDate>2022/12/13 hour:10</endDate></dates>
 </event>
 <event>
-<title>Turnm</title>
-<description>chess</description>
-<imageURL>asd</imageURL>
-<dates><startDate>2022/12/8 hour:10</startDate><endDate>2022/12/10 hour:10</endDate></dates>
-</event>
-<event>
-<title>asdfasdfa</title>
-<description>asfgasfdgasdfgasdfasfdgasfgasg</description>
-<imageURL>sdf</imageURL>
-<dates><startDate>2022/12/12 hour:10</startDate><endDate>2022/12/15 hour:10</endDate></dates>
+<title>Big upcoming chess tournament</title>
+<description>We are really excited to present to you our upcoming chess tournement. No matter the skill lever
+we will find you an oponent. Get ready to use your brains and</description>
+<imageURL>chess-img-png.jpg</imageURL>
+<dates><startDate>2022/12/12 hour:10</startDate><endDate>2022/12/12 hour:10</endDate></dates>
 </event>
 </events>
 </VIABoardGames>
