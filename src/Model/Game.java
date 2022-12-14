@@ -166,6 +166,10 @@ public class Game implements Serializable
     return other.title.equals(title) && other.maxPlayers==maxPlayers &&other.reserved==reserved;
   }
 
+  public Game copy()
+  {
+    return new Game(title, maxPlayers, owner, image);
+  }
   public void isReturned()
   {
     setReserved(false);
