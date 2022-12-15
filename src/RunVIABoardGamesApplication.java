@@ -1,10 +1,10 @@
 import FXML.ApplicationGUI;
 import javafx.application.Application;
 
-public class Main
+public class RunVIABoardGamesApplication
 {
   public static void main(String[] args)
   {
-      Application.launch(ApplicationGUI.class);
+    Application.launch(ApplicationGUI.class);
   }
 }
