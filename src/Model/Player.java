@@ -3,10 +3,10 @@ package Model;
 import java.io.Serializable;
 
 /**
+ * A class for the Player object
  * @author Group 6
  * @version 1.0
  * */
-
 public class Player implements Serializable
 {
   private String name;

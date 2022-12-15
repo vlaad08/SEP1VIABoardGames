@@ -8,6 +8,7 @@ public class ReservationList implements Serializable
   private ArrayList<Reservation> reservations;
 
   /**
+   * A class containing a list of Game objects.
    * @author Group 6
    * @version 1.0
    * */
