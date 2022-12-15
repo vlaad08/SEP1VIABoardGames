@@ -12,6 +12,11 @@ import java.io.FileNotFoundException;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
+/**
+ * Class for Managing the Application.
+ * @author Group 6
+ * @version 1.0
+ */
 public class ApplicationController
 {
   ModelManager modelManager=new ModelManager("gameCollection.bin","playerList.bin",
@@ -113,6 +118,11 @@ public class ApplicationController
 
   private Alert a = new Alert(Alert.AlertType.NONE);
 
+  /**
+   * The method that makes changes in the Event Tab according to the Buttons that were pressed.
+   * @param e Button that was pressed
+   * @throws FileNotFoundException
+   */
   public void handleEvent(ActionEvent e) throws FileNotFoundException
   {
     if(e.getSource() == saveButton_Event)
@@ -146,15 +156,11 @@ public class ApplicationController
           }
         }
 
-
-
-
         titleInput_Event.setText("");
         descriptionInput_Event.setText("");
         imageURLInput_Event.setText("");
         startDateInput_Event.setValue(null);
         endDateInput_Event.setValue(null);
-
 
         refreshComboEvent();
         reloadEventListAndDisplay();
@@ -191,14 +197,11 @@ public class ApplicationController
           if(start.isBefore(end)&&!start.isBefore(DateTime.today()))
           {
             modelManager.addEvent(title, description, imageURL, start, end);
-            //          JOptionPane.showMessageDialog(null,"The event was created","Confirmation message",
-            //              JOptionPane.INFORMATION_MESSAGE);
             a.setAlertType(Alert.AlertType.CONFIRMATION);
             a.setContentText("The event was edited");
             a.show();
           }else
           {
-            //          JOptionPane.showMessageDialog(null,"The date is in the past!","Error message",JOptionPane.ERROR_MESSAGE);
             a.setAlertType(Alert.AlertType.ERROR);
             a.setContentText("The dates cannot be in the past");
             a.show();
@@ -276,6 +279,9 @@ public class ApplicationController
     modelManager.XMLFile();
   }
 
+  /**
+   * Update the Event list in the Event Tab
+   */
   public void reloadEventListAndDisplay()
   {
     String text="";
@@ -287,6 +293,9 @@ public class ApplicationController
     eventsDisplayed.setText(text);
   }
 
+  /**
+   * Method thar refresh the event combo box
+   */
   public void refreshComboEvent()
   {
     try
@@ -305,8 +314,11 @@ public class ApplicationController
     }
   }
 
-
-
+  /**
+   * The method that makes changes in the Game Tab according to the Buttons that were pressed.
+   * @param e Button that was pressed
+   * @throws FileNotFoundException
+   */
   public void handlerGame (ActionEvent e) throws FileNotFoundException
   {
     if (e.getSource()== addSave_Game)
@@ -517,7 +529,9 @@ public class ApplicationController
     modelManager.XMLFile();
   }
 
-
+  /**
+   * The method that updates all the combo boxes and fields for displaying the information.
+   */
   public void initialize()
   {
     ArrayList<Player> players = modelManager.getAllPlayers().getList();
@@ -566,6 +580,10 @@ public class ApplicationController
     endHour_BorrowReserve.setItems(hourData);
     hourBorr_BorrowReserve.setItems(hourData);
   }
+
+  /**
+   * Update the Game list in the Game Tab
+   */
   public void displayRefreshedGameList()
   {
     String text="";
@@ -577,8 +595,11 @@ public class ApplicationController
     displayGames_Game.setText(text);
   }
 
-
-
+  /**
+   * The method that makes changes in the Reservation / Borrow Tab according to the Buttons that were pressed.
+   * @param e Button that was pressed
+   * @throws FileNotFoundException
+   */
   public void handlerBorrowReserve(ActionEvent e) throws FileNotFoundException
   {
 
@@ -644,9 +665,6 @@ public class ApplicationController
                 if (start.isBefore(element.getStartDate())&&!end.isBefore(element.getEndDate()))
                 {
 
-                  //                JOptionPane.showMessageDialog(null,"Cannot reserve in this time period\n"
-                  //                    +"The game is reserved from: "+element.getStartDate()+"\n"
-                  //                    + "To: "+element.getEndDate(),"Error message",JOptionPane.ERROR_MESSAGE);
                   a.setAlertType(Alert.AlertType.ERROR);
                   a.setContentText("Cannot reserve in this time period\n"
                       +"The game is reserved from: "+element.getStartDate()+"\n"
@@ -721,7 +739,6 @@ public class ApplicationController
           {
             boolean isTrue=true;
             ArrayList<Reservation> reservations=modelManager.getAllReservations().getList();
-            //          System.out.println(reservations);
             for (Reservation element:reservations)
             {
               if (element.getGame().equals(gameRes_BorrowReserve.getValue()))
@@ -735,13 +752,10 @@ public class ApplicationController
                   a.show();
                   isTrue=false;
                   break;
-                  //                initialize();
                 }
                 if (!start.isBefore(element.getStartDate())&&start.isBefore(element.getEndDate()))
                 {
-                  //                JOptionPane.showMessageDialog(null,"Cannot reserve in this time period\n"
-                  //                    +"The game is reserved from: "+element.getStartDate()+"\n"
-                  //                    + "To: "+element.getEndDate(),"Error message",JOptionPane.ERROR_MESSAGE);
+
                   a.setAlertType(Alert.AlertType.ERROR);
                   a.setContentText("Cannot reserve in this time period\n"
                       +"The game is reserved from: "+element.getStartDate()+"\n"
@@ -753,9 +767,7 @@ public class ApplicationController
                 }
                 if (!start.isBefore(element.getStartDate())&&start.isBefore(element.getEndDate())&&end.isBefore(element.getEndDate())&&!end.isBefore(element.getStartDate()))
                 {
-                  //                JOptionPane.showMessageDialog(null,"Cannot reserve in this time period\n"
-                  //                    +"The game is reserved from: "+element.getStartDate()+"\n"
-                  //                    + "To: "+element.getEndDate(),"Error message",JOptionPane.ERROR_MESSAGE);
+
                   a.setAlertType(Alert.AlertType.ERROR);
                   a.setContentText("Cannot reserve in this time period\n"
                       +"The game is reserved from: "+element.getStartDate()+"\n"
@@ -767,9 +779,7 @@ public class ApplicationController
                 }
                 if (start.isBefore(element.getStartDate())&&!end.isBefore(element.getEndDate()))
                 {
-                  //                JOptionPane.showMessageDialog(null,"Cannot reserve in this time period\n"
-                  //                    +"The game is reserved from: "+element.getStartDate()+"\n"
-                  //                    + "To: "+element.getEndDate(),"Error message",JOptionPane.ERROR_MESSAGE);
+
                   a.setAlertType(Alert.AlertType.ERROR);
                   a.setContentText("Cannot reserve in this time period\n"
                       +"The game is reserved from: "+element.getStartDate()+"\n"
@@ -846,6 +856,9 @@ public class ApplicationController
     }
   }
 
+  /**
+   * Update the Reservation list in the Reservation Tab
+   */
   public void displayRefreshedReservationList()
   {
     String text="";
@@ -864,8 +877,11 @@ public class ApplicationController
     reservationList_BorrowReserve.setText(text);
   }
 
-
-
+  /**
+   * The method that add member/guest according to the Buttons that were pressed.
+   * @param e Buttons that were pressed
+   * @throws FileNotFoundException
+   */
   public void addPlayer(ActionEvent e) throws FileNotFoundException
   {
     String name = playerName.getText();
@@ -900,12 +916,19 @@ public class ApplicationController
     initialize();
     modelManager.XMLFile();
   }
+
+  /**
+   * Update the Player list in the Player Tab
+   */
   private void updatePlayersArea()
   {
     PlayerList playerList = modelManager.getAllPlayers();
     labelForPlayers.setText(playerList.toString());
   }
 
+  /**
+   * Set text in the field with the name of the player from combo box
+   */
   public void resetPlayer()
   {
     if(modelManager!=null)
@@ -920,6 +943,9 @@ public class ApplicationController
     }
   }
 
+  /**
+   * Update the player combo box in the Player Tab.
+   */
   private void updatePlayersBox()
   {
     try{
@@ -948,6 +974,11 @@ public class ApplicationController
     }
   }
 
+  /**
+   * The method that make changes in the Player Tab according to the Buttons that were pressed.
+   * @param e Buttons that were pressed
+   * @throws FileNotFoundException
+   */
   public void handleActionsPlayer(ActionEvent e) throws FileNotFoundException
   {
     if (e.getSource() == saveChangesButton)
