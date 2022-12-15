@@ -3,7 +3,7 @@ package Model;
 import java.io.Serializable;
 
 /**
- * @author Agoston Babicz
+ * @author Group 6
  * @version 1.0
  * */
 
