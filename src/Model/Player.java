@@ -87,6 +87,10 @@ public class Player implements Serializable
     return other.name.equals(name)&&other.studentID.equals(studentID)&&other.membership==membership;
   }
 
+  /**
+   * Display the information of a Player as a String
+   * @return Player information as a String
+   */
   public String toString()
   {
     if(membership==true)
