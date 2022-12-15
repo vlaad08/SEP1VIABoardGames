@@ -94,10 +94,23 @@
 </reservations>
 <events>
 <event>
-<title>Tournament</title>
-<description>Description</description>
+<title>Chess tournamnet</title>
+<description>Get ready to brainstorm and face oponents on one of the most mind challanging sports. See you soon.</description>
+<imageURL>chess-img.png</imageURL>
+<dates><startDate>2022/12/16 hour:10</startDate><endDate>2022/12/16 hour:10</endDate></dates>
+</event>
+<event>
+<title>All out war!</title>
+<description>Get ready to compete at multiple games! As many as you win, the gratest the prize! </description>
 <imageURL>recent_5.jpg</imageURL>
-<dates><startDate>2023/1/10 hour:10</startDate><endDate>2023/1/10 hour:10</endDate></dates>
+<dates><startDate>2022/12/30 hour:10</startDate><endDate>2022/12/30 hour:10</endDate></dates>
+</event>
+<event>
+<title>UNO TOURNAMENT</title>
+<description>PLUS 2? PLUS 3? Be sure to bring your A game to our next uno tournament. Be careful what you do
+or you might REVERSE!	</description>
+<imageURL>game_uno.jpg</imageURL>
+<dates><startDate>2023/1/7 hour:10</startDate><endDate>2023/1/7 hour:10</endDate></dates>
 </event>
 </events>
 </VIABoardGames>

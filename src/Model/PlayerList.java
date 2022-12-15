@@ -12,7 +12,7 @@ public class PlayerList implements Serializable
 {
   private ArrayList<Player> players;
   /**
-   * A constructor with no variables as parameters
+   * No argument constructor
    * */
   public PlayerList()
   {
@@ -24,8 +24,11 @@ public class PlayerList implements Serializable
     */
   }
 
-
-  // A method that add a member in the array list
+  /**
+   * Adds member to the PlayerList
+   * @param name The name of the palyer
+   * @param studentID The id of the palyer
+   */
   public void addMember(String name, String studentID)
   {
     players.add(new Player(name,studentID)); //This takes 1 for the ".add()" and O(1) for the Player() constructor = O(1)
@@ -37,7 +40,11 @@ public class PlayerList implements Serializable
     */
   }
 
-  // A method that add a guest in the array list
+  /**
+   * A method that adds a guest to the array list
+   * @param name
+   * @param studentID
+   */
   public void addGuest(String name, String studentID)
   {
     players.add(new Player(name,studentID)); //This takes 1 for the ".add()" and O(1) for the Player() constructor = O(1)
@@ -49,18 +56,28 @@ public class PlayerList implements Serializable
     */
   }
 
-  // Method that remove a player using his studentNumber
+  /**
+   * A method that removes a player using their studentNumber flor finding them
+   * @param player
+   */
   public void removePlayer(Player player)
   {
     players.remove(player);
   }
 
+  /**
+   * A method that gets an ArrayList of all players
+   * @return returns an ArrayList of all players
+   */
   public ArrayList<Player> getList()
   {
     return players;
   }
 
-  //This method return a list in order(first display members)
+  /**
+   * This method returns a list of players in order(members first)
+   * @return returns a list of players, each in a new line, members first
+   */
   public String toString()
   {
     String text="";
