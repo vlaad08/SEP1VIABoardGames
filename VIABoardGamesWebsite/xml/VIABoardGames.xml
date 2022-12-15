@@ -2,31 +2,106 @@
  <VIABoardGames> 
  <players> 
 <player>
-<name>Vlad</name>
+<name>Ivan</name>
+<studentID>777777</studentID>
+</player>
+<player>
+<name>ADMIN</name>
+<studentID>0000000</studentID>
+</player>
+<player>
+<name>John Doe</name>
+<studentID>4124146</studentID>
+</player>
+<player>
+<name>Andrei</name>
 <studentID>331165</studentID>
 </player>
 <player>
-<name>Ivan</name>
-<studentID>777777</studentID>
+<name>Agoston Babicz</name>
+<studentID>331190</studentID>
+</player>
+<player>
+<name>Emanoil Duca</name>
+<studentID>331705</studentID>
+</player>
+<player>
+<name>Levente Toth</name>
+<studentID>332981</studentID>
+</player>
+<player>
+<name>Johnny Test</name>
+<studentID>312515</studentID>
+</player>
+<player>
+<name>Ben Tenison</name>
+<studentID>235124</studentID>
+</player>
+<player>
+<name>Peter Parker</name>
+<studentID>111111</studentID>
 </player>
 </players>
 <games>
 <game>
+<title>UNO</title>
+<owner>Ivan</owner>
+<maxNumberOfPlayers>5</maxNumberOfPlayers>
+<rating>3.0</rating>
+<image>game_uno.jpg</image>
+</game>
+<game>
 <title>Chess</title>
-<owner>Vlad</owner>
+<owner>Vlad Nita</owner>
 <maxNumberOfPlayers>2</maxNumberOfPlayers>
-<rating>NaN</rating>
+<rating>5.0</rating>
 <image>game_chess.jpg</image>
+</game>
+<game>
+<title>Clue</title>
+<owner>Levente Toth</owner>
+<maxNumberOfPlayers>4</maxNumberOfPlayers>
+<rating>NaN</rating>
+<image>game_clue.jpg</image>
+</game>
+<game>
+<title>Risk</title>
+<owner>Levente Toth</owner>
+<maxNumberOfPlayers>4</maxNumberOfPlayers>
+<rating>NaN</rating>
+<image>game_risk.jpg</image>
+</game>
+<game>
+<title>Monopoly</title>
+<owner>Andrei</owner>
+<maxNumberOfPlayers>4</maxNumberOfPlayers>
+<rating>5.0</rating>
+<image>game_monopoly.jpg</image>
 </game>
 </games>
 <reservations>
+<reservation>
+<gameReservation>Monopoly</gameReservation> 
+ <borrower> <name>John Doe</name><studentID>4124146</studentID></borrower>
+<dates><startDate>2022/12/15 hour:0</startDate><endDate>2022/12/15 hour:16</endDate></dates>
+</reservation>
+<reservation>
+<gameReservation>Risk</gameReservation> 
+ <borrower> <name>Andrei</name><studentID>331165</studentID></borrower>
+<dates><startDate>2023/1/5 hour:14</startDate><endDate>2023/1/6 hour:7</endDate></dates>
+</reservation>
+<reservation>
+<gameReservation>Clue</gameReservation> 
+ <borrower> <name>Ivan</name><studentID>777777</studentID></borrower>
+<dates><startDate>2023/1/5 hour:15</startDate><endDate>2023/1/6 hour:10</endDate></dates>
+</reservation>
 </reservations>
 <events>
 <event>
-<title>Chess tournament</title>
-<description>31254151</description>
-<imageURL>chess.png</imageURL>
-<dates><startDate>2022/12/15 hour:10</startDate><endDate>2022/12/16 hour:10</endDate></dates>
+<title>Tournament</title>
+<description>Description</description>
+<imageURL>recent_5.jpg</imageURL>
+<dates><startDate>2023/1/10 hour:10</startDate><endDate>2023/1/10 hour:10</endDate></dates>
 </event>
 </events>
 </VIABoardGames>
