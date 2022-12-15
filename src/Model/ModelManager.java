@@ -118,26 +118,35 @@ public class ModelManager
 
   public PlayerList getAllPlayers()
   {
-    PlayerList players = new PlayerList();
+    PlayerList players = new PlayerList(); //This takes 1 for the "=" and O(1) for creating the PlayerList() (See the PlayerList class's constructor) = O(1)
 
     try
     {
-      players = (PlayerList) MyFileHandler.readFromBinaryFile(playerListFileName);
+      players = (PlayerList) MyFileHandler.readFromBinaryFile(playerListFileName); //This takes 1 for the "=" and O(n) for ".readFromBinaryFile()" = O(n)
+                                                                                    // (See the "readFromBinaryFile()" time complexity analysis in MyFileHandler class
     }
     catch (FileNotFoundException e)
     {
-      System.out.println("File not found");
+      System.out.println("File not found"); //This takes 1 for the "System.out.println()" = O(1)
     }
     catch (IOException e)
     {
-      System.out.println("IO Error reading player file");
+      System.out.println("IO Error reading player file"); //This takes 1 for the "System.out.println()" = O(1)
     }
     catch (ClassNotFoundException e)
     {
-      System.out.println("Class Not Found");
+      System.out.println("Class Not Found");//This takes 1 for the "System.out.println()" = O(1)
     }
 
-    return players;
+    return players; //This takes 1
+
+    /*
+    The time complexity of the getAllPlayers() method is:
+    T(n) = O(1) + O(n) + (O(1)+O(1)+O(1)) + O(1) ===> Ignoring all the coefficients and constants (O(1)), we get
+    T(n) = O(n)
+    ((O(1)+O(1)+O(1)) --> this expression shows the catches' time complexity which can occur, but not in every situation.
+    T(n) is O(1) in this case, which is ignored, as the O(n) dominates in the expression above)
+    */
   }
 
   public void saveCollection(GameCollection collection)
@@ -189,16 +198,22 @@ public class ModelManager
   {
     try
     {
-      MyFileHandler.writeToBinaryFile(playerListFileName,players);
+      MyFileHandler.writeToBinaryFile(playerListFileName,players); //This takes O(n) (see the "writeToBinaryFile()" method's time complexity analysis
+                                                                   // in the MyFileHandler class = O(n)
     }
     catch (FileNotFoundException e)
     {
-      System.out.println("File not found");
+      System.out.println("File not found"); //This takes 1 for the " System.out.println()" = O(1)
     }
     catch (IOException e)
     {
-      System.out.println("IO Error reading file");
+      System.out.println("IO Error reading file"); // This takes 1 for the " System.out.println()" = O(1)
     }
+
+    /*
+    The time complexity of the savePlayer() is:
+    T(n) = O(n) + O(1) + O(1) ===> T(n) = O(n)
+    */
   }
 
   public Player getPlayerByStudentID(String studentID)
@@ -359,16 +374,22 @@ public class ModelManager
 
   public void addPlayer(String name, String studentID, boolean membership)
   {
-    PlayerList playerList = getAllPlayers();
-    if (membership==true)
+    PlayerList playerList = getAllPlayers();//This takes 1 for the "=" and O(n) for the "getAllPlayer()" = O(n) (See the "getAllPlayer()"'s time complexity analysis)
+    if (membership==true) //This takes 1 for the check ("==") = O(1)
     {
-      playerList.addMember(name, studentID);
+      playerList.addMember(name, studentID); // This takes O(1) (See the "addMember()" method's time complexity analysis in the PlayerList class)
     }
     else
     {
-      playerList.addGuest(name, studentID);
+      playerList.addGuest(name, studentID); // This takes O(1) (See the "addGuest()" method's time complexity analysis in the PlayerList class)
     }
-    savePlayers(playerList);
+    savePlayers(playerList); //This takes O(n) (See the savePlayer() method's time complexity analysis)
+
+    /*
+    The time complexity of the addPlayer() method is:
+    T(n) = O(n) + O(1) + O(1) + O(1) + O(n) ===> Ignoring all the coefficients and constants (O(1)), we get
+    T(n) = O(n)
+    */
   }
 
   public void editPlayer(String name, String studentID, boolean membership)

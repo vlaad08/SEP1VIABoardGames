@@ -537,7 +537,8 @@ public class ApplicationController
     {
       if(studentIdRes_BorrowReserve.getSelectionModel().getSelectedItem() != null && gameRes_BorrowReserve.getSelectionModel().getSelectedItem() != null)
       {
-        if(studentIdRes_BorrowReserve.getValue().getStudentID() != null && gameRes_BorrowReserve.getValue() != null && fromRes_BorrowReserve.getValue() != null && toRes_BorrowReserve.getValue() != null &&
+        if(studentIdRes_BorrowReserve.getValue().getStudentID() != null && gameRes_BorrowReserve.getValue() != null && fromRes_BorrowReserve.getValue() != null
+            && toRes_BorrowReserve.getValue() != null &&
             startHour_BorrowReserve.getValue()!= null && endHour_BorrowReserve.getValue() != null)
         {
           Player player = modelManager.getPlayerByStudentID(

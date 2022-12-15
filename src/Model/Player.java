@@ -18,8 +18,13 @@ public class Player implements Serializable
    * */
   public Player(String name, String studentID)
   {
-    this.name = name;
-    this.studentID = studentID;
+    this.name = name; //This takes 1 for the "=" = O(1)
+    this.studentID = studentID; //This takes 1 for the "=" = O(1)
+
+    /*
+    The Player class's constructor's time complexity is:
+    T(n) = O(1) + O(1) = O(1)
+    */
   }
 
   /**
@@ -60,7 +65,12 @@ public class Player implements Serializable
    * */
   public void setMembership(boolean membership)
   {
-    this.membership = membership;
+    this.membership = membership; //This takes 1 for the "=" = O(1)
+
+    /*
+    The time complexity of the setMembership mutator method is:
+    T(n) = O(1)
+    */
   }
 
   /**
