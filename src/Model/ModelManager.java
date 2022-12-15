@@ -558,6 +558,9 @@ public class ModelManager
     saveReservations(reservationList);
   }
 
+  /**
+   * This method creates the XML file that is required to update the website
+   * */
   public void XMLFile() throws FileNotFoundException
   {
     try{ArrayList<Game> games = getAllGames().getList();
