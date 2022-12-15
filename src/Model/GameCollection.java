@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * A class containing Model.Game Collection object.
- * @author Emanoil Duca
+ * A class containing a list of Game objects.
+ * @author Group 6
  * @version 1.0
  * */
 public class GameCollection implements Serializable
@@ -13,27 +13,38 @@ public class GameCollection implements Serializable
   private ArrayList<Game> games;
 
   /**
-   * A constructor with no variables as parameters
+   * No-argument constructor initializing the GameCollection.
    * */
   public GameCollection()
   {
     games = new ArrayList<>();
   }
 
-  // Method that add a game to the game list
-
+  /**
+   * Add game to the game list.
+   * @param game game to be added
+   */
   public void addGame(Game game)
   {
     games.add(game);
   }
 
-  // Method that remove a game from game list
+  /**
+   * Remove game from the game list.
+   * @param game the game that will be removed
+   */
   public void removeGame(Game game)
   {
     games.remove(game);
   }
 
   // Method that search for a game with specific title and return it
+
+  /**
+   * Return a game from the game list that has a specific title.
+   * @param title title of the Game
+   * @return Game object that was found
+   */
   public Game getGame(String title)
   {
     for(Game element: games)
@@ -45,12 +56,20 @@ public class GameCollection implements Serializable
     }
     return null;
   }
-  // Method that return list of games
+
+  /**
+   * Get ArrayList of games from the GameCollection object
+   * @return ArrayList of games
+   */
   public ArrayList<Game> getList()
   {
     return games;
   }
 
+  /**
+   * Display the information of an GameCollection as a String
+   * @return GameCollection information as a String
+   */
   public String toString()
   {
     String text="";

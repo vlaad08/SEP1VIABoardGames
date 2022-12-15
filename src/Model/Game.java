@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 /**
  * A class for the Game object
- * @author Agoston Babicz
+ * @author Group 6
  * @version 1.0
  * */
 
@@ -17,7 +17,7 @@ public class Game implements Serializable
   private String image;
 
   /**
-   * Constructor for the Model.Game class
+   * Constructor for the Game class
    * @param title The title of the game
    * @param maxPlayers The maximum number of players that can play the game at the same time
    * @param owner The owner of the game
@@ -31,6 +31,7 @@ public class Game implements Serializable
     rating = new Rating();
   }
 
+  //this Constructor is used for making a copy of the Game
   private Game(String title, int maxPlayers, Player owner, String image, Rating rating)
   {
     this.title = title;
@@ -40,11 +41,19 @@ public class Game implements Serializable
     this.rating = rating;
   }
 
+  /**
+   * Get the image of the game
+   * @return the source of the image of the game
+   */
   public String getImage()
   {
     return image;
   }
 
+  /**
+   * Set the image of the game
+   * @param image source for the image of the game
+   */
   public void setImage(String image)
   {
     this.image = image;
@@ -92,6 +101,10 @@ public class Game implements Serializable
     return owner;
   }
 
+  /**
+   * Set new owner of the Game
+   * @param owner new owner of the game
+   */
   public void setOwner(Player owner)
   {
     this.owner = owner;
@@ -115,8 +128,8 @@ public class Game implements Serializable
   }
 
   /**
-   * Equals method to compare 2 Model.Game objects.
-   * @return Whether the two Model.Game objects are identical or not.
+   * Equals method to compare 2 Game objects.
+   * @return Whether the two Game objects are identical or not.
    * */
   public boolean equals(Object obj)
   {
@@ -128,11 +141,19 @@ public class Game implements Serializable
     return other.title.equals(title) && other.maxPlayers==maxPlayers;
   }
 
+  /**
+   * Make a copy of a game
+   * @return return a copy of the Game
+   */
   public Game copy()
   {
     return new Game(title, maxPlayers, owner, image, rating);
   }
 
+  /**
+   * Display the information of a Game as a String
+   * @return Game information as a String
+   */
   public String toString()
   {
     return "Title: "+title+",  Maximum Number of Players: "+maxPlayers+",  Owner: "+ owner + ",  Rating: "+ rating.toString();

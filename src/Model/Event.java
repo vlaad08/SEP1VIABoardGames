@@ -17,11 +17,11 @@ public class Event implements Serializable
 
   /**
    * Constructor for creating an Event object.
-   * @param title
-   * @param description
-   * @param startDate
-   * @param endDate
-   * @param image
+   * @param title title of the event
+   * @param description description of the event
+   * @param startDate start date of the event
+   * @param endDate end date of the event
+   * @param image image of the event
    */
   public Event(String title, String description, DateTime startDate, DateTime endDate, String image)
   {

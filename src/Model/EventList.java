@@ -44,9 +44,9 @@ public class EventList implements Serializable
   }
 
   /**
-   * 
-   * toString of Class
-   * */
+   * Display the information of an Eventlist as a String
+   * @return Eventlist information as a String
+   */
   public String toString()
    {
      String text="";
@@ -57,6 +57,11 @@ public class EventList implements Serializable
      return text;
    }
 
+  /**
+   * Get an event with a specific title from the event list
+   * @param title the title of the event
+   * @return Event that was found.
+   */
    public Event getEvent(String title)
    {
      for(Event element: events)
@@ -69,6 +74,10 @@ public class EventList implements Serializable
      return null;
    }
 
+  /**
+   * Get ArrayList of events from the Event list object
+   * @return ArrayList of events
+   */
    public ArrayList<Event> getList()
    {
      return events;

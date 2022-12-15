@@ -6,14 +6,25 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * A class for Managing the game list, player list, event list and reservation list.
+ * @author Group 6
+ * @version 1.0
+ * */
 public class ModelManager
 {
-  //Put them in the  file
   private String gameCollectionFileName;
   private String playerListFileName;
   private String reservationListFileName;
   private String eventListFileName;
 
+  /**
+   * Constructor that initializing the ModelManager.Takes as argument the name of files.
+   * @param fileGameCollection game collection file
+   * @param filePlayerList player list file
+   * @param fileReservationList reservation file
+   * @param fileEventList event list file
+   */
   public ModelManager(String fileGameCollection, String filePlayerList,
       String fileReservationList, String fileEventList)
   {
@@ -23,6 +34,10 @@ public class ModelManager
       this.eventListFileName = fileEventList;
   }
 
+  /**
+   * Return the GameCollection object from the binary file
+   * @return GameCollection object
+   */
   public GameCollection getAllGames()
   {
     GameCollection collection = new GameCollection();
@@ -46,6 +61,10 @@ public class ModelManager
     return collection;
   }
 
+  /**
+   * Return the ReservationList object from the binary file
+   * @return ReservationList object
+   */
   public ReservationList getAllReservations()
   {
     refreshReservation();
@@ -70,6 +89,7 @@ public class ModelManager
     return reservations;
   }
 
+  //This Class is used for updating the reservation
   private ReservationList getReservations()
   {
     ReservationList reservations = new ReservationList();
@@ -92,6 +112,10 @@ public class ModelManager
     return reservations;
   }
 
+  /**
+   * Return the EventList object from the binary file
+   * @return EventList object
+   */
   public EventList getAllEvents()
   {
     EventList events = new EventList();
@@ -116,6 +140,10 @@ public class ModelManager
     return events;
   }
 
+  /**
+   * Return the PlayerList object from the binary file
+   * @return playerList object
+   */
   public PlayerList getAllPlayers()
   {
     PlayerList players = new PlayerList(); //This takes 1 for the "=" and O(1) for creating the PlayerList() (See the PlayerList class's constructor) = O(1)
@@ -149,6 +177,10 @@ public class ModelManager
     */
   }
 
+  /**
+   * Save GameCollection object to the binary file.
+   * @param collection GameCollection object
+   */
   public void saveCollection(GameCollection collection)
   {
     try
@@ -164,6 +196,11 @@ public class ModelManager
       System.out.println("IO Error reading file");
     }
   }
+
+  /**
+   * Save ReservationList object to the binary file.
+   * @param reservations ReservationList object
+   */
   public void saveReservations(ReservationList reservations)
   {
     try
@@ -179,6 +216,11 @@ public class ModelManager
       System.out.println("IO Error reading file");
     }
   }
+
+  /**
+   * Save EventList object to the binary file.
+   * @param events EventList object
+   */
   public void saveEvents(EventList events)
   {
     try
@@ -194,6 +236,11 @@ public class ModelManager
       System.out.println("IO Error reading file");
     }
   }
+
+  /**
+   * Save PlayerList object to the binary file.
+   * @param players PlayerList object
+   */
   public void savePlayers(PlayerList players)
   {
     try
@@ -216,6 +263,11 @@ public class ModelManager
     */
   }
 
+  /**
+   * Get a student with a specific studentID from the player file.
+   * @param studentID studentID of a player
+   * @return Player object that was found
+   */
   public Player getPlayerByStudentID(String studentID)
   {
     PlayerList playerList=getAllPlayers();
@@ -231,6 +283,10 @@ public class ModelManager
     return null;
   }
 
+  /**
+   * Remove a player from the PlayerList file
+   * @param player player object to be removed
+   */
   public void removePlayer(Player player)
   {
     PlayerList playerList = getAllPlayers();
@@ -238,6 +294,10 @@ public class ModelManager
     savePlayers(playerList);
   }
 
+  /**
+   * Add a game to the GameCollection file
+   * @param game Game object that should be added
+   */
   public void addGame(Game game)
   {
     GameCollection gameCollection = getAllGames();
@@ -245,12 +305,21 @@ public class ModelManager
     saveCollection(gameCollection);
   }
 
+  /**
+   * Get a game with a specific title from the GameCollection file.
+   * @param title title of the game
+   * @return Game object that was found
+   */
   public Game getGame(String title)
   {
     GameCollection gameCollection = getAllGames();
     return gameCollection.getGame(title);
   }
 
+  /**
+   * Remove a game from the GameCollection file.
+   * @param game Game object to be removed
+   */
   public void removeGame(Game game)
   {
     GameCollection gameCollection = getAllGames();
@@ -295,6 +364,11 @@ public class ModelManager
     saveReservations(reservationList);
   }
 
+  /**
+   * Add a rate to the specific Game.
+   * @param game Game that was selected
+   * @param rate new rate
+   */
   public void rateAGame(Game game, int rate)
   {
     GameCollection gameCollection = getAllGames();
@@ -310,6 +384,13 @@ public class ModelManager
     saveCollection(gameCollection);
   }
 
+  /**
+   * Add a reservation to the ReservationList file.
+   * @param player player that make a reservation
+   * @param game game that is reserved
+   * @param startDate start date for reservation
+   * @param endDate end date for reservation
+   */
   public void reserve(Player player, Game game, DateTime startDate, DateTime endDate)
   {
     ReservationList reservationList = getAllReservations();
@@ -317,6 +398,12 @@ public class ModelManager
     saveReservations(reservationList);
   }
 
+  /**
+   * Add a borrow to the ReservationList file.
+   * @param player player that make a borrow
+   * @param game game that is borrowed
+   * @param endDate end date for borrow
+   */
   public void borrow(Player player, Game game,DateTime endDate)
   {
     ReservationList reservationList = getAllReservations();
@@ -324,6 +411,10 @@ public class ModelManager
     saveReservations(reservationList);
   }
 
+  /**
+   * Remove a reservation from the ReservationList file.
+   * @param reservation reservation that should be removed
+   */
   public void removeReservation(Reservation reservation)
   {
     ReservationList reservationList = getAllReservations();
@@ -331,6 +422,12 @@ public class ModelManager
     saveReservations(reservationList);
   }
 
+  /**
+   * Get a reservation with a specific game title and studentID of a player from the ReservationList file.
+   * @param gameTitle title of a game
+   * @param studentID student ID of a player
+   * @return Reservation that was found
+   */
   public Reservation getReservation(String gameTitle, String studentID)
   {
     ReservationList reservationList = getReservations();
@@ -352,6 +449,14 @@ public class ModelManager
     return null;
   }
 
+  /**
+   * Add and Event to the EventList file
+   * @param title Title of the event
+   * @param description Description of the event
+   * @param image Image of the event
+   * @param startDate start date of the event
+   * @param endDate end date of the event
+   */
   public void addEvent(String title, String description, String image, DateTime startDate, DateTime endDate)
   {
     EventList eventList = getAllEvents();
@@ -359,6 +464,10 @@ public class ModelManager
     saveEvents(eventList);
   }
 
+  /**
+   * Remove an Event object from the EventList file
+   * @param event Event that should be removed
+   */
   public void removeEvent(Event event)
   {
     EventList eventList = getAllEvents();
@@ -366,12 +475,23 @@ public class ModelManager
     saveEvents(eventList);
   }
 
+  /**
+   * Get an Event object with a specific title.
+   * @param title title of the Event
+   * @return Event that was found
+   */
   public Event getEvent(String title)
   {
     EventList eventList = getAllEvents();
     return eventList.getEvent(title);
   }
 
+  /**
+   * Add a player to the PlayerList file.
+   * @param name Name of the player
+   * @param studentID Student ID of the player
+   * @param membership True - if is a member. False - if is a guest.
+   */
   public void addPlayer(String name, String studentID, boolean membership)
   {
     PlayerList playerList = getAllPlayers();//This takes 1 for the "=" and O(n) for the "getAllPlayer()" = O(n) (See the "getAllPlayer()"'s time complexity analysis)
@@ -392,6 +512,12 @@ public class ModelManager
     */
   }
 
+  /**
+   * Edit information of the Player from PlayerList file.
+   * @param name new Name of the Player
+   * @param studentID Student ID of a player
+   * @param membership Revoke / Assign membership
+   */
   public void editPlayer(String name, String studentID, boolean membership)
   {
     PlayerList playerList = getAllPlayers();
@@ -407,8 +533,9 @@ public class ModelManager
     savePlayers(playerList);
   }
 
-
-
+  /**
+   * Method that refresh Reservations from ReservationList file, and change reservation to borrow.
+   */
   private void refreshReservation()
   {
     ReservationList  reservationList = getReservations();
