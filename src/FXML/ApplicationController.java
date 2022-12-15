@@ -842,9 +842,9 @@ public class ApplicationController
         a.setContentText("Please fill out all the fields");
         a.show();
       }
-      initialize();
-    }
 
+    }
+    initialize();
     try
     {
       modelManager.XMLFile();

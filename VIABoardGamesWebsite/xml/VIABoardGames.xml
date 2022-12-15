@@ -77,19 +77,9 @@
 </games>
 <reservations>
 <reservation>
-<gameReservation>Monopoly</gameReservation> 
- <borrower> <name>John Doe</name><studentID>4124146</studentID></borrower>
-<dates><startDate>2022/12/15 hour:0</startDate><endDate>2022/12/15 hour:16</endDate></dates>
-</reservation>
-<reservation>
 <gameReservation>Risk</gameReservation> 
- <borrower> <name>Andrei</name><studentID>331165</studentID></borrower>
-<dates><startDate>2023/1/5 hour:14</startDate><endDate>2023/1/6 hour:7</endDate></dates>
-</reservation>
-<reservation>
-<gameReservation>Clue</gameReservation> 
- <borrower> <name>Ivan</name><studentID>777777</studentID></borrower>
-<dates><startDate>2023/1/5 hour:15</startDate><endDate>2023/1/6 hour:10</endDate></dates>
+ <borrower> <name>Agoston Babicz</name><studentID>331190</studentID></borrower>
+<dates><startDate>2022/12/31 hour:5</startDate><endDate>2022/12/31 hour:9</endDate></dates>
 </reservation>
 </reservations>
 <events>
