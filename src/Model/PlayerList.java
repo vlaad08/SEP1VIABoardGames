@@ -78,7 +78,6 @@ public class PlayerList implements Serializable
    * This method returns a list of players in order(members first)
    * @return returns a list of players, each in a new line, members first
    */
-  //This method return a list in order(first display members)
   public String toString()
   {
     String text="";
