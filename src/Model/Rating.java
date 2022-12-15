@@ -5,7 +5,8 @@ import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 /**
- * @author Agoston Babicz
+ * Class for rating games
+ * @author Group 6
  * @version 1.0
  * */
 
@@ -31,7 +32,7 @@ public class Rating implements Serializable
   }
 
   /**
-   * Calculates the average of all the rating in the ArrayList
+   * Calculates the average of all the ratings in the ArrayList
    * @return The average rating
    * */
   public double getAverageRating()
@@ -46,6 +47,11 @@ public class Rating implements Serializable
     return average;
   }
 
+  /**
+   * Displays rating
+   * @return Returns empty string if there are no ratings to the game it's called on or
+   *            returns the average of the ratings of the game rounded to two decimal points
+   */
   public String toString()
   {
     if(getAverageRating()>=0)
