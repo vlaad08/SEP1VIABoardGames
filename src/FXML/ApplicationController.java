@@ -100,6 +100,8 @@ public class ApplicationController
   @FXML private Button saveEditButton_Event;
   @FXML private Button removeButton_Event;
 
+  Alert a = new Alert(Alert.AlertType.NONE);
+
   public void handleEvent(ActionEvent e) throws FileNotFoundException
   {
     if(e.getSource() == saveButton_Event)
@@ -121,11 +123,15 @@ public class ApplicationController
             modelManager.addEvent(title, description, imageURL, start, end);
             //          JOptionPane.showMessageDialog(null,"The event was created","Confirmation message",
             //              JOptionPane.INFORMATION_MESSAGE);
-            System.out.println("done");
+            a.setAlertType(Alert.AlertType.CONFIRMATION);
+            a.setContentText("The event was successfully created");
+            a.show();
           }else
           {
             //          JOptionPane.showMessageDialog(null,"The date is in the past!","Error message",JOptionPane.ERROR_MESSAGE);
-            System.out.println("past");
+            a.setAlertType(Alert.AlertType.ERROR);
+            a.setContentText("The dates cannot be in the past");
+            a.show();
           }
         }
 
@@ -144,7 +150,9 @@ public class ApplicationController
       }catch (RuntimeException f)
       {
         f.fillInStackTrace();
-        JOptionPane.showMessageDialog(null,"Fill out all the fields", "Missing information",JOptionPane.ERROR_MESSAGE);
+        a.setAlertType(Alert.AlertType.ERROR);
+        a.setContentText("Fill out all the fields");
+        a.show();
       }
 
 
@@ -174,15 +182,16 @@ public class ApplicationController
             modelManager.addEvent(title, description, imageURL, start, end);
             //          JOptionPane.showMessageDialog(null,"The event was created","Confirmation message",
             //              JOptionPane.INFORMATION_MESSAGE);
-            System.out.println("done");
+            a.setAlertType(Alert.AlertType.CONFIRMATION);
+            a.setContentText("The event was edited");
+            a.show();
           }else
           {
             //          JOptionPane.showMessageDialog(null,"The date is in the past!","Error message",JOptionPane.ERROR_MESSAGE);
-            System.out.println("past");
+            a.setAlertType(Alert.AlertType.ERROR);
+            a.setContentText("The dates cannot be in the past");
+            a.show();
           }
-
-          JOptionPane.showMessageDialog(null,"The event was successfully edited","Confirmation message",
-              JOptionPane.INFORMATION_MESSAGE);
 
 
           reloadEventListAndDisplay();
@@ -198,7 +207,9 @@ public class ApplicationController
         catch (NullPointerException exception)
         {
           exception.fillInStackTrace();
-          JOptionPane.showMessageDialog(null, "Please select an event", "Alert message", JOptionPane.ERROR_MESSAGE);
+          a.setAlertType(Alert.AlertType.ERROR);
+          a.setContentText("Please select an event");
+          a.show();
         }
 
     }
@@ -214,8 +225,9 @@ public class ApplicationController
         reloadEventListAndDisplay();
         refreshComboEvent();
 
-        JOptionPane.showMessageDialog(null,"The event was successfully removed","Confirmation message",
-            JOptionPane.INFORMATION_MESSAGE);
+        a.setAlertType(Alert.AlertType.CONFIRMATION);
+        a.setContentText("The event was successfully removed");
+        a.show();
 
         titleInputEdit_Event.clear();
         descriptionInputEdit_Event.clear();
@@ -228,7 +240,9 @@ public class ApplicationController
       catch (NullPointerException exception)
       {
         exception.fillInStackTrace();
-        JOptionPane.showMessageDialog(null, "Please select an event", "Alert message", JOptionPane.ERROR_MESSAGE);
+        a.setAlertType(Alert.AlertType.ERROR);
+        a.setContentText("Please select an event");
+        a.show();
       }
     }
     else if(e.getSource() == eventComboBox)
@@ -288,60 +302,121 @@ public class ApplicationController
     {
       try
       {
-        Game newGame=new Game(addTitle_Game.getText(),Integer.parseInt(
-            addMaxNumOfPlayers_Game.getText()),
-            addOwners_Game.getSelectionModel().getSelectedItem(), addImage_Game.getText());
-        modelManager.addGame(newGame);
+
+          Game newGame=new Game(addTitle_Game.getText(),Integer.parseInt(
+              addMaxNumOfPlayers_Game.getText()),
+              addOwners_Game.getSelectionModel().getSelectedItem(), addImage_Game.getText());
+          modelManager.addGame(newGame);
+
+          a.setAlertType(Alert.AlertType.CONFIRMATION);
+          a.setContentText("The game was successfully added");
+          a.show();
+
 
         initialize();
         displayRefreshedGameList();
-
-        JOptionPane.showMessageDialog(null,"The game was added to the collection","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
 
       }
       catch (RuntimeException f)
       {
         f.fillInStackTrace();
-        JOptionPane.showMessageDialog(null,"Fill out all the fields", "Missing information",JOptionPane.ERROR_MESSAGE);
+        a.setAlertType(Alert.AlertType.ERROR);
+        a.setContentText("Please select an game, and fill out the fields");
+        a.show();
       }
       }
     if (e.getSource()== editSave_Game)
     {
-      Game selectedGame = editGames_Game.getSelectionModel().getSelectedItem();
-      Player selectedPlayer = editOwners_Game.getSelectionModel().getSelectedItem();
-
-      if(selectedGame != null && selectedPlayer != null)
+      try
       {
-        modelManager.editGame(selectedGame.getTitle(),editTitle_Game.getText()
-            ,Integer.parseInt(editMaxNumOfPlayers_Game.getText())
-            ,editOwners_Game.getSelectionModel().getSelectedItem());
-        editTitle_Game.setText("");
-        editMaxNumOfPlayers_Game.setText("");
+        Game selectedGame = editGames_Game.getSelectionModel().getSelectedItem();
+        Player oldPlayer = selectedGame.getOwner();
+        String img = selectedGame.getImage();
+        Player selectedPlayer = editOwners_Game.getSelectionModel().getSelectedItem();
 
-        JOptionPane.showMessageDialog(null,"The game was successfully edited","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
-        initialize();
+        if(selectedPlayer != null)
+        {
+          oldPlayer = selectedPlayer;
+        }
+
+        if(selectedGame != null)
+        {
+
+          modelManager.removeGame(selectedGame);
+          Game gameToAdd = new Game(editTitle_Game.getText(),Integer.parseInt(editMaxNumOfPlayers_Game.getText()),oldPlayer, img);
+          gameToAdd.addRating((int)Math.ceil(selectedGame.getAverageRating()));
+          modelManager.addGame(gameToAdd);
+          editTitle_Game.setText("");
+          editMaxNumOfPlayers_Game.setText("");
+
+          a.setAlertType(Alert.AlertType.CONFIRMATION);
+          a.setContentText("The game was successfully edited");
+          a.show();
+          initialize();
+
+        }
+        else {
+          a.setAlertType(Alert.AlertType.ERROR);
+          a.setContentText("Please fill out all the fields");
+          a.show();
+        }
       }
-      else {
-        JOptionPane.showMessageDialog(null, "Please fill out all the fields", "Missing information", JOptionPane.ERROR_MESSAGE);
+      catch (NullPointerException exception)
+      {
+        exception.fillInStackTrace();
+        a.setAlertType(Alert.AlertType.ERROR);
+        a.setContentText("Please fill out all the fields");
+        a.show();
       }
 
     }
     if (e.getSource()== removeSave_Game)
     {
-      Game gameToRemove= removeGames_Game.getSelectionModel().getSelectedItem();
-      modelManager.removeGame(gameToRemove);
+      try
+      {
+        Game gameToRemove= removeGames_Game.getSelectionModel().getSelectedItem();
+        if(!gameToRemove.equals(null))
+        {
+          modelManager.removeGame(gameToRemove);
+          a.setAlertType(Alert.AlertType.CONFIRMATION);
+          a.setContentText("The game was successfully removed");
+          a.show();
+        }
 
-      initialize();
-      displayRefreshedGameList();
+        initialize();
+        displayRefreshedGameList();
+      }
+      catch (NullPointerException exception)
+      {
+        exception.fillInStackTrace();
+        a.setAlertType(Alert.AlertType.ERROR);
+        a.setContentText("Please select a game");
+        a.show();
+      }
 
-      JOptionPane.showMessageDialog(null,"The game was successfully removed","Confirmation message",JOptionPane.INFORMATION_MESSAGE);
+
     }
 
     if(e.getSource() == ratingTabSaveButton_Game)
     {
-      Game game = ratingTabGameComboBox_Game.getValue();
-      int rating = ratingTabRatingComboBox_Game.getValue();
-      modelManager.rateAGame(game,rating);
+      try
+      {
+
+        Game game = ratingTabGameComboBox_Game.getValue();
+        int rating = ratingTabRatingComboBox_Game.getValue();
+        modelManager.rateAGame(game,rating);
+        a.setAlertType(Alert.AlertType.CONFIRMATION);
+        a.setContentText("Rating saved");
+        a.show();
+      }
+      catch (NullPointerException exception)
+      {
+        exception.fillInStackTrace();
+        a.setAlertType(Alert.AlertType.CONFIRMATION);
+        a.setContentText("Please make sure you selected a game and a rating");
+        a.show();
+      }
+
       initialize();
     }
 
@@ -455,48 +530,48 @@ public class ApplicationController
               {
                 if (end.isBefore(element.getEndDate())&&element.getStartDate().isBefore(end))
                 {
-                  //                JOptionPane.showMessageDialog(null,"Cannot reserve in this time period\n"
-                  //                    +"The game is reserved from: "+element.getStartDate()+"\n"
-                  //                    + "To: "+element.getEndDate(),"Error message",JOptionPane.ERROR_MESSAGE);
-                  System.out.println("Cannot reserve in this time period\n"
+                  a.setAlertType(Alert.AlertType.ERROR);
+                  a.setContentText("Cannot reserve in this time period\n"
                       +"The game is reserved from: "+element.getStartDate()+"\n"
                       + "To: "+element.getEndDate());
+                  a.show();
                   isTrue=false;
                   break;
                   //                initialize();
                 }
                 if (!start.isBefore(element.getStartDate())&&start.isBefore(element.getEndDate()))
                 {
-                  //                JOptionPane.showMessageDialog(null,"Cannot reserve in this time period\n"
-                  //                    +"The game is reserved from: "+element.getStartDate()+"\n"
-                  //                    + "To: "+element.getEndDate(),"Error message",JOptionPane.ERROR_MESSAGE);
-                  System.out.println("Cannot reserve in this time period\n"
+                  a.setAlertType(Alert.AlertType.ERROR);
+                  a.setContentText("Cannot reserve in this time period\n"
                       +"The game is reserved from: "+element.getStartDate()+"\n"
                       + "To: "+element.getEndDate());
+                  a.show();
                   isTrue=false;
                   break;
                   //                initialize();
                 }
                 if (!start.isBefore(element.getStartDate())&&start.isBefore(element.getEndDate())&&end.isBefore(element.getEndDate())&&!end.isBefore(element.getStartDate()))
                 {
-                  //                JOptionPane.showMessageDialog(null,"Cannot reserve in this time period\n"
-                  //                    +"The game is reserved from: "+element.getStartDate()+"\n"
-                  //                    + "To: "+element.getEndDate(),"Error message",JOptionPane.ERROR_MESSAGE);
-                  System.out.println("Cannot reserve in this time period\n"
+                  a.setAlertType(Alert.AlertType.ERROR);
+                  a.setContentText("Cannot reserve in this time period\n"
                       +"The game is reserved from: "+element.getStartDate()+"\n"
                       + "To: "+element.getEndDate());
+                  a.show();
                   isTrue=false;
                   break;
                   //                initialize();
                 }
                 if (start.isBefore(element.getStartDate())&&!end.isBefore(element.getEndDate()))
                 {
+
                   //                JOptionPane.showMessageDialog(null,"Cannot reserve in this time period\n"
                   //                    +"The game is reserved from: "+element.getStartDate()+"\n"
                   //                    + "To: "+element.getEndDate(),"Error message",JOptionPane.ERROR_MESSAGE);
-                  System.out.println("Cannot reserve in this time period\n"
+                  a.setAlertType(Alert.AlertType.ERROR);
+                  a.setContentText("Cannot reserve in this time period\n"
                       +"The game is reserved from: "+element.getStartDate()+"\n"
                       + "To: "+element.getEndDate());
+                  a.show();
                   isTrue=false;
                   break;
                   //                initialize();
@@ -507,28 +582,33 @@ public class ApplicationController
             {
               modelManager.borrow(player, gameSelect, end);
 
-              JOptionPane.showMessageDialog(null,
-                  gameSelect + "game has been borrowed to: " + player + "till: "
-                      + endHour + "hour", "Confirmation", JOptionPane.INFORMATION_MESSAGE);
+              a.setAlertType(Alert.AlertType.CONFIRMATION);
+              a.setContentText(gameSelect + "game has been borrowed to: " + player + "till: "
+                  + endHour + "hour");
+              a.show();
               initialize();
             }
 
           }else
           {
-            //          JOptionPane.showMessageDialog(null,"The date is in the past!","Error message",JOptionPane.ERROR_MESSAGE);
-            System.out.println("past");
+            a.setAlertType(Alert.AlertType.ERROR);
+            a.setContentText("Cannot borrow in the past");
+            a.show();
             initialize();
           }
         }
         else {
-          //        JOptionPane.showMessageDialog(null,"Please fill out all fields!:)", "Missing information", JOptionPane.ERROR_MESSAGE);
-          System.out.println("fill out");
+          a.setAlertType(Alert.AlertType.ERROR);
+          a.setContentText("Please fill out all the fields");
+          a.show();
           initialize();
         }
       }
       else
       {
-        JOptionPane.showMessageDialog(null, "Please fill out all the fields", "Missing information", JOptionPane.ERROR_MESSAGE);
+        a.setAlertType(Alert.AlertType.ERROR);
+        a.setContentText("Please fill out all the fields");
+        a.show();
       }
 
     }
@@ -568,12 +648,11 @@ public class ApplicationController
               {
                 if (end.isBefore(element.getEndDate())&&element.getStartDate().isBefore(end))
                 {
-                  //                JOptionPane.showMessageDialog(null,"Cannot reserve in this time period\n"
-                  //                    +"The game is reserved from: "+element.getStartDate()+"\n"
-                  //                    + "To: "+element.getEndDate(),"Error message",JOptionPane.ERROR_MESSAGE);
-                  System.out.println("Cannot reserve in this time period\n"
+                  a.setAlertType(Alert.AlertType.ERROR);
+                  a.setContentText("Cannot reserve in this time period\n"
                       +"The game is reserved from: "+element.getStartDate()+"\n"
                       + "To: "+element.getEndDate());
+                  a.show();
                   isTrue=false;
                   break;
                   //                initialize();
@@ -583,9 +662,11 @@ public class ApplicationController
                   //                JOptionPane.showMessageDialog(null,"Cannot reserve in this time period\n"
                   //                    +"The game is reserved from: "+element.getStartDate()+"\n"
                   //                    + "To: "+element.getEndDate(),"Error message",JOptionPane.ERROR_MESSAGE);
-                  System.out.println("Cannot reserve in this time period\n"
+                  a.setAlertType(Alert.AlertType.ERROR);
+                  a.setContentText("Cannot reserve in this time period\n"
                       +"The game is reserved from: "+element.getStartDate()+"\n"
                       + "To: "+element.getEndDate());
+                  a.show();
                   isTrue=false;
                   break;
                   //                initialize();
@@ -595,9 +676,11 @@ public class ApplicationController
                   //                JOptionPane.showMessageDialog(null,"Cannot reserve in this time period\n"
                   //                    +"The game is reserved from: "+element.getStartDate()+"\n"
                   //                    + "To: "+element.getEndDate(),"Error message",JOptionPane.ERROR_MESSAGE);
-                  System.out.println("Cannot reserve in this time period\n"
+                  a.setAlertType(Alert.AlertType.ERROR);
+                  a.setContentText("Cannot reserve in this time period\n"
                       +"The game is reserved from: "+element.getStartDate()+"\n"
                       + "To: "+element.getEndDate());
+                  a.show();
                   isTrue=false;
                   break;
                   //                initialize();
@@ -607,9 +690,11 @@ public class ApplicationController
                   //                JOptionPane.showMessageDialog(null,"Cannot reserve in this time period\n"
                   //                    +"The game is reserved from: "+element.getStartDate()+"\n"
                   //                    + "To: "+element.getEndDate(),"Error message",JOptionPane.ERROR_MESSAGE);
-                  System.out.println("Cannot reserve in this time period\n"
+                  a.setAlertType(Alert.AlertType.ERROR);
+                  a.setContentText("Cannot reserve in this time period\n"
                       +"The game is reserved from: "+element.getStartDate()+"\n"
                       + "To: "+element.getEndDate());
+                  a.show();
                   isTrue=false;
                   break;
                   //                initialize();
@@ -620,39 +705,29 @@ public class ApplicationController
             {
               modelManager.reserve(player, gameSelect, start, end);
 
-              //          JOptionPane.showMessageDialog(null,gameSelect + "Game has been borrowed by: " + player + "from: "
-              //                  + start + "til: " + end ,"Confirmation", JOptionPane.INFORMATION_MESSAGE);
-              System.out.println("done");
+              a.setAlertType(Alert.AlertType.CONFIRMATION);
+              a.setContentText("Reservation was registered");
+              a.show();
               initialize();
             }
           }else
           {
-            //          JOptionPane.showMessageDialog(null,"The date is in the past!","Error message",JOptionPane.ERROR_MESSAGE);
-            System.out.println("past");
-            System.out.println(start.getYear());
-            System.out.println(start.getDay());
-            System.out.println(start.getHour());
-            System.out.println("fasz");
-            System.out.println(end.getYear());
-            System.out.println(end.getDay());
-            System.out.println(end.getHour());
-            System.out.println("Today");
-            System.out.println(DateTime.today().getYear());
-            System.out.println(DateTime.today().getDay());
-            System.out.println(DateTime.today().getHour());
-            System.out.println(start.isBefore(DateTime.today()));
-            System.out.println(start.isBefore(end));
-            //          initialize();
+            a.setAlertType(Alert.AlertType.ERROR);
+            a.setContentText("The date is in the past");
+            a.show();
           }
         }
         else {
-          //        JOptionPane.showMessageDialog(null,"Please fill out all fields!:)", "Missing information", JOptionPane.ERROR_MESSAGE);
-          System.out.println("fill out");
+          a.setAlertType(Alert.AlertType.ERROR);
+          a.setContentText("Please fill out all the fields");
+          a.show();
         }
       }
       else
       {
-        JOptionPane.showMessageDialog(null, "Please fill out all the fields", "Missing information", JOptionPane.ERROR_MESSAGE);
+        a.setAlertType(Alert.AlertType.ERROR);
+        a.setContentText("Please fill out all the fields");
+        a.show();
       }
 
     }
@@ -660,16 +735,24 @@ public class ApplicationController
     if (e.getSource() == removeReservation_BorrowReserve)
     {
       try{
-        Reservation reservationToRemove=modelManager.getReservation(reservationsToRemove_BorrowReserve.getValue().getGame().getTitle(),reservationsToRemove_BorrowReserve.getValue().getPlayer().getStudentID());
-        modelManager.removeReservation(reservationToRemove);
-        System.out.println(reservationToRemove);
-        initialize();
+        ReservationList reservationList = modelManager.getAllReservations();
+        Reservation reservationToRemove= reservationsToRemove_BorrowReserve.getSelectionModel().getSelectedItem();
+        reservationList.removeReservation(reservationToRemove);
+        modelManager.saveReservations(reservationList);
+
+        a.setAlertType(Alert.AlertType.CONFIRMATION);
+        a.setContentText("Reservation was removed");
+        a.show();
+
         displayRefreshedReservationList();
       }catch (RuntimeException f)
       {
         f.fillInStackTrace();
+        a.setAlertType(Alert.AlertType.ERROR);
+        a.setContentText("Please fill out all the fields");
+        a.show();
       }
-
+      initialize();
     }
 
     try
@@ -708,21 +791,33 @@ public class ApplicationController
     String name = playerName.getText();
     String iD = playerID.getText();
 
-    if(e.getSource()==addMember_Player)
+    if(!name.equals("") && !iD.equals(""))
     {
-      modelManager.addPlayer(name, iD, true);
-      JOptionPane.showMessageDialog(null,"Member was created.");
+      if(e.getSource()==addMember_Player)
+      {
+        modelManager.addPlayer(name, iD, true);
+        a.setAlertType(Alert.AlertType.CONFIRMATION);
+        a.setContentText("Member was added");
+        a.show();
 
-      initialize();
-    } else if(e.getSource()==addGuest_Player)
-    {
-      modelManager.addPlayer(name, iD, false);
-      JOptionPane.showMessageDialog(null,"Guest was created.");
-      initialize();
+
+      } else if(e.getSource()==addGuest_Player)
+      {
+        modelManager.addPlayer(name, iD, false);
+        a.setAlertType(Alert.AlertType.CONFIRMATION);
+        a.setContentText("Guest was added");
+        a.show();
+      }
+      playerName.setText("");
+      playerID.setText("");
     }
-    playerName.setText("");
-    playerID.setText("");
-
+    else
+    {
+      a.setAlertType(Alert.AlertType.ERROR);
+      a.setContentText("Fill out all the fields");
+      a.show();
+    }
+    initialize();
     modelManager.XMLFile();
   }
   private void updatePlayersArea()
@@ -779,12 +874,16 @@ public class ApplicationController
     {
       Player temp = playerBox.getSelectionModel().getSelectedItem();
       String firstName = name2.getText();
-      int choice = JOptionPane.showConfirmDialog(null,"Are you sure?");
 
-      if(temp != null && choice == 0)
+      if(temp != null)
       {
         modelManager.editPlayer(firstName, playerBox.getSelectionModel().getSelectedItem().getStudentID(),
             playerBox.getSelectionModel().getSelectedItem().isMembership());
+
+        a.setAlertType(Alert.AlertType.CONFIRMATION);
+        a.setContentText("Changes were saved");
+        a.show();
+
         updatePlayersBox();
         updatePlayersArea();
       }
@@ -801,11 +900,13 @@ public class ApplicationController
     else if (e.getSource() == revokeButton)
     {
       Player temp = playerBox.getSelectionModel().getSelectedItem();
-      int choice = JOptionPane.showConfirmDialog(null,"Are you sure?");
-      if (temp != null && choice==0)
+      if (temp != null)
       {
         temp.setMembership(!temp.isMembership());
         modelManager.editPlayer(temp.getName(), temp.getStudentID(), temp.isMembership());
+        a.setAlertType(Alert.AlertType.CONFIRMATION);
+        a.setContentText("Changes were saved");
+        a.show();
         updatePlayersBox();
         updatePlayersArea();
       }
@@ -813,10 +914,9 @@ public class ApplicationController
     else if (e.getSource() == removePlayerButton)
     {
       Player temp = playerBox.getSelectionModel().getSelectedItem();
-      int choice = JOptionPane.showConfirmDialog(null,"Are you sure?");
       ReservationList reservations = modelManager.getAllReservations();
       ArrayList<Reservation> copy;
-      if (temp!=null && choice==0)
+      if (temp!=null)
       {
         copy=reservations.getByPlayer(temp);
 
@@ -825,6 +925,9 @@ public class ApplicationController
 
         modelManager.removePlayer(temp);
         name2.clear();
+        a.setAlertType(Alert.AlertType.CONFIRMATION);
+        a.setContentText("Player was removed");
+        a.show();
         updatePlayersBox();
         updatePlayersArea();
         initialize();
