@@ -32,7 +32,7 @@ public class DateTime implements Serializable
   }
 
   /**
-   * Constructor which has as parameters variables only for the date.
+   * Constructor which has as parameters variables only for the date. The hour is by default 10.
    *  @param year The year of the date
    *  @param month The month of the date
    *  @param day The day of the date
@@ -90,7 +90,7 @@ public class DateTime implements Serializable
   /**
    * Compare 2 objects and check if they are equals.
    * @return true if objects are equals or false if they are not
-   * @param obj
+   * @param obj object that is compared with.
    * */
   public boolean equals(Object obj)
   {
@@ -126,7 +126,7 @@ public class DateTime implements Serializable
   /**
    * Compare 2 Datetime object and check if initial date is before the date that is compared with.
    * @return true if initial date is before the date that is compared with
-   * @param date2
+   * @param date2 the datetime object that is used to be compared
    * */
   public boolean isBefore(DateTime date2)
   {
@@ -149,8 +149,8 @@ public class DateTime implements Serializable
   }
 
   /**
-   * Display the information of an object as a String
-   * @return objects information as a String
+   * Display the information of an Datetime object as a String
+   * @return Datetime information as a String
    */
   public String toString()
   {

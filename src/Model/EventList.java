@@ -4,8 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
- * A class containing Date and Time objects.
- * @author Levi Toth
+ * A class containing Event objects.
+ * @author Group 6
  * @version 1.0
  * */
 public class EventList implements Serializable
@@ -13,7 +13,7 @@ public class EventList implements Serializable
   private ArrayList<Event> events;
 
   /**
-   * No-argument constructor
+   * No-argument constructor initializing the EventList.
    * */
   public EventList()
   {
@@ -21,6 +21,7 @@ public class EventList implements Serializable
   }
 
   /**
+   * Add Event to the event list
    * @param title the title of the event
    * @param description the description of the event
    * @param image the image displayed on the website next to the event
@@ -34,7 +35,8 @@ public class EventList implements Serializable
   }
 
   /**
-   * @param event the event we wan to remove
+   * Remove event object from the event list
+   * @param event the event that will be removed
    * */
   public void removeEvent(Event event)
   {
@@ -42,6 +44,7 @@ public class EventList implements Serializable
   }
 
   /**
+   * 
    * toString of Class
    * */
   public String toString()

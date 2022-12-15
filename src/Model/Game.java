@@ -3,7 +3,7 @@ package Model;
 import java.io.Serializable;
 
 /**
- * A class for the Model.Game object
+ * A class for the Game object
  * @author Agoston Babicz
  * @version 1.0
  * */
