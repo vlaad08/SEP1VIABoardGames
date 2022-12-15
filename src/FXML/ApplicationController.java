@@ -100,7 +100,18 @@ public class ApplicationController
   @FXML private Button saveEditButton_Event;
   @FXML private Button removeButton_Event;
 
-  Alert a = new Alert(Alert.AlertType.NONE);
+  @FXML private TextField vote1;
+  @FXML private TextField vote2;
+  @FXML private TextField vote3;
+  @FXML private Button buttonPlusVote1;
+  @FXML private Button buttonPlusVote2;
+  @FXML private Button buttonPlusVote3;
+  @FXML private Button buttonMinusVote1;
+  @FXML private Button buttonMinusVote2;
+  @FXML private Button buttonMinusVote3;
+  @FXML private Button closePollButton;
+
+  private Alert a = new Alert(Alert.AlertType.NONE);
 
   public void handleEvent(ActionEvent e) throws FileNotFoundException
   {
@@ -431,6 +442,75 @@ public class ApplicationController
       catch (NullPointerException exception)
       {
         exception.fillInStackTrace();
+      }
+    }
+
+    if(e.getSource() == buttonPlusVote1)
+    {
+      int value = Integer.parseInt(vote1.getText());
+      value++;
+      vote1.setText(String.valueOf(value));
+    }
+    else if(e.getSource() == buttonMinusVote1)
+    {
+      int value = Integer.parseInt(vote1.getText());
+      if(value != 0)
+      {
+        value--;
+      }
+      vote1.setText(String.valueOf(value));
+    }
+
+    if(e.getSource() == buttonPlusVote2)
+    {
+      int value = Integer.parseInt(vote2.getText());
+      value++;
+      vote2.setText(String.valueOf(value));
+    }
+    else if(e.getSource() == buttonMinusVote2)
+    {
+      int value = Integer.parseInt(vote2.getText());
+      if(value != 0)
+      {
+        value--;
+      }
+      vote2.setText(String.valueOf(value));
+    }
+    if(e.getSource() == buttonPlusVote3)
+    {
+      int value = Integer.parseInt(vote3.getText());
+      value++;
+      vote3.setText(String.valueOf(value));
+    }
+    else if(e.getSource() == buttonMinusVote3)
+    {
+      int value = Integer.parseInt(vote3.getText());
+      if(value != 0)
+      {
+        value--;
+      }
+      vote3.setText(String.valueOf(value));
+    }
+    else if(e.getSource() == closePollButton)
+    {
+      int v1 = Integer.parseInt(vote1.getText()), v2 = Integer.parseInt(vote2.getText()), v3 = Integer.parseInt(vote3.getText());
+      if(v1 >= v2 && v1 >= v3)
+      {
+        a.setAlertType(Alert.AlertType.INFORMATION);
+        a.setContentText("The first game won the poll");
+        a.show();
+      }
+      else if(v2 >= v1 && v2 >= v3)
+      {
+        a.setAlertType(Alert.AlertType.INFORMATION);
+        a.setContentText("The second game won the poll");
+        a.show();
+      }
+      else
+      {
+        a.setAlertType(Alert.AlertType.INFORMATION);
+        a.setContentText("The third game won the poll");
+        a.show();
       }
     }
 
