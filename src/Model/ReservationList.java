@@ -3,15 +3,14 @@ package Model;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+/**
+ * A class containing a list of Reservation objects.
+ * @author Group 6
+ * @version 1.0
+ * */
 public class ReservationList implements Serializable
 {
   private ArrayList<Reservation> reservations;
-
-  /**
-   * A class containing a list of Game objects.
-   * @author Group 6
-   * @version 1.0
-   * */
 
   /**
    * No argument constructor, which initialize the ArrayList of reservation
