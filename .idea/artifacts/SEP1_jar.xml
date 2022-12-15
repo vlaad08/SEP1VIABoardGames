@@ -6,6 +6,7 @@
         <element id="file-copy" path="$PROJECT_DIR$/META-INF/MANIFEST.MF" />
       </element>
       <element id="module-output" name="SEP1" />
+      <element id="dir-copy" path="$PROJECT_DIR$/../../../../../../Program Files/Java/javafx-sdk-19/bin" />
     </root>
   </artifact>
 </component>
