@@ -54,13 +54,6 @@
 <image>game_chess.jpg</image>
 </game>
 <game>
-<title>Clue</title>
-<owner>Levente Toth</owner>
-<maxNumberOfPlayers>4</maxNumberOfPlayers>
-<rating>NaN</rating>
-<image>game_clue.jpg</image>
-</game>
-<game>
 <title>Risk</title>
 <owner>Levente Toth</owner>
 <maxNumberOfPlayers>4</maxNumberOfPlayers>
